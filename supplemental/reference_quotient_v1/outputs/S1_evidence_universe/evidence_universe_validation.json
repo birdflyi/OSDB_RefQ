@@ -1,0 +1,20 @@
+{
+  "conflict_excluded_record_occurrences": 4,
+  "conflicting_entity_count": 3,
+  "cross_project_evidence_weight": 139044,
+  "cross_tab_total_reconciliation": true,
+  "edge_weight_closes": true,
+  "eligible_from_project_mappable_minus_conflict": true,
+  "exact_p0_reconcile": true,
+  "input_rows": 3748078,
+  "non_reference_rows": 0,
+  "quotient_eligible_records": 1586117,
+  "raw_reference_rows": 3748078,
+  "raw_scan_count": 1,
+  "self_loop_evidence_weight": 1447073,
+  "target_ambiguous_records": 0,
+  "target_membership_split_closes": true,
+  "target_non_project_records": 1686763,
+  "target_project_mappable_records": 1586121,
+  "target_unresolved_records": 475194
+}

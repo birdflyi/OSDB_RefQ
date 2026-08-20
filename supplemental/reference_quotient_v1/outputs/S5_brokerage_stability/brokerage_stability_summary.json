@@ -1,0 +1,26 @@
+{
+  "canonical_setting": {
+    "k": 500,
+    "normalized": true,
+    "seed": 20260731,
+    "weight": null
+  },
+  "canonical_setting_matches_p0": true,
+  "robustness_alert": false,
+  "spearman_summary": {
+    "max": 1.0,
+    "mean": 0.9998925696924382,
+    "median": 0.9998921331576538,
+    "min": 0.9998289911273206,
+    "q1": 0.9998752196549955,
+    "q3": 0.9999086058717663
+  },
+  "top50_overlap_summary": {
+    "max": 1.0,
+    "mean": 0.91,
+    "median": 0.92,
+    "min": 0.82,
+    "q1": 0.9,
+    "q3": 0.92
+  }
+}

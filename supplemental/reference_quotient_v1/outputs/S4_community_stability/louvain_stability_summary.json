@@ -1,0 +1,23 @@
+{
+  "ari_to_canonical_summary": {
+    "max": 1.0,
+    "mean": 0.8739466232106914,
+    "median": 0.870381491932301,
+    "min": 0.7491365325189081,
+    "q1": 0.8460624672687664,
+    "q3": 0.8909245204627031
+  },
+  "canonical_community_count": 34,
+  "canonical_modularity": 0.7973095950243088,
+  "canonical_seed": 20260731,
+  "canonical_seed_matches_p0": true,
+  "pairwise_ari_summary": {
+    "max": 0.9949632521455954,
+    "mean": 0.8572026597530258,
+    "median": 0.8607832933367885,
+    "min": 0.639377189055702,
+    "q1": 0.8041495871318568,
+    "q3": 0.912127985120328
+  },
+  "robustness_alert": true
+}
