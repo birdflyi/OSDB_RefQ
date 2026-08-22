@@ -1,0 +1,91 @@
+{
+  "package": "reference_quotient_v1_3_weight_multiplicity_contract_patch",
+  "status": "PASS_READY_TO_PUSH",
+  "parent_freeze_commit": "82e992aadd6c8e63ca699d766148d11f35ef7d0a",
+  "scientific_baseline_changed": false,
+  "scientific_numbers_changed": false,
+  "raw_scan_count": 0,
+  "scientific_experiments_rerun": 0,
+  "network_algorithms_rerun": 0,
+  "field_contract": {
+    "canonical_directed_multiplicity": "REFERENCE_RECORD_EVIDENCE_MULTIPLICITY",
+    "canonical_directed_weight": "ANALYTICAL_EDGE_WEIGHT",
+    "current_p0_weight_assignment": "weight := multiplicity",
+    "current_p0_equality": "weight == multiplicity == aggregated retained eligible Reference-record count",
+    "equality_scope": "CURRENT_OPERATIONALIZATION",
+    "theoretical_invariant": false,
+    "generic_graph_api_invariant": false,
+    "undirected_weight": "SUM_DIRECTED_ANALYTICAL_WEIGHTS",
+    "undirected_directed_edge_count": "COUNT_DIRECTED_EDGE_TABLE_ROWS",
+    "directed_edge_count_is_reference_record_count": false,
+    "future_preferred_field_names": [
+      "evidence_multiplicity",
+      "reference_record_count"
+    ],
+    "future_transformed_weight_mode_implemented": false
+  },
+  "s1_flow": {
+    "old_status": "SUPERSEDED_UNIT_LABEL_ONLY",
+    "old_path": "supplemental/reference_quotient_v1/outputs/S1_evidence_universe/evidence_universe_flow.csv",
+    "old_sha256": "c9951e5d61c0e16b3c10d18329f1ac95219c7cb49c05a11ab9891eeffa00dc48",
+    "corrected_status": "AUTHORITATIVE_UNIT_LABEL_CORRECTED",
+    "corrected_path": "supplemental/reference_quotient_v1/v1_3_weight_multiplicity_contract_patch/outputs/S1_evidence_universe/evidence_universe_flow_corrected.csv",
+    "corrected_sha256": "1404ed2cfb2fc4e0f6001c03ac307e52af2e40be5c3a15eaa09107b4cc7bd2b8",
+    "record_weight_rows": {
+      "self_loop_evidence_weight": {
+        "count": 1447073,
+        "unit": "REFERENCE_RECORD",
+        "measure": "AGGREGATED_EDGE_WEIGHT"
+      },
+      "cross_project_evidence_weight": {
+        "count": 139044,
+        "unit": "REFERENCE_RECORD",
+        "measure": "AGGREGATED_EDGE_WEIGHT"
+      }
+    },
+    "edge_count_rows": {
+      "self_loop_edge_count": {
+        "count": 289,
+        "unit": "EDGE_COUNT",
+        "measure": "SELF_LOOP_EDGE_COUNT"
+      },
+      "cross_project_directed_edge_count": {
+        "count": 9605,
+        "unit": "EDGE_COUNT",
+        "measure": "CROSS_PROJECT_DIRECTED_EDGE_COUNT"
+      }
+    }
+  },
+  "producer_fix": {
+    "path": "supplemental/reference_quotient_v1/scripts/run_supplemental.py",
+    "classification": "SCHEMA_LABEL_BUGFIX",
+    "change_scope": "record-weight unit and measure labels only",
+    "aggregation_changed": false,
+    "thresholds_changed": false,
+    "edge_construction_changed": false
+  },
+  "generic_validator": {
+    "weight_equals_multiplicity_universal_requirement": false,
+    "p0_specific_equality_test_scope": "CURRENT_REFQ_UNIT_WEIGHT_MODE"
+  },
+  "final_freeze_governance": {
+    "manifest": "supplemental/reference_quotient_v1/FINAL_FREEZE_MANIFEST.json",
+    "authoritative_s1_flow_updated": true,
+    "corrected_s3_remains_authoritative": true,
+    "canonical_p0_output_drift": false,
+    "other_scientific_output_drift": false
+  },
+  "tests": {
+    "paths": [
+      "tests/ch5_reference_quotient/test_reference_pipeline.py",
+      "tests/ch5_reference_quotient/test_weight_multiplicity_contract.py"
+    ],
+    "tests_passed": 22,
+    "tests_failed": 0,
+    "command": "venv\\Scripts\\python.exe -m pytest -p no:cacheprovider -q tests/ch5_reference_quotient",
+    "p0_rerun": false,
+    "scientific_rerun": false
+  },
+  "commit_sha_recorded_in_manifest": false,
+  "push": false
+}

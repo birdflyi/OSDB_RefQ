@@ -37,6 +37,8 @@ figures; S6 is not classified as a new scientific result.
 
 ```text
 S1 = supplemental/reference_quotient_v1/outputs/S1_evidence_universe/
+S1 flow authoritative = supplemental/reference_quotient_v1/v1_3_weight_multiplicity_contract_patch/outputs/S1_evidence_universe/evidence_universe_flow_corrected.csv
+S1 flow superseded = supplemental/reference_quotient_v1/outputs/S1_evidence_universe/evidence_universe_flow.csv
 S2 = supplemental/reference_quotient_v1/outputs/S2_weight_sensitivity/
 S3 authoritative = supplemental/reference_quotient_v1/v1_2_s3_reproducibility_patch/outputs/S3_observation_sensitivity_corrected/
 S3 superseded = supplemental/reference_quotient_v1/outputs/S3_observation_sensitivity/
@@ -48,6 +50,11 @@ S7 = supplemental/reference_quotient_v1/outputs/S7_top_evidence_composition/
 
 The old S3 remains in the tree for provenance and is explicitly superseded by
 the corrected S3 result. No historical/superseded file was deleted.
+
+The old S1 flow remains in the tree for provenance and is superseded only for
+unit-label presentation. Its scientific values are unchanged. Human use of
+the S1 flow should use the v1.3 corrected copy, which distinguishes
+`REFERENCE_RECORD` aggregated edge weights from `EDGE_COUNT` quantities.
 
 ## Provenance chain
 

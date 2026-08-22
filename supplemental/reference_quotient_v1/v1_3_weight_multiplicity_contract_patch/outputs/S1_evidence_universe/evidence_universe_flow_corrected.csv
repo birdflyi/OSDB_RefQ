@@ -1,0 +1,12 @@
+stage,count,unit,measure
+all_observable_reference_records,3748078,RECORD,
+target_project_mappable_records,1586121,RECORD,
+target_non_project_records,1686763,RECORD,
+target_unresolved_records,475194,RECORD,
+target_ambiguous_records,0,RECORD,
+conflict_excluded_record_occurrences,4,RECORD,
+quotient_eligible_records,1586117,RECORD,
+self_loop_evidence_weight,1447073,REFERENCE_RECORD,AGGREGATED_EDGE_WEIGHT
+cross_project_evidence_weight,139044,REFERENCE_RECORD,AGGREGATED_EDGE_WEIGHT
+self_loop_edge_count,289,EDGE_COUNT,SELF_LOOP_EDGE_COUNT
+cross_project_directed_edge_count,9605,EDGE_COUNT,CROSS_PROJECT_DIRECTED_EDGE_COUNT

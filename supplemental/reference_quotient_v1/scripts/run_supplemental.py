@@ -254,17 +254,17 @@ def run_single_streaming_pass(seeds: pd.DataFrame, paths: list[Path], output: Pa
     s1 = output / "S1_evidence_universe"
     s1.mkdir(parents=True, exist_ok=True)
     flow_rows = [
-        ("all_observable_reference_records", scanned["raw_reference_rows"], "RECORD"),
-        ("target_project_mappable_records", project_mappable_target, "RECORD"),
-        ("target_non_project_records", target_status_counts["NON_PROJECT"], "RECORD"),
-        ("target_unresolved_records", target_status_counts["UNRESOLVED"], "RECORD"),
-        ("target_ambiguous_records", target_status_counts["AMBIGUOUS_IF_ANY"], "RECORD"),
-        ("conflict_excluded_record_occurrences", conflict_excluded, "RECORD"),
-        ("quotient_eligible_records", eligible_records, "RECORD"),
-        ("self_loop_evidence_weight", self_loop_weight, "EDGE"),
-        ("cross_project_evidence_weight", cross_project_weight, "EDGE"),
+        ("all_observable_reference_records", scanned["raw_reference_rows"], "RECORD", ""),
+        ("target_project_mappable_records", project_mappable_target, "RECORD", ""),
+        ("target_non_project_records", target_status_counts["NON_PROJECT"], "RECORD", ""),
+        ("target_unresolved_records", target_status_counts["UNRESOLVED"], "RECORD", ""),
+        ("target_ambiguous_records", target_status_counts["AMBIGUOUS_IF_ANY"], "RECORD", ""),
+        ("conflict_excluded_record_occurrences", conflict_excluded, "RECORD", ""),
+        ("quotient_eligible_records", eligible_records, "RECORD", ""),
+        ("self_loop_evidence_weight", self_loop_weight, "REFERENCE_RECORD", "AGGREGATED_EDGE_WEIGHT"),
+        ("cross_project_evidence_weight", cross_project_weight, "REFERENCE_RECORD", "AGGREGATED_EDGE_WEIGHT"),
     ]
-    write_csv(s1 / "evidence_universe_flow.csv", pd.DataFrame(flow_rows, columns=["stage", "count", "unit"]))
+    write_csv(s1 / "evidence_universe_flow.csv", pd.DataFrame(flow_rows, columns=["stage", "count", "unit", "measure"]))
     for name, counter in cross_tabs.items():
         frame = cross_tab_frame(counter, ["a", "b"], scanned["raw_reference_rows"])
         frame = frame.rename(columns={"a": name.split("_x_")[0], "b": name.split("_x_")[1]})

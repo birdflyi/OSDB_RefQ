@@ -28,6 +28,29 @@ This construction produces a weighted, directed Project-level RefQN while preser
 - artifact-to-project membership;
 - provenance traceability back to fine-grained evidence.
 
+### Weight and multiplicity contract
+
+Reference multiplicity and analytical edge weight are preserved as distinct
+conceptual fields. In the canonical directed RefQ edge table, `multiplicity` is the number of
+retained eligible fine-grained Reference records aggregated into an ordered
+project pair. `weight` is the analytical numeric edge weight consumed by
+downstream network analyses. For the current P0 operationalization, one
+retained Reference record contributes one unit to both fields, so:
+
+```text
+weight == multiplicity == aggregated retained Reference-record count
+```
+
+This equality is specific to the current unit-weight operationalization. It is
+not a theoretical invariant of `Q = M^T R_P M` or a generic graph-library
+invariant. Generic graph conversion may carry analytical `weight` and graph
+instance `multiplicity` separately. In the RefQ first-order undirected view,
+`weight` is the sum of directed analytical weights and `directed_edge_count`
+is the number of directed edge-table rows collapsed into the unordered pair;
+the latter is not a Reference-record count. A future transformed-weight
+analysis may allow `weight != multiplicity`, but would require an explicit new
+analysis contract and is not supported end-to-end by the current P0 pipeline.
+
 The current primary experiment does not construct or analyze `QQ^T`, `Q^T Q`, shared-reference projections, bibliographic coupling, co-citation, composite centrality, or other network projections.
 
 ### Observation boundary

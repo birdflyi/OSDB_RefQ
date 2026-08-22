@@ -31,6 +31,18 @@
     "path": "supplemental/reference_quotient_v1/outputs/S3_observation_sensitivity/",
     "comparison_record": "supplemental/reference_quotient_v1/v1_2_s3_reproducibility_patch/s3_reproducibility_patch_manifest.json"
   },
+  "authoritative_s1_flow": {
+    "status": "AUTHORITATIVE_UNIT_LABEL_CORRECTED",
+    "path": "supplemental/reference_quotient_v1/v1_3_weight_multiplicity_contract_patch/outputs/S1_evidence_universe/evidence_universe_flow_corrected.csv",
+    "sha256": "1404ed2cfb2fc4e0f6001c03ac307e52af2e40be5c3a15eaa09107b4cc7bd2b8",
+    "human_use": true
+  },
+  "superseded_s1_flow": {
+    "status": "SUPERSEDED_UNIT_LABEL_ONLY",
+    "path": "supplemental/reference_quotient_v1/outputs/S1_evidence_universe/evidence_universe_flow.csv",
+    "sha256": "c9951e5d61c0e16b3c10d18329f1ac95219c7cb49c05a11ab9891eeffa00dc48",
+    "scientific_values_preserved": true
+  },
   "scientific_roles": {
     "S1_role": "MAIN_TEXT_RESULT",
     "S2_role": "SUPPLEMENTARY_SENSITIVITY",
@@ -50,6 +62,8 @@
   },
   "package_contents": {
     "S1": "supplemental/reference_quotient_v1/outputs/S1_evidence_universe/",
+    "S1_flow_authoritative": "supplemental/reference_quotient_v1/v1_3_weight_multiplicity_contract_patch/outputs/S1_evidence_universe/evidence_universe_flow_corrected.csv",
+    "S1_flow_superseded": "supplemental/reference_quotient_v1/outputs/S1_evidence_universe/evidence_universe_flow.csv",
     "S2": "supplemental/reference_quotient_v1/outputs/S2_weight_sensitivity/",
     "S2_semantics_audit": "docs/ch5_refq_s2_weight_observational_semantics_audit.md",
     "S3_authoritative": "supplemental/reference_quotient_v1/v1_2_s3_reproducibility_patch/outputs/S3_observation_sensitivity_corrected/",
@@ -61,7 +75,8 @@
     "S7": "supplemental/reference_quotient_v1/outputs/S7_top_evidence_composition/",
     "v1_1_material_completion_report": "docs/ch5_refq_supplemental_evidence_v1_1_material_completion_report.md",
     "s3_reproducibility_report": "docs/ch5_refq_supplemental_s3_reproducibility_patch.md",
-    "human_decision_summary": "docs/ch5_refq_final_supplemental_human_decision_summary_v2.md"
+    "human_decision_summary": "docs/ch5_refq_final_supplemental_human_decision_summary_v2.md",
+    "v1_3_weight_multiplicity_contract_patch": "supplemental/reference_quotient_v1/v1_3_weight_multiplicity_contract_patch/contract_patch_manifest.json"
   },
   "hash_audit": {
     "canonical_p0_manifest": {

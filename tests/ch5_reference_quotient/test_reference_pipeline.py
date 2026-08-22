@@ -3,6 +3,7 @@ import pandas as pd
 from script.ch5_reference_quotient.edge_table import (
     build_direct_edge_table,
     build_reference_quotient_edges,
+    edge_frame,
 )
 from script.ch5_reference_quotient.membership import (
     MembershipRegistry,
@@ -51,6 +52,15 @@ def test_unique_membership_and_q_equals_mt_rp_m_aggregation():
     assert edge_21.weight == 1
     assert loop.weight == 1 and bool(loop.is_self_loop)
     assert len(edges) == 3
+
+
+def test_current_refq_unit_weight_mode_sets_weight_equal_multiplicity():
+    edges = edge_frame({("a", "b"): 37}, analysis_seed_ids=[])
+
+    row = edges.iloc[0]
+    assert row["weight"] == 37
+    assert row["multiplicity"] == 37
+    assert row["weight"] == row["multiplicity"]
 
 
 def test_membership_parser_rejects_unresolved_and_ambiguous_values():
