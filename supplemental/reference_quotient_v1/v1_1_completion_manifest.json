@@ -3,6 +3,7 @@
   "canonical_result_changed": false,
   "canonical_result_replacement": false,
   "completion_implementation_commit": "d222654e2edfac07265f6a86f65c26c3d089d8e1",
+  "completion_result_commit": "d88c2f872f8fb2ec71261b7f1bdaa5423afff0e7",
   "consumed_files": [
     {
       "bytes": 70658,
