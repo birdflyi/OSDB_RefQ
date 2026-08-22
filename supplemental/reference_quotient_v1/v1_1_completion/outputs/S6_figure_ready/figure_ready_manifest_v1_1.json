@@ -1,0 +1,241 @@
+{
+  "classification": "FIGURE_READY_DERIVATION",
+  "deprecated_outputs": [
+    {
+      "content_sha256": "d8f737235b52e83e15e112a44751305d592c5558ea85969842b63e944dbe2d2f",
+      "path": "supplemental/reference_quotient_v1/outputs/S6_figure_ready/structural_summary.json",
+      "reason": "DEPRECATED_WRONG_EXTENSION"
+    }
+  ],
+  "entries": [
+    {
+      "output": "rq1_referencing_entity_distribution_plot.csv",
+      "row_count": 8,
+      "source_artifacts": [
+        "outputs/reference_quotient_p0_frozen/rq1_referencing_entity_distribution.csv"
+      ],
+      "source_sha256": [
+        "ebba598591935246c3b9317ff4defb2372caeb893c6a5c4ba745b6c28fc8c4ca"
+      ],
+      "transformation": "stable_copy_for_plotting"
+    },
+    {
+      "output": "rq1_referenced_entity_distribution_plot.csv",
+      "row_count": 19,
+      "source_artifacts": [
+        "outputs/reference_quotient_p0_frozen/rq1_referenced_entity_distribution.csv"
+      ],
+      "source_sha256": [
+        "c25d3b73b82eb28563a6ce3481b9e686a6ad25de8613774fcea449cbef8b0f66"
+      ],
+      "transformation": "stable_copy_for_plotting"
+    },
+    {
+      "output": "rq1_event_type_distribution_plot.csv",
+      "row_count": 8,
+      "source_artifacts": [
+        "outputs/reference_quotient_p0_frozen/rq1_event_type_distribution.csv"
+      ],
+      "source_sha256": [
+        "6b1edf3e03bd18d1e411c9e72501ed6ff2c52047be4aa0cbec8049829dd80db1"
+      ],
+      "transformation": "stable_copy_for_plotting"
+    },
+    {
+      "output": "rq1_project_age_cross_sectional_association_plot.csv",
+      "row_count": 4,
+      "source_artifacts": [
+        "outputs/reference_quotient_p0_frozen/rq1_project_age_cross_sectional_association.csv"
+      ],
+      "source_sha256": [
+        "ab8e4d3cc984b3dd25aacb2314aa97c397ad48541b5bd1ff2ea51f7b1ba6153f"
+      ],
+      "transformation": "stable_copy_for_plotting"
+    },
+    {
+      "output": "rq2a_source_role_metrics_plot.csv",
+      "row_count": 294,
+      "source_artifacts": [
+        "outputs/reference_quotient_p0_frozen/rq2a_source_role_metrics.csv"
+      ],
+      "source_sha256": [
+        "bc7f0ac20f349c0625a61c0a78cf807c55be9f0064a7bc4d8269cfe46c393e73"
+      ],
+      "transformation": "stable_copy_for_plotting"
+    },
+    {
+      "output": "rq2b_target_role_metrics_plot.csv",
+      "row_count": 6332,
+      "source_artifacts": [
+        "outputs/reference_quotient_p0_frozen/rq2b_target_role_metrics.csv"
+      ],
+      "source_sha256": [
+        "5f8a585224100198d94564a2c8677104112d4d97647d67d9df8c2e656a95ec3c"
+      ],
+      "transformation": "stable_copy_for_plotting"
+    },
+    {
+      "output": "rq3_subdomain_descriptive_comparison_plot.csv",
+      "row_count": 185,
+      "source_artifacts": [
+        "outputs/reference_quotient_p0_frozen/rq3_subdomain_descriptive_comparison.csv"
+      ],
+      "source_sha256": [
+        "5c9513caac5edb74c67acb2d76b710ceca2890a319e785c0be61f0937abb182c"
+      ],
+      "transformation": "stable_copy_for_plotting"
+    },
+    {
+      "output": "rq3_kruskal_fdr_effect_sizes_plot.csv",
+      "row_count": 22,
+      "source_artifacts": [
+        "outputs/reference_quotient_p0_frozen/rq3_kruskal_fdr_effect_sizes.csv"
+      ],
+      "source_sha256": [
+        "202959b55f091fb109ea4f664f703c7740cfdd8ef04714f0bf28da8576ede7a3"
+      ],
+      "transformation": "stable_copy_for_plotting"
+    },
+    {
+      "output": "rq1_profile_quantiles.csv",
+      "row_count": 30,
+      "source_artifacts": [
+        "outputs/reference_quotient_p0_frozen/rq1_project_reference_profiles.csv"
+      ],
+      "source_sha256": [
+        "33455a21f0276e54423752aad76bbb6e23832d810ff21df018570bd838ef917f"
+      ],
+      "transformation": "project_profile_metric_quantiles"
+    },
+    {
+      "output": "rq2a_source_role_quantiles.csv",
+      "row_count": 30,
+      "source_artifacts": [
+        "outputs/reference_quotient_p0_frozen/rq2a_source_role_metrics.csv"
+      ],
+      "source_sha256": [
+        "bc7f0ac20f349c0625a61c0a78cf807c55be9f0064a7bc4d8269cfe46c393e73"
+      ],
+      "transformation": "source_role_quantiles"
+    },
+    {
+      "output": "rq2a_source_role_ecdf_ccdf.csv",
+      "row_count": 1764,
+      "source_artifacts": [
+        "outputs/reference_quotient_p0_frozen/rq2a_source_role_metrics.csv"
+      ],
+      "source_sha256": [
+        "bc7f0ac20f349c0625a61c0a78cf807c55be9f0064a7bc4d8269cfe46c393e73"
+      ],
+      "transformation": "source_role_ecdf_ccdf"
+    },
+    {
+      "output": "rq2b_target_role_quantiles.csv",
+      "row_count": 20,
+      "source_artifacts": [
+        "outputs/reference_quotient_p0_frozen/rq2b_target_role_metrics.csv"
+      ],
+      "source_sha256": [
+        "5f8a585224100198d94564a2c8677104112d4d97647d67d9df8c2e656a95ec3c"
+      ],
+      "transformation": "target_role_quantiles"
+    },
+    {
+      "output": "edge_weight_ecdf_ccdf.csv",
+      "row_count": 9605,
+      "source_artifacts": [
+        "outputs/reference_quotient_p0_frozen/reference_quotient_cross_project_edges.csv"
+      ],
+      "source_sha256": [
+        "4c5ef0d5a751ae3ab1abd1fc7115ed3143226d30b5c91e456c5090e3103fd8c6"
+      ],
+      "transformation": "directed_cross_project_edge_weight_ecdf_ccdf"
+    },
+    {
+      "output": "edge_weight_quantiles.csv",
+      "row_count": 5,
+      "source_artifacts": [
+        "outputs/reference_quotient_p0_frozen/reference_quotient_cross_project_edges.csv"
+      ],
+      "source_sha256": [
+        "4c5ef0d5a751ae3ab1abd1fc7115ed3143226d30b5c91e456c5090e3103fd8c6"
+      ],
+      "transformation": "directed_cross_project_edge_weight_quantiles"
+    },
+    {
+      "output": "community_size_distribution.csv",
+      "row_count": 34,
+      "source_artifacts": [
+        "outputs/reference_quotient_p0_frozen/rq2c_algorithmic_communities.csv"
+      ],
+      "source_sha256": [
+        "463f39885daf7779a9581195831676553fb67254917117f92f2134a4e03f649c"
+      ],
+      "transformation": "community_size_distribution"
+    },
+    {
+      "output": "v1_1_completion/outputs/S6_figure_ready/structural_summary.csv",
+      "row_count": 1,
+      "source_artifacts": [
+        "outputs/reference_quotient_p0_frozen/rq2c_undirected_view_summary.json"
+      ],
+      "source_sha256": [
+        "58139180c6a258a9cc4f90ef0eae781f84e36790fb433319b6f68e9ace5678c7"
+      ],
+      "status": "CORRECTED_EXTENSION",
+      "supersedes": "supplemental/reference_quotient_v1/outputs/S6_figure_ready/structural_summary.json",
+      "transformation": "stable_copy_for_plotting"
+    },
+    {
+      "output": "brokerage_plot.csv",
+      "row_count": 6376,
+      "source_artifacts": [
+        "outputs/reference_quotient_p0_frozen/rq2c_structural_brokerage_candidates.csv"
+      ],
+      "source_sha256": [
+        "2eb9860d37b791370ee6b7071359ed2992c06724e493d780019fb81ec20d3d26"
+      ],
+      "transformation": "stable_brokerage_plot_table"
+    },
+    {
+      "output": "brokerage_top50_plot.csv",
+      "row_count": 50,
+      "source_artifacts": [
+        "outputs/reference_quotient_p0_frozen/rq2c_structural_brokerage_top50.csv"
+      ],
+      "source_sha256": [
+        "b78559a2cbbac0400e311025c543339c5ea4f6bf4a47007e23974147393c4f3e"
+      ],
+      "transformation": "stable_brokerage_top50_plot_table"
+    },
+    {
+      "output": "louvain_stability_plot.csv",
+      "row_count": 50,
+      "source_artifacts": [
+        "supplemental/reference_quotient_v1/outputs/S4_community_stability/louvain_stability_runs.csv"
+      ],
+      "source_sha256": [
+        "554ef06a0dcfb87f2c5b3fdd825df7f20b7c2d9a5ffadf9483eea50218cdd2df"
+      ],
+      "transformation": "supplemental_stability_plot_table"
+    },
+    {
+      "output": "brokerage_stability_plot.csv",
+      "row_count": 60,
+      "source_artifacts": [
+        "supplemental/reference_quotient_v1/outputs/S5_brokerage_stability/brokerage_stability_runs.csv"
+      ],
+      "source_sha256": [
+        "194e40a3cb5f49423d0b5ec08172f848f5f93ee43316423ce1a0400b47c213e9"
+      ],
+      "transformation": "supplemental_stability_plot_table"
+    }
+  ],
+  "superseding_outputs": [
+    {
+      "content_sha256": "d8f737235b52e83e15e112a44751305d592c5558ea85969842b63e944dbe2d2f",
+      "path": "supplemental/reference_quotient_v1/v1_1_completion/outputs/S6_figure_ready/structural_summary.csv"
+    }
+  ],
+  "version": "v1.1"
+}

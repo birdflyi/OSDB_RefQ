@@ -1,0 +1,433 @@
+{
+  "canonical_parent_commit": "920286e134ca459c8e155942eabc6798ceab8b65",
+  "canonical_result_changed": false,
+  "canonical_result_replacement": false,
+  "completion_implementation_commit": "d222654e2edfac07265f6a86f65c26c3d089d8e1",
+  "consumed_files": [
+    {
+      "bytes": 70658,
+      "path": "outputs/reference_quotient_p0_frozen/analysis_seed_manifest_294.csv",
+      "sha256": "9dae0b52e681e543d8534406386ee94544647d4613c8d30a53a6fdd369332ffd"
+    },
+    {
+      "bytes": 4830,
+      "path": "outputs/reference_quotient_p0_frozen/rq2a_source_role_top50.csv",
+      "sha256": "7bc346136fd591b2556d1bfc891048f2163b7a9aa8769bfab1f6cf878a175b78"
+    },
+    {
+      "bytes": 13642726,
+      "path": "supplemental/reference_quotient_v1/outputs/S5_brokerage_stability/brokerage_rank_stability.csv",
+      "sha256": "197c42a74ce4c4d2f8a6684044b52abf8deef253bed44dd7ceca7332b1343207"
+    },
+    {
+      "bytes": 674,
+      "path": "supplemental/reference_quotient_v1/outputs/S6_figure_ready/structural_summary.json",
+      "sha256": "d8f737235b52e83e15e112a44751305d592c5558ea85969842b63e944dbe2d2f"
+    },
+    {
+      "bytes": 7766,
+      "path": "supplemental/reference_quotient_v1/outputs/S6_figure_ready/figure_ready_manifest.json",
+      "sha256": "f23648bda3e19bd12103c1730d7111fc8ea56e44c47a1aac19011d1a3ace4e1d"
+    }
+  ],
+  "deprecated_files": [
+    {
+      "path": "supplemental/reference_quotient_v1/outputs/S5_brokerage_stability/brokerage_topk_frequency.csv",
+      "reason": "DEPRECATED_SEMANTICS: per-run membership, not cross-seed frequency",
+      "superseded_by": "supplemental/reference_quotient_v1/v1_1_completion/outputs/S5_brokerage_stability/brokerage_topk_inclusion_frequency.csv"
+    },
+    {
+      "path": "supplemental/reference_quotient_v1/outputs/S6_figure_ready/structural_summary.json",
+      "reason": "DEPRECATED_WRONG_EXTENSION",
+      "superseded_by": "supplemental/reference_quotient_v1/v1_1_completion/outputs/S6_figure_ready/structural_summary.csv"
+    }
+  ],
+  "existing_output_sha_audit": {
+    "after": {
+      "canonical_p0": {
+        "analysis_seed_manifest_294.csv": "9dae0b52e681e543d8534406386ee94544647d4613c8d30a53a6fdd369332ffd",
+        "candidate_seed_observation_audit.csv": "f9780a1b0d0bc118a9391ef6f07af9597d8545fd8059cdb68793fc9f2f26bb0c",
+        "manifest.json": "a3089fd8a6a58c0a15d2192a7b5f3388868ef0f1358c803be3aa4f27314c59f6",
+        "membership_audit.json": "6c2d73d47daee52309db2aecf739107697d66816706cbd325a3eae6b4241f263",
+        "quotient_construction_audit.json": "bdca9a352d21ede68f9239dea32c8d4c5982169c39561e058038def197b3ac1d",
+        "reference_quotient_cross_project_edges.csv": "4c5ef0d5a751ae3ab1abd1fc7115ed3143226d30b5c91e456c5090e3103fd8c6",
+        "reference_quotient_edges.csv": "a1f9bb4e4bbfd7fa91eb1ee0e7715b480bb7a7815e99027d2c14d8865cb502aa",
+        "reference_quotient_node_registry.csv": "693d256bd994fd405204a66ee7d4c71d33b5f4c7397a8138a89ce7945bcae3ce",
+        "refq_provenance_sample.csv": "860bfd2aa1670606302b0e4417f3c2a2d49e05df0c866bc90deafe75f6bf3877",
+        "rq1_descriptive_statistics.csv": "551848d7ffec1ee3cefdf89e978ecbd4958b0b2ac18e97705b96eec8959ada84",
+        "rq1_event_type_distribution.csv": "6b1edf3e03bd18d1e411c9e72501ed6ff2c52047be4aa0cbec8049829dd80db1",
+        "rq1_project_age_cross_sectional_association.csv": "ab8e4d3cc984b3dd25aacb2314aa97c397ad48541b5bd1ff2ea51f7b1ba6153f",
+        "rq1_project_reference_profiles.csv": "33455a21f0276e54423752aad76bbb6e23832d810ff21df018570bd838ef917f",
+        "rq1_referenced_entity_distribution.csv": "c25d3b73b82eb28563a6ce3481b9e686a6ad25de8613774fcea449cbef8b0f66",
+        "rq1_referencing_entity_distribution.csv": "ebba598591935246c3b9317ff4defb2372caeb893c6a5c4ba745b6c28fc8c4ca",
+        "rq2a_source_role_metrics.csv": "bc7f0ac20f349c0625a61c0a78cf807c55be9f0064a7bc4d8269cfe46c393e73",
+        "rq2a_source_role_top50.csv": "7bc346136fd591b2556d1bfc891048f2163b7a9aa8769bfab1f6cf878a175b78",
+        "rq2b_target_category_type_breakdown.csv": "2ee28ea94236a354b55972fcd558a8bb07007a7a19d700adf8309bf3d891ea28",
+        "rq2b_target_concentration.json": "b9894b3757b959395e53e319520355eeee6badbd13906791b0a65a74df5e5720",
+        "rq2b_target_role_metrics.csv": "5f8a585224100198d94564a2c8677104112d4d97647d67d9df8c2e656a95ec3c",
+        "rq2b_target_role_top50.csv": "86c1a82bc72b9c0731152c49d791273921099a4c07374bfc701adfbe851a16fe",
+        "rq2c_algorithmic_communities.csv": "463f39885daf7779a9581195831676553fb67254917117f92f2134a4e03f649c",
+        "rq2c_structural_brokerage_candidates.csv": "2eb9860d37b791370ee6b7071359ed2992c06724e493d780019fb81ec20d3d26",
+        "rq2c_structural_brokerage_top50.csv": "b78559a2cbbac0400e311025c543339c5ea4f6bf4a47007e23974147393c4f3e",
+        "rq2c_undirected_view_edges.csv": "7ce2cfeb63a7a45c55690575f8b9de08b35706cfa620eccc02423297958d8f91",
+        "rq2c_undirected_view_lcc_edges.csv": "5c587d804936e159036eb90604722ff80491f4343035cfef11992e4fac385d8b",
+        "rq2c_undirected_view_summary.json": "58139180c6a258a9cc4f90ef0eae781f84e36790fb433319b6f68e9ace5678c7",
+        "rq3_kruskal_fdr_effect_sizes.csv": "202959b55f091fb109ea4f664f703c7740cfdd8ef04714f0bf28da8576ede7a3",
+        "rq3_seed_role_aware_features.csv": "16d2a8f2b4cefafaf62dc26eacdd69b2dca815bcf833efdc9f6a68ceadeac111",
+        "rq3_subdomain_descriptive_comparison.csv": "5c9513caac5edb74c67acb2d76b710ceca2890a319e785c0be61f0937abb182c",
+        "seed_observability_audit.json": "cc01d689d6cbb0e693edb0560a2cb77b538e58be649d73b68668b06d8c875ae3"
+      },
+      "s2_sensitivity": {
+        "edge_weight_sensitivity.csv": "99f36030f7b7e15d7eac7fadccbb536348277b7beec5a4765b5f93e2fe6454c3",
+        "threshold_10_undirected_edges.csv": "7ac6fabc8139394bdf870bc566cd5c80b6e6e46a81fac05f9d8e69b80998a34a",
+        "threshold_1_undirected_edges.csv": "7ce2cfeb63a7a45c55690575f8b9de08b35706cfa620eccc02423297958d8f91",
+        "threshold_2_undirected_edges.csv": "327f499de0009e7146c3180cc9304df13788a5e28492910adcc378c208e72cf2",
+        "threshold_5_undirected_edges.csv": "033e1e7146f083c1e38c0afec66e81e485b5829b5ced3cfc6f32048b1ab0f7e3"
+      },
+      "s3_sensitivity": {
+        "canonical_seed_centered_observed_undirected_edges.csv": "7ce2cfeb63a7a45c55690575f8b9de08b35706cfa620eccc02423297958d8f91",
+        "multi_seed_target_view_undirected_edges.csv": "ba16af9112f8ebc21e8d9bf2e50fc06fbda562bb9724e5d31d4e57f27f66cebe",
+        "observation_boundary_sensitivity.csv": "3060faa04f58b6058ac36dc77df935e4c17e4c70636d5062c29074e9a22d9956",
+        "seed_only_induced_undirected_edges.csv": "f418cbb49addeb9b9a6293932a6a8ef4c08a59ad25f973c5e788f1d2122b5771"
+      },
+      "s4_stability": {
+        "louvain_stability_pairwise.csv": "d5a1bbfb9e0c2a8a5ce6bc72c5f06237b6bb7e2e9f716d732c051fd86bc33401",
+        "louvain_stability_runs.csv": "554ef06a0dcfb87f2c5b3fdd825df7f20b7c2d9a5ffadf9483eea50218cdd2df",
+        "louvain_stability_summary.json": "fe7e282076affb53bab30f684d4bc1165c4b86598a44e546aaba9ccb1a57503b"
+      },
+      "s5_stability": {
+        "brokerage_rank_stability.csv": "197c42a74ce4c4d2f8a6684044b52abf8deef253bed44dd7ceca7332b1343207",
+        "brokerage_stability_runs.csv": "194e40a3cb5f49423d0b5ec08172f848f5f93ee43316423ce1a0400b47c213e9",
+        "brokerage_stability_summary.json": "18efc554bc35687ecff966d80e8c11eb807e1a4302ca7f4cb3b238ebea191044",
+        "brokerage_topk_frequency.csv": "62e5ba7271a24d21a626e962caa1381726356017c9b28c5280078cc255222f04"
+      }
+    },
+    "before": {
+      "canonical_p0": {
+        "analysis_seed_manifest_294.csv": "9dae0b52e681e543d8534406386ee94544647d4613c8d30a53a6fdd369332ffd",
+        "candidate_seed_observation_audit.csv": "f9780a1b0d0bc118a9391ef6f07af9597d8545fd8059cdb68793fc9f2f26bb0c",
+        "manifest.json": "a3089fd8a6a58c0a15d2192a7b5f3388868ef0f1358c803be3aa4f27314c59f6",
+        "membership_audit.json": "6c2d73d47daee52309db2aecf739107697d66816706cbd325a3eae6b4241f263",
+        "quotient_construction_audit.json": "bdca9a352d21ede68f9239dea32c8d4c5982169c39561e058038def197b3ac1d",
+        "reference_quotient_cross_project_edges.csv": "4c5ef0d5a751ae3ab1abd1fc7115ed3143226d30b5c91e456c5090e3103fd8c6",
+        "reference_quotient_edges.csv": "a1f9bb4e4bbfd7fa91eb1ee0e7715b480bb7a7815e99027d2c14d8865cb502aa",
+        "reference_quotient_node_registry.csv": "693d256bd994fd405204a66ee7d4c71d33b5f4c7397a8138a89ce7945bcae3ce",
+        "refq_provenance_sample.csv": "860bfd2aa1670606302b0e4417f3c2a2d49e05df0c866bc90deafe75f6bf3877",
+        "rq1_descriptive_statistics.csv": "551848d7ffec1ee3cefdf89e978ecbd4958b0b2ac18e97705b96eec8959ada84",
+        "rq1_event_type_distribution.csv": "6b1edf3e03bd18d1e411c9e72501ed6ff2c52047be4aa0cbec8049829dd80db1",
+        "rq1_project_age_cross_sectional_association.csv": "ab8e4d3cc984b3dd25aacb2314aa97c397ad48541b5bd1ff2ea51f7b1ba6153f",
+        "rq1_project_reference_profiles.csv": "33455a21f0276e54423752aad76bbb6e23832d810ff21df018570bd838ef917f",
+        "rq1_referenced_entity_distribution.csv": "c25d3b73b82eb28563a6ce3481b9e686a6ad25de8613774fcea449cbef8b0f66",
+        "rq1_referencing_entity_distribution.csv": "ebba598591935246c3b9317ff4defb2372caeb893c6a5c4ba745b6c28fc8c4ca",
+        "rq2a_source_role_metrics.csv": "bc7f0ac20f349c0625a61c0a78cf807c55be9f0064a7bc4d8269cfe46c393e73",
+        "rq2a_source_role_top50.csv": "7bc346136fd591b2556d1bfc891048f2163b7a9aa8769bfab1f6cf878a175b78",
+        "rq2b_target_category_type_breakdown.csv": "2ee28ea94236a354b55972fcd558a8bb07007a7a19d700adf8309bf3d891ea28",
+        "rq2b_target_concentration.json": "b9894b3757b959395e53e319520355eeee6badbd13906791b0a65a74df5e5720",
+        "rq2b_target_role_metrics.csv": "5f8a585224100198d94564a2c8677104112d4d97647d67d9df8c2e656a95ec3c",
+        "rq2b_target_role_top50.csv": "86c1a82bc72b9c0731152c49d791273921099a4c07374bfc701adfbe851a16fe",
+        "rq2c_algorithmic_communities.csv": "463f39885daf7779a9581195831676553fb67254917117f92f2134a4e03f649c",
+        "rq2c_structural_brokerage_candidates.csv": "2eb9860d37b791370ee6b7071359ed2992c06724e493d780019fb81ec20d3d26",
+        "rq2c_structural_brokerage_top50.csv": "b78559a2cbbac0400e311025c543339c5ea4f6bf4a47007e23974147393c4f3e",
+        "rq2c_undirected_view_edges.csv": "7ce2cfeb63a7a45c55690575f8b9de08b35706cfa620eccc02423297958d8f91",
+        "rq2c_undirected_view_lcc_edges.csv": "5c587d804936e159036eb90604722ff80491f4343035cfef11992e4fac385d8b",
+        "rq2c_undirected_view_summary.json": "58139180c6a258a9cc4f90ef0eae781f84e36790fb433319b6f68e9ace5678c7",
+        "rq3_kruskal_fdr_effect_sizes.csv": "202959b55f091fb109ea4f664f703c7740cfdd8ef04714f0bf28da8576ede7a3",
+        "rq3_seed_role_aware_features.csv": "16d2a8f2b4cefafaf62dc26eacdd69b2dca815bcf833efdc9f6a68ceadeac111",
+        "rq3_subdomain_descriptive_comparison.csv": "5c9513caac5edb74c67acb2d76b710ceca2890a319e785c0be61f0937abb182c",
+        "seed_observability_audit.json": "cc01d689d6cbb0e693edb0560a2cb77b538e58be649d73b68668b06d8c875ae3"
+      },
+      "s2_sensitivity": {
+        "edge_weight_sensitivity.csv": "99f36030f7b7e15d7eac7fadccbb536348277b7beec5a4765b5f93e2fe6454c3",
+        "threshold_10_undirected_edges.csv": "7ac6fabc8139394bdf870bc566cd5c80b6e6e46a81fac05f9d8e69b80998a34a",
+        "threshold_1_undirected_edges.csv": "7ce2cfeb63a7a45c55690575f8b9de08b35706cfa620eccc02423297958d8f91",
+        "threshold_2_undirected_edges.csv": "327f499de0009e7146c3180cc9304df13788a5e28492910adcc378c208e72cf2",
+        "threshold_5_undirected_edges.csv": "033e1e7146f083c1e38c0afec66e81e485b5829b5ced3cfc6f32048b1ab0f7e3"
+      },
+      "s3_sensitivity": {
+        "canonical_seed_centered_observed_undirected_edges.csv": "7ce2cfeb63a7a45c55690575f8b9de08b35706cfa620eccc02423297958d8f91",
+        "multi_seed_target_view_undirected_edges.csv": "ba16af9112f8ebc21e8d9bf2e50fc06fbda562bb9724e5d31d4e57f27f66cebe",
+        "observation_boundary_sensitivity.csv": "3060faa04f58b6058ac36dc77df935e4c17e4c70636d5062c29074e9a22d9956",
+        "seed_only_induced_undirected_edges.csv": "f418cbb49addeb9b9a6293932a6a8ef4c08a59ad25f973c5e788f1d2122b5771"
+      },
+      "s4_stability": {
+        "louvain_stability_pairwise.csv": "d5a1bbfb9e0c2a8a5ce6bc72c5f06237b6bb7e2e9f716d732c051fd86bc33401",
+        "louvain_stability_runs.csv": "554ef06a0dcfb87f2c5b3fdd825df7f20b7c2d9a5ffadf9483eea50218cdd2df",
+        "louvain_stability_summary.json": "fe7e282076affb53bab30f684d4bc1165c4b86598a44e546aaba9ccb1a57503b"
+      },
+      "s5_stability": {
+        "brokerage_rank_stability.csv": "197c42a74ce4c4d2f8a6684044b52abf8deef253bed44dd7ceca7332b1343207",
+        "brokerage_stability_runs.csv": "194e40a3cb5f49423d0b5ec08172f848f5f93ee43316423ce1a0400b47c213e9",
+        "brokerage_stability_summary.json": "18efc554bc35687ecff966d80e8c11eb807e1a4302ca7f4cb3b238ebea191044",
+        "brokerage_topk_frequency.csv": "62e5ba7271a24d21a626e962caa1381726356017c9b28c5280078cc255222f04"
+      }
+    },
+    "drift": false
+  },
+  "generated_output_sha256": [
+    {
+      "bytes": 1795,
+      "path": "completion_scan_validation.json",
+      "sha256": "6a7ccfd9bc1d1f721d1baa017ce7e8ee9522f2606d097eb30e0b2245857a4811"
+    },
+    {
+      "bytes": 10847,
+      "path": "existing_output_sha_audit.json",
+      "sha256": "8dfc010ec5d08cecde0f52f8523891d72bdac53ddc4c855c968fc38dfc1d4e05"
+    },
+    {
+      "bytes": 2130,
+      "path": "S1_evidence_universe/event_type_x_eligible_edge_class.csv",
+      "sha256": "007a6e76f9c0a76bc9b6d0674ce56a728ecee7b10403663d461856d369167a63"
+    },
+    {
+      "bytes": 2176,
+      "path": "S1_evidence_universe/source_entity_type_x_eligible_edge_class.csv",
+      "sha256": "da9def43ad94273d8add6a21c5df4fa14a418ae017c79e3d840f104e4808ed03"
+    },
+    {
+      "bytes": 3953,
+      "path": "S1_evidence_universe/target_entity_type_x_eligible_edge_class.csv",
+      "sha256": "cb0d37c32668139bed7e0b46150d3cc41da3d26339e311812127d6562a7399a1"
+    },
+    {
+      "bytes": 9667,
+      "path": "S5_brokerage_stability/brokerage_topk_inclusion_frequency.csv",
+      "sha256": "19f3c8d4c4c41e8cfb472b6c6c5e53ada396b2a330a917cc938fdcd139156b74"
+    },
+    {
+      "bytes": 8517,
+      "path": "S6_figure_ready/figure_ready_manifest_v1_1.json",
+      "sha256": "efdec2c20c647e0202dc50f3b28ccf275096ccf09dc765eaeab21bd830cfa4c6"
+    },
+    {
+      "bytes": 674,
+      "path": "S6_figure_ready/structural_summary.csv",
+      "sha256": "d8f737235b52e83e15e112a44751305d592c5558ea85969842b63e944dbe2d2f"
+    },
+    {
+      "bytes": 40111,
+      "path": "S7_top_evidence_composition/top_source_target_entity_composition.csv",
+      "sha256": "c454251e274b0fa19710628a00fc42aaf9fbfa3cfac4c4a162282da9ea5a0792"
+    }
+  ],
+  "network_algorithms_rerun": false,
+  "new_outputs": [
+    {
+      "bytes": 1795,
+      "path": "completion_scan_validation.json",
+      "sha256": "6a7ccfd9bc1d1f721d1baa017ce7e8ee9522f2606d097eb30e0b2245857a4811"
+    },
+    {
+      "bytes": 10847,
+      "path": "existing_output_sha_audit.json",
+      "sha256": "8dfc010ec5d08cecde0f52f8523891d72bdac53ddc4c855c968fc38dfc1d4e05"
+    },
+    {
+      "bytes": 2130,
+      "path": "S1_evidence_universe/event_type_x_eligible_edge_class.csv",
+      "sha256": "007a6e76f9c0a76bc9b6d0674ce56a728ecee7b10403663d461856d369167a63"
+    },
+    {
+      "bytes": 2176,
+      "path": "S1_evidence_universe/source_entity_type_x_eligible_edge_class.csv",
+      "sha256": "da9def43ad94273d8add6a21c5df4fa14a418ae017c79e3d840f104e4808ed03"
+    },
+    {
+      "bytes": 3953,
+      "path": "S1_evidence_universe/target_entity_type_x_eligible_edge_class.csv",
+      "sha256": "cb0d37c32668139bed7e0b46150d3cc41da3d26339e311812127d6562a7399a1"
+    },
+    {
+      "bytes": 9667,
+      "path": "S5_brokerage_stability/brokerage_topk_inclusion_frequency.csv",
+      "sha256": "19f3c8d4c4c41e8cfb472b6c6c5e53ada396b2a330a917cc938fdcd139156b74"
+    },
+    {
+      "bytes": 8517,
+      "path": "S6_figure_ready/figure_ready_manifest_v1_1.json",
+      "sha256": "efdec2c20c647e0202dc50f3b28ccf275096ccf09dc765eaeab21bd830cfa4c6"
+    },
+    {
+      "bytes": 674,
+      "path": "S6_figure_ready/structural_summary.csv",
+      "sha256": "d8f737235b52e83e15e112a44751305d592c5558ea85969842b63e944dbe2d2f"
+    },
+    {
+      "bytes": 40111,
+      "path": "S7_top_evidence_composition/top_source_target_entity_composition.csv",
+      "sha256": "c454251e274b0fa19710628a00fc42aaf9fbfa3cfac4c4a162282da9ea5a0792"
+    }
+  ],
+  "output_classification": {
+    "S1": "FINE_GRAINED_DECOMPOSITION",
+    "S5": "FIGURE_READY_DERIVATION",
+    "S6": "FIGURE_READY_DERIVATION"
+  },
+  "package": "reference_quotient_supplemental_v1_1_material_completion",
+  "parent_supplemental_result_commit": "ba72987adb2c2339bdf1f7a3b370278c88c29c3c",
+  "raw_scan": {
+    "conflicting_entity_count": 3,
+    "cross_project_exact": true,
+    "cross_project_records": 139044,
+    "edge_class_exact_reconciliation": true,
+    "eligible_total": 1586117,
+    "p0_rerun": false,
+    "raw_data_recollection": false,
+    "raw_frozen_rows_scanned_this_patch": 3748078,
+    "raw_input_rows": 3748078,
+    "raw_reference_rows": 3748078,
+    "raw_rescan_count_this_patch": 1,
+    "self_loop_exact": true,
+    "self_loop_records": 1447073,
+    "supplemental_raw_scan_count_cumulative": 2,
+    "top_source_composition_closed": true,
+    "top_source_count": 50,
+    "top_source_eligible_totals": {
+      "11008207": 25652,
+      "11225014": 7093,
+      "114619105": 8534,
+      "11695619": 2097,
+      "130688011": 10815,
+      "138754790": 6750,
+      "148087762": 3915,
+      "150954997": 13991,
+      "16563587": 388701,
+      "166515022": 8437,
+      "17165658": 15721,
+      "195619075": 10529,
+      "208728772": 28919,
+      "220186120": 752,
+      "268163609": 12919,
+      "30449481": 2809,
+      "31315021": 2525,
+      "334274271": 105529,
+      "344711168": 1009,
+      "346976717": 3181,
+      "351806852": 35037,
+      "357707809": 9753,
+      "358917318": 13384,
+      "3786237": 15776,
+      "385634291": 27001,
+      "388946490": 18094,
+      "396867188": 2363,
+      "41349039": 8459,
+      "41986369": 140083,
+      "422821402": 6525,
+      "449924556": 2798,
+      "453068084": 77641,
+      "462329984": 2188,
+      "48833910": 12088,
+      "496817075": 6443,
+      "507775": 33821,
+      "50874442": 13197,
+      "510375115": 1001,
+      "5349565": 8056,
+      "546206616": 4521,
+      "60246359": 53427,
+      "60377070": 7403,
+      "6838921": 4695,
+      "7437073": 993,
+      "75425073": 5247,
+      "77385607": 5362,
+      "84240850": 6234,
+      "911980": 6208,
+      "9342529": 6275,
+      "95614931": 2735
+    }
+  },
+  "s5_frequency": {
+    "all_closed": true,
+    "closure": [
+      {
+        "closed": true,
+        "expected": 200,
+        "k": 250,
+        "run_count": 20,
+        "sum_inclusion_count": 200,
+        "top_k": 10
+      },
+      {
+        "closed": true,
+        "expected": 400,
+        "k": 250,
+        "run_count": 20,
+        "sum_inclusion_count": 400,
+        "top_k": 20
+      },
+      {
+        "closed": true,
+        "expected": 1000,
+        "k": 250,
+        "run_count": 20,
+        "sum_inclusion_count": 1000,
+        "top_k": 50
+      },
+      {
+        "closed": true,
+        "expected": 200,
+        "k": 500,
+        "run_count": 20,
+        "sum_inclusion_count": 200,
+        "top_k": 10
+      },
+      {
+        "closed": true,
+        "expected": 400,
+        "k": 500,
+        "run_count": 20,
+        "sum_inclusion_count": 400,
+        "top_k": 20
+      },
+      {
+        "closed": true,
+        "expected": 1000,
+        "k": 500,
+        "run_count": 20,
+        "sum_inclusion_count": 1000,
+        "top_k": 50
+      },
+      {
+        "closed": true,
+        "expected": 200,
+        "k": 1000,
+        "run_count": 20,
+        "sum_inclusion_count": 200,
+        "top_k": 10
+      },
+      {
+        "closed": true,
+        "expected": 400,
+        "k": 1000,
+        "run_count": 20,
+        "sum_inclusion_count": 400,
+        "top_k": 20
+      },
+      {
+        "closed": true,
+        "expected": 1000,
+        "k": 1000,
+        "run_count": 20,
+        "sum_inclusion_count": 1000,
+        "top_k": 50
+      }
+    ],
+    "output": "supplemental/reference_quotient_v1/v1_1_completion/outputs/S5_brokerage_stability/brokerage_topk_inclusion_frequency.csv",
+    "source": "supplemental/reference_quotient_v1/outputs/S5_brokerage_stability/brokerage_rank_stability.csv",
+    "source_sha256": "197c42a74ce4c4d2f8a6684044b52abf8deef253bed44dd7ceca7332b1343207"
+  },
+  "s6_format": {
+    "content_identical": true,
+    "manifest": "supplemental/reference_quotient_v1/v1_1_completion/outputs/S6_figure_ready/figure_ready_manifest_v1_1.json",
+    "new": "supplemental/reference_quotient_v1/v1_1_completion/outputs/S6_figure_ready/structural_summary.csv",
+    "old": "supplemental/reference_quotient_v1/outputs/S6_figure_ready/structural_summary.json",
+    "old_manifest_sha256": "f23648bda3e19bd12103c1730d7111fc8ea56e44c47a1aac19011d1a3ace4e1d"
+  },
+  "scientific_baseline_changed": false,
+  "status": "PASS",
+  "superseding_files": [
+    "supplemental/reference_quotient_v1/v1_1_completion/outputs/S5_brokerage_stability/brokerage_topk_inclusion_frequency.csv",
+    "supplemental/reference_quotient_v1/v1_1_completion/outputs/S6_figure_ready/structural_summary.csv",
+    "supplemental/reference_quotient_v1/v1_1_completion/outputs/S6_figure_ready/figure_ready_manifest_v1_1.json"
+  ],
+  "v1_implementation_commit": "18717e7d8d269538872ab5a3bcb923234e52eecc"
+}
