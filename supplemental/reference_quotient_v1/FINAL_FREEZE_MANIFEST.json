@@ -1,0 +1,105 @@
+{
+  "package": "reference_quotient_supplemental_v1_final_freeze",
+  "status": "PASS_READY_TO_PUSH",
+  "canonical_parent_commit": "920286e134ca459c8e155942eabc6798ceab8b65",
+  "supplemental_v1_implementation_commit": "18717e7d8d269538872ab5a3bcb923234e52eecc",
+  "supplemental_v1_result_commit": "ba72987adb2c2339bdf1f7a3b370278c88c29c3c",
+  "v1_1_completion_implementation_commit": "d222654e2edfac07265f6a86f65c26c3d089d8e1",
+  "v1_1_completion_result_commit": "d88c2f872f8fb2ec71261b7f1bdaa5423afff0e7",
+  "s3_patch_implementation_commit": "9cb5dbdd4ecebc93acfb892cf0c757de5d34b43e",
+  "s3_patch_result_commit": "3720b76e863261afd520113bf5ce5bfda46df4ea",
+  "S2_weight_semantics": "REFERENCE_RECORD_MULTIPLICITY",
+  "S2_recalculation_required": false,
+  "S4_exact_partition_stability": "PARTITION_SENSITIVE",
+  "S5_brokerage_candidate_stability": "STABLE_FOR_CANONICAL_TOP_FIVE_TOP10_INCLUSION",
+  "S1_role": "MAIN_TEXT_RESULT",
+  "S2_role": "SUPPLEMENTARY_SENSITIVITY",
+  "S3_role": "OBSERVATION_BOUNDARY_SENSITIVITY",
+  "S4_role": "SUPPLEMENTARY_ROBUSTNESS",
+  "S5_role": "SUPPLEMENTARY_ROBUSTNESS",
+  "S6_class": "FIGURE_READY_DERIVATION",
+  "S6_role": "MAIN_TEXT_FIGURE_SUPPORT",
+  "S7_role": "SUPPLEMENTARY_REVIEWER_RESERVE",
+  "authoritative_s3": {
+    "status": "AUTHORITATIVE_CORRECTED_S3",
+    "path": "supplemental/reference_quotient_v1/v1_2_s3_reproducibility_patch/outputs/S3_observation_sensitivity_corrected/",
+    "manifest": "supplemental/reference_quotient_v1/v1_2_s3_reproducibility_patch/s3_reproducibility_patch_manifest.json",
+    "manifest_sha256": "3e3f52b5b62a37207960ed02a88c0283ba41b76067a4ee03e8ebdf2339484bfd"
+  },
+  "superseded_s3": {
+    "status": "SUPERSEDED_S3_NONCANONICAL_LOUVAIN_CONSTRUCTION_ORDER",
+    "path": "supplemental/reference_quotient_v1/outputs/S3_observation_sensitivity/",
+    "comparison_record": "supplemental/reference_quotient_v1/v1_2_s3_reproducibility_patch/s3_reproducibility_patch_manifest.json"
+  },
+  "scientific_roles": {
+    "S1_role": "MAIN_TEXT_RESULT",
+    "S2_role": "SUPPLEMENTARY_SENSITIVITY",
+    "S3_role": "OBSERVATION_BOUNDARY_SENSITIVITY",
+    "S4_role": "SUPPLEMENTARY_ROBUSTNESS",
+    "S5_role": "SUPPLEMENTARY_ROBUSTNESS",
+    "S6_class": "FIGURE_READY_DERIVATION",
+    "S6_role": "MAIN_TEXT_FIGURE_SUPPORT",
+    "S6_original_decision_label": "MAIN_TEXT_RESULT_RECOMMENDED",
+    "S7_role": "SUPPLEMENTARY_REVIEWER_RESERVE"
+  },
+  "semantic_decisions": {
+    "S2_weight_semantics": "REFERENCE_RECORD_MULTIPLICITY",
+    "S2_recalculation_required": false,
+    "S4_exact_partition_stability": "PARTITION_SENSITIVE",
+    "S5_brokerage_candidate_stability": "STABLE_FOR_CANONICAL_TOP_FIVE_TOP10_INCLUSION"
+  },
+  "package_contents": {
+    "S1": "supplemental/reference_quotient_v1/outputs/S1_evidence_universe/",
+    "S2": "supplemental/reference_quotient_v1/outputs/S2_weight_sensitivity/",
+    "S2_semantics_audit": "docs/ch5_refq_s2_weight_observational_semantics_audit.md",
+    "S3_authoritative": "supplemental/reference_quotient_v1/v1_2_s3_reproducibility_patch/outputs/S3_observation_sensitivity_corrected/",
+    "S4": "supplemental/reference_quotient_v1/outputs/S4_community_stability/",
+    "S5": "supplemental/reference_quotient_v1/outputs/S5_brokerage_stability/",
+    "S6": "supplemental/reference_quotient_v1/v1_1_completion/outputs/S6_figure_ready/",
+    "S6_structural_summary": "supplemental/reference_quotient_v1/v1_1_completion/outputs/S6_figure_ready/structural_summary.csv",
+    "S6_manifest": "supplemental/reference_quotient_v1/v1_1_completion/outputs/S6_figure_ready/figure_ready_manifest_v1_1.json",
+    "S7": "supplemental/reference_quotient_v1/outputs/S7_top_evidence_composition/",
+    "v1_1_material_completion_report": "docs/ch5_refq_supplemental_evidence_v1_1_material_completion_report.md",
+    "s3_reproducibility_report": "docs/ch5_refq_supplemental_s3_reproducibility_patch.md",
+    "human_decision_summary": "docs/ch5_refq_final_supplemental_human_decision_summary_v2.md"
+  },
+  "hash_audit": {
+    "canonical_p0_manifest": {
+      "path": "outputs/reference_quotient_p0_frozen/manifest.json",
+      "sha256": "a3089fd8a6a58c0a15d2192a7b5f3388868ef0f1358c803be3aa4f27314c59f6",
+      "input_count": 296,
+      "output_count": 30
+    },
+    "canonical_immutability_audit": {
+      "path": "supplemental/reference_quotient_v1/outputs/canonical_immutability_audit.json",
+      "sha256": "f491e50ffaf316258fcb30b7505a2415732318a98cf181db09caf65f197d321b",
+      "canonical_output_bytes_changed": 0,
+      "git_diff_against_canonical_parent": ""
+    },
+    "supplemental_output_manifests": [
+      {
+        "path": "supplemental/reference_quotient_v1/outputs/manifest.json",
+        "sha256": "1c3ae01fe683832a7af4428dfe43227941e9baf3b8486d86a57f0063537f38e0"
+      },
+      {
+        "path": "supplemental/reference_quotient_v1/v1_1_completion_manifest.json",
+        "sha256": "501e850ab359b2d56f01ad0d01f77d92c1ab9aad408731f4454d0a15875d9414"
+      },
+      {
+        "path": "supplemental/reference_quotient_v1/v1_2_s3_reproducibility_patch/s3_reproducibility_patch_manifest.json",
+        "sha256": "3e3f52b5b62a37207960ed02a88c0283ba41b76067a4ee03e8ebdf2339484bfd"
+      }
+    ],
+    "authoritative_supplemental_scientific_outputs_unchanged": true,
+    "old_s3_unchanged_and_superseded": true
+  },
+  "controls": {
+    "scientific_baseline_changed": false,
+    "p0_recalculated": false,
+    "raw_scan_count": 0,
+    "scientific_experiments_rerun": 0,
+    "network_algorithms_rerun": 0,
+    "freeze_commit_sha_recorded_in_manifest": false,
+    "push": false
+  }
+}
