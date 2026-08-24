@@ -285,5 +285,5 @@ P0_rerun = 0
 S1_S7_rerun = 0
 GH_CoRE_rerun = 0
 network_algorithms_rerun = 0
-documentation_commit = PENDING
-push = PENDING
+documentation_commit = 3f7677fef50736642927dcc60ad2841626cf048c
+push = YES
