@@ -1,0 +1,44 @@
+{
+  "artifact_name": "dbfeatfusion_records_202410_automerged_manulabeled_with_repoid.csv",
+  "artifact_path": "data/github_osdb_data/dbfeatfusion_records_202410_automerged_manulabeled_with_repoid.csv",
+  "artifact_sha256": "f35b2d646f84248ab6a32ae04dc2ef4df9e12d697f84a53d9abadd741e9c24a8",
+  "row_count": 690,
+  "column_count": 22,
+  "activity_materialization_row_count": 432,
+  "dbms_key": "DBMS_urnform",
+  "upstream_reference_artifact": {
+    "path": "data/database_repo_label_dataframe/dbfeatfusion_records_202410_automerged_manulabeled_with_repoid.csv",
+    "sha256": "aecf9c168b93f84de5dbc83ba4b5dc1a4ed1a1dc419eae1fe0904eba96b83342",
+    "repository": "birdflyi/od_label_issue_gen",
+    "source_commit": "834836201850f3b1c4b7a01f7cc8d8c2be5f53ad",
+    "row_count": 690,
+    "column_count": 21
+  },
+  "event_scope": 2023,
+  "annotation_snapshot_label": "2024-10",
+  "local_materialization_role": "FROZEN_ENRICHED_DERIVATIVE",
+  "known_transformation_classes": {
+    "blank_to_numeric_repo_ids": {
+      "count": 32,
+      "first_local_occurrence_commit": "5e84373acb3a38b24168d82d75d7a54d81f0e002",
+      "origin_status": "partially traced / materialization only",
+      "scientific_materiality": "future correction; not frozen 294"
+    },
+    "blank_to_placeholder_repo_ids": {
+      "count": 40,
+      "origin_status": "representation only",
+      "scientific_materiality": "none current P0"
+    },
+    "License_info_enrichments": {
+      "count": 39,
+      "origin_status": "non-material provenance limitation",
+      "scientific_materiality": "none current P0"
+    },
+    "repo_created_at_addition": {
+      "origin_status": "origin incomplete, frozen value chain verified",
+      "scientific_materiality": "project age / RQ3"
+    }
+  },
+  "derivation_claim": "No deterministic reproduction or original API response is claimed.",
+  "created_utc": "2026-08-25T02:31:01+00:00"
+}
