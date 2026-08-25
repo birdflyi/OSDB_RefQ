@@ -4,8 +4,8 @@
 
 TARGETED_PROVENANCE_REPAIR = PASS_WITH_LIMITATIONS
 scientific_decision = PROVENANCE_REPAIR_SUFFICIENT_WITH_DOCUMENTED_LIMITATIONS
-documentation_commit = PENDING_FIRST_COMMIT
-push = PENDING
+documentation_commit = 441c75e91202420a7c9994f0c96dc3dc5e8ec537
+push = origin/main after documentation finalization commit
 
 This is a read-only provenance repair record. It documents the origin and
 cross-artifact consistency that can be recovered for the frozen annotation
@@ -167,6 +167,6 @@ off_by_one_documentation_correction = RECORDED
 fireproof_annotation_derivative_issue = NO
 scientific_decision = PROVENANCE_REPAIR_SUFFICIENT_WITH_DOCUMENTED_LIMITATIONS
 recommended_next_step = VERSIONED_REPOSITORY_IDENTITY_CORRECTION_PROTOCOL_DESIGN
-commit = PENDING_FIRST_COMMIT
-push = PENDING
+commit = 441c75e91202420a7c9994f0c96dc3dc5e8ec537
+push = origin/main after documentation finalization commit
 ```
