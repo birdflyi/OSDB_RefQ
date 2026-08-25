@@ -1,0 +1,68 @@
+{
+  "schema": "reference_quotient_repository_identity_correction_manifest_v1",
+  "status_values": ["CANDIDATE", "PASS", "BLOCKED", "SUPERSEDED"],
+  "identity_policy": "STRICT_REPOSITORY_IDENTITY",
+  "project_identity_unit": "GITHUB_NUMERIC_REPOSITORY_ID",
+  "historical_baseline": {
+    "tag": "chapter5-refq-freeze-v1.0",
+    "commit": "68d001551359d120bf2a06cc5e571742df7e7822",
+    "data_version": "refq_p0_2023_seed_observation_v1"
+  },
+  "correction": {
+    "protocol_version": "repository_identity_correction_v1",
+    "data_version": "refq_p0_2023_seed_observation_v2_strict_identity",
+    "source_admission_rule": "event_repo_id == annotated_primary_github_repo_id",
+    "source_observation_view": "REFQ_SOURCE_OBSERVATION_VIEW",
+    "relation_schema_version": "reference_relation_schema_v2_event_repository_provenance",
+    "expected_seed_count": 294,
+    "expected_candidate_count": 301,
+    "expected_affected_source_seeds": 1,
+    "expected_unaffected_source_seeds": 293,
+    "raw_external_requery_required": false,
+    "repo_created_at_refresh_authorized": false
+  },
+  "provenance": {
+    "implementation_repository": "birdflyi/OSDB_RefQ",
+    "implementation_commit": "<candidate-commit>",
+    "config_path": "configs/ch5_reference_quotient_p0_v2.yaml",
+    "config_sha256": "<sha256>",
+    "annotation_path": "data/github_osdb_data/dbfeatfusion_records_202410_automerged_manulabeled_with_repoid.csv",
+    "annotation_sha256": "f35b2d646f84248ab6a32ae04dc2ef4df9e12d697f84a53d9abadd741e9c24a8",
+    "raw_event_inputs": [{"path": "<source-relative-path>", "sha256": "<sha256>"}],
+    "relation_inputs": [{"path": "<candidate-relative-path>", "sha256": "<sha256>"}],
+    "aggregate_inputs": [{"path": "<candidate-relative-path>", "sha256": "<sha256>"}],
+    "seed_manifest": {"path": "analysis_seed_manifest_294.csv", "sha256": "<sha256>"}
+  },
+  "source_admission": {
+    "excluded_out_of_seed_source_rows": "<integer>",
+    "excluded_by_seed_and_event_repo": [{
+      "expected_seed_repo_id": "679889516",
+      "event_repo_id": "600271677",
+      "count": 120,
+      "status": "OUT_OF_SEED_SOURCE_OBSERVATION"
+    }],
+    "source_seed_membership_mismatch_after_admission": 0
+  },
+  "no_drift": {
+    "unaffected_seed_gate": "PASS|BLOCKED",
+    "annotation_drift": "NONE|DRIFT",
+    "seed_set_drift": "NONE|DRIFT",
+    "target_identity_drift": "NONE|DRIFT",
+    "relation_type_drift": "NONE|DRIFT",
+    "new_membership_conflicts": 0
+  },
+  "outputs": {
+    "output_root": "outputs/reference_quotient_p0_corrected_v2",
+    "non_manifest_files": [{"path": "<relative-path>", "sha256": "<sha256>"}],
+    "p0_metrics": {},
+    "supplemental_rerun_decisions": {
+      "S1": "RERUN_REQUIRED|NO_RERUN_REQUIRED|DOCUMENTATION_ONLY|PENDING",
+      "S2": "RERUN_REQUIRED|NO_RERUN_REQUIRED|DOCUMENTATION_ONLY|PENDING",
+      "S3": "RERUN_REQUIRED|NO_RERUN_REQUIRED|DOCUMENTATION_ONLY|PENDING",
+      "S4": "RERUN_REQUIRED|NO_RERUN_REQUIRED|DOCUMENTATION_ONLY|PENDING",
+      "S5": "RERUN_REQUIRED|NO_RERUN_REQUIRED|DOCUMENTATION_ONLY|PENDING",
+      "S6": "RERUN_REQUIRED|NO_RERUN_REQUIRED|DOCUMENTATION_ONLY|PENDING",
+      "S7": "RERUN_REQUIRED|NO_RERUN_REQUIRED|DOCUMENTATION_ONLY|PENDING"
+    }
+  }
+}
