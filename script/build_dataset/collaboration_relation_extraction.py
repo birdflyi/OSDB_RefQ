@@ -23,6 +23,7 @@ from GH_CoRE.working_flow.query_OSDB_github_log import query_repo_log_each_year_
 from script import pkg_rootdir
 from script.build_dataset.query_repos_event_log import query_OSDB_github_log_from_dbserver
 from script.build_dataset.repo_filter import get_filenames_by_repo_names, get_intersection
+from script.build_dataset.repository_identity_provenance import attach_event_repository_provenance
 
 setup_logging(base_dir=pkg_rootdir)
 logger = logging.getLogger(__name__)
@@ -64,7 +65,8 @@ def process_body_content(raw_content_dir, processed_content_dir, filenames=None,
 
 def collaboration_relation_extraction(repo_keys, df_dbms_repos_dict, save_dir, repo_key_skip_to_loc=None,
                                       last_stop_index=None, limit=None, update_exists=True, add_mode_if_exists=True,
-                                      cache_max_size=200, use_relation_type_list=None):
+                                      cache_max_size=200, use_relation_type_list=None,
+                                      preserve_event_repository_provenance=False):
     """
     :param repo_keys: filenames right stripped by suffix `.csv`
     :param df_dbms_repos_dict: key: repo_keys, value: dataframe of dbms repos event logs
@@ -76,6 +78,7 @@ def collaboration_relation_extraction(repo_keys, df_dbms_repos_dict, save_dir, r
     :param add_mode_if_exists: only takes effect when parameter update_exists=True
     :param cache_max_size: int type, set cache_max_size=-1 if you donot want to use any cache
     :param use_relation_type_list: to optionally extract the relation types in ['EventAction', 'Reference'], see event_trigger_ERE_triples_dict.
+    :param preserve_event_repository_provenance: opt-in v2 schema enrichment from the originating raw event.
     :return: None
     """
     repo_key_skip_to_loc = repo_key_skip_to_loc if repo_key_skip_to_loc is not None else 0
@@ -115,6 +118,18 @@ def collaboration_relation_extraction(repo_keys, df_dbms_repos_dict, save_dir, r
                 obj_collaboration_tuple_list, cache = get_obj_collaboration_tuples_from_record(
                     rec, cache=cache, use_relation_type_list=use_relation_type_list)
                 df_collaboration = get_df_collaboration(obj_collaboration_tuple_list, extend_field=True)
+                if preserve_event_repository_provenance and not df_collaboration.empty:
+                    raw_event = pd.DataFrame(
+                        [{
+                            "id": rec.get("id"),
+                            "repo_id": rec.get("repo_id"),
+                            "repo_name": rec.get("repo_name"),
+                        }]
+                    )
+                    df_collaboration = attach_event_repository_provenance(
+                        df_collaboration,
+                        raw_event,
+                    )
                 save_GitHub_Collaboration_Network(df_collaboration, save_path=save_path, add_mode_if_exists=add_mode_if_exists)
             logger.info(f"Processing progress: {repo_key}@{i}#{process_checkpoint[I_RECORD_LOC]}: task completed!")
             rec_add_mode_skip_to_loc = 0
@@ -131,7 +146,8 @@ def collaboration_relation_extraction(repo_keys, df_dbms_repos_dict, save_dir, r
 def collaboration_relation_extraction_service(dbms_repos_key_feats_path, dbms_repos_raw_content_dir,
                                               dbms_repos_dedup_content_dir, collaboration_relation_extraction_dir,
                                               repo_names=None, stop_repo_names=None, year=2023,
-                                              validate_OSDB_github_repo_id=True):
+                                              validate_OSDB_github_repo_id=True,
+                                              preserve_event_repository_provenance=False):
     # Get github logs
     sql_param = {
         "table": "opensource.events",
@@ -177,7 +193,8 @@ def collaboration_relation_extraction_service(dbms_repos_key_feats_path, dbms_re
 
     # Collaboration Relation extraction
     collaboration_relation_extraction(repo_keys, df_dbms_repos_dict, collaboration_relation_extraction_dir, update_exists=False,
-                                      add_mode_if_exists=True, use_relation_type_list=["EventAction", "Reference"], last_stop_index=-1)
+                                      add_mode_if_exists=True, use_relation_type_list=["EventAction", "Reference"], last_stop_index=-1,
+                                      preserve_event_repository_provenance=preserve_event_repository_provenance)
 
 
 if __name__ == '__main__':
