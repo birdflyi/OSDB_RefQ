@@ -1,0 +1,29 @@
+gate_id,status,evidence
+G01,PASS,isolated C1 branch; main and historical tag unchanged
+G02,PASS,296/296 historical P0 input SHA-256 values match; annotation hash unchanged
+G03,PASS,294 relation v1 and 294 relation v2 partitions
+G04,PASS,"{""MATCHED_UNIQUE"": 12518072, ""RAW_REPO_ID_MISSING"": 0, ""RELATION_EVENT_MULTI_MATCH"": 0, ""RELATION_EVENT_UNMATCHED"": 0, ""REPO_ID_CONFLICT"": 0}"
+G05,PASS,all relation event repository joins matched uniquely; no blocking status
+G06,PASS,legacy v1 relations migrated explicitly into versioned v2 candidate paths
+G07,PASS,293 unaffected relation partitions preserve all historical relation columns and rows
+G08,PASS,affected source seed count = 1
+G09,PASS,unaffected source seed count = 293
+G10,PASS,Fireproof historical source Reference rows = 120
+G11,PASS,Fireproof historical source Reference events = 91
+G12,PASS,Fireproof current source Reference rows/events = 58/41
+G13,PASS,source admission uses event_repo_id == expected seed repository ID
+G14,PASS,120 Fireproof out-of-seed Reference rows excluded from logical admitted view
+G15,PASS,analysis seed count = 294
+G16,PASS,candidate seed count = 301
+G17,PASS,unexpected target identity drift = 0
+G18,PASS,new target numeric conflicts = 0 in candidate target fields
+G19,PASS,294 aggregate candidate partitions generated
+G20,PASS,293 unaffected aggregate historical columns are content-equivalent
+G21,PASS,non-Actor source aggregate derives from event_repo_id
+G22,PASS,caller context cannot overwrite event repository provenance
+G23,PASS,source_seed_mismatch_after_admission = 0
+G24,PASS,annotation and repo_created_at inputs reused without refresh
+G25,PASS,Titan no-touch control: no Titan-specific correction
+G26,DEFERRED_TO_C3,candidate P0 execution is not authorized in C2
+G27,DEFERRED_TO_C3,"membership, quotient, and network metrics are not computed in C2"
+G28,DEFERRED_TO_C3,S1-S7 decisions await corrected P0 dependency hashes
