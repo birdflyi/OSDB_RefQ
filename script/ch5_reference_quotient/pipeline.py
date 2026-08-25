@@ -27,10 +27,145 @@ from .membership import (
 from .network_views import analyze_undirected_view, cross_project_edges, directed_to_undirected_edges
 from .seed_selection import assert_seed_boundary, build_seed_manifests, relative_evidence_path
 from .statistics import describe_columns, kruskal_fdr
+from script.build_dataset.repository_identity_provenance import (
+    ADMITTED_SOURCE_OBSERVATION,
+    INVALID_EVENT_REPOSITORY_ID,
+    MISSING_EVENT_REPOSITORY_ID,
+    OUT_OF_SEED_SOURCE_OBSERVATION,
+    normalize_repository_id,
+)
 
 
 ISSUE_PREFIXES = ("I_", "IC_", "PR_", "PRR_", "PRRC_")
 ISSUE_KEY = re.compile(r"_(\d+#\d+)")
+
+V2_SOURCE_ADMISSION_COLUMNS = {
+    "event_repo_id",
+    "source_admission_status",
+    "expected_source_context_repo_id",
+}
+V2_SOURCE_ADMISSION_STATUSES = {
+    ADMITTED_SOURCE_OBSERVATION,
+    OUT_OF_SEED_SOURCE_OBSERVATION,
+    MISSING_EVENT_REPOSITORY_ID,
+    INVALID_EVENT_REPOSITORY_ID,
+}
+
+
+def _normalize_repository_series(values: pd.Series, field_name: str) -> tuple[pd.Series, pd.Series, pd.Series]:
+    normalized: list[str | None] = []
+    missing: list[bool] = []
+    invalid: list[bool] = []
+    for value in values.tolist():
+        try:
+            value = normalize_repository_id(value, field_name=field_name)
+        except ValueError:
+            value = None
+            invalid.append(True)
+            missing.append(False)
+            normalized.append(value)
+            continue
+        normalized.append(value)
+        missing.append(value is None)
+        invalid.append(False)
+    return (
+        pd.Series(normalized, index=values.index, dtype="string"),
+        pd.Series(missing, index=values.index, dtype="bool"),
+        pd.Series(invalid, index=values.index, dtype="bool"),
+    )
+
+
+def _prepare_reference_evidence_chunk(
+    chunk: pd.DataFrame,
+    expected_source_repo_id: object,
+    *,
+    strict_source_admission: bool,
+    relation_type: str = "Reference",
+) -> tuple[pd.DataFrame, dict[str, int]]:
+    """Select the logical Reference view before membership/profile processing.
+
+    Legacy v1 intentionally keeps its historical relation-only filter. Strict
+    v2 requires the annotated source-admission contract and returns only rows
+    admitted to the current seed's event-repository observation context.
+    """
+    if "relation_type" not in chunk.columns:
+        raise ValueError("reference evidence is missing relation_type")
+    reference = chunk.loc[chunk["relation_type"].eq(relation_type)].copy()
+    base = {
+        "input_reference_rows_before_source_admission": int(len(reference)),
+        "source_admitted_reference_rows": int(len(reference)),
+        "source_out_of_seed_reference_rows": 0,
+        "source_missing_event_repo_reference_rows": 0,
+        "source_invalid_event_repo_reference_rows": 0,
+        "retained_reference_rows": int(len(reference)),
+        "source_mismatch_after_admission": 0,
+    }
+    if not strict_source_admission:
+        return reference, base
+
+    missing = sorted(V2_SOURCE_ADMISSION_COLUMNS - set(reference.columns))
+    if missing:
+        raise ValueError("strict v2 aggregate schema missing: " + ", ".join(missing))
+    try:
+        expected = normalize_repository_id(
+            expected_source_repo_id,
+            field_name="current seed repository ID",
+        )
+    except ValueError as exc:
+        raise ValueError(str(exc)) from exc
+    if expected is None:
+        raise ValueError("current seed repository ID is required for strict v2 source admission")
+
+    event_repo, event_missing, event_invalid = _normalize_repository_series(
+        reference["event_repo_id"], "event_repo_id"
+    )
+    expected_context, context_missing, context_invalid = _normalize_repository_series(
+        reference["expected_source_context_repo_id"], "expected_source_context_repo_id"
+    )
+    if bool((context_missing | context_invalid | expected_context.ne(expected)).any()):
+        raise ValueError("expected_source_context_repo_id does not match the current seed repository ID")
+
+    statuses = reference["source_admission_status"].astype("string")
+    unknown_statuses = sorted(set(statuses.dropna().astype(str)) - V2_SOURCE_ADMISSION_STATUSES)
+    if unknown_statuses or statuses.isna().any():
+        values = unknown_statuses or ["<NA>"]
+        raise ValueError("strict v2 source_admission_status contains unsupported values: " + ", ".join(values))
+
+    declared_admitted = statuses.eq(ADMITTED_SOURCE_OBSERVATION)
+    declared_out_of_seed = statuses.eq(OUT_OF_SEED_SOURCE_OBSERVATION)
+    declared_missing = statuses.eq(MISSING_EVENT_REPOSITORY_ID)
+    declared_invalid = statuses.eq(INVALID_EVENT_REPOSITORY_ID)
+    status_mismatch = (
+        declared_out_of_seed & (event_missing | event_invalid | event_repo.eq(expected))
+    ) | (
+        declared_missing & ~event_missing
+    ) | (
+        declared_invalid & ~event_invalid
+    )
+    if bool(status_mismatch.any()):
+        raise ValueError("SOURCE_ADMISSION_CONTRACT_VIOLATION: status does not match event repository identity")
+    admitted_mismatch = declared_admitted & (event_missing | event_invalid | event_repo.ne(expected))
+    if bool(admitted_mismatch.any()):
+        raise ValueError("SOURCE_ADMISSION_CONTRACT_VIOLATION: admitted row does not match current seed")
+
+    admitted = (
+        declared_admitted
+        & event_repo.eq(expected)
+        & expected_context.eq(expected)
+    )
+    out_of_seed = event_repo.notna() & event_repo.ne(expected)
+    reference["event_repo_id"] = event_repo
+    reference["expected_source_context_repo_id"] = expected_context
+    base.update(
+        {
+            "source_admitted_reference_rows": int(admitted.sum()),
+            "source_out_of_seed_reference_rows": int(out_of_seed.sum()),
+            "source_missing_event_repo_reference_rows": int(event_missing.sum()),
+            "source_invalid_event_repo_reference_rows": int(event_invalid.sum()),
+            "retained_reference_rows": int(admitted.sum()),
+        }
+    )
+    return reference.loc[admitted].copy(), base
 
 
 class RefQPipeline:
@@ -51,6 +186,76 @@ class RefQPipeline:
         self.comment_source_ids: dict[str, set[str]] = defaultdict(set)
         self.provenance: list[dict[str, Any]] = []
         self.conflicting_entity_ids: set[str] = set()
+
+    @property
+    def strict_source_admission(self) -> bool:
+        return self.config.raw.get("identity_policy") == "STRICT_REPOSITORY_IDENTITY"
+
+    def _evidence_usecols(self, *, membership_only: bool = False) -> list[str]:
+        if membership_only:
+            columns = [
+                "src_entity_id", "tar_entity_id", "relation_type",
+                "src_entity_id_agg", "tar_entity_id_agg",
+            ]
+        else:
+            columns = [
+                "src_entity_id", "src_entity_type", "tar_entity_id", "tar_entity_type",
+                "relation_type", "relation_label_repr", "event_id", "event_type", "event_time",
+                "tar_entity_match_text", "tar_entity_match_pattern_type", "src_entity_id_agg",
+                "src_entity_type_agg", "tar_entity_id_agg", "tar_entity_type_agg",
+                "tar_entity_type_fine_grained",
+            ]
+        if self.strict_source_admission:
+            columns.extend(sorted(V2_SOURCE_ADMISSION_COLUMNS))
+        return columns
+
+    def _load_seed_manifests(self) -> tuple[pd.DataFrame, pd.DataFrame]:
+        seeds, candidates = build_seed_manifests(
+            self.inputs["repo_activity_statistics"],
+            self.inputs["gh_core_ref_node_agg_dir"],
+            self.config.get_int("study_year"),
+            self.config.get_int("analysis_seed_activity_threshold"),
+        )
+        assert_seed_boundary(
+            seeds,
+            candidates,
+            self.config.get_int("expected_analysis_seed_count"),
+            self.config.get_int("expected_candidate_seed_count"),
+        )
+        return seeds, candidates
+
+    def preflight(self) -> dict[str, int]:
+        """Read-only input-boundary check; never creates P0 artifacts."""
+        errors = validate_config(self.config, self.workspace)
+        if errors:
+            raise ValueError("; ".join(errors))
+        seeds, _ = self._load_seed_manifests()
+        summary = Counter()
+        affected_seed_count = 0
+        for seed in seeds.itertuples(index=False):
+            for chunk in pd.read_csv(
+                seed.evidence_path,
+                usecols=self._evidence_usecols(),
+                chunksize=self.config.get_int("csv_chunk_size", 100000),
+                low_memory=False,
+            ):
+                summary["input_rows"] += len(chunk)
+                summary["non_reference_rows"] += int(
+                    (~chunk["relation_type"].eq(self.config.raw["relation_type"])).sum()
+                )
+                _, boundary = _prepare_reference_evidence_chunk(
+                    chunk,
+                    seed.repo_id,
+                    strict_source_admission=self.strict_source_admission,
+                    relation_type=self.config.raw["relation_type"],
+                )
+                for key, value in boundary.items():
+                    summary[key] += value
+                if boundary["source_out_of_seed_reference_rows"]:
+                    affected_seed_count += 1
+        summary["affected_source_seeds"] = affected_seed_count
+        summary["source_mismatch_after_admission"] = 0
+        return {key: int(value) for key, value in summary.items()}
 
     def run(self) -> Path:
         errors = validate_config(self.config, self.workspace)
@@ -84,18 +289,7 @@ class RefQPipeline:
             raise
 
     def _freeze_seeds(self) -> tuple[pd.DataFrame, pd.DataFrame]:
-        seeds, candidates = build_seed_manifests(
-            self.inputs["repo_activity_statistics"],
-            self.inputs["gh_core_ref_node_agg_dir"],
-            self.config.get_int("study_year"),
-            self.config.get_int("analysis_seed_activity_threshold"),
-        )
-        assert_seed_boundary(
-            seeds,
-            candidates,
-            self.config.get_int("expected_analysis_seed_count"),
-            self.config.get_int("expected_candidate_seed_count"),
-        )
+        seeds, candidates = self._load_seed_manifests()
         source_root = self.config.source_repository["path"]
         seed_output = seeds.copy()
         candidate_output = candidates.copy()
@@ -110,16 +304,20 @@ class RefQPipeline:
         return seeds, candidates
 
     def _audit_memberships(self, seeds: pd.DataFrame, registry: MembershipRegistry) -> None:
-        usecols = [
-            "src_entity_id", "tar_entity_id", "relation_type",
-            "src_entity_id_agg", "tar_entity_id_agg",
-        ]
         chunk_size = self.config.get_int("csv_chunk_size", 100000)
         for seed in seeds.itertuples(index=False):
             for chunk in pd.read_csv(
-                seed.evidence_path, usecols=usecols, chunksize=chunk_size, low_memory=False
+                seed.evidence_path,
+                usecols=self._evidence_usecols(membership_only=True),
+                chunksize=chunk_size,
+                low_memory=False,
             ):
-                chunk = chunk[chunk["relation_type"].eq(self.config.raw["relation_type"])]
+                chunk, _ = _prepare_reference_evidence_chunk(
+                    chunk,
+                    seed.repo_id,
+                    strict_source_admission=self.strict_source_admission,
+                    relation_type=self.config.raw["relation_type"],
+                )
                 for side in ("src", "tar"):
                     identities = pd.Series(
                         [
@@ -138,24 +336,31 @@ class RefQPipeline:
             registry.commit()
 
     def _scan_evidence(self, seeds: pd.DataFrame) -> None:
-        usecols = [
-            "src_entity_id", "src_entity_type", "tar_entity_id", "tar_entity_type",
-            "relation_type", "relation_label_repr", "event_id", "event_type", "event_time",
-            "tar_entity_match_text", "tar_entity_match_pattern_type", "src_entity_id_agg",
-            "src_entity_type_agg", "tar_entity_id_agg", "tar_entity_type_agg",
-            "tar_entity_type_fine_grained",
-        ]
         chunk_size = self.config.get_int("csv_chunk_size", 100000)
         sample_limit = self.config.get_int("provenance_sample_size", 100)
         seed_ids = set(seeds["repo_id"].astype(str))
         for seed in seeds.itertuples(index=False):
             expected_source = str(seed.repo_id)
-            for chunk in pd.read_csv(seed.evidence_path, usecols=usecols, chunksize=chunk_size, low_memory=False):
+            for chunk in pd.read_csv(
+                seed.evidence_path,
+                usecols=self._evidence_usecols(),
+                chunksize=chunk_size,
+                low_memory=False,
+            ):
                 self.audit["input_rows"] += len(chunk)
                 relation_ok = chunk["relation_type"].eq(self.config.raw["relation_type"])
                 self.audit["non_reference_rows"] += int((~relation_ok).sum())
-                chunk = chunk[relation_ok].copy()
-                self.audit["retained_reference_rows"] += len(chunk)
+                chunk, boundary = _prepare_reference_evidence_chunk(
+                    chunk,
+                    expected_source,
+                    strict_source_admission=self.strict_source_admission,
+                    relation_type=self.config.raw["relation_type"],
+                )
+                if self.strict_source_admission:
+                    for key, value in boundary.items():
+                        self.audit[key] += value
+                else:
+                    self.audit["retained_reference_rows"] += len(chunk)
                 self.source_types.update(chunk["src_entity_type"].fillna("UNKNOWN").astype(str))
                 target_type = chunk["tar_entity_type_fine_grained"].fillna(chunk["tar_entity_type"]).fillna("UNKNOWN")
                 self.target_types.update(target_type.astype(str))
@@ -198,7 +403,10 @@ class RefQPipeline:
                     & ~source_conflict & ~target_conflict
                 )
                 self.audit["quotient_eligible_records"] += int(eligible.sum())
-                self.audit["source_seed_membership_mismatch"] += int((source_valid & source_project.ne(expected_source)).sum())
+                source_mismatch = source_valid & source_project.ne(expected_source)
+                self.audit["source_seed_membership_mismatch"] += int(source_mismatch.sum())
+                if self.strict_source_admission:
+                    self.audit["source_mismatch_after_admission"] += int(source_mismatch.sum())
 
                 grouped = pd.DataFrame(
                     {"source": source_project[eligible].astype(str), "target": target_project[eligible].astype(str)}
@@ -246,6 +454,8 @@ class RefQPipeline:
                             }
                         )
         if self.audit["source_seed_membership_mismatch"]:
+            if self.strict_source_admission:
+                raise ValueError("SOURCE_SEED_MISMATCH_AFTER_ADMISSION")
             raise ValueError("source artifact membership is inconsistent with the frozen seed manifest")
 
     def _write_quotient_outputs(self, seeds: pd.DataFrame) -> pd.DataFrame:

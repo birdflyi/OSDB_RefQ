@@ -78,6 +78,21 @@ def validate_config(config: RefQConfig, workspace_root: str | Path = ".") -> Lis
         errors.append("rq2_cross_project_self_loop_policy must be exclude")
     if config.raw.get("category_assignment_mode") not in {"include_mixed", "exclude_mixed_or_multilabel"}:
         errors.append("invalid category_assignment_mode")
+    if config.raw.get("identity_policy") == "STRICT_REPOSITORY_IDENTITY":
+        if config.raw.get("source_admission_rule") != "event_repo_id == annotated_primary_github_repo_id":
+            errors.append("strict v2 source_admission_rule is invalid")
+        if config.raw.get("relation_schema_version") != "reference_relation_schema_v2_event_repository_provenance":
+            errors.append("strict v2 relation_schema_version is invalid")
+        if config.raw.get("repo_created_at_refresh") is not False:
+            errors.append("strict v2 repo_created_at_refresh must be false")
+        if int(config.raw.get("expected_candidate_seed_count", 0)) != 301:
+            errors.append("strict v2 expected_candidate_seed_count must be 301")
+        if int(config.raw.get("expected_analysis_seed_count", 0)) != 294:
+            errors.append("strict v2 expected_analysis_seed_count must be 294")
+        candidate_root = str(config.input_paths.get("gh_core_ref_node_agg_v2_dir", ""))
+        executable_root = str(config.input_paths.get("gh_core_ref_node_agg_dir", ""))
+        if not candidate_root or executable_root != candidate_root:
+            errors.append("strict v2 gh_core_ref_node_agg_dir must resolve to the v2 candidate aggregate root")
     if not str(config.raw.get("data_version", "")).strip():
         errors.append("data_version must be non-empty")
     for key in ("expected_candidate_seed_count", "expected_analysis_seed_count", "csv_chunk_size"):

@@ -1,0 +1,12 @@
+metric,value,scope,interpretation
+input_reference_rows_before_source_admission,3748078,294 seed candidate aggregate,input-boundary Reference rows before strict source admission
+source_admitted_reference_rows,3747958,294 seed candidate aggregate,Reference rows admitted to their event repository seed context
+source_out_of_seed_reference_rows,120,294 seed candidate aggregate,Reference rows retained in generic candidate CSVs but excluded from logical scientific input
+source_missing_event_repo_reference_rows,0,294 seed candidate aggregate,missing event repository ID
+source_invalid_event_repo_reference_rows,0,294 seed candidate aggregate,invalid event repository ID
+retained_reference_rows,3747958,294 seed candidate aggregate,admitted logical Reference rows at input boundary
+affected_source_seeds,1,294 seed candidate aggregate,seed partitions with out-of-seed Reference rows
+source_mismatch_after_admission,0,admitted logical Reference rows,post-admission source assertion failures
+fireproof_admitted_reference_rows,58,seed 679889516 candidate control,known C2 control subset
+fireproof_out_of_seed_reference_rows,120,seed 679889516 candidate control,known C2 control subset
+fireproof_status_source,120,seed 679889516 candidate control,read-only C2 candidate review evidence

@@ -41,6 +41,7 @@ input_paths:
   gh_core_relation_v2_dir: "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_v2_identity_corrected"
   gh_core_ref_node_agg_v1_dir: "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg"
   gh_core_ref_node_agg_v2_dir: "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected"
+  gh_core_ref_node_agg_dir: "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected"
 
 frozen_seed_manifest: "D:/github_repo/OSDB_RefQ/outputs/reference_quotient_p0_frozen/analysis_seed_manifest_294.csv"
 candidate_seed_manifest: "D:/github_repo/OSDB_RefQ/outputs/reference_quotient_p0_frozen/candidate_seed_observation_audit.csv"

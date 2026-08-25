@@ -18,6 +18,7 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument("--validate-config", action="store_true", help="Validate configuration and inputs")
     parser.add_argument("--show-inputs", action="store_true", help="Print resolved read-only inputs")
     parser.add_argument("--dry-run", action="store_true", help="Validate without writing P0 outputs")
+    parser.add_argument("--preflight", action="store_true", help="Read-only v2 input-boundary preflight")
     parser.add_argument("--execute", action="store_true", help="Run the single P0 recalculation and freeze chain")
     return parser
 
@@ -36,6 +37,16 @@ def main(argv: Optional[Iterable[str]] = None) -> int:
         print("Config validation passed.")
     if args.show_inputs:
         print(json.dumps({name: str(path) for name, path in resolved_inputs(config).items()}, indent=2))
+    if args.preflight:
+        try:
+            from .pipeline import RefQPipeline
+
+            summary = RefQPipeline(config, workspace).preflight()
+        except Exception as exc:
+            print(f"Reference Quotient preflight failed: {exc}", file=sys.stderr)
+            return 2
+        print(json.dumps(summary, indent=2, sort_keys=True))
+        return 0
     if args.execute:
         try:
             from .pipeline import RefQPipeline
