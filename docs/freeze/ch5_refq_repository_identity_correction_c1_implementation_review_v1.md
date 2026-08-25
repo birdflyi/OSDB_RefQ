@@ -21,6 +21,7 @@ modify any frozen scientific asset.
 | base commit | `dc88221ae6e0bb72f2c142b2811a4552c5ec2388` |
 | C1 branch | `ch5-refq-repository-identity-correction-v1` |
 | implementation commit | `bd9586696336d766e400fe6242267417ccbd60c9` |
+| documentation commit | `5884363d1fa48fa87cde0ea9fe88d0c7790f96c9` (initial review; finalization recorded below) |
 | historical tag | `chapter5-refq-freeze-v1.0` |
 | historical scientific anchor | `68d001551359d120bf2a06cc5e571742df7e7822` |
 | remote before C1 push | `git@github.com:birdflyi/OSDB_RefQ.git` |
@@ -283,8 +284,9 @@ S1_S7_rerun = 0
 GH_CoRE_scientific_regeneration = 0
 aggregate_scientific_regeneration = 0
 network_algorithms_rerun = 0
-documentation_commit = PENDING
-push = PENDING
+documentation_commit = 5884363d1fa48fa87cde0ea9fe88d0c7790f96c9
+documentation_metadata_finalization_commit = PENDING
+push = correction branch after finalization
 ```
 
 This branch must be reviewed before any C2 candidate regeneration is
