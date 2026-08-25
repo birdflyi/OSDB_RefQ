@@ -602,9 +602,9 @@ P0_rerun = 0
 S1_S7_rerun = 0
 GH_CoRE_rerun = 0
 network_algorithms_rerun = 0
-documentation_commit = PENDING
-push = PENDING
-remote_head = c8f25a70cf5d04ecce48fb95fd0f1f003a8525a7
+documentation_commit = 17ba6771809c34bf057b3d8264738e4010f9b9d6 (initial design commit; finalization commit recorded below)
+push = origin/main after finalization commit
+remote_head = c8f25a70cf5d04ecce48fb95fd0f1f003a8525a7 before push
 ```
 
 The historical tag `chapter5-refq-freeze-v1.0` and commit
