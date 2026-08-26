@@ -509,6 +509,7 @@ def serialize_s6_figure_ready_bundle(
     parameters: Optional[Mapping[str, Any]] = None,
     versions: Optional[Mapping[str, str]] = None,
     completed_at: Optional[str] = None,
+    allow_external_test_root: bool = False,
 ) -> tuple[S6FigureReadyBundle, StageReceipt, dict[str, Any]]:
     """Future S6 writer; tests must pass a temporary output root."""
 
@@ -528,6 +529,7 @@ def serialize_s6_figure_ready_bundle(
         parameters=parameters,
         versions=versions,
         completed_at=completed_at,
+        allow_external_test_root=allow_external_test_root,
     )
     # The writer serializes deterministically; assert the manifest payload was
     # the same payload used to compute its own output records.

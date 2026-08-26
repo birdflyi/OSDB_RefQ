@@ -32,6 +32,10 @@ class StageIOError(ValueError):
     """Raised when a future stage serialization contract is violated."""
 
 
+class StageReceiptContractError(StageIOError):
+    """Raised when a completed stage receipt is malformed or not closed."""
+
+
 STAGE_DIRECTORY_NAMES: Mapping[str, str] = {
     "S1": "S1_evidence_universe",
     "S2": "S2_weight_sensitivity",
@@ -40,6 +44,29 @@ STAGE_DIRECTORY_NAMES: Mapping[str, str] = {
     "S5": "S5_brokerage_stability",
     "S6": "S6_figure_ready",
 }
+STAGE_RECEIPT_NAME = "stage_receipt.json"
+CORRECTED_AGGREGATE = "CORRECTED_AGGREGATE"
+CORRECTED_P0 = "CORRECTED_P0"
+CORRECTED_SUPPLEMENTAL_V2 = "CORRECTED_SUPPLEMENTAL_V2"
+COMPLETED_STAGE_STATUSES = frozenset({"PASS", "COMPLETE", "STAGE_COMPLETE"})
+STAGE_INPUT_AUTHORITIES: Mapping[str, frozenset[str]] = {
+    "S1_evidence_universe": frozenset({CORRECTED_AGGREGATE, CORRECTED_P0}),
+    "S2_weight_sensitivity": frozenset({CORRECTED_P0, CORRECTED_SUPPLEMENTAL_V2}),
+    "S3_observation_sensitivity": frozenset({CORRECTED_P0, CORRECTED_SUPPLEMENTAL_V2}),
+    "S4_community_stability": frozenset({CORRECTED_P0, CORRECTED_SUPPLEMENTAL_V2}),
+    "S5_brokerage_stability": frozenset({CORRECTED_P0, CORRECTED_SUPPLEMENTAL_V2}),
+    "S6_figure_ready": frozenset({CORRECTED_P0, CORRECTED_SUPPLEMENTAL_V2}),
+}
+RECEIPT_REQUIRED_KEYS = (
+    "stage",
+    "status",
+    "implementation_commit",
+    "input_artifacts",
+    "output_artifacts",
+    "parameters",
+    "runtime_versions",
+    "completed_at",
+)
 _VALID_STAGE_NAMES = set(STAGE_DIRECTORY_NAMES) | set(STAGE_DIRECTORY_NAMES.values())
 
 
@@ -72,6 +99,7 @@ class StageReceipt:
     parameters: Mapping[str, Any]
     runtime_versions: Mapping[str, str]
     completed_at: str
+    output_root: str = ""
 
     def as_dict(self) -> dict[str, Any]:
         return {
@@ -83,6 +111,7 @@ class StageReceipt:
             "parameters": dict(self.parameters),
             "runtime_versions": dict(self.runtime_versions),
             "completed_at": self.completed_at,
+            "output_root": self.output_root,
         }
 
 
@@ -94,12 +123,11 @@ def canonical_stage_name(stage_name: str) -> str:
     return stage_name
 
 
-def _safe_output_root(output_root: str | Path) -> Path:
+def _safe_output_root(output_root: str | Path, *, allow_external_test_root: bool = False) -> Path:
     candidate = canonical_path(output_root)
     expected = canonical_path(CORRECTED_OUTPUTS_ROOT)
-    inside_repository = candidate == canonical_path(REPOSITORY_ROOT) or candidate.is_relative_to(canonical_path(REPOSITORY_ROOT))
-    if inside_repository and not candidate.is_relative_to(expected):
-        raise StageIOError("stage output root inside repository must be corrected v2 outputs")
+    repository = canonical_path(REPOSITORY_ROOT)
+    inside_repository = candidate == repository or candidate.is_relative_to(repository)
     try:
         config = load_config()
         protected = protected_write_roots(config)
@@ -108,10 +136,12 @@ def _safe_output_root(output_root: str | Path) -> Path:
     for root in protected:
         if candidate == root or candidate.is_relative_to(root):
             raise StageIOError("stage output root crosses protected authority: %s" % root)
-    if candidate == expected or candidate.is_relative_to(expected):
+    if not allow_external_test_root and candidate != expected:
+        raise StageIOError("production stage output root must be exactly corrected v2 outputs")
+    if allow_external_test_root and inside_repository and candidate != expected:
+        raise StageIOError("external test stage root must be outside the repository")
+    if candidate == expected:
         return candidate
-    # A temp directory outside the repository is the only non-production root
-    # accepted by tests. It remains explicit because the caller supplies it.
     return candidate
 
 
@@ -174,15 +204,42 @@ def write_stage_outputs(
     parameters: Optional[Mapping[str, Any]] = None,
     versions: Optional[Mapping[str, str]] = None,
     completed_at: Optional[str] = None,
+    allow_external_test_root: bool = False,
 ) -> StageReceipt:
-    """Write one stage once, refusing any pre-existing stage directory."""
+    """Write one stage once and persist its receipt after output closure."""
 
-    root = _safe_output_root(output_root)
+    root = _safe_output_root(output_root, allow_external_test_root=allow_external_test_root)
     stage = canonical_stage_name(stage_name)
     stage_dir = root / stage
     if stage_dir.exists():
         raise StageIOError("stage directory already exists; overwrite is forbidden: %s" % stage_dir)
     payloads = serialize_artifacts(artifacts)
+    input_records = tuple(dict(item) for item in input_artifacts)
+    receipt_versions = dict(versions or runtime_versions())
+    receipt_completed_at = completed_at or datetime.now(timezone.utc).isoformat()
+    _validate_receipt_shape(
+        {
+            "stage": stage,
+            "status": "PASS",
+            "implementation_commit": implementation_commit,
+            "input_artifacts": list(input_records),
+            "output_artifacts": [
+                {
+                    "path": str((stage_dir / artifact.name).relative_to(root)).replace(os.sep, "/"),
+                    "sha256": artifact.sha256,
+                    "bytes": artifact.bytes,
+                    "row_count": artifact.row_count,
+                }
+                for artifact in payloads
+            ],
+            "parameters": dict(parameters or {}),
+            "runtime_versions": receipt_versions,
+            "completed_at": receipt_completed_at,
+            "output_root": str(root),
+        },
+        stage,
+    )
+    validate_input_artifact_records(input_records, stage)
     # No cleanup is performed after mkdir or any subsequent write failure.
     stage_dir.mkdir(parents=True, exist_ok=False)
     records: list[Mapping[str, Any]] = []
@@ -199,16 +256,24 @@ def write_stage_outputs(
                 "row_count": artifact.row_count,
             }
         )
-    return StageReceipt(
+    receipt = StageReceipt(
         stage=stage,
         status="PASS",
         implementation_commit=implementation_commit,
-        input_artifacts=tuple(dict(item) for item in input_artifacts),
+        input_artifacts=input_records,
         output_artifacts=tuple(records),
         parameters=dict(parameters or {}),
-        runtime_versions=dict(versions or runtime_versions()),
-        completed_at=completed_at or datetime.now(timezone.utc).isoformat(),
+        runtime_versions=receipt_versions,
+        completed_at=receipt_completed_at,
+        output_root=str(root),
     )
+    validate_stage_receipt(receipt.as_dict(), stage, output_root=root, require_durable_marker=False)
+    receipt_path = stage_dir / STAGE_RECEIPT_NAME
+    if receipt_path.exists():
+        raise StageIOError("stage receipt already exists: %s" % receipt_path)
+    receipt_path.write_bytes(_serialize_json(receipt.as_dict()))
+    validate_stage_receipt(receipt.as_dict(), stage, output_root=root, require_durable_marker=True)
+    return receipt
 
 
 def _resolve_record_path(record_path: str | Path, base: Path) -> Path:
@@ -239,41 +304,40 @@ def validate_output_artifact_records(
     for record in iterable:
         if not isinstance(record, Mapping):
             raise StageIOError("output record must be a mapping")
+        required = ("path", "sha256", "bytes", "row_count")
+        if any(key not in record for key in required):
+            raise StageIOError("output record is incomplete")
         path_value = record.get("path")
         if not isinstance(path_value, str):
             raise StageIOError("output record path is missing")
         path = _resolve_record_path(path_value, root)
+        if path.name == STAGE_RECEIPT_NAME:
+            raise StageIOError("stage receipt cannot be an output artifact")
         if not path.is_file():
             raise StageIOError("recorded output does not exist: %s" % path)
         actual_sha = _sha256(path)
+        if not _valid_sha256(record.get("sha256")):
+            raise StageIOError("output SHA is missing or invalid: %s" % path)
         if record.get("sha256") != actual_sha:
             raise StageIOError("output SHA mismatch: %s" % path)
         actual_bytes = path.stat().st_size
         bytes_value = record.get("bytes")
-        if isinstance(bytes_value, bool) or not isinstance(bytes_value, (int, str)):
+        if isinstance(bytes_value, bool) or not isinstance(bytes_value, int):
             raise StageIOError("output byte count is missing or invalid: %s" % path)
-        try:
-            recorded_bytes = int(bytes_value)
-        except (TypeError, ValueError) as exc:
-            raise StageIOError("output byte count is invalid: %s" % path) from exc
-        if recorded_bytes != actual_bytes:
+        if bytes_value != actual_bytes:
             raise StageIOError("output byte count mismatch: %s" % path)
         row_count = record.get("row_count")
-        if row_count is not None:
-            if path.suffix.lower() != ".csv":
-                raise StageIOError("non-CSV output cannot declare row_count: %s" % path)
+        if path.suffix.lower() == ".csv":
+            if isinstance(row_count, bool) or not isinstance(row_count, int):
+                raise StageIOError("CSV output row count is missing or invalid: %s" % path)
             try:
                 actual_rows = len(pd.read_csv(path))
             except Exception as exc:
                 raise StageIOError("unable to read recorded CSV row count: %s" % path) from exc
-            if isinstance(row_count, bool) or not isinstance(row_count, (int, str)):
-                raise StageIOError("output row count is invalid: %s" % path)
-            try:
-                recorded_rows = int(row_count)
-            except (TypeError, ValueError) as exc:
-                raise StageIOError("output row count is invalid: %s" % path) from exc
-            if recorded_rows != actual_rows:
+            if row_count != actual_rows:
                 raise StageIOError("output row count mismatch: %s" % path)
+        elif row_count is not None and (isinstance(row_count, bool) or not isinstance(row_count, int)):
+            raise StageIOError("output row count is invalid: %s" % path)
         checked.append({"path": str(path), "sha256": actual_sha, "bytes": actual_bytes, "row_count": row_count})
     return {"status": "PASS", "checked": checked}
 
@@ -284,3 +348,186 @@ def _sha256(path: Path) -> str:
         for chunk in iter(lambda: handle.read(1024 * 1024), b""):
             digest.update(chunk)
     return digest.hexdigest()
+
+
+def _valid_sha256(value: object) -> bool:
+    if not isinstance(value, str) or len(value) != 64:
+        return False
+    try:
+        int(value, 16)
+    except ValueError:
+        return False
+    return True
+
+
+def _validate_receipt_shape(receipt: Mapping[str, Any], expected_stage: str | None = None) -> str:
+    if not isinstance(receipt, Mapping):
+        raise StageReceiptContractError("stage receipt must be a mapping")
+    missing = [key for key in RECEIPT_REQUIRED_KEYS if key not in receipt]
+    if missing:
+        raise StageReceiptContractError("stage receipt is missing: %s" % ", ".join(missing))
+    try:
+        stage = canonical_stage_name(receipt["stage"])
+    except StageIOError as exc:
+        raise StageReceiptContractError(str(exc)) from exc
+    if expected_stage is not None:
+        try:
+            expected = canonical_stage_name(expected_stage)
+        except StageIOError as exc:
+            raise StageReceiptContractError(str(exc)) from exc
+        if stage != expected:
+            raise StageReceiptContractError("receipt stage does not match manifest stage")
+    if receipt["status"] not in COMPLETED_STAGE_STATUSES:
+        raise StageReceiptContractError("receipt is not a completed stage receipt")
+    if not isinstance(receipt["implementation_commit"], str) or not receipt["implementation_commit"].strip():
+        raise StageReceiptContractError("receipt implementation_commit is missing")
+    if not isinstance(receipt["input_artifacts"], (list, tuple)) or not receipt["input_artifacts"]:
+        raise StageReceiptContractError("completed receipt input_artifacts must be non-empty")
+    if not isinstance(receipt["output_artifacts"], (list, tuple)) or not receipt["output_artifacts"]:
+        raise StageReceiptContractError("completed receipt output_artifacts must be non-empty")
+    if not isinstance(receipt["parameters"], Mapping):
+        raise StageReceiptContractError("receipt parameters must be a mapping")
+    if not isinstance(receipt["runtime_versions"], Mapping) or not receipt["runtime_versions"]:
+        raise StageReceiptContractError("receipt runtime_versions must be a non-empty mapping")
+    if not isinstance(receipt["completed_at"], str) or not receipt["completed_at"].strip():
+        raise StageReceiptContractError("receipt completed_at is missing")
+    if "output_root" in receipt and receipt["output_root"] != "" and not isinstance(receipt["output_root"], str):
+        raise StageReceiptContractError("receipt output_root is invalid")
+    for artifact in receipt["input_artifacts"]:
+        _validate_input_artifact_shape(artifact, stage)
+    for artifact in receipt["output_artifacts"]:
+        _validate_output_artifact_shape(artifact)
+    return stage
+
+
+def _validate_input_artifact_shape(artifact: object, stage: str) -> None:
+    if not isinstance(artifact, Mapping):
+        raise StageReceiptContractError("input artifact record must be a mapping")
+    required = ("path", "sha256", "authority_class")
+    if any(key not in artifact for key in required):
+        raise StageReceiptContractError("input artifact record is incomplete")
+    if not isinstance(artifact["path"], str) or not artifact["path"]:
+        raise StageReceiptContractError("input artifact path is invalid")
+    if not _valid_sha256(artifact["sha256"]):
+        raise StageReceiptContractError("input artifact SHA is invalid")
+    authority = artifact["authority_class"]
+    if not isinstance(authority, str) or authority not in STAGE_INPUT_AUTHORITIES[stage]:
+        raise StageReceiptContractError("input artifact authority is not allowed for %s" % stage)
+    if ("root" in artifact) != ("version" in artifact):
+        raise StageReceiptContractError("input artifact root and version must be paired")
+    if "root" in artifact and (
+        not isinstance(artifact["root"], str)
+        or not artifact["root"].strip()
+        or not isinstance(artifact["version"], str)
+        or not artifact["version"].strip()
+    ):
+        raise StageReceiptContractError("input artifact root/version is invalid")
+
+
+def _validate_output_artifact_shape(artifact: object) -> None:
+    if not isinstance(artifact, Mapping):
+        raise StageReceiptContractError("output artifact record must be a mapping")
+    required = ("path", "sha256", "bytes", "row_count")
+    if any(key not in artifact for key in required):
+        raise StageReceiptContractError("output artifact record is incomplete")
+    if not isinstance(artifact["path"], str) or not artifact["path"]:
+        raise StageReceiptContractError("output artifact path is invalid")
+    if not _valid_sha256(artifact["sha256"]):
+        raise StageReceiptContractError("output artifact SHA is invalid")
+    if isinstance(artifact["bytes"], bool) or not isinstance(artifact["bytes"], int) or artifact["bytes"] < 0:
+        raise StageReceiptContractError("output artifact bytes is invalid")
+    if artifact["row_count"] is not None and (
+        isinstance(artifact["row_count"], bool) or not isinstance(artifact["row_count"], int) or artifact["row_count"] < 0
+    ):
+        raise StageReceiptContractError("output artifact row_count is invalid")
+    if Path(artifact["path"]).name == STAGE_RECEIPT_NAME:
+        raise StageReceiptContractError("stage receipt cannot be an output artifact")
+
+
+def validate_input_artifact_records(
+    records: list[Mapping[str, Any]] | tuple[Mapping[str, Any], ...],
+    stage_name: str,
+) -> dict[str, Any]:
+    """Verify corrected input provenance records and their source hashes."""
+
+    stage = canonical_stage_name(stage_name)
+    if not isinstance(records, (list, tuple)) or not records:
+        raise StageReceiptContractError("completed receipt input_artifacts must be non-empty")
+    checked: list[dict[str, Any]] = []
+    forbidden_fragments = (
+        "reference_quotient_p0_frozen",
+        "reference_quotient_v1",
+        "v1_1_completion",
+        "v1_2_s3_reproducibility_patch",
+    )
+    for artifact in records:
+        _validate_input_artifact_shape(artifact, stage)
+        declared_root = canonical_path(artifact["root"]) if "root" in artifact else None
+        raw_path = Path(artifact["path"])
+        path = canonical_path(raw_path, base=declared_root) if declared_root and not raw_path.is_absolute() else canonical_path(raw_path)
+        lowered = str(path).replace("\\", "/").lower()
+        if any(fragment in lowered for fragment in forbidden_fragments):
+            raise StageReceiptContractError("historical input authority is forbidden")
+        if declared_root is not None:
+            if path == declared_root or not path.is_relative_to(declared_root):
+                raise StageReceiptContractError("input artifact crosses its declared root")
+        if not path.is_file():
+            raise StageReceiptContractError("input artifact does not exist: %s" % path)
+        actual_sha = _sha256(path)
+        if actual_sha != artifact["sha256"]:
+            raise StageReceiptContractError("input artifact SHA mismatch: %s" % path)
+        checked.append({"path": str(path), "sha256": actual_sha, "authority_class": artifact["authority_class"]})
+    return {"status": "PASS", "checked": checked}
+
+
+def validate_stage_receipt(
+    receipt: Mapping[str, Any],
+    stage_name: str,
+    *,
+    output_root: str | Path | None = None,
+    require_durable_marker: bool = True,
+) -> dict[str, Any]:
+    """Validate a completed receipt, including source/output hash closure."""
+
+    stage = _validate_receipt_shape(receipt, stage_name)
+    validate_input_artifact_records(receipt["input_artifacts"], stage)
+    root_value = output_root or receipt.get("output_root")
+    if not isinstance(root_value, (str, Path)) or not str(root_value):
+        raise StageReceiptContractError("completed receipt output_root is required for hash closure")
+    root = canonical_path(root_value)
+    recorded_root = receipt.get("output_root")
+    if isinstance(recorded_root, str) and recorded_root and canonical_path(recorded_root) != root:
+        raise StageReceiptContractError("receipt output_root does not match validation root")
+    stage_root = root / stage
+    for artifact in receipt["output_artifacts"]:
+        artifact_path = canonical_path(artifact["path"], base=root)
+        if not artifact_path.is_relative_to(stage_root) or artifact_path == stage_root:
+            raise StageReceiptContractError("output artifact is outside its stage directory")
+    output_result = validate_output_artifact_records(root, receipt["output_artifacts"])
+    receipt_path = root / stage / STAGE_RECEIPT_NAME
+    if require_durable_marker:
+        if not receipt_path.is_file():
+            raise StageReceiptContractError("durable stage_receipt.json is missing: %s" % receipt_path)
+        durable = load_stage_receipt(root / stage)
+        if durable != dict(receipt):
+            raise StageReceiptContractError("durable stage receipt does not match validated receipt")
+    return {
+        "status": "PASS",
+        "stage": stage,
+        "input_artifacts_checked": len(receipt["input_artifacts"]),
+        "output_artifacts_checked": len(output_result["checked"]),
+        "durable_receipt": str(receipt_path),
+    }
+
+
+def load_stage_receipt(stage_directory: str | Path) -> dict[str, Any]:
+    path = canonical_path(stage_directory) / STAGE_RECEIPT_NAME
+    if not path.is_file():
+        raise StageReceiptContractError("durable stage_receipt.json is missing: %s" % path)
+    try:
+        value = json.loads(path.read_text(encoding="utf-8"))
+    except (OSError, ValueError) as exc:
+        raise StageReceiptContractError("durable stage receipt is not valid JSON") from exc
+    if not isinstance(value, dict):
+        raise StageReceiptContractError("durable stage receipt must be an object")
+    return value

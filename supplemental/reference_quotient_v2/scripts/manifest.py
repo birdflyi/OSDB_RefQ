@@ -10,6 +10,11 @@ from pathlib import Path
 from typing import Any, Dict, Mapping, Optional
 
 from .paths import PathGuardError, canonical_path, validate_scaffold_config
+from .stage_io import (
+    COMPLETED_STAGE_STATUSES,
+    StageReceiptContractError,
+    validate_stage_receipt,
+)
 
 
 class S7Status(str, Enum):
@@ -109,6 +114,7 @@ PACKAGE_MANIFEST_REQUIRED_KEYS: tuple[str, ...] = (
     "branch",
     "corrected_p0",
     "corrected_aggregate",
+    "corrected_output_root",
     "weight_multiplicity_contract",
     "random_seed",
     "brokerage_sample_size",
@@ -125,6 +131,12 @@ PACKAGE_MANIFEST_REQUIRED_KEYS: tuple[str, ...] = (
     "historical_write_audit",
     "s7_status",
     "entry_point_used_as_authority",
+)
+
+HISTORICAL_WRITE_AUDIT_REQUIRED_KEYS: tuple[str, ...] = (
+    "status",
+    "historical_roots_modified",
+    "no_overwrite",
 )
 
 
@@ -162,6 +174,72 @@ def _normalized_stage_receipts(receipts: Mapping[str, Mapping[str, Any]]) -> dic
     return normalized
 
 
+def validate_historical_write_audit(audit: object) -> dict[str, Any]:
+    """Validate the G19 immutable-history write audit contract."""
+
+    if not isinstance(audit, Mapping):
+        raise ManifestContractError("historical_write_audit must be a mapping")
+    missing = [key for key in HISTORICAL_WRITE_AUDIT_REQUIRED_KEYS if key not in audit]
+    if missing:
+        raise ManifestContractError("historical_write_audit is missing: %s" % ", ".join(missing))
+    if audit["status"] != "PASS":
+        raise ManifestContractError("historical_write_audit status is not PASS")
+    if audit["historical_roots_modified"] is not False:
+        raise ManifestContractError("historical roots must be unmodified")
+    if audit["no_overwrite"] is not True:
+        raise ManifestContractError("historical write audit no_overwrite must be true")
+    for key in ("before_sha256_inventory", "after_sha256_inventory"):
+        if key in audit and not isinstance(audit[key], (Mapping, list, tuple)):
+            raise ManifestContractError("historical_write_audit %s is malformed" % key)
+    return {"status": "PASS"}
+
+
+def _receipt_is_complete(stage: str, receipt: object) -> bool:
+    if not isinstance(receipt, Mapping) or receipt.get("status") not in COMPLETED_STAGE_STATUSES:
+        return False
+    try:
+        validate_stage_receipt(receipt, stage)
+    except (StageReceiptContractError, OSError, TypeError, ValueError):
+        return False
+    return True
+
+
+def _stage_output_root(receipt: object) -> str | None:
+    if isinstance(receipt, Mapping) and isinstance(receipt.get("output_root"), str) and receipt["output_root"]:
+        return receipt["output_root"]
+    return None
+
+
+def _s6_manifest_authority(path_value: str | Path) -> dict[str, Any]:
+    path = canonical_path(path_value)
+    return {
+        "path": str(path),
+        "sha256": sha256_file(path) if path.is_file() else None,
+    }
+
+
+def _validate_s6_manifest_authority(authority: object) -> bool:
+    if not isinstance(authority, Mapping):
+        raise ManifestContractError("S6 figure-ready manifest authority must be a mapping")
+    path_value = authority.get("path")
+    sha_value = authority.get("sha256")
+    if not isinstance(path_value, str) or not isinstance(sha_value, str):
+        raise ManifestContractError("S6 figure-ready manifest path/SHA record is incomplete")
+    try:
+        actual_sha = sha256_file(path_value)
+    except (OSError, TypeError, ValueError) as exc:
+        raise ManifestContractError("S6 figure-ready manifest is unavailable") from exc
+    if actual_sha != sha_value:
+        raise ManifestContractError("S6 figure-ready manifest SHA does not close")
+    try:
+        from .s6_figure_ready import validate_s6_manifest_sha_closure
+
+        validate_s6_manifest_sha_closure(path_value)
+    except (OSError, TypeError, ValueError) as exc:
+        raise ManifestContractError("S6 figure-ready manifest closure failed") from exc
+    return True
+
+
 def build_corrected_package_manifest(
     config: Mapping[str, Any],
     stage_receipts: Mapping[str, Mapping[str, Any]],
@@ -183,15 +261,30 @@ def build_corrected_package_manifest(
         raise ManifestContractError("invalid S7 status") from exc
     # The supplemental config already carries the immutable governance values;
     # corrected-P0 paths and hashes come from the validated provenance object.
-    complete = True
-    for stage in PACKAGE_STAGE_NAMES:
-        receipt = receipts.get(stage)
-        if receipt is None or receipt.get("status") not in {"PASS", "COMPLETE", "STAGE_COMPLETE"}:
-            complete = False
+    receipt_complete = all(_receipt_is_complete(stage, receipts.get(stage)) for stage in PACKAGE_STAGE_NAMES)
+    audit = dict(historical_write_audit or {
+        "status": "NOT_EXECUTED",
+        "no_overwrite": False,
+        "historical_roots_modified": None,
+    })
     output_root = config["corrected_output_root"]
     if isinstance(output_root, Mapping):
         output_root = output_root.get("path")
-    s6_authority = s6_manifest_path or str(canonical_path(Path(output_root) / "S6_figure_ready" / "figure_ready_manifest_v2.json"))
+    s6_receipt_root = _stage_output_root(receipts.get("S6_figure_ready"))
+    s6_default_path = Path(s6_receipt_root) / "S6_figure_ready" / "figure_ready_manifest_v2.json" if s6_receipt_root else Path(output_root) / "S6_figure_ready" / "figure_ready_manifest_v2.json"
+    s6_authority = _s6_manifest_authority(s6_manifest_path or s6_default_path)
+    s6_complete = False
+    if receipt_complete and s6_authority["sha256"] is not None:
+        try:
+            s6_complete = _validate_s6_manifest_authority(s6_authority)
+        except ManifestContractError:
+            s6_complete = False
+    audit_complete = False
+    try:
+        audit_complete = validate_historical_write_audit(audit)["status"] == "PASS"
+    except ManifestContractError:
+        audit_complete = False
+    complete = receipt_complete and audit_complete and s6_complete
     manifest = {
         "schema_version": "corrected_supplemental_package_manifest_v2",
         "package_version": "corrected_supplemental_v2",
@@ -211,6 +304,7 @@ def build_corrected_package_manifest(
             "identity_policy": config["identity_policy"],
             "source_admission_rule": config["source_admission_rule"],
         },
+        "corrected_output_root": str(canonical_path(output_root)),
         "weight_multiplicity_contract": config["weight_multiplicity_contract"],
         "random_seed": config["random_seed"],
         "brokerage_sample_size": config["brokerage_sample_size"],
@@ -241,11 +335,7 @@ def build_corrected_package_manifest(
             "commit": config.get("historical_baseline_commit"),
             "comparison_only": True,
         },
-        "historical_write_audit": dict(historical_write_audit or {
-            "status": "NOT_EXECUTED",
-            "no_overwrite": True,
-            "historical_roots_modified": False,
-        }),
+        "historical_write_audit": audit,
         "s7_status": status_value,
         "entry_point_used_as_authority": False,
         "manifest_self_hash_not_embedded": True,
@@ -269,11 +359,39 @@ def validate_package_manifest(manifest: Mapping[str, Any]) -> dict[str, Any]:
     except ValueError as exc:
         raise ManifestContractError("invalid S7 status") from exc
     receipts = _normalized_stage_receipts(manifest["stage_receipts"])
-    complete = True
+    receipt_complete = True
     for stage in PACKAGE_STAGE_NAMES:
         receipt = receipts.get(stage)
-        if receipt is None or receipt.get("status") not in {"PASS", "COMPLETE", "STAGE_COMPLETE"}:
-            complete = False
+        if receipt is None:
+            receipt_complete = False
+            continue
+        if receipt.get("status") in COMPLETED_STAGE_STATUSES:
+            try:
+                validate_stage_receipt(
+                    receipt,
+                    stage,
+                    output_root=receipt.get("output_root") or manifest.get("corrected_output_root"),
+                )
+            except (StageReceiptContractError, OSError, TypeError, ValueError) as exc:
+                raise ManifestContractError("stage receipt closure failed for %s" % stage) from exc
+        else:
+            receipt_complete = False
+    try:
+        audit_complete = validate_historical_write_audit(manifest["historical_write_audit"])["status"] == "PASS"
+    except ManifestContractError:
+        audit_complete = False
+    s6_complete = False
+    authority = manifest["s6_figure_ready_manifest_authority"]
+    if isinstance(authority, Mapping) and isinstance(authority.get("sha256"), str):
+        s6_path = canonical_path(authority.get("path")) if isinstance(authority.get("path"), str) else None
+        s6_receipt = receipts.get("S6_figure_ready")
+        s6_root = _stage_output_root(s6_receipt)
+        if s6_path is not None and s6_root is not None:
+            expected_s6_root = canonical_path(s6_root) / "S6_figure_ready"
+            if not s6_path.is_relative_to(expected_s6_root):
+                raise ManifestContractError("S6 figure-ready manifest is outside the S6 stage root")
+        s6_complete = _validate_s6_manifest_authority(authority)
+    complete = receipt_complete and audit_complete and s6_complete
     expected_status = "STAGE_PACKAGE_COMPLETE" if complete else "STAGE_PACKAGE_INCOMPLETE"
     if manifest["status"] != expected_status:
         raise ManifestContractError("package status does not close against stage receipts")

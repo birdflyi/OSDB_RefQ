@@ -95,6 +95,7 @@ def test_s6_temp_serialization_manifest_and_sha_closure(tmp_path):
         tmp_path / "output_root",
         implementation_commit="fixture",
         completed_at="2026-08-26T00:00:00+00:00",
+        allow_external_test_root=True,
     )
     manifest_path = tmp_path / "output_root" / "S6_figure_ready" / "figure_ready_manifest_v2.json"
     assert receipt.stage == "S6_figure_ready"
@@ -107,7 +108,9 @@ def test_s6_temp_serialization_manifest_and_sha_closure(tmp_path):
 
 def test_s6_sha_closure_rejects_wrong_output_and_source_hash(tmp_path):
     _, _, source_bundle = _fixture(tmp_path)
-    _, _, manifest = serialize_s6_figure_ready_bundle(source_bundle, tmp_path / "output_root")
+    _, _, manifest = serialize_s6_figure_ready_bundle(
+        source_bundle, tmp_path / "output_root", implementation_commit="fixture", allow_external_test_root=True
+    )
     manifest_path = tmp_path / "output_root" / "S6_figure_ready" / "figure_ready_manifest_v2.json"
     bad_output = copy.deepcopy(manifest)
     bad_output["entries"][0]["output_sha256"] = "0" * 64
