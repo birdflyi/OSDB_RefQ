@@ -32,6 +32,7 @@ from supplemental.reference_quotient_v2.scripts.s1_evidence_universe import (
     S1EvidenceUniverseContractError,
     UNRESOLVED,
     assert_s1_runtime_acceptance,
+    build_evidence_universe_flow,
     build_future_s1_output_tables,
     composition_table,
     compute_evidence_universe,
@@ -169,6 +170,51 @@ def test_target_membership_conflict_is_excluded_from_quotient_eligibility(adapte
     assert result.membership.summary["membership_conflict_entities"] == 1
     assert set(result.records["tar_membership_status"]) == {CONFLICT_EXCLUDED}
     assert set(result.records["quotient_eligibility"]) == {NOT_QUOTIENT_ELIGIBLE}
+
+
+def test_conflict_excluded_occurrence_requires_both_project_mappable_endpoints(adapter):
+    source, partition = adapter
+    target_conflict = [
+        _row("target-conflict-a", tar_agg="R_202", tar_entity_id="shared-target"),
+        _row("target-conflict-b", tar_agg="R_303", tar_entity_id="shared-target"),
+    ]
+    result = compute_evidence_universe(
+        [source.validate_reference_chunk(partition, pd.DataFrame(target_conflict))]
+    )
+    flow = build_evidence_universe_flow(result).set_index("stage")
+    assert int(flow.loc["conflict_excluded_record_occurrences", "count"]) == 2
+
+    source_conflict_non_project_target = [
+        _row("source-conflict-a", src_agg="R_202", tar_agg="N_1", tar_agg_type="Object")
+        | {"src_entity_id": "shared-source"},
+        _row("source-conflict-b", src_agg="R_303", tar_agg="N_2", tar_agg_type="Object")
+        | {"src_entity_id": "shared-source"},
+    ]
+    result = compute_evidence_universe(
+        [
+            source.validate_reference_chunk(
+                partition, pd.DataFrame(source_conflict_non_project_target)
+            )
+        ]
+    )
+    flow = build_evidence_universe_flow(result).set_index("stage")
+    assert int(flow.loc["conflict_excluded_record_occurrences", "count"]) == 0
+
+    target_conflict_non_project_source = [
+        _row("target-conflict-non-project-a", src_agg="N_1", tar_agg="R_202")
+        | {"src_entity_type_agg": "Object", "src_entity_id": "source-a"},
+        _row("target-conflict-non-project-b", src_agg="N_2", tar_agg="R_303")
+        | {"src_entity_type_agg": "Object", "src_entity_id": "source-b"},
+    ]
+    result = compute_evidence_universe(
+        [
+            source.validate_reference_chunk(
+                partition, pd.DataFrame(target_conflict_non_project_source)
+            )
+        ]
+    )
+    flow = build_evidence_universe_flow(result).set_index("stage")
+    assert int(flow.loc["conflict_excluded_record_occurrences", "count"]) == 0
 
 
 def test_ambiguous_target_remains_explicit_and_non_quotient_eligible(adapter):

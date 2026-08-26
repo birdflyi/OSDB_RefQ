@@ -320,7 +320,13 @@ def build_evidence_universe_flow(result: S1EvidenceUniverse) -> pd.DataFrame:
 
     records = result.records
     target_base = records["tar_membership_status"].replace({CONFLICT_EXCLUDED: PROJECT_MAPPABLE})
-    conflict_records = records["src_membership_conflict"] | records["tar_membership_conflict"]
+    project_mappable_endpoints = (
+        records["src_project_id"].notna()
+        & records["tar_project_id"].notna()
+    )
+    conflict_records = project_mappable_endpoints & (
+        records["src_membership_conflict"] | records["tar_membership_conflict"]
+    )
     rows = [
         ("reference_records_before_source_admission", result.source_admission_before_count, "RECORD", ""),
         ("admitted_source_observation_reference_records", len(records), "RECORD", ""),
