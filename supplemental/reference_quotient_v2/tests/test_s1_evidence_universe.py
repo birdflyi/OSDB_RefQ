@@ -10,6 +10,8 @@ import pytest
 from supplemental.reference_quotient_v2.scripts.paths import CORRECTED_OUTPUTS_ROOT, canonical_path
 from supplemental.reference_quotient_v2.scripts.s1_adapter import (
     ADMITTED,
+    INVALID,
+    MISSING,
     OUT_OF_SEED,
     S1SourceObservationAdapter,
     SeedPartitionContext,
@@ -29,6 +31,7 @@ from supplemental.reference_quotient_v2.scripts.s1_evidence_universe import (
     SELF_INTERNAL_PROJECT_REFERENCE,
     S1EvidenceUniverseContractError,
     UNRESOLVED,
+    assert_s1_runtime_acceptance,
     build_future_s1_output_tables,
     composition_table,
     compute_evidence_universe,
@@ -41,7 +44,7 @@ SEED_ID = "101"
 SCHEMA = "reference_aggregate_schema_v2_event_repository_provenance"
 
 
-def _row(event_id, *, src_agg="R_101", tar_agg="R_101", tar_agg_type="Repo", status=ADMITTED, event_repo_id=SEED_ID, mismatch=False, tar_entity_id=None, event_type="IssuesEvent"):
+def _row(event_id, *, src_agg="R_101", tar_agg="R_101", tar_agg_type="Repo", status=ADMITTED, event_repo_id=SEED_ID, mismatch=False, tar_entity_id=None, event_type="IssuesEvent", tar_fine_type="Repository"):
     return {
         "event_id": event_id,
         "event_repo_id": event_repo_id,
@@ -58,7 +61,7 @@ def _row(event_id, *, src_agg="R_101", tar_agg="R_101", tar_agg_type="Repo", sta
         "src_entity_type_agg": "Repo",
         "tar_entity_id_agg": tar_agg,
         "tar_entity_type_agg": tar_agg_type,
-        "tar_entity_type_fine_grained": "Repository",
+        "tar_entity_type_fine_grained": tar_fine_type,
         "aggregate_schema_version": SCHEMA,
     }
 
@@ -102,6 +105,47 @@ def test_self_cross_non_project_and_unresolved_classifications_are_explicit(univ
     assert records.loc["unresolved", "tar_membership_status"] == UNRESOLVED
     assert records.loc["non-project", "quotient_eligibility"] == NOT_QUOTIENT_ELIGIBLE
     assert records.loc["unresolved", "quotient_eligibility"] == NOT_QUOTIENT_ELIGIBLE
+
+
+def test_target_entity_type_uses_fine_grained_type_when_present(adapter):
+    source, partition = adapter
+    chunk = source.validate_reference_chunk(
+        partition,
+        pd.DataFrame([_row("fine", tar_agg_type="Repo", tar_fine_type="Issue")]),
+    )
+    result = compute_evidence_universe([chunk])
+    assert result.records.iloc[0]["target_entity_type"] == "Issue"
+
+
+def test_target_entity_type_falls_back_to_coarse_type_when_fine_grained_is_missing(adapter):
+    source, partition = adapter
+    chunk = source.validate_reference_chunk(
+        partition,
+        pd.DataFrame([_row("coarse", tar_agg_type="Repo", tar_fine_type=None, )]),
+    )
+    result = compute_evidence_universe([chunk])
+    assert result.records.iloc[0]["target_entity_type"] == "Repository"
+
+
+def test_target_entity_type_is_unknown_when_both_types_are_missing(adapter):
+    source, partition = adapter
+    chunk = source.validate_reference_chunk(
+        partition,
+        pd.DataFrame([_row("unknown", tar_agg_type="Repo", tar_fine_type=None, ) | {"tar_entity_type": None}]),
+    )
+    result = compute_evidence_universe([chunk])
+    assert result.records.iloc[0]["target_entity_type"] == "UNKNOWN"
+
+
+def test_target_entity_type_fallback_reaches_cross_tab_output(adapter):
+    source, partition = adapter
+    chunk = source.validate_reference_chunk(
+        partition,
+        pd.DataFrame([_row("coarse-tab", tar_fine_type=None)]),
+    )
+    result = compute_evidence_universe([chunk])
+    table = build_future_s1_output_tables(result)["target_entity_type_x_quotient_eligibility.csv"]
+    assert set(table["target_entity_type"]) == {"Repository"}
 
 
 def test_quotient_eligibility_and_edge_classes_preserve_reference_record_units(universe):
@@ -171,6 +215,62 @@ def test_historical_constants_are_not_generic_runtime_requirements(universe):
     assert reconciliation["target_membership_split_closes"] is True
     assert reconciliation["source_mismatch_after_admission_is_zero"] is True
     assert reconciliation["reference_records_before_source_admission"] == 5
+
+
+def test_rejected_only_reference_input_closes_before_count(adapter):
+    source, partition = adapter
+    rejected = _row(
+        "rejected-only",
+        status=OUT_OF_SEED,
+        event_repo_id="202",
+        mismatch=True,
+    )
+    chunk = source.validate_reference_chunk(partition, pd.DataFrame([rejected]))
+    result = compute_evidence_universe([chunk])
+    assert result.records.empty
+    assert result.source_admission_before_count == 1
+    assert sum(result.source_admission_status_counts.values()) == 1
+    assert reconcile_evidence_universe(result)["source_admission_closes"] is True
+
+
+@pytest.mark.parametrize(
+    ("status", "event_repo_id", "mismatch"),
+    (
+        (ADMITTED, SEED_ID, False),
+        (OUT_OF_SEED, "202", True),
+        (MISSING, None, True),
+        (INVALID, None, True),
+    ),
+)
+def test_source_admission_before_count_closes_for_each_status(adapter, status, event_repo_id, mismatch):
+    source, partition = adapter
+    chunk = source.validate_reference_chunk(
+        partition,
+        pd.DataFrame([_row("status-%s" % status, status=status, event_repo_id=event_repo_id, mismatch=mismatch)]),
+    )
+    result = compute_evidence_universe([chunk])
+    assert result.source_admission_before_count == sum(result.source_admission_status_counts.values())
+    assert reconcile_evidence_universe(result)["source_admission_closes"] is True
+
+
+def test_no_chunks_has_zero_source_admission_before_count():
+    result = compute_evidence_universe([])
+    assert result.source_admission_before_count == 0
+    assert sum(result.source_admission_status_counts.values()) == 0
+
+
+def test_source_seed_membership_mismatch_is_detected_and_runtime_rejected(adapter):
+    source, partition = adapter
+    chunk = source.validate_reference_chunk(
+        partition,
+        pd.DataFrame([_row("seed-mismatch", src_agg="R_202", tar_agg="R_101")]),
+    )
+    result = compute_evidence_universe([chunk])
+    assert bool(result.records.iloc[0]["source_seed_membership_mismatch"]) is True
+    with pytest.raises(S1EvidenceUniverseContractError, match="source_mismatch_after_admission_is_zero"):
+        assert_s1_runtime_acceptance(result)
+    with pytest.raises(S1EvidenceUniverseContractError, match="source_mismatch_after_admission_is_zero"):
+        build_future_s1_output_tables(result)
 
 
 def test_s1_has_no_s7_output_or_selection_surface(universe):

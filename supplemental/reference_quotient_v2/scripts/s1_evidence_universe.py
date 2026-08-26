@@ -157,7 +157,7 @@ def admitted_records_from_chunks(chunks: Iterable[ValidatedReferenceChunk]) -> t
             admitted_frames.append(require_admitted_reference_records(chunk.admitted_rows))
     if not admitted_frames:
         empty = pd.DataFrame(columns=ANALYTICAL_COLUMNS)
-        return empty, dict(counts), 0
+        return empty, dict(counts), int(sum(counts.values()))
     records = pd.concat(admitted_frames, ignore_index=True)
     return records, dict(counts), int(sum(counts.values()))
 
@@ -230,7 +230,9 @@ def classify_evidence_records(records: pd.DataFrame, membership: MembershipConte
     result["source_seed_membership_mismatch"] = (
         source_valid & result["src_project_id"].ne(result["authoritative_seed_project"])
     ).astype(bool)
-    result["target_entity_type"] = result["tar_entity_type_fine_grained"].map(_text)
+    result["target_entity_type"] = result["tar_entity_type_fine_grained"].fillna(
+        result["tar_entity_type"]
+    ).map(_text)
     result["source_entity_type"] = result["src_entity_type"].map(_text)
     result["event_type"] = result["event_type"].map(_text)
     return result
@@ -379,9 +381,29 @@ def reconcile_evidence_universe(result: S1EvidenceUniverse) -> dict[str, Any]:
     }
 
 
+def assert_s1_runtime_acceptance(result: S1EvidenceUniverse) -> dict[str, Any]:
+    """Fail closed before a future S1 writer can accept analytical tables."""
+
+    reconciliation = reconcile_evidence_universe(result)
+    mandatory_checks = (
+        "source_admission_closes",
+        "admitted_count_matches_status",
+        "target_membership_split_closes",
+        "source_mismatch_after_admission_is_zero",
+        "edge_weight_closes",
+    )
+    failed = tuple(name for name in mandatory_checks if not reconciliation[name])
+    if failed:
+        raise S1EvidenceUniverseContractError(
+            "S1 runtime acceptance failed: %s" % ", ".join(failed)
+        )
+    return reconciliation
+
+
 def build_future_s1_output_tables(result: S1EvidenceUniverse) -> dict[str, pd.DataFrame]:
     """Construct future S1 tables in memory; this function deliberately never writes."""
 
+    assert_s1_runtime_acceptance(result)
     records = result.records
     tables = {
         "evidence_universe_flow.csv": build_evidence_universe_flow(result),
