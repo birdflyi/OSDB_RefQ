@@ -22,6 +22,15 @@ weight_multiplicity_contract: "one unit per retained Reference record by ordered
 random_seed: 20260731
 s2_directed_weight_thresholds: [1, 2, 5, 10]
 brokerage_sample_size: 500
+s4_louvain_seed_start: 20260731
+s4_louvain_run_count: 50
+s4_ari_alert_threshold: 0.9
+s5_brokerage_k: [250, 500, 1000]
+s5_seed_start: 20260731
+s5_run_count: 20
+s5_top_k: [10, 20, 50]
+s5_spearman_alert_threshold: 0.9
+s5_top50_overlap_alert_threshold: 0.8
 s3_network_authority: "script/ch5_reference_quotient/network_views.py:directed_to_undirected_edges+analyze_undirected_view"
 s5_inclusion_frequency_authority: "supplemental/reference_quotient_v2/outputs/S5_brokerage_stability/brokerage_topk_inclusion_frequency.csv"
 s6_structural_summary_authority: "supplemental/reference_quotient_v2/outputs/S6_figure_ready/structural_summary.csv"

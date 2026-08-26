@@ -332,4 +332,62 @@ def validate_scaffold_config(config: Mapping[str, Any]) -> Dict[str, Path]:
         raise PathGuardError("s2_directed_weight_thresholds must be strictly increasing")
     if tuple(normalized_thresholds) != (1, 2, 5, 10):
         raise PathGuardError("s2_directed_weight_thresholds must preserve 1, 2, 5, 10")
+    _validate_stability_config(config)
     return paths
+
+
+def _strict_int(config: Mapping[str, Any], key: str, *, minimum: int = 1) -> int:
+    value = config.get(key)
+    if isinstance(value, bool) or not isinstance(value, int) or value < minimum:
+        raise PathGuardError("%s must be an integer >= %s" % (key, minimum))
+    return value
+
+
+def _strict_float(config: Mapping[str, Any], key: str) -> float:
+    value = config.get(key)
+    if isinstance(value, bool) or not isinstance(value, (int, float)):
+        raise PathGuardError("%s must be numeric" % key)
+    numeric = float(value)
+    if not 0.0 <= numeric <= 1.0:
+        raise PathGuardError("%s must be between 0 and 1" % key)
+    return numeric
+
+
+def _strict_int_list(config: Mapping[str, Any], key: str, expected: tuple[int, ...]) -> tuple[int, ...]:
+    value = config.get(key)
+    if not isinstance(value, (list, tuple)):
+        raise PathGuardError("%s must be a list" % key)
+    normalized: list[int] = []
+    for item in value:
+        if isinstance(item, bool) or not isinstance(item, int) or item <= 0:
+            raise PathGuardError("%s must contain positive integers" % key)
+        normalized.append(item)
+    if tuple(normalized) != expected:
+        raise PathGuardError("%s must preserve %s" % (key, list(expected)))
+    return tuple(normalized)
+
+
+def _validate_stability_config(config: Mapping[str, Any]) -> None:
+    """Enforce the frozen S4/S5 production design without running a stage."""
+
+    authoritative_seed = _strict_int(config, "random_seed")
+    if authoritative_seed != 20260731:
+        raise PathGuardError("random_seed must preserve 20260731")
+    brokerage_sample = _strict_int(config, "brokerage_sample_size")
+    if brokerage_sample != 500:
+        raise PathGuardError("brokerage_sample_size must preserve 500")
+
+    s4_start = _strict_int(config, "s4_louvain_seed_start")
+    s4_count = _strict_int(config, "s4_louvain_run_count")
+    if (s4_start, s4_count) != (20260731, 50):
+        raise PathGuardError("S4 seed contract must be 20260731..20260780")
+    _strict_float(config, "s4_ari_alert_threshold")
+
+    _strict_int_list(config, "s5_brokerage_k", (250, 500, 1000))
+    s5_start = _strict_int(config, "s5_seed_start")
+    s5_count = _strict_int(config, "s5_run_count")
+    if (s5_start, s5_count) != (20260731, 20):
+        raise PathGuardError("S5 seed contract must be 20260731..20260750")
+    _strict_int_list(config, "s5_top_k", (10, 20, 50))
+    _strict_float(config, "s5_spearman_alert_threshold")
+    _strict_float(config, "s5_top50_overlap_alert_threshold")
