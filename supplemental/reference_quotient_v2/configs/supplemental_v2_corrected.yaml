@@ -1,0 +1,31 @@
+# C3.7-A scaffold configuration. Scientific stages are not authorized here.
+schema_version: "supplemental_v2_corrected_scaffold_v1"
+study_year: 2023
+relation_type: "Reference"
+corrected_p0_root: "outputs/reference_quotient_p0_corrected_v2"
+corrected_p0_manifest: "outputs/reference_quotient_p0_corrected_v2/manifest.json"
+corrected_p0_config: "configs/ch5_reference_quotient_p0_v2.yaml"
+corrected_aggregate_root: "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected"
+corrected_output_root: "supplemental/reference_quotient_v2/outputs"
+
+historical_p0_root:
+  path: "outputs/reference_quotient_p0_frozen"
+  comparison_only: true
+historical_supplemental_root:
+  path: "supplemental/reference_quotient_v1"
+  comparison_only: true
+historical_tag: "chapter5-refq-freeze-v1.0"
+
+identity_policy: "STRICT_REPOSITORY_IDENTITY"
+source_admission_rule: "event_repo_id == annotated_primary_github_repo_id"
+weight_multiplicity_contract: "one unit per retained Reference record by ordered source/target membership pair"
+random_seed: 20260731
+s3_network_authority: "script/ch5_reference_quotient/network_views.py:directed_to_undirected_edges+analyze_undirected_view"
+s5_inclusion_frequency_authority: "supplemental/reference_quotient_v2/outputs/S5_brokerage_stability/brokerage_topk_inclusion_frequency.csv"
+s6_structural_summary_authority: "supplemental/reference_quotient_v2/outputs/S6_figure_ready/structural_summary.csv"
+
+# Historical roots are read-only comparison records. No event rejoin is part of
+# the corrected aggregate authority path.
+event_rejoin_required: false
+scientific_execution_authorized: false
+no_output_root_creation_in_scaffold: true
