@@ -306,6 +306,30 @@ def validate_scaffold_config(config: Mapping[str, Any]) -> Dict[str, Path]:
         raise PathGuardError("event_rejoin_required must be false")
     if config.get("scientific_execution_authorized") is not False:
         raise PathGuardError("scientific execution must remain unauthorized in C3.7-A")
-    if int(config.get("random_seed", 0)) != 20260731:
-        raise PathGuardError("random_seed must be 20260731")
+    corrected_p0_config = _load_simple_yaml(
+        paths["corrected_p0_config"].read_text(encoding="utf-8")
+    )
+    for key in ("random_seed", "brokerage_sample_size"):
+        configured = config.get(key)
+        authoritative = corrected_p0_config.get(key)
+        if not isinstance(configured, int) or isinstance(configured, bool):
+            raise PathGuardError("%s must be an integer" % key)
+        if configured != authoritative:
+            raise PathGuardError(
+                "%s must match corrected P0 configuration" % key
+            )
+    thresholds = config.get("s2_directed_weight_thresholds")
+    if not isinstance(thresholds, (list, tuple)) or not thresholds:
+        raise PathGuardError("s2_directed_weight_thresholds must be a non-empty list")
+    normalized_thresholds = []
+    for threshold in thresholds:
+        if isinstance(threshold, bool) or not isinstance(threshold, int) or threshold <= 0:
+            raise PathGuardError("s2_directed_weight_thresholds must contain positive integers")
+        normalized_thresholds.append(threshold)
+    if len(set(normalized_thresholds)) != len(normalized_thresholds):
+        raise PathGuardError("s2_directed_weight_thresholds must be unique")
+    if normalized_thresholds != sorted(normalized_thresholds):
+        raise PathGuardError("s2_directed_weight_thresholds must be strictly increasing")
+    if tuple(normalized_thresholds) != (1, 2, 5, 10):
+        raise PathGuardError("s2_directed_weight_thresholds must preserve 1, 2, 5, 10")
     return paths
