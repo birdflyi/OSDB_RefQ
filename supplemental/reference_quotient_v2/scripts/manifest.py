@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import hashlib
 import json
+import sys
 from enum import Enum
 from pathlib import Path
 from typing import Any, Dict, Mapping, Optional
@@ -15,6 +16,10 @@ class S7Status(str, Enum):
     KEPT_FIXED_OBJECT = "KEPT_FIXED_OBJECT"
     REGENERATE_REQUIRED = "REGENERATE_REQUIRED"
     NOT_EVALUATED = "NOT_EVALUATED"
+
+
+class ManifestContractError(ValueError):
+    """Raised when a corrected package manifest is incomplete or inconsistent."""
 
 
 def sha256_file(path: str | Path) -> str:
@@ -79,8 +84,224 @@ def validate_scaffold_provenance(config: Mapping[str, Any]) -> Dict[str, Any]:
         "corrected_p0_manifest": str(paths["corrected_p0_manifest"]),
         "corrected_p0_manifest_status": manifest["status"],
         "corrected_p0_config_sha256": sha256_file(paths["corrected_p0_config"]),
+        "corrected_p0_config": str(paths["corrected_p0_config"]),
         "corrected_p0_root": str(paths["corrected_p0_root"]),
         "corrected_aggregate_root": str(paths["corrected_aggregate_root"]),
         "corrected_output_root": str(paths["corrected_output_root"]),
         "entry_point_used_as_authority": False,
+    }
+
+
+PACKAGE_STAGE_NAMES: tuple[str, ...] = (
+    "S1_evidence_universe",
+    "S2_weight_sensitivity",
+    "S3_observation_sensitivity",
+    "S4_community_stability",
+    "S5_brokerage_stability",
+    "S6_figure_ready",
+)
+PACKAGE_MANIFEST_REQUIRED_KEYS: tuple[str, ...] = (
+    "schema_version",
+    "package_version",
+    "status",
+    "release_status",
+    "implementation_commit",
+    "branch",
+    "corrected_p0",
+    "corrected_aggregate",
+    "weight_multiplicity_contract",
+    "random_seed",
+    "brokerage_sample_size",
+    "s2_directed_weight_thresholds",
+    "s3_network_authority",
+    "s4_seed_contract",
+    "s5_k_seed_top_k_contract",
+    "s5_inclusion_frequency_authority",
+    "s6_structural_summary_authority",
+    "s6_figure_ready_manifest_authority",
+    "stage_receipts",
+    "runtime_versions",
+    "historical_comparison_baseline",
+    "historical_write_audit",
+    "s7_status",
+    "entry_point_used_as_authority",
+)
+
+
+def _manifest_runtime_versions() -> dict[str, str]:
+    versions: dict[str, str] = {"python": sys.version.split()[0]}
+    for module in ("numpy", "pandas", "scipy", "networkx"):
+        try:
+            versions[module] = str(__import__(module).__version__)
+        except Exception:  # pragma: no cover - optional environment metadata
+            versions[module] = "unavailable"
+    return versions
+
+
+def _stage_receipt_key(value: object) -> str | None:
+    if not isinstance(value, str):
+        return None
+    if value in PACKAGE_STAGE_NAMES:
+        return value
+    if value in {"S1", "S2", "S3", "S4", "S5", "S6"}:
+        return PACKAGE_STAGE_NAMES[int(value[1]) - 1]
+    return None
+
+
+def _normalized_stage_receipts(receipts: Mapping[str, Mapping[str, Any]]) -> dict[str, dict[str, Any]]:
+    if not isinstance(receipts, Mapping):
+        raise ManifestContractError("stage_receipts must be a mapping")
+    normalized: dict[str, dict[str, Any]] = {}
+    for key, receipt in receipts.items():
+        stage = _stage_receipt_key(key)
+        if stage is None or not isinstance(receipt, Mapping):
+            raise ManifestContractError("stage receipt has an invalid stage or value")
+        if stage in normalized:
+            raise ManifestContractError("duplicate stage receipt: %s" % stage)
+        normalized[stage] = dict(receipt)
+    return normalized
+
+
+def build_corrected_package_manifest(
+    config: Mapping[str, Any],
+    stage_receipts: Mapping[str, Mapping[str, Any]],
+    *,
+    implementation_commit: str,
+    branch: str,
+    s7_status: str | S7Status = S7Status.NOT_EVALUATED,
+    runtime_versions: Optional[Mapping[str, str]] = None,
+    historical_write_audit: Optional[Mapping[str, Any]] = None,
+    s6_manifest_path: Optional[str] = None,
+) -> dict[str, Any]:
+    """Construct a future package manifest without persisting it."""
+
+    provenance = validate_scaffold_provenance(config)
+    receipts = _normalized_stage_receipts(stage_receipts)
+    try:
+        status_value = S7Status(s7_status).value
+    except ValueError as exc:
+        raise ManifestContractError("invalid S7 status") from exc
+    # The supplemental config already carries the immutable governance values;
+    # corrected-P0 paths and hashes come from the validated provenance object.
+    complete = True
+    for stage in PACKAGE_STAGE_NAMES:
+        receipt = receipts.get(stage)
+        if receipt is None or receipt.get("status") not in {"PASS", "COMPLETE", "STAGE_COMPLETE"}:
+            complete = False
+    output_root = config["corrected_output_root"]
+    if isinstance(output_root, Mapping):
+        output_root = output_root.get("path")
+    s6_authority = s6_manifest_path or str(canonical_path(Path(output_root) / "S6_figure_ready" / "figure_ready_manifest_v2.json"))
+    manifest = {
+        "schema_version": "corrected_supplemental_package_manifest_v2",
+        "package_version": "corrected_supplemental_v2",
+        "status": "STAGE_PACKAGE_COMPLETE" if complete else "STAGE_PACKAGE_INCOMPLETE",
+        "release_status": "RELEASE_READY" if complete and status_value == S7Status.KEPT_FIXED_OBJECT.value else "NOT_RELEASE_READY",
+        "implementation_commit": implementation_commit,
+        "branch": branch,
+        "corrected_p0": {
+            "root": provenance["corrected_p0_root"],
+            "manifest_path": provenance["corrected_p0_manifest"],
+            "manifest_sha256": sha256_file(provenance["corrected_p0_manifest"]),
+            "config_path": provenance["corrected_p0_config"],
+            "config_sha256": provenance["corrected_p0_config_sha256"],
+        },
+        "corrected_aggregate": {
+            "root": provenance["corrected_aggregate_root"],
+            "identity_policy": config["identity_policy"],
+            "source_admission_rule": config["source_admission_rule"],
+        },
+        "weight_multiplicity_contract": config["weight_multiplicity_contract"],
+        "random_seed": config["random_seed"],
+        "brokerage_sample_size": config["brokerage_sample_size"],
+        "s2_directed_weight_thresholds": list(config["s2_directed_weight_thresholds"]),
+        "s3_network_authority": config["s3_network_authority"],
+        "s4_seed_contract": {
+            "seed_start": config["s4_louvain_seed_start"],
+            "run_count": config["s4_louvain_run_count"],
+            "seed_end": config["s4_louvain_seed_start"] + config["s4_louvain_run_count"] - 1,
+            "ari_alert_threshold": config["s4_ari_alert_threshold"],
+        },
+        "s5_k_seed_top_k_contract": {
+            "k": list(config["s5_brokerage_k"]),
+            "seed_start": config["s5_seed_start"],
+            "run_count": config["s5_run_count"],
+            "seed_end": config["s5_seed_start"] + config["s5_run_count"] - 1,
+            "top_k": list(config["s5_top_k"]),
+            "spearman_alert_threshold": config["s5_spearman_alert_threshold"],
+            "top50_overlap_alert_threshold": config["s5_top50_overlap_alert_threshold"],
+        },
+        "s5_inclusion_frequency_authority": config["s5_inclusion_frequency_authority"],
+        "s6_structural_summary_authority": "S6_figure_ready/structural_summary.csv",
+        "s6_figure_ready_manifest_authority": s6_authority,
+        "stage_receipts": receipts,
+        "runtime_versions": dict(runtime_versions or _manifest_runtime_versions()),
+        "historical_comparison_baseline": {
+            "tag": config["historical_tag"],
+            "commit": config.get("historical_baseline_commit"),
+            "comparison_only": True,
+        },
+        "historical_write_audit": dict(historical_write_audit or {
+            "status": "NOT_EXECUTED",
+            "no_overwrite": True,
+            "historical_roots_modified": False,
+        }),
+        "s7_status": status_value,
+        "entry_point_used_as_authority": False,
+        "manifest_self_hash_not_embedded": True,
+    }
+    return manifest
+
+
+build_package_manifest = build_corrected_package_manifest
+
+
+def validate_package_manifest(manifest: Mapping[str, Any]) -> dict[str, Any]:
+    """Validate package-level required keys and release-status semantics."""
+
+    if not isinstance(manifest, Mapping):
+        raise ManifestContractError("package manifest must be a mapping")
+    missing = [key for key in PACKAGE_MANIFEST_REQUIRED_KEYS if key not in manifest]
+    if missing:
+        raise ManifestContractError("package manifest is missing: %s" % ", ".join(missing))
+    try:
+        s7_status = S7Status(manifest["s7_status"]).value
+    except ValueError as exc:
+        raise ManifestContractError("invalid S7 status") from exc
+    receipts = _normalized_stage_receipts(manifest["stage_receipts"])
+    complete = True
+    for stage in PACKAGE_STAGE_NAMES:
+        receipt = receipts.get(stage)
+        if receipt is None or receipt.get("status") not in {"PASS", "COMPLETE", "STAGE_COMPLETE"}:
+            complete = False
+    expected_status = "STAGE_PACKAGE_COMPLETE" if complete else "STAGE_PACKAGE_INCOMPLETE"
+    if manifest["status"] != expected_status:
+        raise ManifestContractError("package status does not close against stage receipts")
+    expected_release = "RELEASE_READY" if complete and s7_status == S7Status.KEPT_FIXED_OBJECT.value else "NOT_RELEASE_READY"
+    if manifest["release_status"] != expected_release:
+        raise ManifestContractError("release status does not close against stage/S7 status")
+    if manifest["entry_point_used_as_authority"] is not False:
+        raise ManifestContractError("stale P0 entry_point cannot be executable authority")
+    corrected_p0 = manifest["corrected_p0"]
+    if not isinstance(corrected_p0, Mapping):
+        raise ManifestContractError("corrected_p0 must be a mapping")
+    for path_key, sha_key, label in (
+        ("manifest_path", "manifest_sha256", "corrected P0 manifest"),
+        ("config_path", "config_sha256", "corrected P0 config"),
+    ):
+        path_value = corrected_p0.get(path_key)
+        sha_value = corrected_p0.get(sha_key)
+        if not isinstance(path_value, str) or not isinstance(sha_value, str):
+            raise ManifestContractError("%s path/SHA record is incomplete" % label)
+        try:
+            actual_sha = sha256_file(path_value)
+        except (OSError, TypeError, ValueError) as exc:
+            raise ManifestContractError("%s is unavailable" % label) from exc
+        if sha_value != actual_sha:
+            raise ManifestContractError("%s SHA does not close" % label)
+    return {
+        "status": "PASS",
+        "stage_package_complete": complete,
+        "release_ready": expected_release == "RELEASE_READY",
+        "s7_status": s7_status,
     }
