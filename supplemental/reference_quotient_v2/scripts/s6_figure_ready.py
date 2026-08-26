@@ -30,8 +30,11 @@ from .paths import (
 from .s4_community_stability import S4_OUTPUT_CONTRACT
 from .s5_brokerage_stability import S5_OUTPUT_CONTRACT
 from .stage_io import (
+    AuthorityRoots,
+    S6_APPROVED_SUPPLEMENTAL_INPUTS,
     SerializedArtifact,
     StageReceipt,
+    production_authority_roots,
     serialize_artifacts,
     write_stage_outputs,
 )
@@ -93,9 +96,8 @@ S6_DEPRECATED_OUTPUTS: tuple[str, ...] = (
     "figure_ready_manifest.json",
     "figure_ready_manifest_v1_1.json",
 )
-S6_SOURCE_KEYS: tuple[str, ...] = tuple("p0/" + filename for filename in P0_SOURCE_FILES) + (
-    "s4/louvain_stability_runs.csv",
-    "s5/brokerage_stability_runs.csv",
+S6_SOURCE_KEYS: tuple[str, ...] = tuple("p0/" + filename for filename in P0_SOURCE_FILES) + tuple(
+    S6_APPROVED_SUPPLEMENTAL_INPUTS
 )
 
 PROFILE_QUANTILE_METRICS: tuple[str, ...] = (
@@ -208,22 +210,14 @@ def resolve_s6_source_bundle(
             root=p0_root,
             version="corrected_p0_v2",
         )
-    s4_key = "s4/louvain_stability_runs.csv"
-    sources[s4_key] = S6SourceArtifact(
-        key=s4_key,
-        path=supplemental_root / "S4_community_stability" / "louvain_stability_runs.csv",
-        authority_class=CORRECTED_SUPPLEMENTAL_V2,
-        root=supplemental_root,
-        version="corrected_supplemental_v2",
-    )
-    s5_key = "s5/brokerage_stability_runs.csv"
-    sources[s5_key] = S6SourceArtifact(
-        key=s5_key,
-        path=supplemental_root / "S5_brokerage_stability" / "brokerage_stability_runs.csv",
-        authority_class=CORRECTED_SUPPLEMENTAL_V2,
-        root=supplemental_root,
-        version="corrected_supplemental_v2",
-    )
+    for key, relative_path in S6_APPROVED_SUPPLEMENTAL_INPUTS.items():
+        sources[key] = S6SourceArtifact(
+            key=key,
+            path=supplemental_root / relative_path,
+            authority_class=CORRECTED_SUPPLEMENTAL_V2,
+            root=supplemental_root,
+            version="corrected_supplemental_v2",
+        )
     bundle = S6SourceBundle(
         sources=sources,
         corrected_p0_root=p0_root,
@@ -251,11 +245,8 @@ def validate_s6_source_bundle(bundle: S6SourceBundle, *, require_exists: bool) -
         if key.startswith("p0/"):
             expected_path = root / key.removeprefix("p0/")
             expected_version = "corrected_p0_v2"
-        elif key == "s4/louvain_stability_runs.csv":
-            expected_path = root / "S4_community_stability" / "louvain_stability_runs.csv"
-            expected_version = "corrected_supplemental_v2"
-        else:
-            expected_path = root / "S5_brokerage_stability" / "brokerage_stability_runs.csv"
+        elif key in S6_APPROVED_SUPPLEMENTAL_INPUTS:
+            expected_path = root / S6_APPROVED_SUPPLEMENTAL_INPUTS[key]
             expected_version = "corrected_supplemental_v2"
         if source.path != expected_path:
             raise S6ContractError("S6 source path does not match declared key: %s" % key)
@@ -510,6 +501,8 @@ def serialize_s6_figure_ready_bundle(
     versions: Optional[Mapping[str, str]] = None,
     completed_at: Optional[str] = None,
     allow_external_test_root: bool = False,
+    authority_roots: Optional[AuthorityRoots] = None,
+    expected_output_root: str | Path | None = None,
 ) -> tuple[S6FigureReadyBundle, StageReceipt, dict[str, Any]]:
     """Future S6 writer; tests must pass a temporary output root."""
 
@@ -530,6 +523,8 @@ def serialize_s6_figure_ready_bundle(
         versions=versions,
         completed_at=completed_at,
         allow_external_test_root=allow_external_test_root,
+        authority_roots=authority_roots,
+        expected_output_root=expected_output_root,
     )
     # The writer serializes deterministically; assert the manifest payload was
     # the same payload used to compute its own output records.
@@ -565,11 +560,17 @@ def validate_s6_manifest_sha_closure(
     manifest: str | Path | Mapping[str, Any],
     *,
     manifest_directory: str | Path | None = None,
+    authority_roots: Optional[AuthorityRoots] = None,
 ) -> dict[str, Any]:
     """Verify every S6 source SHA, output SHA, byte count and row count."""
 
     value, inferred_directory = _load_manifest(manifest)
     base = canonical_path(manifest_directory) if manifest_directory is not None else inferred_directory
+    if authority_roots is not None:
+        if not isinstance(authority_roots, AuthorityRoots):
+            raise S6ContractError("S6 authority roots have an invalid context")
+        if not authority_roots.fixture and authority_roots != production_authority_roots():
+            raise S6ContractError("production S6 authority roots must match validated configuration")
     if value.get("schema_version") != "figure_ready_manifest_v2":
         raise S6ContractError("invalid S6 figure-ready manifest schema")
     entries = value.get("entries")
@@ -577,10 +578,17 @@ def validate_s6_manifest_sha_closure(
         raise S6ContractError("S6 manifest entry count does not match output inventory")
     seen_outputs: set[str] = set()
     source_count = 0
-    authority_roots = value.get("authority_roots")
-    if not isinstance(authority_roots, Mapping) or set(authority_roots) != {CORRECTED_P0, CORRECTED_SUPPLEMENTAL_V2}:
+    manifest_authority_roots = value.get("authority_roots")
+    if not isinstance(manifest_authority_roots, Mapping) or set(manifest_authority_roots) != {CORRECTED_P0, CORRECTED_SUPPLEMENTAL_V2}:
         raise S6ContractError("S6 manifest authority roots are incomplete")
-    resolved_authority_roots = {key: canonical_path(authority_roots[key]) for key in authority_roots}
+    resolved_authority_roots = {key: canonical_path(manifest_authority_roots[key]) for key in manifest_authority_roots}
+    if authority_roots is not None:
+        expected_roots = {
+            CORRECTED_P0: authority_roots.corrected_p0,
+            CORRECTED_SUPPLEMENTAL_V2: authority_roots.corrected_supplemental,
+        }
+        if any(resolved_authority_roots[key] != expected_roots[key] for key in expected_roots):
+            raise S6ContractError("S6 manifest authority roots do not match configured roots")
     for entry in entries:
         required = ("output", "output_sha256", "output_bytes", "row_count", "transformation", "source_artifacts")
         if any(key not in entry for key in required):
@@ -616,6 +624,10 @@ def validate_s6_manifest_sha_closure(
             expected_version = "corrected_p0_v2" if source["authority_class"] == CORRECTED_P0 else "corrected_supplemental_v2"
             if source["version"] != expected_version:
                 raise S6ContractError("S6 source version does not match its authority class")
+            if source["authority_class"] == CORRECTED_SUPPLEMENTAL_V2:
+                relative = source_path.relative_to(source_root).as_posix()
+                if relative not in S6_APPROVED_SUPPLEMENTAL_INPUTS.values():
+                    raise S6ContractError("S6 supplemental source is not in the approved source map")
             if "reference_quotient_v1" in str(source_path).replace("\\", "/"):
                 raise S6ContractError("historical S6 source is forbidden")
             if not source_path.is_file() or sha256_file(source_path) != source["sha256"]:

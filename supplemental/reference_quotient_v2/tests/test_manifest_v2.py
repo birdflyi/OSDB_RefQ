@@ -21,6 +21,7 @@ from supplemental.reference_quotient_v2.scripts.stage_io import (
     CORRECTED_P0,
     STAGE_RECEIPT_NAME,
     StageReceiptContractError,
+    fixture_authority_roots,
     validate_stage_receipt,
     write_stage_outputs,
 )
@@ -54,8 +55,8 @@ def _fake_receipts() -> dict[str, dict]:
     return {stage: _receipt(stage) for stage in STAGES + ("S6_figure_ready",)}
 
 
-def _input_record(tmp_path) -> dict:
-    root = tmp_path / "corrected_p0_fixture"
+def _input_record(tmp_path, root=None) -> dict:
+    root = root or (tmp_path / "corrected_p0_fixture")
     root.mkdir(parents=True, exist_ok=True)
     source = root / "source.csv"
     source.write_text("value\n1\n", encoding="utf-8")
@@ -68,10 +69,32 @@ def _input_record(tmp_path) -> dict:
     }
 
 
+def _fixture_context(tmp_path):
+    return fixture_authority_roots(
+        corrected_aggregate=tmp_path / "corrected_aggregate_fixture",
+        corrected_p0=tmp_path / "corrected_p0_fixture",
+        corrected_supplemental=tmp_path / "corrected_supplemental_v2_outputs",
+    )
+
+
+def _package_context(tmp_path):
+    return fixture_authority_roots(
+        corrected_aggregate=tmp_path / "corrected_aggregate_fixture",
+        corrected_p0=tmp_path / "corrected_p0",
+        corrected_supplemental=tmp_path / "corrected_supplemental_v2_outputs",
+    )
+
+
 def _valid_package(tmp_path, *, s7_status=S7Status.NOT_EVALUATED, historical_write_audit=_UNSET):
     config = paths.load_config(paths.DEFAULT_CONFIG_PATH)
-    input_record = _input_record(tmp_path)
+    p0_root, supplemental_root, source_bundle = _fixture(tmp_path)
+    input_record = _input_record(tmp_path, root=p0_root)
     stage_root = tmp_path / "stage_outputs"
+    authority_roots = fixture_authority_roots(
+        corrected_aggregate=tmp_path / "corrected_aggregate_fixture",
+        corrected_p0=p0_root,
+        corrected_supplemental=supplemental_root,
+    )
     receipts = {}
     for index, stage in enumerate(STAGES, start=1):
         receipt = write_stage_outputs(
@@ -82,16 +105,19 @@ def _valid_package(tmp_path, *, s7_status=S7Status.NOT_EVALUATED, historical_wri
             input_artifacts=(input_record,),
             completed_at="2026-08-26T00:00:00+00:00",
             allow_external_test_root=True,
+            authority_roots=authority_roots,
+            expected_output_root=stage_root,
         )
         receipts[stage] = receipt.as_dict()
 
-    _, _, source_bundle = _fixture(tmp_path)
     _, s6_receipt, _ = serialize_s6_figure_ready_bundle(
         source_bundle,
-        tmp_path / "s6_outputs",
+        stage_root,
         implementation_commit="fixture",
         completed_at="2026-08-26T00:00:00+00:00",
         allow_external_test_root=True,
+        authority_roots=authority_roots,
+        expected_output_root=stage_root,
     )
     receipts["S6_figure_ready"] = s6_receipt.as_dict()
     audit = historical_write_audit
@@ -111,6 +137,16 @@ def _valid_package(tmp_path, *, s7_status=S7Status.NOT_EVALUATED, historical_wri
         s7_status=s7_status,
         runtime_versions={"python": "fixture"},
         historical_write_audit=audit,
+        authority_roots=authority_roots,
+        expected_output_root=stage_root,
+    )
+
+
+def _validate_fixture_package(manifest, tmp_path):
+    return validate_package_manifest(
+        manifest,
+        authority_roots=_package_context(tmp_path),
+        expected_output_root=tmp_path / "stage_outputs",
     )
 
 
@@ -132,8 +168,9 @@ def test_valid_receipts_and_g19_pass_package_complete_but_s7_not_ready(tmp_path)
     manifest = _valid_package(tmp_path)
     assert manifest["status"] == "STAGE_PACKAGE_COMPLETE"
     assert manifest["release_status"] == "NOT_RELEASE_READY"
-    assert validate_package_manifest(manifest)["stage_package_complete"] is True
-    assert validate_package_manifest(manifest)["release_ready"] is False
+    context = _fixture_context(tmp_path)
+    assert _validate_fixture_package(manifest, tmp_path)["stage_package_complete"] is True
+    assert _validate_fixture_package(manifest, tmp_path)["release_ready"] is False
 
 
 @pytest.mark.parametrize("field", ("input_artifacts", "output_artifacts"))
@@ -142,7 +179,7 @@ def test_empty_receipt_artifact_lists_fail_closed(field, tmp_path):
     if field == "output_artifacts":
         receipt["input_artifacts"] = [_input_record(tmp_path)]
     with pytest.raises(StageReceiptContractError, match="non-empty"):
-        validate_stage_receipt(receipt, "S1")
+        validate_stage_receipt(receipt, "S1", authority_roots=_fixture_context(tmp_path))
 
 
 def test_receipt_stage_mismatch_and_missing_field_fail_closed(tmp_path):
@@ -151,10 +188,10 @@ def test_receipt_stage_mismatch_and_missing_field_fail_closed(tmp_path):
     receipt["output_artifacts"] = [{"path": "S1_evidence_universe/x.csv", "sha256": "0" * 64, "bytes": 1, "row_count": 1}]
     receipt.pop("completed_at")
     with pytest.raises(StageReceiptContractError, match="completed_at"):
-        validate_stage_receipt(receipt, "S1")
+        validate_stage_receipt(receipt, "S1", authority_roots=_fixture_context(tmp_path))
     receipt["completed_at"] = "fixture"
     with pytest.raises(StageReceiptContractError, match="stage"):
-        validate_stage_receipt(receipt, "S2")
+        validate_stage_receipt(receipt, "S2", authority_roots=_fixture_context(tmp_path))
 
 
 @pytest.mark.parametrize("field", ("parameters", "runtime_versions"))
@@ -164,7 +201,7 @@ def test_missing_receipt_field_fails_closed(field, tmp_path):
     receipt["output_artifacts"] = [{"path": "S1_evidence_universe/x.csv", "sha256": "0" * 64, "bytes": 1, "row_count": 1}]
     receipt.pop(field)
     with pytest.raises(StageReceiptContractError, match=field):
-        validate_stage_receipt(receipt, "S1")
+        validate_stage_receipt(receipt, "S1", authority_roots=_fixture_context(tmp_path))
 
 
 def test_malformed_input_and_output_artifacts_fail_closed(tmp_path):
@@ -172,11 +209,11 @@ def test_malformed_input_and_output_artifacts_fail_closed(tmp_path):
     receipt["input_artifacts"] = [{"path": "x", "sha256": "0" * 64}]
     receipt["output_artifacts"] = [{"path": "S1_evidence_universe/x.csv", "sha256": "0" * 64, "bytes": 1, "row_count": 1}]
     with pytest.raises(StageReceiptContractError, match="input artifact"):
-        validate_stage_receipt(receipt, "S1")
+        validate_stage_receipt(receipt, "S1", authority_roots=_fixture_context(tmp_path))
     receipt["input_artifacts"] = [_input_record(tmp_path)]
     receipt["output_artifacts"] = [{"path": "S1_evidence_universe/x.csv", "sha256": "0" * 64, "bytes": 1}]
     with pytest.raises(StageReceiptContractError, match="output artifact"):
-        validate_stage_receipt(receipt, "S1")
+        validate_stage_receipt(receipt, "S1", authority_roots=_fixture_context(tmp_path))
 
 
 def test_input_hash_and_historical_authority_fail_closed(tmp_path):
@@ -185,14 +222,14 @@ def test_input_hash_and_historical_authority_fail_closed(tmp_path):
     with pytest.raises(StageReceiptContractError, match="input artifact SHA mismatch"):
         from supplemental.reference_quotient_v2.scripts.stage_io import validate_input_artifact_records
 
-        validate_input_artifact_records([input_record], "S1")
+        validate_input_artifact_records([input_record], "S1", authority_roots=_fixture_context(tmp_path))
     historical = _input_record(tmp_path)
     historical["authority_class"] = CORRECTED_P0
     historical["path"] = str(paths.HISTORICAL_P0_ROOT / "manifest.json")
     with pytest.raises(StageReceiptContractError, match="historical"):
         from supplemental.reference_quotient_v2.scripts.stage_io import validate_input_artifact_records
 
-        validate_input_artifact_records([historical], "S1")
+        validate_input_artifact_records([historical], "S1", authority_roots=_fixture_context(tmp_path))
 
 
 def test_wrong_stage_output_bytes_and_row_count_fail_package_validation(tmp_path):
@@ -200,15 +237,15 @@ def test_wrong_stage_output_bytes_and_row_count_fail_package_validation(tmp_path
     tampered = copy.deepcopy(manifest)
     tampered["stage_receipts"]["S1_evidence_universe"]["output_artifacts"][0]["bytes"] += 1
     with pytest.raises(ManifestContractError, match="stage receipt closure"):
-        validate_package_manifest(tampered)
+        _validate_fixture_package(tampered, tmp_path)
     tampered = copy.deepcopy(manifest)
     tampered["stage_receipts"]["S3_observation_sensitivity"]["output_artifacts"][0]["sha256"] = "0" * 64
     with pytest.raises(ManifestContractError, match="stage receipt closure"):
-        validate_package_manifest(tampered)
+        _validate_fixture_package(tampered, tmp_path)
     tampered = copy.deepcopy(manifest)
     tampered["stage_receipts"]["S2_weight_sensitivity"]["output_artifacts"][0]["row_count"] += 1
     with pytest.raises(ManifestContractError, match="stage receipt closure"):
-        validate_package_manifest(tampered)
+        _validate_fixture_package(tampered, tmp_path)
 
 
 def test_g19_missing_not_executed_or_fail_prevents_package_completion(tmp_path):
@@ -222,14 +259,14 @@ def test_s7_regenerate_required_is_not_release_ready(tmp_path):
     manifest = _valid_package(tmp_path, s7_status=S7Status.REGENERATE_REQUIRED)
     assert manifest["status"] == "STAGE_PACKAGE_COMPLETE"
     assert manifest["release_status"] == "NOT_RELEASE_READY"
-    assert validate_package_manifest(manifest)["release_ready"] is False
+    assert _validate_fixture_package(manifest, tmp_path)["release_ready"] is False
 
 
 def test_s7_kept_fixed_object_closes_release_ready(tmp_path):
     manifest = _valid_package(tmp_path, s7_status=S7Status.KEPT_FIXED_OBJECT)
     assert manifest["status"] == "STAGE_PACKAGE_COMPLETE"
     assert manifest["release_status"] == "RELEASE_READY"
-    assert validate_package_manifest(manifest)["release_ready"] is True
+    assert _validate_fixture_package(manifest, tmp_path)["release_ready"] is True
 
 
 def test_s6_manifest_authority_is_path_and_sha_and_tampering_fails(tmp_path):
@@ -240,7 +277,7 @@ def test_s6_manifest_authority_is_path_and_sha_and_tampering_fails(tmp_path):
     tampered = copy.deepcopy(manifest)
     tampered["s6_figure_ready_manifest_authority"]["sha256"] = "0" * 64
     with pytest.raises(ManifestContractError, match="S6 figure-ready manifest SHA"):
-        validate_package_manifest(tampered)
+        _validate_fixture_package(tampered, tmp_path)
 
 
 def test_invalid_nested_manifest_records_are_contract_errors(tmp_path):
@@ -248,7 +285,7 @@ def test_invalid_nested_manifest_records_are_contract_errors(tmp_path):
     malformed = copy.deepcopy(manifest)
     malformed["corrected_p0"] = None
     with pytest.raises(ManifestContractError, match="corrected_p0"):
-        validate_package_manifest(malformed)
+        _validate_fixture_package(malformed, tmp_path)
 
 
 def test_durable_marker_is_last_and_not_an_output_artifact(tmp_path):
@@ -260,6 +297,8 @@ def test_durable_marker_is_last_and_not_an_output_artifact(tmp_path):
         implementation_commit="fixture",
         input_artifacts=(_input_record(tmp_path),),
         allow_external_test_root=True,
+        authority_roots=_fixture_context(tmp_path),
+        expected_output_root=stage_root,
     )
     marker_path = stage_root / "S1_evidence_universe" / STAGE_RECEIPT_NAME
     assert marker_path.is_file()

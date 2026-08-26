@@ -25,6 +25,7 @@ from .paths import (
     canonical_path,
     load_config,
     protected_write_roots,
+    validate_scaffold_config,
 )
 
 
@@ -51,11 +52,15 @@ CORRECTED_SUPPLEMENTAL_V2 = "CORRECTED_SUPPLEMENTAL_V2"
 COMPLETED_STAGE_STATUSES = frozenset({"PASS", "COMPLETE", "STAGE_COMPLETE"})
 STAGE_INPUT_AUTHORITIES: Mapping[str, frozenset[str]] = {
     "S1_evidence_universe": frozenset({CORRECTED_AGGREGATE, CORRECTED_P0}),
-    "S2_weight_sensitivity": frozenset({CORRECTED_P0, CORRECTED_SUPPLEMENTAL_V2}),
-    "S3_observation_sensitivity": frozenset({CORRECTED_P0, CORRECTED_SUPPLEMENTAL_V2}),
-    "S4_community_stability": frozenset({CORRECTED_P0, CORRECTED_SUPPLEMENTAL_V2}),
-    "S5_brokerage_stability": frozenset({CORRECTED_P0, CORRECTED_SUPPLEMENTAL_V2}),
+    "S2_weight_sensitivity": frozenset({CORRECTED_P0}),
+    "S3_observation_sensitivity": frozenset({CORRECTED_P0}),
+    "S4_community_stability": frozenset({CORRECTED_P0}),
+    "S5_brokerage_stability": frozenset({CORRECTED_P0}),
     "S6_figure_ready": frozenset({CORRECTED_P0, CORRECTED_SUPPLEMENTAL_V2}),
+}
+S6_APPROVED_SUPPLEMENTAL_INPUTS: Mapping[str, str] = {
+    "s4/louvain_stability_runs.csv": "S4_community_stability/louvain_stability_runs.csv",
+    "s5/brokerage_stability_runs.csv": "S5_brokerage_stability/brokerage_stability_runs.csv",
 }
 RECEIPT_REQUIRED_KEYS = (
     "stage",
@@ -68,6 +73,81 @@ RECEIPT_REQUIRED_KEYS = (
     "completed_at",
 )
 _VALID_STAGE_NAMES = set(STAGE_DIRECTORY_NAMES) | set(STAGE_DIRECTORY_NAMES.values())
+
+
+@dataclass(frozen=True)
+class AuthorityRoots:
+    """Explicit roots used to bind authority classes to filesystem paths."""
+
+    corrected_aggregate: Path
+    corrected_p0: Path
+    corrected_supplemental: Path
+    fixture: bool = False
+
+    def __post_init__(self) -> None:
+        for field in ("corrected_aggregate", "corrected_p0", "corrected_supplemental"):
+            object.__setattr__(self, field, canonical_path(getattr(self, field)))
+        if not isinstance(self.fixture, bool):
+            raise StageIOError("authority root fixture flag is invalid")
+
+    def root_for(self, authority_class: str) -> Path:
+        roots = {
+            CORRECTED_AGGREGATE: self.corrected_aggregate,
+            CORRECTED_P0: self.corrected_p0,
+            CORRECTED_SUPPLEMENTAL_V2: self.corrected_supplemental,
+        }
+        try:
+            return roots[authority_class]
+        except KeyError as exc:
+            raise StageIOError("unknown authority class: %s" % authority_class) from exc
+
+
+def production_authority_roots(config: Optional[Mapping[str, Any]] = None) -> AuthorityRoots:
+    """Derive production authority roots from the validated scaffold config."""
+
+    configured = dict(config) if config is not None else load_config()
+    try:
+        paths = validate_scaffold_config(configured)
+    except Exception as exc:  # pragma: no cover - configuration failures are contract failures
+        raise StageIOError("unable to resolve configured authority roots") from exc
+    return AuthorityRoots(
+        corrected_aggregate=paths["corrected_aggregate_root"],
+        corrected_p0=paths["corrected_p0_root"],
+        corrected_supplemental=paths["corrected_output_root"],
+        fixture=False,
+    )
+
+
+def fixture_authority_roots(
+    *,
+    corrected_aggregate: str | Path,
+    corrected_p0: str | Path,
+    corrected_supplemental: str | Path,
+) -> AuthorityRoots:
+    """Create an explicit temporary-root context for synthetic tests only."""
+
+    return AuthorityRoots(
+        corrected_aggregate=corrected_aggregate,
+        corrected_p0=corrected_p0,
+        corrected_supplemental=corrected_supplemental,
+        fixture=True,
+    )
+
+
+def _authority_context(authority_roots: Optional[AuthorityRoots]) -> AuthorityRoots:
+    if authority_roots is None:
+        return production_authority_roots()
+    if not isinstance(authority_roots, AuthorityRoots):
+        raise StageIOError("authority_roots must be an AuthorityRoots context")
+    if not authority_roots.fixture:
+        configured = production_authority_roots()
+        if (
+            authority_roots.corrected_aggregate != configured.corrected_aggregate
+            or authority_roots.corrected_p0 != configured.corrected_p0
+            or authority_roots.corrected_supplemental != configured.corrected_supplemental
+        ):
+            raise StageIOError("production authority roots must match validated configuration")
+    return authority_roots
 
 
 @dataclass(frozen=True)
@@ -123,9 +203,15 @@ def canonical_stage_name(stage_name: str) -> str:
     return stage_name
 
 
-def _safe_output_root(output_root: str | Path, *, allow_external_test_root: bool = False) -> Path:
+def _safe_output_root(
+    output_root: str | Path,
+    *,
+    allow_external_test_root: bool = False,
+    expected_output_root: str | Path | None = None,
+    fixture_context: bool = False,
+) -> Path:
     candidate = canonical_path(output_root)
-    expected = canonical_path(CORRECTED_OUTPUTS_ROOT)
+    expected = canonical_path(expected_output_root or CORRECTED_OUTPUTS_ROOT)
     repository = canonical_path(REPOSITORY_ROOT)
     inside_repository = candidate == repository or candidate.is_relative_to(repository)
     try:
@@ -136,8 +222,14 @@ def _safe_output_root(output_root: str | Path, *, allow_external_test_root: bool
     for root in protected:
         if candidate == root or candidate.is_relative_to(root):
             raise StageIOError("stage output root crosses protected authority: %s" % root)
+    if fixture_context and candidate == canonical_path(CORRECTED_OUTPUTS_ROOT):
+        raise StageIOError("fixture stage output root cannot be the production corrected v2 outputs")
+    if fixture_context and not allow_external_test_root:
+        raise StageIOError("fixture stage output root requires explicit external-root opt-in")
     if not allow_external_test_root and candidate != expected:
         raise StageIOError("production stage output root must be exactly corrected v2 outputs")
+    if allow_external_test_root and not fixture_context and candidate != expected:
+        raise StageIOError("external test stage root requires an explicit fixture authority context")
     if allow_external_test_root and inside_repository and candidate != expected:
         raise StageIOError("external test stage root must be outside the repository")
     if candidate == expected:
@@ -205,10 +297,21 @@ def write_stage_outputs(
     versions: Optional[Mapping[str, str]] = None,
     completed_at: Optional[str] = None,
     allow_external_test_root: bool = False,
+    authority_roots: Optional[AuthorityRoots] = None,
+    expected_output_root: str | Path | None = None,
 ) -> StageReceipt:
     """Write one stage once and persist its receipt after output closure."""
 
-    root = _safe_output_root(output_root, allow_external_test_root=allow_external_test_root)
+    context = _authority_context(authority_roots)
+    configured_output_root = canonical_path(expected_output_root or context.corrected_supplemental)
+    if not context.fixture and configured_output_root != context.corrected_supplemental:
+        raise StageIOError("production output root cannot override configured supplemental root")
+    root = _safe_output_root(
+        output_root,
+        allow_external_test_root=allow_external_test_root,
+        expected_output_root=configured_output_root,
+        fixture_context=context.fixture,
+    )
     stage = canonical_stage_name(stage_name)
     stage_dir = root / stage
     if stage_dir.exists():
@@ -239,7 +342,7 @@ def write_stage_outputs(
         },
         stage,
     )
-    validate_input_artifact_records(input_records, stage)
+    validate_input_artifact_records(input_records, stage, authority_roots=context)
     # No cleanup is performed after mkdir or any subsequent write failure.
     stage_dir.mkdir(parents=True, exist_ok=False)
     records: list[Mapping[str, Any]] = []
@@ -267,12 +370,26 @@ def write_stage_outputs(
         completed_at=receipt_completed_at,
         output_root=str(root),
     )
-    validate_stage_receipt(receipt.as_dict(), stage, output_root=root, require_durable_marker=False)
+    validate_stage_receipt(
+        receipt.as_dict(),
+        stage,
+        output_root=root,
+        require_durable_marker=False,
+        authority_roots=context,
+        expected_output_root=root,
+    )
     receipt_path = stage_dir / STAGE_RECEIPT_NAME
     if receipt_path.exists():
         raise StageIOError("stage receipt already exists: %s" % receipt_path)
     receipt_path.write_bytes(_serialize_json(receipt.as_dict()))
-    validate_stage_receipt(receipt.as_dict(), stage, output_root=root, require_durable_marker=True)
+    validate_stage_receipt(
+        receipt.as_dict(),
+        stage,
+        output_root=root,
+        require_durable_marker=True,
+        authority_roots=context,
+        expected_output_root=root,
+    )
     return receipt
 
 
@@ -447,10 +564,13 @@ def _validate_output_artifact_shape(artifact: object) -> None:
 def validate_input_artifact_records(
     records: list[Mapping[str, Any]] | tuple[Mapping[str, Any], ...],
     stage_name: str,
+    *,
+    authority_roots: Optional[AuthorityRoots] = None,
 ) -> dict[str, Any]:
     """Verify corrected input provenance records and their source hashes."""
 
     stage = canonical_stage_name(stage_name)
+    context = _authority_context(authority_roots)
     if not isinstance(records, (list, tuple)) or not records:
         raise StageReceiptContractError("completed receipt input_artifacts must be non-empty")
     checked: list[dict[str, Any]] = []
@@ -462,15 +582,23 @@ def validate_input_artifact_records(
     )
     for artifact in records:
         _validate_input_artifact_shape(artifact, stage)
-        declared_root = canonical_path(artifact["root"]) if "root" in artifact else None
+        expected_root = context.root_for(artifact["authority_class"])
+        declared_root = canonical_path(artifact["root"]) if "root" in artifact else expected_root
+        if declared_root != expected_root:
+            raise StageReceiptContractError(
+                "input artifact root does not match authority class: %s" % artifact["authority_class"]
+            )
         raw_path = Path(artifact["path"])
         path = canonical_path(raw_path, base=declared_root) if declared_root and not raw_path.is_absolute() else canonical_path(raw_path)
         lowered = str(path).replace("\\", "/").lower()
         if any(fragment in lowered for fragment in forbidden_fragments):
             raise StageReceiptContractError("historical input authority is forbidden")
-        if declared_root is not None:
-            if path == declared_root or not path.is_relative_to(declared_root):
-                raise StageReceiptContractError("input artifact crosses its declared root")
+        if path == expected_root or not path.is_relative_to(expected_root):
+            raise StageReceiptContractError("input artifact crosses its authority root")
+        if stage == "S6_figure_ready" and artifact["authority_class"] == CORRECTED_SUPPLEMENTAL_V2:
+            relative = path.relative_to(expected_root).as_posix()
+            if relative not in S6_APPROVED_SUPPLEMENTAL_INPUTS.values():
+                raise StageReceiptContractError("S6 supplemental input is not in the approved source map")
         if not path.is_file():
             raise StageReceiptContractError("input artifact does not exist: %s" % path)
         actual_sha = _sha256(path)
@@ -486,15 +614,23 @@ def validate_stage_receipt(
     *,
     output_root: str | Path | None = None,
     require_durable_marker: bool = True,
+    authority_roots: Optional[AuthorityRoots] = None,
+    expected_output_root: str | Path | None = None,
 ) -> dict[str, Any]:
     """Validate a completed receipt, including source/output hash closure."""
 
     stage = _validate_receipt_shape(receipt, stage_name)
-    validate_input_artifact_records(receipt["input_artifacts"], stage)
+    context = _authority_context(authority_roots)
+    validate_input_artifact_records(receipt["input_artifacts"], stage, authority_roots=context)
     root_value = output_root or receipt.get("output_root")
     if not isinstance(root_value, (str, Path)) or not str(root_value):
         raise StageReceiptContractError("completed receipt output_root is required for hash closure")
     root = canonical_path(root_value)
+    configured_output_root = canonical_path(expected_output_root or context.corrected_supplemental)
+    if not context.fixture and root != configured_output_root:
+        raise StageReceiptContractError("production receipt output_root does not match configured package root")
+    if expected_output_root is not None and root != configured_output_root:
+        raise StageReceiptContractError("receipt output_root does not match expected output root")
     recorded_root = receipt.get("output_root")
     if isinstance(recorded_root, str) and recorded_root and canonical_path(recorded_root) != root:
         raise StageReceiptContractError("receipt output_root does not match validation root")

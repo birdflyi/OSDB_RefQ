@@ -24,6 +24,7 @@ from supplemental.reference_quotient_v2.scripts.s6_figure_ready import (
     validate_s6_manifest_sha_closure,
 )
 from supplemental.reference_quotient_v2.scripts.s6_figure_ready import S6ContractError
+from supplemental.reference_quotient_v2.scripts.stage_io import fixture_authority_roots
 
 
 def _write_csv(root, name, frame):
@@ -70,6 +71,14 @@ def _fixture(tmp_path):
     return p0, v2, bundle
 
 
+def _fixture_authority_roots(tmp_path):
+    return fixture_authority_roots(
+        corrected_aggregate=tmp_path / "corrected_aggregate_fixture",
+        corrected_p0=tmp_path / "corrected_p0",
+        corrected_supplemental=tmp_path / "corrected_supplemental_v2_outputs",
+    )
+
+
 def test_s6_exact_inventory_and_historical_transform_semantics(tmp_path):
     _, _, source_bundle = _fixture(tmp_path)
     result = build_s6_figure_ready_bundle(source_bundle)
@@ -96,6 +105,8 @@ def test_s6_temp_serialization_manifest_and_sha_closure(tmp_path):
         implementation_commit="fixture",
         completed_at="2026-08-26T00:00:00+00:00",
         allow_external_test_root=True,
+        authority_roots=_fixture_authority_roots(tmp_path),
+        expected_output_root=tmp_path / "output_root",
     )
     manifest_path = tmp_path / "output_root" / "S6_figure_ready" / "figure_ready_manifest_v2.json"
     assert receipt.stage == "S6_figure_ready"
@@ -109,7 +120,12 @@ def test_s6_temp_serialization_manifest_and_sha_closure(tmp_path):
 def test_s6_sha_closure_rejects_wrong_output_and_source_hash(tmp_path):
     _, _, source_bundle = _fixture(tmp_path)
     _, _, manifest = serialize_s6_figure_ready_bundle(
-        source_bundle, tmp_path / "output_root", implementation_commit="fixture", allow_external_test_root=True
+        source_bundle,
+        tmp_path / "output_root",
+        implementation_commit="fixture",
+        allow_external_test_root=True,
+        authority_roots=_fixture_authority_roots(tmp_path),
+        expected_output_root=tmp_path / "output_root",
     )
     manifest_path = tmp_path / "output_root" / "S6_figure_ready" / "figure_ready_manifest_v2.json"
     bad_output = copy.deepcopy(manifest)

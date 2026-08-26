@@ -14,6 +14,7 @@ from supplemental.reference_quotient_v2.scripts.stage_io import (
     STAGE_RECEIPT_NAME,
     StageIOError,
     StageReceiptContractError,
+    fixture_authority_roots,
     load_stage_receipt,
     serialize_artifact,
     validate_stage_receipt,
@@ -38,15 +39,26 @@ def _input_artifacts(tmp_path):
     )
 
 
+def _fixture_context(tmp_path):
+    return fixture_authority_roots(
+        corrected_aggregate=tmp_path / "corrected_aggregate_fixture",
+        corrected_p0=tmp_path / "corrected_p0_fixture",
+        corrected_supplemental=tmp_path / "corrected_supplemental_fixture",
+    )
+
+
 def _write(tmp_path, stage="S6", frame=None, output_root=None):
+    target = output_root or tmp_path / "outputs"
     return write_stage_outputs(
-        output_root or tmp_path / "outputs",
+        target,
         stage,
         {"table.csv": frame if frame is not None else pd.DataFrame({"value": [1, 2]})},
         implementation_commit="fixture",
         input_artifacts=_input_artifacts(tmp_path),
         completed_at="2026-08-26T00:00:00+00:00",
         allow_external_test_root=True,
+        authority_roots=_fixture_context(tmp_path),
+        expected_output_root=target,
     )
 
 
@@ -74,7 +86,12 @@ def test_stage_writer_allows_parent_but_rejects_existing_stage(tmp_path):
     assert receipt.output_artifacts[0]["row_count"] == 2
     assert (output_root / "S6_figure_ready" / STAGE_RECEIPT_NAME).is_file()
     assert load_stage_receipt(output_root / "S6_figure_ready")["stage"] == "S6_figure_ready"
-    assert validate_stage_receipt(receipt.as_dict(), "S6")["status"] == "PASS"
+    assert validate_stage_receipt(
+        receipt.as_dict(),
+        "S6",
+        authority_roots=_fixture_context(tmp_path),
+        expected_output_root=output_root,
+    )["status"] == "PASS"
     with pytest.raises(StageIOError, match="overwrite"):
         _write(tmp_path, output_root=output_root, frame=pd.DataFrame({"value": [3]}))
 
@@ -116,11 +133,13 @@ def test_stage_name_and_artifact_path_guards(tmp_path):
         write_stage_outputs(
             tmp_path / "outputs", "S7", {"table.csv": pd.DataFrame({"x": [1]})},
             implementation_commit="fixture", input_artifacts=_input_artifacts(tmp_path), allow_external_test_root=True,
+            authority_roots=_fixture_context(tmp_path), expected_output_root=tmp_path / "outputs",
         )
     with pytest.raises(StageIOError, match="simple filenames"):
         write_stage_outputs(
             tmp_path / "outputs", "S6", {"nested/table.csv": pd.DataFrame({"x": [1]})},
             implementation_commit="fixture", input_artifacts=_input_artifacts(tmp_path), allow_external_test_root=True,
+            authority_roots=_fixture_context(tmp_path), expected_output_root=tmp_path / "outputs",
         )
 
 
@@ -145,7 +164,11 @@ def test_missing_durable_marker_is_partial_and_cannot_be_retried(tmp_path):
     marker = tmp_path / "outputs" / "S6_figure_ready" / STAGE_RECEIPT_NAME
     marker.unlink()
     with pytest.raises(StageReceiptContractError, match="missing"):
-        validate_stage_receipt(receipt.as_dict(), "S6")
+        validate_stage_receipt(
+            receipt.as_dict(),
+            "S6",
+            authority_roots=_fixture_context(tmp_path),
+        )
     with pytest.raises(StageIOError, match="overwrite"):
         _write(tmp_path)
 
@@ -157,7 +180,11 @@ def test_tampered_durable_marker_fails_closed(tmp_path):
     durable["parameters"] = {"tampered": True}
     marker.write_text(json.dumps(durable), encoding="utf-8")
     with pytest.raises(StageReceiptContractError, match="does not match"):
-        validate_stage_receipt(receipt.as_dict(), "S6")
+        validate_stage_receipt(
+            receipt.as_dict(),
+            "S6",
+            authority_roots=_fixture_context(tmp_path),
+        )
 
 
 def test_relative_input_path_is_resolved_against_declared_root(tmp_path):
@@ -179,4 +206,10 @@ def test_relative_input_path_is_resolved_against_declared_root(tmp_path):
         implementation_commit="fixture",
         input_artifacts=(record,),
         allow_external_test_root=True,
+        authority_roots=fixture_authority_roots(
+            corrected_aggregate=tmp_path / "aggregate",
+            corrected_p0=root,
+            corrected_supplemental=tmp_path / "supplemental",
+        ),
+        expected_output_root=tmp_path / "relative_outputs",
     )

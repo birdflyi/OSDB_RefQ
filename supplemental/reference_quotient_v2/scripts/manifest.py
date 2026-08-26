@@ -11,8 +11,10 @@ from typing import Any, Dict, Mapping, Optional
 
 from .paths import PathGuardError, canonical_path, validate_scaffold_config
 from .stage_io import (
+    AuthorityRoots,
     COMPLETED_STAGE_STATUSES,
     StageReceiptContractError,
+    production_authority_roots,
     validate_stage_receipt,
 )
 
@@ -194,11 +196,22 @@ def validate_historical_write_audit(audit: object) -> dict[str, Any]:
     return {"status": "PASS"}
 
 
-def _receipt_is_complete(stage: str, receipt: object) -> bool:
+def _receipt_is_complete(
+    stage: str,
+    receipt: object,
+    *,
+    authority_roots: AuthorityRoots,
+    expected_output_root: str | Path | None = None,
+) -> bool:
     if not isinstance(receipt, Mapping) or receipt.get("status") not in COMPLETED_STAGE_STATUSES:
         return False
     try:
-        validate_stage_receipt(receipt, stage)
+        validate_stage_receipt(
+            receipt,
+            stage,
+            authority_roots=authority_roots,
+            expected_output_root=expected_output_root,
+        )
     except (StageReceiptContractError, OSError, TypeError, ValueError):
         return False
     return True
@@ -218,13 +231,20 @@ def _s6_manifest_authority(path_value: str | Path) -> dict[str, Any]:
     }
 
 
-def _validate_s6_manifest_authority(authority: object) -> bool:
+def _validate_s6_manifest_authority(
+    authority: object,
+    *,
+    expected_path: str | Path | None = None,
+    authority_roots: AuthorityRoots | None = None,
+) -> bool:
     if not isinstance(authority, Mapping):
         raise ManifestContractError("S6 figure-ready manifest authority must be a mapping")
     path_value = authority.get("path")
     sha_value = authority.get("sha256")
     if not isinstance(path_value, str) or not isinstance(sha_value, str):
         raise ManifestContractError("S6 figure-ready manifest path/SHA record is incomplete")
+    if expected_path is not None and canonical_path(path_value) != canonical_path(expected_path):
+        raise ManifestContractError("S6 figure-ready manifest path does not match configured S6 stage root")
     try:
         actual_sha = sha256_file(path_value)
     except (OSError, TypeError, ValueError) as exc:
@@ -234,7 +254,7 @@ def _validate_s6_manifest_authority(authority: object) -> bool:
     try:
         from .s6_figure_ready import validate_s6_manifest_sha_closure
 
-        validate_s6_manifest_sha_closure(path_value)
+        validate_s6_manifest_sha_closure(path_value, authority_roots=authority_roots)
     except (OSError, TypeError, ValueError) as exc:
         raise ManifestContractError("S6 figure-ready manifest closure failed") from exc
     return True
@@ -250,10 +270,17 @@ def build_corrected_package_manifest(
     runtime_versions: Optional[Mapping[str, str]] = None,
     historical_write_audit: Optional[Mapping[str, Any]] = None,
     s6_manifest_path: Optional[str] = None,
+    authority_roots: Optional[AuthorityRoots] = None,
+    expected_output_root: str | Path | None = None,
 ) -> dict[str, Any]:
     """Construct a future package manifest without persisting it."""
 
     provenance = validate_scaffold_provenance(config)
+    context = authority_roots or production_authority_roots(config)
+    if not isinstance(context, AuthorityRoots):
+        raise ManifestContractError("authority_roots must be an AuthorityRoots context")
+    if not context.fixture and context != production_authority_roots(config):
+        raise ManifestContractError("production authority roots must match validated configuration")
     receipts = _normalized_stage_receipts(stage_receipts)
     try:
         status_value = S7Status(s7_status).value
@@ -261,22 +288,48 @@ def build_corrected_package_manifest(
         raise ManifestContractError("invalid S7 status") from exc
     # The supplemental config already carries the immutable governance values;
     # corrected-P0 paths and hashes come from the validated provenance object.
-    receipt_complete = all(_receipt_is_complete(stage, receipts.get(stage)) for stage in PACKAGE_STAGE_NAMES)
+    configured_output_value = config["corrected_output_root"]
+    if isinstance(configured_output_value, Mapping):
+        configured_output_value = configured_output_value.get("path")
+    configured_output_root = canonical_path(configured_output_value)
+    if context.fixture:
+        if expected_output_root is None:
+            raise ManifestContractError("fixture package output root must be explicit")
+        output_root = canonical_path(expected_output_root)
+    else:
+        if context.corrected_supplemental != configured_output_root:
+            raise ManifestContractError("configured supplemental authority root does not match package output root")
+        if expected_output_root is not None and canonical_path(expected_output_root) != configured_output_root:
+            raise ManifestContractError("production package output root cannot be overridden")
+        output_root = configured_output_root
+    receipt_complete = all(
+        _receipt_is_complete(
+            stage,
+            receipts.get(stage),
+            authority_roots=context,
+            expected_output_root=output_root,
+        )
+        for stage in PACKAGE_STAGE_NAMES
+    )
     audit = dict(historical_write_audit or {
         "status": "NOT_EXECUTED",
         "no_overwrite": False,
         "historical_roots_modified": None,
     })
-    output_root = config["corrected_output_root"]
-    if isinstance(output_root, Mapping):
-        output_root = output_root.get("path")
     s6_receipt_root = _stage_output_root(receipts.get("S6_figure_ready"))
-    s6_default_path = Path(s6_receipt_root) / "S6_figure_ready" / "figure_ready_manifest_v2.json" if s6_receipt_root else Path(output_root) / "S6_figure_ready" / "figure_ready_manifest_v2.json"
+    s6_default_root = s6_receipt_root if context.fixture and s6_receipt_root else str(output_root)
+    s6_default_path = Path(s6_default_root) / "S6_figure_ready" / "figure_ready_manifest_v2.json"
     s6_authority = _s6_manifest_authority(s6_manifest_path or s6_default_path)
     s6_complete = False
     if receipt_complete and s6_authority["sha256"] is not None:
         try:
-            s6_complete = _validate_s6_manifest_authority(s6_authority)
+            s6_complete = _validate_s6_manifest_authority(
+                s6_authority,
+                expected_path=None
+                if context.fixture
+                else output_root / "S6_figure_ready" / "figure_ready_manifest_v2.json",
+                authority_roots=None if context.fixture else context,
+            )
         except ManifestContractError:
             s6_complete = False
     audit_complete = False
@@ -304,7 +357,7 @@ def build_corrected_package_manifest(
             "identity_policy": config["identity_policy"],
             "source_admission_rule": config["source_admission_rule"],
         },
-        "corrected_output_root": str(canonical_path(output_root)),
+        "corrected_output_root": str(output_root),
         "weight_multiplicity_contract": config["weight_multiplicity_contract"],
         "random_seed": config["random_seed"],
         "brokerage_sample_size": config["brokerage_sample_size"],
@@ -346,7 +399,13 @@ def build_corrected_package_manifest(
 build_package_manifest = build_corrected_package_manifest
 
 
-def validate_package_manifest(manifest: Mapping[str, Any]) -> dict[str, Any]:
+def validate_package_manifest(
+    manifest: Mapping[str, Any],
+    *,
+    config: Optional[Mapping[str, Any]] = None,
+    authority_roots: Optional[AuthorityRoots] = None,
+    expected_output_root: str | Path | None = None,
+) -> dict[str, Any]:
     """Validate package-level required keys and release-status semantics."""
 
     if not isinstance(manifest, Mapping):
@@ -358,6 +417,19 @@ def validate_package_manifest(manifest: Mapping[str, Any]) -> dict[str, Any]:
         s7_status = S7Status(manifest["s7_status"]).value
     except ValueError as exc:
         raise ManifestContractError("invalid S7 status") from exc
+    context = authority_roots or production_authority_roots(config)
+    if not isinstance(context, AuthorityRoots):
+        raise ManifestContractError("authority_roots must be an AuthorityRoots context")
+    if not context.fixture and context != production_authority_roots(config):
+        raise ManifestContractError("production authority roots must match validated configuration")
+    package_root_value = manifest.get("corrected_output_root")
+    if not isinstance(package_root_value, str) or not package_root_value.strip():
+        raise ManifestContractError("corrected_output_root is missing")
+    package_root = canonical_path(package_root_value)
+    if expected_output_root is not None and package_root != canonical_path(expected_output_root):
+        raise ManifestContractError("package output root does not match expected output root")
+    if not context.fixture and package_root != context.corrected_supplemental:
+        raise ManifestContractError("package output root does not match configured corrected v2 outputs")
     receipts = _normalized_stage_receipts(manifest["stage_receipts"])
     receipt_complete = True
     for stage in PACKAGE_STAGE_NAMES:
@@ -367,10 +439,15 @@ def validate_package_manifest(manifest: Mapping[str, Any]) -> dict[str, Any]:
             continue
         if receipt.get("status") in COMPLETED_STAGE_STATUSES:
             try:
+                recorded_root = receipt.get("output_root")
+                if not isinstance(recorded_root, str) or canonical_path(recorded_root) != package_root:
+                    raise StageReceiptContractError("receipt output_root does not match package output root")
                 validate_stage_receipt(
                     receipt,
                     stage,
                     output_root=receipt.get("output_root") or manifest.get("corrected_output_root"),
+                    authority_roots=context,
+                    expected_output_root=package_root,
                 )
             except (StageReceiptContractError, OSError, TypeError, ValueError) as exc:
                 raise ManifestContractError("stage receipt closure failed for %s" % stage) from exc
@@ -387,10 +464,18 @@ def validate_package_manifest(manifest: Mapping[str, Any]) -> dict[str, Any]:
         s6_receipt = receipts.get("S6_figure_ready")
         s6_root = _stage_output_root(s6_receipt)
         if s6_path is not None and s6_root is not None:
-            expected_s6_root = canonical_path(s6_root) / "S6_figure_ready"
+            expected_s6_root = package_root / "S6_figure_ready" if not context.fixture else canonical_path(s6_root) / "S6_figure_ready"
+            if not context.fixture and s6_path != expected_s6_root / "figure_ready_manifest_v2.json":
+                raise ManifestContractError("S6 figure-ready manifest path does not match package output root")
             if not s6_path.is_relative_to(expected_s6_root):
                 raise ManifestContractError("S6 figure-ready manifest is outside the S6 stage root")
-        s6_complete = _validate_s6_manifest_authority(authority)
+        s6_complete = _validate_s6_manifest_authority(
+            authority,
+            expected_path=None
+            if context.fixture
+            else package_root / "S6_figure_ready" / "figure_ready_manifest_v2.json",
+            authority_roots=None if context.fixture else context,
+        )
     complete = receipt_complete and audit_complete and s6_complete
     expected_status = "STAGE_PACKAGE_COMPLETE" if complete else "STAGE_PACKAGE_INCOMPLETE"
     if manifest["status"] != expected_status:
@@ -417,6 +502,14 @@ def validate_package_manifest(manifest: Mapping[str, Any]) -> dict[str, Any]:
             raise ManifestContractError("%s is unavailable" % label) from exc
         if sha_value != actual_sha:
             raise ManifestContractError("%s SHA does not close" % label)
+    if not context.fixture:
+        if not isinstance(corrected_p0.get("root"), str) or canonical_path(corrected_p0["root"]) != context.corrected_p0:
+            raise ManifestContractError("corrected P0 root does not match configured authority root")
+        corrected_aggregate = manifest["corrected_aggregate"]
+        if not isinstance(corrected_aggregate, Mapping) or not isinstance(corrected_aggregate.get("root"), str):
+            raise ManifestContractError("corrected aggregate root record is incomplete")
+        if canonical_path(corrected_aggregate["root"]) != context.corrected_aggregate:
+            raise ManifestContractError("corrected aggregate root does not match configured authority root")
     return {
         "status": "PASS",
         "stage_package_complete": complete,
