@@ -1,0 +1,37 @@
+{
+  "admitted_identity_contradiction_count": 0,
+  "affected_source_seed_count": 1,
+  "affected_source_seed_projects": [
+    "679889516"
+  ],
+  "aggregate_schema_versions_observed": [
+    "reference_aggregate_schema_v2_event_repository_provenance"
+  ],
+  "corrected_aggregate_root": "D:\\github_repo\\OSDB_RefQ_source_data\\data\\github_osdb_data\\repos_GH_CoRE_ref_node_agg_v2_identity_corrected",
+  "corrected_p0_config_sha256": "e19c0937e0d6f72fa84ad135b55a4056357d132d3a3df4ae5455bda7bc3de658",
+  "corrected_p0_manifest": "D:\\github_repo\\OSDB_RefQ\\outputs\\reference_quotient_p0_corrected_v2\\manifest.json",
+  "corrected_p0_manifest_sha256": "21699353d5dc9476547ee7f56881ba0a1ccc842a6d3c95adad9a28dedfd656d7",
+  "event_rejoin_performed": false,
+  "fireproof_context_679889516_out_of_seed_rows": 120,
+  "fireproof_event_repo_600271677_out_of_seed_rows": 120,
+  "implementation_commit_candidate": "65daeb92d4e75a80ab47b7d5a1e9c23cffc4a991",
+  "membership_build_run": 0,
+  "network_algorithms_run": 0,
+  "partition_count": 294,
+  "preflight_kind": "C3_7B_READ_ONLY_SOURCE_BOUNDARY",
+  "quotient_build_run": 0,
+  "reference_rows_before_admission": 3748078,
+  "source_admission_status_counts": {
+    "ADMITTED_SOURCE_OBSERVATION": 3747958,
+    "INVALID_EVENT_REPOSITORY_ID": 0,
+    "MISSING_EVENT_REPOSITORY_ID": 0,
+    "OUT_OF_SEED_SOURCE_OBSERVATION": 120
+  },
+  "source_admission_status_observed": [
+    "ADMITTED_SOURCE_OBSERVATION",
+    "OUT_OF_SEED_SOURCE_OBSERVATION"
+  ],
+  "status": "PASS",
+  "status_identity_contradiction_count": 0,
+  "unknown_source_admission_status_count": 0
+}
