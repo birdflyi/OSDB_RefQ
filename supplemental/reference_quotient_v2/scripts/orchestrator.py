@@ -30,7 +30,7 @@ class OrchestrationError(ValueError):
     """Raised when a C4 stage cannot be authorized or closed."""
 
 
-STAGE_PHASES = {stage: "C4-%s" % stage for stage in STAGE_DIRECTORY_NAMES}
+STAGE_PHASES = {canonical: "C4-%s" % short for short, canonical in STAGE_DIRECTORY_NAMES.items()}
 AUTHORIZED_BRANCH = "ch5-refq-repository-identity-correction-v1"
 STAGE_DEPENDENCIES = {
     "S1_evidence_universe": (),

@@ -14,8 +14,13 @@ from supplemental.reference_quotient_v2.scripts.manifest import (
     validate_package_manifest,
 )
 from supplemental.reference_quotient_v2.scripts.orchestrator import (
+    AUTHORIZED_BRANCH,
     OrchestrationError,
+    STAGE_PHASES,
+    _canonical_stage,
+    authorize_stage,
     execute_stage_control_plane,
+    run_stage,
 )
 from supplemental.reference_quotient_v2.scripts.paths import load_config
 from supplemental.reference_quotient_v2.scripts.s6_figure_ready import (
@@ -32,6 +37,72 @@ from supplemental.reference_quotient_v2.scripts.stage_io import (
     write_stage_outputs,
 )
 from supplemental.reference_quotient_v2.tests.test_s6_figure_ready import _fixture
+
+
+def _mock_valid_git_state(monkeypatch):
+    def fake_git_value(*arguments):
+        if arguments == ("branch", "--show-current"):
+            return AUTHORIZED_BRANCH
+        if arguments == ("status", "--porcelain"):
+            return ""
+        raise AssertionError(arguments)
+
+    monkeypatch.setattr("supplemental.reference_quotient_v2.scripts.orchestrator._git_value", fake_git_value)
+    monkeypatch.setattr("supplemental.reference_quotient_v2.scripts.orchestrator._is_ancestor", lambda commit: True)
+    monkeypatch.setattr("supplemental.reference_quotient_v2.scripts.orchestrator._implementation_diff", lambda commit: ())
+
+
+@pytest.mark.parametrize("short,canonical", tuple(STAGE_DIRECTORY_NAMES.items()))
+def test_production_authorization_maps_short_and_canonical_stage_names(monkeypatch, short, canonical):
+    _mock_valid_git_state(monkeypatch)
+    assert authorize_stage(
+        short,
+        authorization_phase="C4-%s" % short,
+        expected_implementation_commit="e4159f1183463085c68cf1cca5549c083404d16b",
+    ) == canonical
+    assert authorize_stage(
+        canonical,
+        authorization_phase="C4-%s" % short,
+        expected_implementation_commit="e4159f1183463085c68cf1cca5549c083404d16b",
+    ) == canonical
+
+
+@pytest.mark.parametrize("short,canonical", tuple(STAGE_DIRECTORY_NAMES.items()))
+def test_production_authorization_rejects_wrong_phase_as_orchestration_error(monkeypatch, short, canonical):
+    _mock_valid_git_state(monkeypatch)
+    wrong_phase = "C4-S%s" % ((int(short[1:]) % 6) + 1)
+    with pytest.raises(OrchestrationError, match="authorization phase"):
+        authorize_stage(
+            canonical,
+            authorization_phase=wrong_phase,
+            expected_implementation_commit="e4159f1183463085c68cf1cca5549c083404d16b",
+        )
+
+
+def test_production_authorization_rejects_unknown_stage_and_phase_map_is_closed(monkeypatch):
+    _mock_valid_git_state(monkeypatch)
+    with pytest.raises(OrchestrationError, match="stage must be one of S1-S6"):
+        authorize_stage(
+            "S8",
+            authorization_phase="C4-S8",
+            expected_implementation_commit="e4159f1183463085c68cf1cca5549c083404d16b",
+        )
+    assert set(STAGE_PHASES) == set(STAGE_DIRECTORY_NAMES.values())
+    assert {_canonical_stage(short) for short in STAGE_DIRECTORY_NAMES} == set(STAGE_PHASES)
+
+
+def test_run_stage_production_entrypoint_dry_run_reaches_preflight(monkeypatch):
+    _mock_valid_git_state(monkeypatch)
+    result = run_stage(
+        "S1",
+        authorization_phase="C4-S1",
+        expected_implementation_commit="e4159f1183463085c68cf1cca5549c083404d16b",
+        baseline_path="docs/freeze/ch5_refq_c3_7f_historical_immutability_baseline_v1.json",
+        dry_run=True,
+    )
+    assert result["status"] == "PREFLIGHT_PASS"
+    assert result["stage"] == "S1_evidence_universe"
+    assert result["scientific_execution"] is False
 
 
 def _record(path, authority, root, version):
