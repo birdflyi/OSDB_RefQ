@@ -35,7 +35,7 @@ task's strict gate permits no non-community statistical differences.
 - Implementation/config/audit commit: `25c6ef3f49af04e916f10e129d976ce7c2119fd8`
 - P0 v3 run count: 1
 - v3 manifest output files: 31; manifest SHA-256:
-  `43f97f9a2d177d325415bfbcc504f1779882cf83685b4fdebe505c8fed8e7cb0`
+  `7c1f6da8ccc1df67ac6a5cdf94e477ceab034b0d82dfa278a3c4e4fca90462d2`
 - v3 community closure: 6,367 rows, 35 communities, 0 mismatched rows
 - v2 and historical roots: untouched
 - Supplemental S1-S7: not executed
