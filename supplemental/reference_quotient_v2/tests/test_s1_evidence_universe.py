@@ -34,6 +34,7 @@ from supplemental.reference_quotient_v2.scripts.s1_evidence_universe import (
     assert_s1_runtime_acceptance,
     build_evidence_universe_flow,
     build_future_s1_output_tables,
+    canonical_s1_project_entity_identity,
     composition_table,
     compute_evidence_universe,
     cross_tab,
@@ -147,6 +148,27 @@ def test_target_entity_type_fallback_reaches_cross_tab_output(adapter):
     result = compute_evidence_universe([chunk])
     table = build_future_s1_output_tables(result)["target_entity_type_x_quotient_eligibility.csv"]
     assert set(table["target_entity_type"]) == {"Repository"}
+
+
+def test_s1_missing_identity_representation_matches_historical_fallback(tmp_path):
+    csv_path = tmp_path / "missing_ids.csv"
+    csv_path.write_text("src_entity_id,tar_entity_id\n,\n", encoding="utf-8")
+    parsed = pd.read_csv(csv_path, dtype="string")
+    values = [None, float("nan"), pd.NA, parsed.loc[0, "src_entity_id"]]
+    for value in values:
+        assert canonical_s1_project_entity_identity(value, "R_101") == "R_101"
+        assert canonical_s1_project_entity_identity(value, "R_202") == "R_202"
+    assert canonical_s1_project_entity_identity("entity-1", "R_101") == "entity-1"
+
+
+def test_s1_missing_ids_do_not_create_false_global_membership_conflict(adapter):
+    source, partition = adapter
+    rows = pd.DataFrame([_row("missing-101", tar_agg="R_101"), _row("missing-202", tar_agg="R_202")])
+    rows["tar_entity_id"] = pd.Series([pd.NA, pd.NA], dtype="string")
+    result = compute_evidence_universe([source.validate_reference_chunk(partition, rows)])
+    assert result.membership.summary["membership_conflict_entities"] == 0
+    assert set(result.records["tar_canonical_entity_id"]) == {"R_101", "R_202"}
+    assert set(result.records["quotient_eligibility"]) == {QUOTIENT_ELIGIBLE}
 
 
 def test_quotient_eligibility_and_edge_classes_preserve_reference_record_units(universe):

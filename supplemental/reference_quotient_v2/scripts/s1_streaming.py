@@ -46,6 +46,7 @@ from .s1_evidence_universe import (
     S1EvidenceUniverseContractError,
     UNRESOLVED,
     _text,
+    canonical_s1_project_entity_identity,
     classify_evidence_records,
 )
 
@@ -179,7 +180,7 @@ def _membership_pairs(records: pd.DataFrame) -> Iterable[tuple[str, str]]:
         for entity_id, aggregate in zip(
             records[f"{side}_entity_id"], records[f"{side}_entity_id_agg"]
         ):
-            identity = canonical_project_entity_identity(entity_id, aggregate)
+            identity = canonical_s1_project_entity_identity(entity_id, aggregate)
             project = unique_project_membership(aggregate)
             if identity is not None and project is not None:
                 yield identity, project

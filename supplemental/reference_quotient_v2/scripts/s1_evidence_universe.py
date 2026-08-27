@@ -42,6 +42,15 @@ class S1EvidenceUniverseContractError(ValueError):
     """Raised when a prospective S1 analytical input is not admitted-only."""
 
 
+def canonical_s1_project_entity_identity(entity_id: object, aggregate_id: object) -> str | None:
+    """Apply historical missing-scalar representation before shared identity mapping."""
+
+    missing = pd.isna(entity_id)
+    if isinstance(missing, bool) and missing:
+        entity_id = None
+    return canonical_project_entity_identity(entity_id, aggregate_id)
+
+
 ANALYTICAL_COLUMNS: tuple[str, ...] = (
     "event_id",
     "event_repo_id",
@@ -169,7 +178,7 @@ def build_membership_context(records: pd.DataFrame) -> MembershipContext:
     pairs: set[tuple[str, str]] = set()
     for side in ("src", "tar"):
         for entity_id, aggregate in zip(work[f"{side}_entity_id"], work[f"{side}_entity_id_agg"]):
-            identity = canonical_project_entity_identity(entity_id, aggregate)
+            identity = canonical_s1_project_entity_identity(entity_id, aggregate)
             project = unique_project_membership(aggregate)
             if identity is not None and project is not None:
                 pairs.add((identity, project))
@@ -200,7 +209,7 @@ def classify_evidence_records(records: pd.DataFrame, membership: MembershipConte
         result[f"{side}_project_id"] = aggregate.map(unique_project_membership).astype("string")
         result[f"{side}_canonical_entity_id"] = pd.Series(
             [
-                canonical_project_entity_identity(entity_id, aggregate_id)
+                canonical_s1_project_entity_identity(entity_id, aggregate_id)
                 for entity_id, aggregate_id in zip(result[f"{side}_entity_id"], aggregate)
             ],
             index=result.index,
