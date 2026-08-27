@@ -1,0 +1,103 @@
+{
+  "completed_at": "2026-08-27T14:26:02.406959+00:00",
+  "implementation_commit": "765b89818993fe295db37545db0143c4c2b8b2b8",
+  "input_artifacts": [
+    {
+      "authority_class": "CORRECTED_P0",
+      "path": "D:/github_repo/OSDB_RefQ/outputs/reference_quotient_p0_corrected_v2/reference_quotient_cross_project_edges.csv",
+      "root": "D:/github_repo/OSDB_RefQ/outputs/reference_quotient_p0_corrected_v2",
+      "sha256": "a73b410753d66ea5d2e7378bc496095e0617432f3463819050159417a3a101bd",
+      "version": "corrected_p0_v2"
+    },
+    {
+      "authority_class": "CORRECTED_P0",
+      "path": "D:/github_repo/OSDB_RefQ/outputs/reference_quotient_p0_corrected_v2/reference_quotient_node_registry.csv",
+      "root": "D:/github_repo/OSDB_RefQ/outputs/reference_quotient_p0_corrected_v2",
+      "sha256": "0e6095341d207ff3c096d759cdd86be172241668b5f8f0f68be460063397571a",
+      "version": "corrected_p0_v2"
+    },
+    {
+      "authority_class": "CORRECTED_P0",
+      "path": "D:/github_repo/OSDB_RefQ/outputs/reference_quotient_p0_corrected_v2/analysis_seed_manifest_294.csv",
+      "root": "D:/github_repo/OSDB_RefQ/outputs/reference_quotient_p0_corrected_v2",
+      "sha256": "dbf33e612c19976b406a3e5b19dfb781faf5e8a36afbbf13582dbe609ffa53e2",
+      "version": "corrected_p0_v2"
+    }
+  ],
+  "output_artifacts": [
+    {
+      "bytes": 97600,
+      "path": "S3_observation_sensitivity/canonical_seed_centered_observed_communities.csv",
+      "row_count": 6367,
+      "sha256": "d34742fb0132ad47276b0230c5eee2e720e38642df5167b343091ccb5e65789b"
+    },
+    {
+      "bytes": 215718,
+      "path": "S3_observation_sensitivity/canonical_seed_centered_observed_lcc_edges.csv",
+      "row_count": 9462,
+      "sha256": "5d85dc3fc479ef06f4337957debba05db326210b1e97f9b56f24d226e9c53916"
+    },
+    {
+      "bytes": 217657,
+      "path": "S3_observation_sensitivity/canonical_seed_centered_observed_undirected_edges.csv",
+      "row_count": 9547,
+      "sha256": "30514267865f5baa3a50df6a3058e0b1ea5bddf83ef72b9884b302a156e06fc9"
+    },
+    {
+      "bytes": 17557,
+      "path": "S3_observation_sensitivity/multi_seed_target_view_communities.csv",
+      "row_count": 1237,
+      "sha256": "a1df65cc45d00bd778945fbedfbfbc33ed6518e9dca7ba93b198bddb6efc57f3"
+    },
+    {
+      "bytes": 97569,
+      "path": "S3_observation_sensitivity/multi_seed_target_view_lcc_edges.csv",
+      "row_count": 4310,
+      "sha256": "1d09c167247c731e12fdf47ae33eac7ab8763a7019243859afd81d070426c714"
+    },
+    {
+      "bytes": 97569,
+      "path": "S3_observation_sensitivity/multi_seed_target_view_undirected_edges.csv",
+      "row_count": 4310,
+      "sha256": "1d09c167247c731e12fdf47ae33eac7ab8763a7019243859afd81d070426c714"
+    },
+    {
+      "bytes": 1020,
+      "path": "S3_observation_sensitivity/observation_boundary_sensitivity.csv",
+      "row_count": 3,
+      "sha256": "abddceffb30cbea6070c16ab05358ab9d396373729e4790e8e76fb6ea40d130a"
+    },
+    {
+      "bytes": 2193,
+      "path": "S3_observation_sensitivity/seed_only_induced_communities.csv",
+      "row_count": 156,
+      "sha256": "5f032e1074463d46436580967ad663d896866a30ebb38e451862f82ec99c6756"
+    },
+    {
+      "bytes": 8130,
+      "path": "S3_observation_sensitivity/seed_only_induced_lcc_edges.csv",
+      "row_count": 361,
+      "sha256": "6e032be5789a97ca93e2a09a716856d3d5427653823da6a8019d686255ec3d01"
+    },
+    {
+      "bytes": 8323,
+      "path": "S3_observation_sensitivity/seed_only_induced_undirected_edges.csv",
+      "row_count": 370,
+      "sha256": "20775c511bb5cef59f5ea97c730e597aebc43ba8854dc76245565247f2a2bf06"
+    }
+  ],
+  "output_root": "D:\\github_repo\\OSDB_RefQ\\supplemental\\reference_quotient_v2\\outputs",
+  "parameters": {
+    "corrected_data": true,
+    "stage": "S3"
+  },
+  "runtime_versions": {
+    "networkx": "3.2.1",
+    "numpy": "1.24.2",
+    "pandas": "1.5.3",
+    "python": "3.9.13",
+    "scipy": "1.9.1"
+  },
+  "stage": "S3_observation_sensitivity",
+  "status": "PASS"
+}
