@@ -202,6 +202,7 @@ def _receipt_is_complete(
     *,
     authority_roots: AuthorityRoots,
     expected_output_root: str | Path | None = None,
+    enforce_stage_contract: bool | None = None,
 ) -> bool:
     if not isinstance(receipt, Mapping) or receipt.get("status") not in COMPLETED_STAGE_STATUSES:
         return False
@@ -211,6 +212,7 @@ def _receipt_is_complete(
             stage,
             authority_roots=authority_roots,
             expected_output_root=expected_output_root,
+            enforce_contract=enforce_stage_contract,
         )
     except (StageReceiptContractError, OSError, TypeError, ValueError):
         return False
@@ -272,6 +274,7 @@ def build_corrected_package_manifest(
     s6_manifest_path: Optional[str] = None,
     authority_roots: Optional[AuthorityRoots] = None,
     expected_output_root: str | Path | None = None,
+    enforce_stage_contract: bool | None = None,
 ) -> dict[str, Any]:
     """Construct a future package manifest without persisting it."""
 
@@ -308,6 +311,7 @@ def build_corrected_package_manifest(
             receipts.get(stage),
             authority_roots=context,
             expected_output_root=output_root,
+            enforce_stage_contract=enforce_stage_contract,
         )
         for stage in PACKAGE_STAGE_NAMES
     )
@@ -405,6 +409,7 @@ def validate_package_manifest(
     config: Optional[Mapping[str, Any]] = None,
     authority_roots: Optional[AuthorityRoots] = None,
     expected_output_root: str | Path | None = None,
+    enforce_stage_contract: bool | None = None,
 ) -> dict[str, Any]:
     """Validate package-level required keys and release-status semantics."""
 
@@ -448,6 +453,7 @@ def validate_package_manifest(
                     output_root=receipt.get("output_root") or manifest.get("corrected_output_root"),
                     authority_roots=context,
                     expected_output_root=package_root,
+                    enforce_contract=enforce_stage_contract,
                 )
             except (StageReceiptContractError, OSError, TypeError, ValueError) as exc:
                 raise ManifestContractError("stage receipt closure failed for %s" % stage) from exc

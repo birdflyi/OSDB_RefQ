@@ -46,6 +46,7 @@ STAGE_DIRECTORY_NAMES: Mapping[str, str] = {
     "S6": "S6_figure_ready",
 }
 STAGE_RECEIPT_NAME = "stage_receipt.json"
+STAGE_CONTRACT_VERSION = "C3.7-F"
 CORRECTED_AGGREGATE = "CORRECTED_AGGREGATE"
 CORRECTED_P0 = "CORRECTED_P0"
 CORRECTED_SUPPLEMENTAL_V2 = "CORRECTED_SUPPLEMENTAL_V2"
@@ -73,6 +74,83 @@ RECEIPT_REQUIRED_KEYS = (
     "completed_at",
 )
 _VALID_STAGE_NAMES = set(STAGE_DIRECTORY_NAMES) | set(STAGE_DIRECTORY_NAMES.values())
+
+
+def stage_output_inventory(stage_name: str) -> tuple[str, ...]:
+    """Return the authoritative scientific output names for one stage.
+
+    Imports are intentionally lazy because the scientific modules import this
+    module for their writer helpers.
+    """
+
+    stage = canonical_stage_name(stage_name)
+    if stage == "S1_evidence_universe":
+        from .s1_evidence_universe import FUTURE_S1_OUTPUT_CONTRACT
+
+        # The validation JSON entry is a receipt/diagnostic contract, not a
+        # scientific output artifact; the frozen S1 writer emits eight CSVs.
+        return tuple(sorted(name for name in FUTURE_S1_OUTPUT_CONTRACT if name.endswith(".csv")))
+    if stage == "S2_weight_sensitivity":
+        from .s2_weight_sensitivity import S2_OUTPUT_CONTRACT
+
+        return tuple(sorted(S2_OUTPUT_CONTRACT))
+    if stage == "S3_observation_sensitivity":
+        from .s3_observation_sensitivity import S3_OUTPUT_CONTRACT
+
+        return tuple(sorted(S3_OUTPUT_CONTRACT))
+    if stage == "S4_community_stability":
+        from .s4_community_stability import S4_OUTPUT_CONTRACT
+
+        return tuple(sorted(S4_OUTPUT_CONTRACT))
+    if stage == "S5_brokerage_stability":
+        from .s5_brokerage_stability import S5_OUTPUT_CONTRACT
+
+        return tuple(sorted(S5_OUTPUT_CONTRACT))
+    from .s6_figure_ready import S6_MANIFEST_NAME, S6_OUTPUT_INVENTORY
+
+    return tuple(S6_OUTPUT_INVENTORY) + (S6_MANIFEST_NAME,)
+
+
+def required_input_inventory(stage_name: str) -> dict[str, Any]:
+    """Describe the minimum machine-checkable input coverage for a stage."""
+
+    stage = canonical_stage_name(stage_name)
+    p0 = {
+        "reference_quotient_cross_project_edges.csv",
+        "reference_quotient_node_registry.csv",
+    }
+    canonical = {
+        "rq2c_undirected_view_edges.csv",
+        "rq2c_undirected_view_lcc_edges.csv",
+        "reference_quotient_node_registry.csv",
+        "rq2c_algorithmic_communities.csv",
+        "rq2c_undirected_view_summary.json",
+        "rq2c_structural_brokerage_candidates.csv",
+    }
+    if stage == "S1_evidence_universe":
+        return {
+            "aggregate_authority": True,
+            "minimum_aggregate_partitions": 294,
+            "optional_corrected_p0_relative_paths": frozenset(
+                {"manifest.json", "analysis_seed_manifest_294.csv"}
+            ),
+        }
+    if stage == "S2_weight_sensitivity":
+        return {"corrected_p0_relative_paths": frozenset(p0)}
+    if stage == "S3_observation_sensitivity":
+        return {
+            "corrected_p0_relative_paths": frozenset(
+                p0 | {"analysis_seed_manifest_294.csv"}
+            )
+        }
+    if stage in {"S4_community_stability", "S5_brokerage_stability"}:
+        return {"corrected_p0_relative_paths": frozenset(canonical)}
+    from .s6_figure_ready import P0_SOURCE_FILES
+
+    return {
+        "corrected_p0_relative_paths": frozenset(P0_SOURCE_FILES),
+        "supplemental_relative_paths": frozenset(S6_APPROVED_SUPPLEMENTAL_INPUTS.values()),
+    }
 
 
 @dataclass(frozen=True)
@@ -299,6 +377,7 @@ def write_stage_outputs(
     allow_external_test_root: bool = False,
     authority_roots: Optional[AuthorityRoots] = None,
     expected_output_root: str | Path | None = None,
+    enforce_contract: bool | None = None,
 ) -> StageReceipt:
     """Write one stage once and persist its receipt after output closure."""
 
@@ -342,7 +421,12 @@ def write_stage_outputs(
         },
         stage,
     )
-    validate_input_artifact_records(input_records, stage, authority_roots=context)
+    strict_contract = (not context.fixture) if enforce_contract is None else bool(enforce_contract)
+    if not context.fixture and enforce_contract is False:
+        raise StageIOError("production stage contract enforcement cannot be disabled")
+    if strict_contract and set(artifacts) != set(stage_output_inventory(stage)):
+        raise StageIOError("stage artifacts do not match the exact frozen output contract for %s" % stage)
+    validate_required_input_coverage(input_records, stage, authority_roots=context, enforce_contract=strict_contract)
     # No cleanup is performed after mkdir or any subsequent write failure.
     stage_dir.mkdir(parents=True, exist_ok=False)
     records: list[Mapping[str, Any]] = []
@@ -377,6 +461,7 @@ def write_stage_outputs(
         require_durable_marker=False,
         authority_roots=context,
         expected_output_root=root,
+        enforce_contract=strict_contract,
     )
     receipt_path = stage_dir / STAGE_RECEIPT_NAME
     if receipt_path.exists():
@@ -389,6 +474,7 @@ def write_stage_outputs(
         require_durable_marker=True,
         authority_roots=context,
         expected_output_root=root,
+        enforce_contract=strict_contract,
     )
     return receipt
 
@@ -608,6 +694,77 @@ def validate_input_artifact_records(
     return {"status": "PASS", "checked": checked}
 
 
+def validate_required_input_coverage(
+    records: list[Mapping[str, Any]] | tuple[Mapping[str, Any], ...],
+    stage_name: str,
+    *,
+    authority_roots: Optional[AuthorityRoots] = None,
+    enforce_contract: bool = True,
+) -> dict[str, Any]:
+    """Require every scientific/provenance source used by the stage loader."""
+
+    stage = canonical_stage_name(stage_name)
+    context = _authority_context(authority_roots)
+    validate_input_artifact_records(records, stage, authority_roots=context)
+    paths_by_class: dict[str, set[str]] = {}
+    for record in records:
+        authority = str(record["authority_class"])
+        root = context.root_for(authority)
+        path = canonical_path(record["path"], base=root) if not Path(record["path"]).is_absolute() else canonical_path(record["path"])
+        paths_by_class.setdefault(authority, set()).add(path.relative_to(root).as_posix())
+    required = required_input_inventory(stage)
+    if not enforce_contract:
+        return {"status": "PASS", "stage": stage, "required_input_inventory": required, "recorded_input_count": len(records), "contract_enforced": False}
+    if required.get("aggregate_authority"):
+        aggregate_paths = paths_by_class.get(CORRECTED_AGGREGATE, set())
+        expected_partitions = 1 if context.fixture else int(required["minimum_aggregate_partitions"])
+        if len(aggregate_paths) != expected_partitions:
+            raise StageReceiptContractError(
+                "%s requires %s corrected aggregate partition inputs (recorded %s)"
+                % (stage, expected_partitions, len(aggregate_paths))
+            )
+    required_p0 = required.get("corrected_p0_relative_paths")
+    if required_p0:
+        observed_p0 = paths_by_class.get(CORRECTED_P0, set())
+        missing = sorted(set(required_p0) - observed_p0)
+        if missing:
+            raise StageReceiptContractError(
+                "%s required corrected P0 inputs are missing: %s" % (stage, ", ".join(missing))
+            )
+        undeclared = sorted(observed_p0 - set(required_p0))
+        if undeclared:
+            raise StageReceiptContractError(
+                "%s undeclared corrected P0 inputs are recorded: %s" % (stage, ", ".join(undeclared))
+            )
+    optional_p0 = required.get("optional_corrected_p0_relative_paths")
+    if optional_p0 is not None:
+        observed_p0 = paths_by_class.get(CORRECTED_P0, set())
+        undeclared = sorted(observed_p0 - set(optional_p0))
+        if undeclared:
+            raise StageReceiptContractError(
+                "%s undeclared optional corrected P0 inputs are recorded: %s" % (stage, ", ".join(undeclared))
+            )
+    required_supplemental = required.get("supplemental_relative_paths")
+    if required_supplemental:
+        observed_supplemental = paths_by_class.get(CORRECTED_SUPPLEMENTAL_V2, set())
+        missing = sorted(set(required_supplemental) - observed_supplemental)
+        if missing:
+            raise StageReceiptContractError(
+                "%s required supplemental inputs are missing: %s" % (stage, ", ".join(missing))
+            )
+        undeclared = sorted(observed_supplemental - set(required_supplemental))
+        if undeclared:
+            raise StageReceiptContractError(
+                "%s undeclared supplemental inputs are recorded: %s" % (stage, ", ".join(undeclared))
+            )
+    return {
+        "status": "PASS",
+        "stage": stage,
+        "required_input_inventory": required,
+        "recorded_input_count": len(records),
+    }
+
+
 def validate_stage_receipt(
     receipt: Mapping[str, Any],
     stage_name: str,
@@ -616,12 +773,15 @@ def validate_stage_receipt(
     require_durable_marker: bool = True,
     authority_roots: Optional[AuthorityRoots] = None,
     expected_output_root: str | Path | None = None,
+    enforce_contract: bool | None = None,
 ) -> dict[str, Any]:
     """Validate a completed receipt, including source/output hash closure."""
 
-    stage = _validate_receipt_shape(receipt, stage_name)
     context = _authority_context(authority_roots)
-    validate_input_artifact_records(receipt["input_artifacts"], stage, authority_roots=context)
+    stage = _validate_receipt_shape(receipt, stage_name)
+    strict_contract = (not context.fixture) if enforce_contract is None else bool(enforce_contract)
+    if not context.fixture and enforce_contract is False:
+        raise StageReceiptContractError("production stage contract enforcement cannot be disabled")
     root_value = output_root or receipt.get("output_root")
     if not isinstance(root_value, (str, Path)) or not str(root_value):
         raise StageReceiptContractError("completed receipt output_root is required for hash closure")
@@ -640,6 +800,25 @@ def validate_stage_receipt(
         if not artifact_path.is_relative_to(stage_root) or artifact_path == stage_root:
             raise StageReceiptContractError("output artifact is outside its stage directory")
     output_result = validate_output_artifact_records(root, receipt["output_artifacts"])
+    recorded_outputs = {
+        canonical_path(item["path"], base=root).relative_to(stage_root).as_posix()
+        for item in receipt["output_artifacts"]
+    }
+    expected_outputs = set(stage_output_inventory(stage))
+    if strict_contract and recorded_outputs != expected_outputs:
+        missing = sorted(expected_outputs - recorded_outputs)
+        undeclared = sorted(recorded_outputs - expected_outputs)
+        detail = []
+        if missing:
+            detail.append("missing=" + ",".join(missing))
+        if undeclared:
+            detail.append("undeclared=" + ",".join(undeclared))
+        raise StageReceiptContractError(
+            "stage output contract is incomplete for %s (%s)" % (stage, "; ".join(detail))
+        )
+    validate_required_input_coverage(
+        receipt["input_artifacts"], stage, authority_roots=context, enforce_contract=strict_contract
+    )
     receipt_path = root / stage / STAGE_RECEIPT_NAME
     if require_durable_marker:
         if not receipt_path.is_file():

@@ -1,0 +1,799 @@
+{
+  "comparison_result": "PRE_C4_BASELINE_ONLY",
+  "deterministic_path_order": true,
+  "historical_tag": "chapter5-refq-freeze-v1.0",
+  "historical_tag_commit": "68d001551359d120bf2a06cc5e571742df7e7822",
+  "roots": [
+    {
+      "aggregate_bytes": 3010667,
+      "file_count": 31,
+      "files": [
+        {
+          "bytes": 70658,
+          "relative_path": "analysis_seed_manifest_294.csv",
+          "root": "outputs/reference_quotient_p0_frozen",
+          "sha256": "9dae0b52e681e543d8534406386ee94544647d4613c8d30a53a6fdd369332ffd"
+        },
+        {
+          "bytes": 73368,
+          "relative_path": "candidate_seed_observation_audit.csv",
+          "root": "outputs/reference_quotient_p0_frozen",
+          "sha256": "f9780a1b0d0bc118a9391ef6f07af9597d8545fd8059cdb68793fc9f2f26bb0c"
+        },
+        {
+          "bytes": 88145,
+          "relative_path": "manifest.json",
+          "root": "outputs/reference_quotient_p0_frozen",
+          "sha256": "a3089fd8a6a58c0a15d2192a7b5f3388868ef0f1358c803be3aa4f27314c59f6"
+        },
+        {
+          "bytes": 1411,
+          "relative_path": "membership_audit.json",
+          "root": "outputs/reference_quotient_p0_frozen",
+          "sha256": "6c2d73d47daee52309db2aecf739107697d66816706cbd325a3eae6b4241f263"
+        },
+        {
+          "bytes": 990,
+          "relative_path": "quotient_construction_audit.json",
+          "root": "outputs/reference_quotient_p0_frozen",
+          "sha256": "bdca9a352d21ede68f9239dea32c8d4c5982169c39561e058038def197b3ac1d"
+        },
+        {
+          "bytes": 393182,
+          "relative_path": "reference_quotient_cross_project_edges.csv",
+          "root": "outputs/reference_quotient_p0_frozen",
+          "sha256": "4c5ef0d5a751ae3ab1abd1fc7115ed3143226d30b5c91e456c5090e3103fd8c6"
+        },
+        {
+          "bytes": 405418,
+          "relative_path": "reference_quotient_edges.csv",
+          "root": "outputs/reference_quotient_p0_frozen",
+          "sha256": "a1f9bb4e4bbfd7fa91eb1ee0e7715b480bb7a7815e99027d2c14d8865cb502aa"
+        },
+        {
+          "bytes": 293542,
+          "relative_path": "reference_quotient_node_registry.csv",
+          "root": "outputs/reference_quotient_p0_frozen",
+          "sha256": "693d256bd994fd405204a66ee7d4c71d33b5f4c7397a8138a89ce7945bcae3ce"
+        },
+        {
+          "bytes": 20417,
+          "relative_path": "refq_provenance_sample.csv",
+          "root": "outputs/reference_quotient_p0_frozen",
+          "sha256": "860bfd2aa1670606302b0e4417f3c2a2d49e05df0c866bc90deafe75f6bf3877"
+        },
+        {
+          "bytes": 1419,
+          "relative_path": "rq1_descriptive_statistics.csv",
+          "root": "outputs/reference_quotient_p0_frozen",
+          "sha256": "551848d7ffec1ee3cefdf89e978ecbd4958b0b2ac18e97705b96eec8959ada84"
+        },
+        {
+          "bytes": 392,
+          "relative_path": "rq1_event_type_distribution.csv",
+          "root": "outputs/reference_quotient_p0_frozen",
+          "sha256": "6b1edf3e03bd18d1e411c9e72501ed6ff2c52047be4aa0cbec8049829dd80db1"
+        },
+        {
+          "bytes": 402,
+          "relative_path": "rq1_project_age_cross_sectional_association.csv",
+          "root": "outputs/reference_quotient_p0_frozen",
+          "sha256": "ab8e4d3cc984b3dd25aacb2314aa97c397ad48541b5bd1ff2ea51f7b1ba6153f"
+        },
+        {
+          "bytes": 51763,
+          "relative_path": "rq1_project_reference_profiles.csv",
+          "root": "outputs/reference_quotient_p0_frozen",
+          "sha256": "33455a21f0276e54423752aad76bbb6e23832d810ff21df018570bd838ef917f"
+        },
+        {
+          "bytes": 815,
+          "relative_path": "rq1_referenced_entity_distribution.csv",
+          "root": "outputs/reference_quotient_p0_frozen",
+          "sha256": "c25d3b73b82eb28563a6ce3481b9e686a6ad25de8613774fcea449cbef8b0f66"
+        },
+        {
+          "bytes": 364,
+          "relative_path": "rq1_referencing_entity_distribution.csv",
+          "root": "outputs/reference_quotient_p0_frozen",
+          "sha256": "ebba598591935246c3b9317ff4defb2372caeb893c6a5c4ba745b6c28fc8c4ca"
+        },
+        {
+          "bytes": 22471,
+          "relative_path": "rq2a_source_role_metrics.csv",
+          "root": "outputs/reference_quotient_p0_frozen",
+          "sha256": "bc7f0ac20f349c0625a61c0a78cf807c55be9f0064a7bc4d8269cfe46c393e73"
+        },
+        {
+          "bytes": 4830,
+          "relative_path": "rq2a_source_role_top50.csv",
+          "root": "outputs/reference_quotient_p0_frozen",
+          "sha256": "7bc346136fd591b2556d1bfc891048f2163b7a9aa8769bfab1f6cf878a175b78"
+        },
+        {
+          "bytes": 3080,
+          "relative_path": "rq2b_target_category_type_breakdown.csv",
+          "root": "outputs/reference_quotient_p0_frozen",
+          "sha256": "2ee28ea94236a354b55972fcd558a8bb07007a7a19d700adf8309bf3d891ea28"
+        },
+        {
+          "bytes": 215,
+          "relative_path": "rq2b_target_concentration.json",
+          "root": "outputs/reference_quotient_p0_frozen",
+          "sha256": "b9894b3757b959395e53e319520355eeee6badbd13906791b0a65a74df5e5720"
+        },
+        {
+          "bytes": 705087,
+          "relative_path": "rq2b_target_role_metrics.csv",
+          "root": "outputs/reference_quotient_p0_frozen",
+          "sha256": "5f8a585224100198d94564a2c8677104112d4d97647d67d9df8c2e656a95ec3c"
+        },
+        {
+          "bytes": 5858,
+          "relative_path": "rq2b_target_role_top50.csv",
+          "root": "outputs/reference_quotient_p0_frozen",
+          "sha256": "86c1a82bc72b9c0731152c49d791273921099a4c07374bfc701adfbe851a16fe"
+        },
+        {
+          "bytes": 104532,
+          "relative_path": "rq2c_algorithmic_communities.csv",
+          "root": "outputs/reference_quotient_p0_frozen",
+          "sha256": "463f39885daf7779a9581195831676553fb67254917117f92f2134a4e03f649c"
+        },
+        {
+          "bytes": 197821,
+          "relative_path": "rq2c_structural_brokerage_candidates.csv",
+          "root": "outputs/reference_quotient_p0_frozen",
+          "sha256": "2eb9860d37b791370ee6b7071359ed2992c06724e493d780019fb81ec20d3d26"
+        },
+        {
+          "bytes": 3203,
+          "relative_path": "rq2c_structural_brokerage_top50.csv",
+          "root": "outputs/reference_quotient_p0_frozen",
+          "sha256": "b78559a2cbbac0400e311025c543339c5ea4f6bf4a47007e23974147393c4f3e"
+        },
+        {
+          "bytes": 227455,
+          "relative_path": "rq2c_undirected_view_edges.csv",
+          "root": "outputs/reference_quotient_p0_frozen",
+          "sha256": "7ce2cfeb63a7a45c55690575f8b9de08b35706cfa620eccc02423297958d8f91"
+        },
+        {
+          "bytes": 225431,
+          "relative_path": "rq2c_undirected_view_lcc_edges.csv",
+          "root": "outputs/reference_quotient_p0_frozen",
+          "sha256": "5c587d804936e159036eb90604722ff80491f4343035cfef11992e4fac385d8b"
+        },
+        {
+          "bytes": 837,
+          "relative_path": "rq2c_undirected_view_summary.json",
+          "root": "outputs/reference_quotient_p0_frozen",
+          "sha256": "58139180c6a258a9cc4f90ef0eae781f84e36790fb433319b6f68e9ace5678c7"
+        },
+        {
+          "bytes": 4881,
+          "relative_path": "rq3_kruskal_fdr_effect_sizes.csv",
+          "root": "outputs/reference_quotient_p0_frozen",
+          "sha256": "202959b55f091fb109ea4f664f703c7740cfdd8ef04714f0bf28da8576ede7a3"
+        },
+        {
+          "bytes": 83178,
+          "relative_path": "rq3_seed_role_aware_features.csv",
+          "root": "outputs/reference_quotient_p0_frozen",
+          "sha256": "16d2a8f2b4cefafaf62dc26eacdd69b2dca815bcf833efdc9f6a68ceadeac111"
+        },
+        {
+          "bytes": 18986,
+          "relative_path": "rq3_subdomain_descriptive_comparison.csv",
+          "root": "outputs/reference_quotient_p0_frozen",
+          "sha256": "5c9513caac5edb74c67acb2d76b710ceca2890a319e785c0be61f0937abb182c"
+        },
+        {
+          "bytes": 516,
+          "relative_path": "seed_observability_audit.json",
+          "root": "outputs/reference_quotient_p0_frozen",
+          "sha256": "cc01d689d6cbb0e693edb0560a2cb77b538e58be649d73b68668b06d8c875ae3"
+        }
+      ],
+      "path": "D:/github_repo/OSDB_RefQ/outputs/reference_quotient_p0_frozen",
+      "root": "outputs/reference_quotient_p0_frozen"
+    },
+    {
+      "aggregate_bytes": 17815150,
+      "file_count": 98,
+      "files": [
+        {
+          "bytes": 6785,
+          "relative_path": "FINAL_FREEZE_MANIFEST.json",
+          "root": "supplemental/reference_quotient_v1",
+          "sha256": "c99d0316e785b50d1a4cfa164aeba51b2f78cb9cdb8014705647d9cbcd430100"
+        },
+        {
+          "bytes": 1100,
+          "relative_path": "README.md",
+          "root": "supplemental/reference_quotient_v1",
+          "sha256": "c0fec687826c8fb1b350046b9940f87d9c6a5847532acaadd90fbd29282833f5"
+        },
+        {
+          "bytes": 613,
+          "relative_path": "configs/supplemental_v1.yaml",
+          "root": "supplemental/reference_quotient_v1",
+          "sha256": "a09aead9a399895dce0827b88208f0c7a05294acc9e113547436fb7556a4d4d6"
+        },
+        {
+          "bytes": 1773,
+          "relative_path": "outputs/S1_evidence_universe/event_type_x_quotient_eligibility.csv",
+          "root": "supplemental/reference_quotient_v1",
+          "sha256": "ac790b0bbc1c4804d80621246317e1088bc38696878d93ec25cd67ec1a03e669"
+        },
+        {
+          "bytes": 2659,
+          "relative_path": "outputs/S1_evidence_universe/event_type_x_target_membership_status.csv",
+          "root": "supplemental/reference_quotient_v1",
+          "sha256": "3ca6311cf314cd29013044306c385ae559b644e5f4760d217cdc3bbc057a0781"
+        },
+        {
+          "bytes": 406,
+          "relative_path": "outputs/S1_evidence_universe/evidence_universe_flow.csv",
+          "root": "supplemental/reference_quotient_v1",
+          "sha256": "c9951e5d61c0e16b3c10d18329f1ac95219c7cb49c05a11ab9891eeffa00dc48"
+        },
+        {
+          "bytes": 692,
+          "relative_path": "outputs/S1_evidence_universe/evidence_universe_validation.json",
+          "root": "supplemental/reference_quotient_v1",
+          "sha256": "98fb4ee666422bd5c357145f7326fcf87a3c42c23477c6a30287081f6a28f0e8"
+        },
+        {
+          "bytes": 1699,
+          "relative_path": "outputs/S1_evidence_universe/source_entity_type_x_quotient_eligibility.csv",
+          "root": "supplemental/reference_quotient_v1",
+          "sha256": "3a97938a3093744511e3fb51f432d83182032c8446ccf14f9ba353d8e5da50ae"
+        },
+        {
+          "bytes": 2534,
+          "relative_path": "outputs/S1_evidence_universe/source_entity_type_x_target_membership_status.csv",
+          "root": "supplemental/reference_quotient_v1",
+          "sha256": "23e71652115f8b8cec7dc21922e661d8a0ccff7819ad0bcd15c10d315761045f"
+        },
+        {
+          "bytes": 3166,
+          "relative_path": "outputs/S1_evidence_universe/target_entity_type_x_quotient_eligibility.csv",
+          "root": "supplemental/reference_quotient_v1",
+          "sha256": "71da858a9e3322bce552b46bb39d66882353d30a1cfc1a66086101d884aceec4"
+        },
+        {
+          "bytes": 3263,
+          "relative_path": "outputs/S1_evidence_universe/target_entity_type_x_target_membership_status.csv",
+          "root": "supplemental/reference_quotient_v1",
+          "sha256": "7501b9492dd0ec4cb15ba21425455702f6c1a24f72b78a2d4aa0ab65c7b6e1b6"
+        },
+        {
+          "bytes": 886,
+          "relative_path": "outputs/S2_weight_sensitivity/edge_weight_sensitivity.csv",
+          "root": "supplemental/reference_quotient_v1",
+          "sha256": "99f36030f7b7e15d7eac7fadccbb536348277b7beec5a4765b5f93e2fe6454c3"
+        },
+        {
+          "bytes": 35525,
+          "relative_path": "outputs/S2_weight_sensitivity/threshold_10_undirected_edges.csv",
+          "root": "supplemental/reference_quotient_v1",
+          "sha256": "7ac6fabc8139394bdf870bc566cd5c80b6e6e46a81fac05f9d8e69b80998a34a"
+        },
+        {
+          "bytes": 227455,
+          "relative_path": "outputs/S2_weight_sensitivity/threshold_1_undirected_edges.csv",
+          "root": "supplemental/reference_quotient_v1",
+          "sha256": "7ce2cfeb63a7a45c55690575f8b9de08b35706cfa620eccc02423297958d8f91"
+        },
+        {
+          "bytes": 115561,
+          "relative_path": "outputs/S2_weight_sensitivity/threshold_2_undirected_edges.csv",
+          "root": "supplemental/reference_quotient_v1",
+          "sha256": "327f499de0009e7146c3180cc9304df13788a5e28492910adcc378c208e72cf2"
+        },
+        {
+          "bytes": 56164,
+          "relative_path": "outputs/S2_weight_sensitivity/threshold_5_undirected_edges.csv",
+          "root": "supplemental/reference_quotient_v1",
+          "sha256": "033e1e7146f083c1e38c0afec66e81e485b5829b5ced3cfc6f32048b1ab0f7e3"
+        },
+        {
+          "bytes": 227455,
+          "relative_path": "outputs/S3_observation_sensitivity/canonical_seed_centered_observed_undirected_edges.csv",
+          "root": "supplemental/reference_quotient_v1",
+          "sha256": "7ce2cfeb63a7a45c55690575f8b9de08b35706cfa620eccc02423297958d8f91"
+        },
+        {
+          "bytes": 101880,
+          "relative_path": "outputs/S3_observation_sensitivity/multi_seed_target_view_undirected_edges.csv",
+          "root": "supplemental/reference_quotient_v1",
+          "sha256": "ba16af9112f8ebc21e8d9bf2e50fc06fbda562bb9724e5d31d4e57f27f66cebe"
+        },
+        {
+          "bytes": 689,
+          "relative_path": "outputs/S3_observation_sensitivity/observation_boundary_sensitivity.csv",
+          "root": "supplemental/reference_quotient_v1",
+          "sha256": "3060faa04f58b6058ac36dc77df935e4c17e4c70636d5062c29074e9a22d9956"
+        },
+        {
+          "bytes": 8719,
+          "relative_path": "outputs/S3_observation_sensitivity/seed_only_induced_undirected_edges.csv",
+          "root": "supplemental/reference_quotient_v1",
+          "sha256": "f418cbb49addeb9b9a6293932a6a8ef4c08a59ad25f973c5e788f1d2122b5771"
+        },
+        {
+          "bytes": 46429,
+          "relative_path": "outputs/S4_community_stability/louvain_stability_pairwise.csv",
+          "root": "supplemental/reference_quotient_v1",
+          "sha256": "d5a1bbfb9e0c2a8a5ce6bc72c5f06237b6bb7e2e9f716d732c051fd86bc33401"
+        },
+        {
+          "bytes": 2892,
+          "relative_path": "outputs/S4_community_stability/louvain_stability_runs.csv",
+          "root": "supplemental/reference_quotient_v1",
+          "sha256": "554ef06a0dcfb87f2c5b3fdd825df7f20b7c2d9a5ffadf9483eea50218cdd2df"
+        },
+        {
+          "bytes": 628,
+          "relative_path": "outputs/S4_community_stability/louvain_stability_summary.json",
+          "root": "supplemental/reference_quotient_v1",
+          "sha256": "fe7e282076affb53bab30f684d4bc1165c4b86598a44e546aaba9ccb1a57503b"
+        },
+        {
+          "bytes": 13642726,
+          "relative_path": "outputs/S5_brokerage_stability/brokerage_rank_stability.csv",
+          "root": "supplemental/reference_quotient_v1",
+          "sha256": "197c42a74ce4c4d2f8a6684044b52abf8deef253bed44dd7ceca7332b1343207"
+        },
+        {
+          "bytes": 3218,
+          "relative_path": "outputs/S5_brokerage_stability/brokerage_stability_runs.csv",
+          "root": "supplemental/reference_quotient_v1",
+          "sha256": "194e40a3cb5f49423d0b5ec08172f848f5f93ee43316423ce1a0400b47c213e9"
+        },
+        {
+          "bytes": 543,
+          "relative_path": "outputs/S5_brokerage_stability/brokerage_stability_summary.json",
+          "root": "supplemental/reference_quotient_v1",
+          "sha256": "18efc554bc35687ecff966d80e8c11eb807e1a4302ca7f4cb3b238ebea191044"
+        },
+        {
+          "bytes": 137084,
+          "relative_path": "outputs/S5_brokerage_stability/brokerage_topk_frequency.csv",
+          "root": "supplemental/reference_quotient_v1",
+          "sha256": "62e5ba7271a24d21a626e962caa1381726356017c9b28c5280078cc255222f04"
+        },
+        {
+          "bytes": 195340,
+          "relative_path": "outputs/S6_figure_ready/brokerage_plot.csv",
+          "root": "supplemental/reference_quotient_v1",
+          "sha256": "81cd6a403be18b41b4ff486e566af4f5133df034debc40e63c33af87757af5af"
+        },
+        {
+          "bytes": 3217,
+          "relative_path": "outputs/S6_figure_ready/brokerage_stability_plot.csv",
+          "root": "supplemental/reference_quotient_v1",
+          "sha256": "f77222b0081a76aea45c27ec1354a63b58e5b307c60c943431993badcab2a377"
+        },
+        {
+          "bytes": 3040,
+          "relative_path": "outputs/S6_figure_ready/brokerage_top50_plot.csv",
+          "root": "supplemental/reference_quotient_v1",
+          "sha256": "9492055adb04480b9853111b494479cef97b1792b16b5de78d4a141fa2d0114b"
+        },
+        {
+          "bytes": 272,
+          "relative_path": "outputs/S6_figure_ready/community_size_distribution.csv",
+          "root": "supplemental/reference_quotient_v1",
+          "sha256": "b45d22f08d826dd928a6244d7fa2d0adde2930d68b0a92b3b3a6e14669d7aa26"
+        },
+        {
+          "bytes": 783665,
+          "relative_path": "outputs/S6_figure_ready/edge_weight_ecdf_ccdf.csv",
+          "root": "supplemental/reference_quotient_v1",
+          "sha256": "a6255eb23b1c6a96e9a313433b3072d6a57bcdb9d9457c3fab65ee1025d23910"
+        },
+        {
+          "bytes": 249,
+          "relative_path": "outputs/S6_figure_ready/edge_weight_quantiles.csv",
+          "root": "supplemental/reference_quotient_v1",
+          "sha256": "b15c9f7c4541f14b9c104867fd16cf655f6aaf967beb1a3f50568ae3bbc1e032"
+        },
+        {
+          "bytes": 7766,
+          "relative_path": "outputs/S6_figure_ready/figure_ready_manifest.json",
+          "root": "supplemental/reference_quotient_v1",
+          "sha256": "f23648bda3e19bd12103c1730d7111fc8ea56e44c47a1aac19011d1a3ace4e1d"
+        },
+        {
+          "bytes": 2891,
+          "relative_path": "outputs/S6_figure_ready/louvain_stability_plot.csv",
+          "root": "supplemental/reference_quotient_v1",
+          "sha256": "ddd19cb9931b2476390e3778e553abbb81b2fa5d801faa0d9c89c9ea41b7f5dc"
+        },
+        {
+          "bytes": 377,
+          "relative_path": "outputs/S6_figure_ready/rq1_event_type_distribution_plot.csv",
+          "root": "supplemental/reference_quotient_v1",
+          "sha256": "3e93187469805e3e4418492dff83b012997a59fb1545889948bfad7b5ad6dee0"
+        },
+        {
+          "bytes": 1428,
+          "relative_path": "outputs/S6_figure_ready/rq1_profile_quantiles.csv",
+          "root": "supplemental/reference_quotient_v1",
+          "sha256": "b966ecd9bd072ee80d677eb1ea2806d1de41c869f5f58a987ec1c3e24114be25"
+        },
+        {
+          "bytes": 391,
+          "relative_path": "outputs/S6_figure_ready/rq1_project_age_cross_sectional_association_plot.csv",
+          "root": "supplemental/reference_quotient_v1",
+          "sha256": "98a514520db82a61ef8c4246085bc05c4f478053e12d23e6e3a396106ec420fa"
+        },
+        {
+          "bytes": 787,
+          "relative_path": "outputs/S6_figure_ready/rq1_referenced_entity_distribution_plot.csv",
+          "root": "supplemental/reference_quotient_v1",
+          "sha256": "f86675f5430b0793967b14741d7575ea5f10207f9f109a88d833c30d5d5f3acb"
+        },
+        {
+          "bytes": 349,
+          "relative_path": "outputs/S6_figure_ready/rq1_referencing_entity_distribution_plot.csv",
+          "root": "supplemental/reference_quotient_v1",
+          "sha256": "f21b7f128c48f27ec8913c20b7261b0950ee0fba7a7b0794c8c191cde182386c"
+        },
+        {
+          "bytes": 124189,
+          "relative_path": "outputs/S6_figure_ready/rq2a_source_role_ecdf_ccdf.csv",
+          "root": "supplemental/reference_quotient_v1",
+          "sha256": "a172576d3fbe191486de04f9359cc406cb2c03a48475dd045e43ba3594c2939c"
+        },
+        {
+          "bytes": 22100,
+          "relative_path": "outputs/S6_figure_ready/rq2a_source_role_metrics_plot.csv",
+          "root": "supplemental/reference_quotient_v1",
+          "sha256": "90895bd09f35afa298d9e9e38983bdac9b26cc952528cda1e4395fff1645577d"
+        },
+        {
+          "bytes": 997,
+          "relative_path": "outputs/S6_figure_ready/rq2a_source_role_quantiles.csv",
+          "root": "supplemental/reference_quotient_v1",
+          "sha256": "c045c7ee95239a37766ebb01a059de891fb8d56cdc2157bb5ee4c9f48db92fe1"
+        },
+        {
+          "bytes": 691838,
+          "relative_path": "outputs/S6_figure_ready/rq2b_target_role_metrics_plot.csv",
+          "root": "supplemental/reference_quotient_v1",
+          "sha256": "aacffb43af598be56234fd17745d683a2b1df338148e62ddbe01bcc8fd9c9d0b"
+        },
+        {
+          "bytes": 664,
+          "relative_path": "outputs/S6_figure_ready/rq2b_target_role_quantiles.csv",
+          "root": "supplemental/reference_quotient_v1",
+          "sha256": "5fa952135de0cf3d550bdc06702e65eac5377542a5d531032fb57cb7e254a3d3"
+        },
+        {
+          "bytes": 4810,
+          "relative_path": "outputs/S6_figure_ready/rq3_kruskal_fdr_effect_sizes_plot.csv",
+          "root": "supplemental/reference_quotient_v1",
+          "sha256": "6f8c9162f0825f16a4510824ba6189e1a02e509e54ded53adb0a0efc6b761852"
+        },
+        {
+          "bytes": 18722,
+          "relative_path": "outputs/S6_figure_ready/rq3_subdomain_descriptive_comparison_plot.csv",
+          "root": "supplemental/reference_quotient_v1",
+          "sha256": "c9223c70a1329e702789150bdb750e05fa4fa0b0e2a5611542135fdf4c5c7efd"
+        },
+        {
+          "bytes": 674,
+          "relative_path": "outputs/S6_figure_ready/structural_summary.json",
+          "root": "supplemental/reference_quotient_v1",
+          "sha256": "d8f737235b52e83e15e112a44751305d592c5558ea85969842b63e944dbe2d2f"
+        },
+        {
+          "bytes": 66775,
+          "relative_path": "outputs/S7_top_evidence_composition/top_edge_evidence_composition.csv",
+          "root": "supplemental/reference_quotient_v1",
+          "sha256": "70e13c9d2a50ce97cedf58791e1eebddbc09073bd55cad938ef2814a1c258d00"
+        },
+        {
+          "bytes": 45342,
+          "relative_path": "outputs/S7_top_evidence_composition/top_source_evidence_composition.csv",
+          "root": "supplemental/reference_quotient_v1",
+          "sha256": "345786fc4058406c605f2fdee5d97ebc38fa04014643e0b234e9d25d3fb60b2c"
+        },
+        {
+          "bytes": 37694,
+          "relative_path": "outputs/S7_top_evidence_composition/top_target_evidence_composition.csv",
+          "root": "supplemental/reference_quotient_v1",
+          "sha256": "0f925153fa44f0a56161c50346a34adca2bfec3f75f9c8e32f7f1675d45e378a"
+        },
+        {
+          "bytes": 6910,
+          "relative_path": "outputs/canonical_immutability_audit.json",
+          "root": "supplemental/reference_quotient_v1",
+          "sha256": "f491e50ffaf316258fcb30b7505a2415732318a98cf181db09caf65f197d321b"
+        },
+        {
+          "bytes": 26148,
+          "relative_path": "outputs/manifest.json",
+          "root": "supplemental/reference_quotient_v1",
+          "sha256": "1c3ae01fe683832a7af4428dfe43227941e9baf3b8486d86a57f0063537f38e0"
+        },
+        {
+          "bytes": 48,
+          "relative_path": "scripts/__init__.py",
+          "root": "supplemental/reference_quotient_v1",
+          "sha256": "24e6d80163ab038adca6127d2a4648998924774188bf51fde5aba6b4023f9717"
+        },
+        {
+          "bytes": 222,
+          "relative_path": "scripts/__pycache__/__init__.cpython-39.pyc",
+          "root": "supplemental/reference_quotient_v1",
+          "sha256": "54f789fbfd16afb7531c4f04a7515b1a38a66df3bd9c5d4542d21e4d319b4f71"
+        },
+        {
+          "bytes": 11075,
+          "relative_path": "scripts/__pycache__/common.cpython-39.pyc",
+          "root": "supplemental/reference_quotient_v1",
+          "sha256": "a705bd4ff5ef0c07efb1142315d52b11c95f040f9f8bea38f40ba5ba7fdb2f71"
+        },
+        {
+          "bytes": 37303,
+          "relative_path": "scripts/__pycache__/run_supplemental.cpython-39.pyc",
+          "root": "supplemental/reference_quotient_v1",
+          "sha256": "f6c746e56b26caeab787fd1e37d2afa74fb500956eb56893c53a0163c7f7674e"
+        },
+        {
+          "bytes": 9407,
+          "relative_path": "scripts/common.py",
+          "root": "supplemental/reference_quotient_v1",
+          "sha256": "519d12f83016c0cda43c49e5a4cc8ce8338584c58469579ca50da3a1b6fca309"
+        },
+        {
+          "bytes": 46082,
+          "relative_path": "scripts/run_supplemental.py",
+          "root": "supplemental/reference_quotient_v1",
+          "sha256": "995373e8064aa7b7674cc7fa30c78065751806595f88703723f85b8786eb6d3b"
+        },
+        {
+          "bytes": 8256,
+          "relative_path": "tests/__pycache__/test_supplemental.cpython-39-pytest-7.1.2.pyc",
+          "root": "supplemental/reference_quotient_v1",
+          "sha256": "8362017d4307ed52f57fb86e5a1756af7c309c01f44038ba8dfa056dc4ef250a"
+        },
+        {
+          "bytes": 3781,
+          "relative_path": "tests/__pycache__/test_supplemental.cpython-39.pyc",
+          "root": "supplemental/reference_quotient_v1",
+          "sha256": "04a4b9d7c437c6666a0310d2410cfd26cc16ae380f5ddac122059461312486b7"
+        },
+        {
+          "bytes": 3312,
+          "relative_path": "tests/test_supplemental.py",
+          "root": "supplemental/reference_quotient_v1",
+          "sha256": "bc4f79e2a06ef65a3359692bad5838124ca2693317a3893dcc275e47671b3fa9"
+        },
+        {
+          "bytes": 646,
+          "relative_path": "v1_1_completion/README.md",
+          "root": "supplemental/reference_quotient_v1",
+          "sha256": "9801945ba6720b194d4cba5d53f988819769541d738bdfba8270c9f019bbca3b"
+        },
+        {
+          "bytes": 23028,
+          "relative_path": "v1_1_completion/__pycache__/run_completion.cpython-39.pyc",
+          "root": "supplemental/reference_quotient_v1",
+          "sha256": "8b1760c24b1eb057337c9fe634bce257e5d9ce5ce77bdd6b86ac4193abced2ba"
+        },
+        {
+          "bytes": 2130,
+          "relative_path": "v1_1_completion/outputs/S1_evidence_universe/event_type_x_eligible_edge_class.csv",
+          "root": "supplemental/reference_quotient_v1",
+          "sha256": "007a6e76f9c0a76bc9b6d0674ce56a728ecee7b10403663d461856d369167a63"
+        },
+        {
+          "bytes": 2176,
+          "relative_path": "v1_1_completion/outputs/S1_evidence_universe/source_entity_type_x_eligible_edge_class.csv",
+          "root": "supplemental/reference_quotient_v1",
+          "sha256": "da9def43ad94273d8add6a21c5df4fa14a418ae017c79e3d840f104e4808ed03"
+        },
+        {
+          "bytes": 3953,
+          "relative_path": "v1_1_completion/outputs/S1_evidence_universe/target_entity_type_x_eligible_edge_class.csv",
+          "root": "supplemental/reference_quotient_v1",
+          "sha256": "cb0d37c32668139bed7e0b46150d3cc41da3d26339e311812127d6562a7399a1"
+        },
+        {
+          "bytes": 9667,
+          "relative_path": "v1_1_completion/outputs/S5_brokerage_stability/brokerage_topk_inclusion_frequency.csv",
+          "root": "supplemental/reference_quotient_v1",
+          "sha256": "19f3c8d4c4c41e8cfb472b6c6c5e53ada396b2a330a917cc938fdcd139156b74"
+        },
+        {
+          "bytes": 8517,
+          "relative_path": "v1_1_completion/outputs/S6_figure_ready/figure_ready_manifest_v1_1.json",
+          "root": "supplemental/reference_quotient_v1",
+          "sha256": "efdec2c20c647e0202dc50f3b28ccf275096ccf09dc765eaeab21bd830cfa4c6"
+        },
+        {
+          "bytes": 674,
+          "relative_path": "v1_1_completion/outputs/S6_figure_ready/structural_summary.csv",
+          "root": "supplemental/reference_quotient_v1",
+          "sha256": "d8f737235b52e83e15e112a44751305d592c5558ea85969842b63e944dbe2d2f"
+        },
+        {
+          "bytes": 40111,
+          "relative_path": "v1_1_completion/outputs/S7_top_evidence_composition/top_source_target_entity_composition.csv",
+          "root": "supplemental/reference_quotient_v1",
+          "sha256": "c454251e274b0fa19710628a00fc42aaf9fbfa3cfac4c4a162282da9ea5a0792"
+        },
+        {
+          "bytes": 1795,
+          "relative_path": "v1_1_completion/outputs/completion_scan_validation.json",
+          "root": "supplemental/reference_quotient_v1",
+          "sha256": "6a7ccfd9bc1d1f721d1baa017ce7e8ee9522f2606d097eb30e0b2245857a4811"
+        },
+        {
+          "bytes": 10847,
+          "relative_path": "v1_1_completion/outputs/existing_output_sha_audit.json",
+          "root": "supplemental/reference_quotient_v1",
+          "sha256": "8dfc010ec5d08cecde0f52f8523891d72bdac53ddc4c855c968fc38dfc1d4e05"
+        },
+        {
+          "bytes": 27055,
+          "relative_path": "v1_1_completion/run_completion.py",
+          "root": "supplemental/reference_quotient_v1",
+          "sha256": "ab0547ec187b1c5a9ca4fce7b4a7148745e308166f3d86a9dbe763945fc06758"
+        },
+        {
+          "bytes": 8751,
+          "relative_path": "v1_1_completion/tests/__pycache__/test_completion.cpython-39-pytest-7.1.2.pyc",
+          "root": "supplemental/reference_quotient_v1",
+          "sha256": "7dddcb1c58b7f43cbec21450f0f31de7860bf95534c3ba347dd18341d3f5963d"
+        },
+        {
+          "bytes": 3507,
+          "relative_path": "v1_1_completion/tests/__pycache__/test_completion.cpython-39.pyc",
+          "root": "supplemental/reference_quotient_v1",
+          "sha256": "ece250a40407bcf09f624fe918f3439927e033a38de3e4edf8e13d56743cdb1c"
+        },
+        {
+          "bytes": 3070,
+          "relative_path": "v1_1_completion/tests/test_completion.py",
+          "root": "supplemental/reference_quotient_v1",
+          "sha256": "3d29c51af6703971866ed564387ebab0eee1e36d366766561440c572a9cd2085"
+        },
+        {
+          "bytes": 22033,
+          "relative_path": "v1_1_completion_manifest.json",
+          "root": "supplemental/reference_quotient_v1",
+          "sha256": "b2a9e3ea4f947a7e8488e0a0ba2609a15a70162f4ff66d975897e63a4b752543"
+        },
+        {
+          "bytes": 802,
+          "relative_path": "v1_2_s3_reproducibility_patch/README.md",
+          "root": "supplemental/reference_quotient_v1",
+          "sha256": "872dc186e49c0c4eae4248eb81e15ca770085c0731df0fc7c9911a02e9d86c1a"
+        },
+        {
+          "bytes": 8917,
+          "relative_path": "v1_2_s3_reproducibility_patch/__pycache__/patch_s3.cpython-39.pyc",
+          "root": "supplemental/reference_quotient_v1",
+          "sha256": "65a09094d3aac06f95ad6a8d6e7493d89c5e94ebeffbb0a87f778b07e438e84b"
+        },
+        {
+          "bytes": 2350,
+          "relative_path": "v1_2_s3_reproducibility_patch/old_vs_corrected_s3_summary.csv",
+          "root": "supplemental/reference_quotient_v1",
+          "sha256": "8c516ea00360d7ddb8689a8f47386635c761801b2804e8a4f7fbf07d3b69cc99"
+        },
+        {
+          "bytes": 104532,
+          "relative_path": "v1_2_s3_reproducibility_patch/outputs/S3_observation_sensitivity_corrected/canonical_seed_centered_observed_communities.csv",
+          "root": "supplemental/reference_quotient_v1",
+          "sha256": "463f39885daf7779a9581195831676553fb67254917117f92f2134a4e03f649c"
+        },
+        {
+          "bytes": 225431,
+          "relative_path": "v1_2_s3_reproducibility_patch/outputs/S3_observation_sensitivity_corrected/canonical_seed_centered_observed_lcc_edges.csv",
+          "root": "supplemental/reference_quotient_v1",
+          "sha256": "5c587d804936e159036eb90604722ff80491f4343035cfef11992e4fac385d8b"
+        },
+        {
+          "bytes": 227455,
+          "relative_path": "v1_2_s3_reproducibility_patch/outputs/S3_observation_sensitivity_corrected/canonical_seed_centered_observed_undirected_edges.csv",
+          "root": "supplemental/reference_quotient_v1",
+          "sha256": "7ce2cfeb63a7a45c55690575f8b9de08b35706cfa620eccc02423297958d8f91"
+        },
+        {
+          "bytes": 18795,
+          "relative_path": "v1_2_s3_reproducibility_patch/outputs/S3_observation_sensitivity_corrected/multi_seed_target_view_communities.csv",
+          "root": "supplemental/reference_quotient_v1",
+          "sha256": "3f7cbf95f8a4b004bbedeab11348836e2d4043e81fbacaa54e88cd4a0bb0a576"
+        },
+        {
+          "bytes": 101880,
+          "relative_path": "v1_2_s3_reproducibility_patch/outputs/S3_observation_sensitivity_corrected/multi_seed_target_view_lcc_edges.csv",
+          "root": "supplemental/reference_quotient_v1",
+          "sha256": "ba16af9112f8ebc21e8d9bf2e50fc06fbda562bb9724e5d31d4e57f27f66cebe"
+        },
+        {
+          "bytes": 101880,
+          "relative_path": "v1_2_s3_reproducibility_patch/outputs/S3_observation_sensitivity_corrected/multi_seed_target_view_undirected_edges.csv",
+          "root": "supplemental/reference_quotient_v1",
+          "sha256": "ba16af9112f8ebc21e8d9bf2e50fc06fbda562bb9724e5d31d4e57f27f66cebe"
+        },
+        {
+          "bytes": 1026,
+          "relative_path": "v1_2_s3_reproducibility_patch/outputs/S3_observation_sensitivity_corrected/observation_boundary_sensitivity_corrected.csv",
+          "root": "supplemental/reference_quotient_v1",
+          "sha256": "af5d2bfe0162100262945797e07f227da838d08d53c9cfbb99e728c25dcec3af"
+        },
+        {
+          "bytes": 2373,
+          "relative_path": "v1_2_s3_reproducibility_patch/outputs/S3_observation_sensitivity_corrected/seed_only_induced_communities.csv",
+          "root": "supplemental/reference_quotient_v1",
+          "sha256": "0562ba86c10caaeaf5aaa786489e6c47cb6513a4654296dbfdcb5f603ff51680"
+        },
+        {
+          "bytes": 8517,
+          "relative_path": "v1_2_s3_reproducibility_patch/outputs/S3_observation_sensitivity_corrected/seed_only_induced_lcc_edges.csv",
+          "root": "supplemental/reference_quotient_v1",
+          "sha256": "8517190431fa7567e2ea201e6633504202e7d2a572cfb3a18c095a550741359b"
+        },
+        {
+          "bytes": 8719,
+          "relative_path": "v1_2_s3_reproducibility_patch/outputs/S3_observation_sensitivity_corrected/seed_only_induced_undirected_edges.csv",
+          "root": "supplemental/reference_quotient_v1",
+          "sha256": "f418cbb49addeb9b9a6293932a6a8ef4c08a59ad25f973c5e788f1d2122b5771"
+        },
+        {
+          "bytes": 10584,
+          "relative_path": "v1_2_s3_reproducibility_patch/patch_s3.py",
+          "root": "supplemental/reference_quotient_v1",
+          "sha256": "fee4c7a9b378c4f7fac766641a6f33a1f533fca32de074d042b80297ad90d47e"
+        },
+        {
+          "bytes": 9919,
+          "relative_path": "v1_2_s3_reproducibility_patch/s3_reproducibility_patch_manifest.json",
+          "root": "supplemental/reference_quotient_v1",
+          "sha256": "3e3f52b5b62a37207960ed02a88c0283ba41b76067a4ee03e8ebdf2339484bfd"
+        },
+        {
+          "bytes": 6165,
+          "relative_path": "v1_2_s3_reproducibility_patch/tests/__pycache__/test_s3_patch.cpython-39-pytest-7.1.2.pyc",
+          "root": "supplemental/reference_quotient_v1",
+          "sha256": "0e9c069692f98e6c8bc93eef879341c4ae963db2bdeaf4e77e1d6a2e2ad3c2c4"
+        },
+        {
+          "bytes": 2473,
+          "relative_path": "v1_2_s3_reproducibility_patch/tests/__pycache__/test_s3_patch.cpython-39.pyc",
+          "root": "supplemental/reference_quotient_v1",
+          "sha256": "793b0bc075c7ef8e2ba83c64212e9e56c8211622b8d34169319fa659b55e3cb6"
+        },
+        {
+          "bytes": 2333,
+          "relative_path": "v1_2_s3_reproducibility_patch/tests/test_s3_patch.py",
+          "root": "supplemental/reference_quotient_v1",
+          "sha256": "b3b18a4ad3fd9fe035ca9d63efb928e398d0dd45290aa5fdedf731e950da31e8"
+        },
+        {
+          "bytes": 3740,
+          "relative_path": "v1_3_weight_multiplicity_contract_patch/contract_patch_manifest.json",
+          "root": "supplemental/reference_quotient_v1",
+          "sha256": "84bbfb6ae63fb0a4e6fad141d32dca8f2484be498e502c4f51fef38d1f63c6d3"
+        },
+        {
+          "bytes": 634,
+          "relative_path": "v1_3_weight_multiplicity_contract_patch/outputs/S1_evidence_universe/evidence_universe_flow_corrected.csv",
+          "root": "supplemental/reference_quotient_v1",
+          "sha256": "3e41d4a53acbd61a6a9edea2c3b3dbe4258e44eedbbc7c17ad73b77d10c401d5"
+        }
+      ],
+      "path": "D:/github_repo/OSDB_RefQ/supplemental/reference_quotient_v1",
+      "root": "supplemental/reference_quotient_v1"
+    }
+  ],
+  "schema_version": "ch5_refq_c3_7f_historical_immutability_baseline_v1"
+}
