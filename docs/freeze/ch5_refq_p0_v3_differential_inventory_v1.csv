@@ -1,0 +1,5 @@
+path_v2,path_v3,classification,changed_columns,changed_row_count,scientific_interpretation
+rq1_descriptive_statistics.csv,rq1_descriptive_statistics.csv,RUNTIME_NUMERIC_DRIFT,std,7,"pandas/numpy floating-point rounding; max abs delta 5.0931703299284e-11 (~7 ULP)"
+rq1_project_age_cross_sectional_association.csv,rq1_project_age_cross_sectional_association.csv,RUNTIME_NUMERIC_DRIFT,p_value,1,"SciPy floating-point rounding; abs delta 8.67361737988404e-19 (1 ULP)"
+rq2c_algorithmic_communities.csv,rq2c_algorithmic_communities.csv,EXPECTED_COMMUNITY_SIZE_CORRECTION,community_size,6367,"canonical community label-to-size alignment correction"
+rq3_kruskal_fdr_effect_sizes.csv,rq3_kruskal_fdr_effect_sizes.csv,RUNTIME_NUMERIC_DRIFT,"p_value;fdr_bh_p_value",9,"SciPy/NumPy tail-probability rounding; max abs delta 2.220446049250313e-16 (2 ULP)"
