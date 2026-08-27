@@ -1,0 +1,66 @@
+{
+  "completed_at": "2026-08-27T14:23:25.659214+00:00",
+  "implementation_commit": "765b89818993fe295db37545db0143c4c2b8b2b8",
+  "input_artifacts": [
+    {
+      "authority_class": "CORRECTED_P0",
+      "path": "D:/github_repo/OSDB_RefQ/outputs/reference_quotient_p0_corrected_v2/reference_quotient_cross_project_edges.csv",
+      "root": "D:/github_repo/OSDB_RefQ/outputs/reference_quotient_p0_corrected_v2",
+      "sha256": "a73b410753d66ea5d2e7378bc496095e0617432f3463819050159417a3a101bd",
+      "version": "corrected_p0_v2"
+    },
+    {
+      "authority_class": "CORRECTED_P0",
+      "path": "D:/github_repo/OSDB_RefQ/outputs/reference_quotient_p0_corrected_v2/reference_quotient_node_registry.csv",
+      "root": "D:/github_repo/OSDB_RefQ/outputs/reference_quotient_p0_corrected_v2",
+      "sha256": "0e6095341d207ff3c096d759cdd86be172241668b5f8f0f68be460063397571a",
+      "version": "corrected_p0_v2"
+    }
+  ],
+  "output_artifacts": [
+    {
+      "bytes": 1344,
+      "path": "S2_weight_sensitivity/edge_weight_sensitivity.csv",
+      "row_count": 4,
+      "sha256": "a1b6cf2043d59b911ef7c2ca20d85268664873748658287639a1b75ca1323d1e"
+    },
+    {
+      "bytes": 34062,
+      "path": "S2_weight_sensitivity/threshold_10_undirected_edges.csv",
+      "row_count": 1436,
+      "sha256": "71c0975f8cdec8ff77f6dd02ed7a5cf29b6a2ee1b1c8f7e6161e9b1eea9db565"
+    },
+    {
+      "bytes": 217657,
+      "path": "S2_weight_sensitivity/threshold_1_undirected_edges.csv",
+      "row_count": 9547,
+      "sha256": "30514267865f5baa3a50df6a3058e0b1ea5bddf83ef72b9884b302a156e06fc9"
+    },
+    {
+      "bytes": 110655,
+      "path": "S2_weight_sensitivity/threshold_2_undirected_edges.csv",
+      "row_count": 4829,
+      "sha256": "d105d96dad6e98bd4463595499838ba386bbf3d005f1845b6d9f4e93e2dc8bc7"
+    },
+    {
+      "bytes": 53825,
+      "path": "S2_weight_sensitivity/threshold_5_undirected_edges.csv",
+      "row_count": 2312,
+      "sha256": "514baffc1bafe744ce2700fcde43ef1fc6e5d1ca2e0877af6d83b9bcb2592d43"
+    }
+  ],
+  "output_root": "D:\\github_repo\\OSDB_RefQ\\supplemental\\reference_quotient_v2\\outputs",
+  "parameters": {
+    "corrected_data": true,
+    "stage": "S2"
+  },
+  "runtime_versions": {
+    "networkx": "3.2.1",
+    "numpy": "1.24.2",
+    "pandas": "1.5.3",
+    "python": "3.9.13",
+    "scipy": "1.9.1"
+  },
+  "stage": "S2_weight_sensitivity",
+  "status": "PASS"
+}
