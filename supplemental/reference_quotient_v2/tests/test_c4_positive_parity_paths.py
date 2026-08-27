@@ -30,12 +30,12 @@ def _write_frame(root: Path, name: str, frame: pd.DataFrame) -> None:
 def _s2_inputs() -> tuple[pd.DataFrame, pd.DataFrame]:
     edges = pd.DataFrame(
         [
-            {"source_project_id": "a", "target_project_id": "b", "weight": 1},
-            {"source_project_id": "b", "target_project_id": "a", "weight": 2},
-            {"source_project_id": "b", "target_project_id": "c", "weight": 1},
+            {"source_project_id": "2", "target_project_id": "10", "weight": 1},
+            {"source_project_id": "10", "target_project_id": "2", "weight": 2},
+            {"source_project_id": "10", "target_project_id": "100", "weight": 1},
         ]
     )
-    return edges, pd.DataFrame({"project_id": ["a", "b", "c"]})
+    return edges, pd.DataFrame({"project_id": ["2", "10", "100"]})
 
 
 def test_s2_positive_parity_path_and_mutations_fail_closed(tmp_path, monkeypatch):
@@ -54,11 +54,20 @@ def test_s2_positive_parity_path_and_mutations_fail_closed(tmp_path, monkeypatch
         json.dumps(result.sensitivity.loc[result.sensitivity["threshold"].eq(1)].iloc[0].to_dict()),
         encoding="utf-8",
     )
+    assert pd.api.types.is_integer_dtype(
+        pd.read_csv(tmp_path / "rq2c_undirected_view_edges.csv")["node_u"]
+    )
 
     assert s2.assert_s2_threshold_one_matches_corrected_p0(result, tmp_path)["status"] == "PASS"
 
     changed = pd.read_csv(tmp_path / "rq2c_undirected_view_edges.csv")
     changed.loc[0, "weight"] = int(changed.loc[0, "weight"]) + 1
+    _write_frame(tmp_path, "rq2c_undirected_view_edges.csv", changed)
+    with pytest.raises(AssertionError):
+        s2.assert_s2_threshold_one_matches_corrected_p0(result, tmp_path)
+
+    changed = pd.read_csv(tmp_path / "rq2c_undirected_view_edges.csv")
+    changed.loc[0, "directed_edge_count"] = int(changed.loc[0, "directed_edge_count"]) + 1
     _write_frame(tmp_path, "rq2c_undirected_view_edges.csv", changed)
     with pytest.raises(AssertionError):
         s2.assert_s2_threshold_one_matches_corrected_p0(result, tmp_path)
@@ -71,14 +80,14 @@ def test_s2_positive_parity_path_and_mutations_fail_closed(tmp_path, monkeypatch
 def _s3_inputs() -> tuple[pd.DataFrame, pd.DataFrame, pd.DataFrame]:
     edges = pd.DataFrame(
         [
-            {"source_project_id": "a", "target_project_id": "b", "weight": 1},
-            {"source_project_id": "b", "target_project_id": "a", "weight": 1},
-            {"source_project_id": "b", "target_project_id": "c", "weight": 1},
-            {"source_project_id": "c", "target_project_id": "b", "weight": 1},
+            {"source_project_id": "2", "target_project_id": "10", "weight": 1},
+            {"source_project_id": "10", "target_project_id": "2", "weight": 1},
+            {"source_project_id": "10", "target_project_id": "100", "weight": 1},
+            {"source_project_id": "100", "target_project_id": "10", "weight": 1},
         ]
     )
-    registry = pd.DataFrame({"project_id": ["a", "b", "c"]})
-    seeds = pd.DataFrame({"repo_id": ["a", "b"]})
+    registry = pd.DataFrame({"project_id": ["2", "10", "100"]})
+    seeds = pd.DataFrame({"repo_id": ["2", "10"]})
     return edges, registry, seeds
 
 
@@ -100,6 +109,9 @@ def test_s3_positive_dynamic_parity_path_and_mutation_fail_closed(tmp_path, monk
     (tmp_path / "rq2c_undirected_view_summary.json").write_text(
         json.dumps(dict(actual.network_summary)),
         encoding="utf-8",
+    )
+    assert pd.api.types.is_integer_dtype(
+        pd.read_csv(tmp_path / "reference_quotient_node_registry.csv")["project_id"]
     )
 
     assert s3.assert_s3_canonical_view_matches_corrected_p0(result, tmp_path)["status"] == "PASS"

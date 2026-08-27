@@ -28,6 +28,7 @@ from .s2_weight_sensitivity import (
     S2ContractError,
     S2_UNDIRECTED_EDGE_COLUMNS,
     analyze_with_shared_network_authority,
+    _normalize_undirected_parity_frame,
     preflight_corrected_p0_sensitivity_inputs,
     validate_directed_cross_project_edges,
     validate_network_parameters,
@@ -277,6 +278,25 @@ def build_future_s3_output_tables(
     return tables
 
 
+def _normalize_community_parity_frame(frame: pd.DataFrame) -> pd.DataFrame:
+    """Normalize opaque project IDs while retaining integer community fields."""
+
+    columns = list(S3_COMMUNITY_COLUMNS)
+    work = frame.loc[:, columns].copy()
+    if work["project_id"].isna().any():
+        raise S3ContractError("S3 parity community project IDs must not be missing")
+    project_ids = work["project_id"].astype("string")
+    if project_ids.str.strip().eq("").any():
+        raise S3ContractError("S3 parity community project IDs must not be empty")
+    work["project_id"] = project_ids
+    for column in ("community_id", "community_size"):
+        numeric = pd.to_numeric(work[column], errors="coerce")
+        if numeric.isna().any() or (~numeric.eq(numeric.round())).any():
+            raise S3ContractError("S3 parity community field must be integral: %s" % column)
+        work[column] = numeric.astype("int64")
+    return work.reset_index(drop=True)
+
+
 def assert_s3_canonical_view_matches_corrected_p0(
     result: S3ObservationSensitivityResult,
     corrected_p0_root: str | Path = CORRECTED_P0_ROOT,
@@ -288,7 +308,10 @@ def assert_s3_canonical_view_matches_corrected_p0(
     root = canonical_path(corrected_p0_root)
     if os.path.normcase(os.fspath(root)) != os.path.normcase(os.fspath(CORRECTED_P0_ROOT)):
         raise S3ContractError("S3 parity authority must be corrected P0 root")
-    expected_registry = pd.read_csv(root / "reference_quotient_node_registry.csv")
+    expected_registry = pd.read_csv(
+        root / "reference_quotient_node_registry.csv",
+        dtype={"project_id": "string"},
+    )
     expected_nodes = validate_node_registry(expected_registry)
     actual = result.view_results[CANONICAL_SEED_CENTERED_OBSERVED]
     if actual.node_ids != expected_nodes:
@@ -304,10 +327,19 @@ def assert_s3_canonical_view_matches_corrected_p0(
         "communities": actual.communities,
     }
     for key, filename in file_map.items():
-        expected = pd.read_csv(root / filename)
-        columns = S2_UNDIRECTED_EDGE_COLUMNS if key != "communities" else S3_COMMUNITY_COLUMNS
-        expected = expected.loc[:, columns].reset_index(drop=True)
-        observed = actual_map[key].loc[:, columns].reset_index(drop=True)
+        if key != "communities":
+            expected = _normalize_undirected_parity_frame(
+                pd.read_csv(
+                    root / filename,
+                    dtype={"node_u": "string", "node_v": "string"},
+                )
+            )
+            observed = _normalize_undirected_parity_frame(actual_map[key])
+        else:
+            expected = _normalize_community_parity_frame(
+                pd.read_csv(root / filename, dtype={"project_id": "string"})
+            )
+            observed = _normalize_community_parity_frame(actual_map[key])
         pdt.assert_frame_equal(expected, observed, check_dtype=False, check_exact=True)
     expected_summary = json.loads((root / "rq2c_undirected_view_summary.json").read_text(encoding="utf-8"))
     for column, expected in expected_summary.items():

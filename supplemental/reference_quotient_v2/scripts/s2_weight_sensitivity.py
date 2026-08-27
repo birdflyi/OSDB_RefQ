@@ -365,6 +365,23 @@ def build_future_s2_output_tables(result: S2WeightSensitivityResult) -> dict[str
     return tables
 
 
+def _normalize_undirected_parity_frame(frame: pd.DataFrame) -> pd.DataFrame:
+    """Normalize opaque node IDs before deterministic exact parity checks."""
+
+    columns = list(S2_UNDIRECTED_EDGE_COLUMNS)
+    work = frame.loc[:, columns].copy()
+    for column in ("node_u", "node_v"):
+        if work[column].isna().any():
+            raise S2ContractError("S2 parity edge IDs must not be missing: %s" % column)
+        normalized = work[column].astype("string")
+        if normalized.str.strip().eq("").any():
+            raise S2ContractError("S2 parity edge IDs must not be empty: %s" % column)
+        work[column] = normalized
+    for column in ("weight", "directed_edge_count"):
+        work[column] = _positive_integral_series(work, column)
+    return work.sort_values(["node_u", "node_v"], kind="stable").reset_index(drop=True)
+
+
 def assert_s2_threshold_one_matches_corrected_p0(
     result: S2WeightSensitivityResult,
     corrected_p0_root: str | Path = CORRECTED_P0_ROOT,
@@ -378,15 +395,12 @@ def assert_s2_threshold_one_matches_corrected_p0(
     root = canonical_path(corrected_p0_root)
     if os.path.normcase(os.fspath(root)) != os.path.normcase(os.fspath(CORRECTED_P0_ROOT)):
         raise S2ContractError("S2 parity authority must be corrected P0 root")
-    expected_edges = pd.read_csv(root / "rq2c_undirected_view_edges.csv")
-    actual_edges = result.undirected_edges_by_threshold[1]
-    columns = list(S2_UNDIRECTED_EDGE_COLUMNS)
-    expected_edges = expected_edges.loc[:, columns].sort_values(
-        ["node_u", "node_v"], kind="stable"
-    ).reset_index(drop=True)
-    actual_edges = actual_edges.loc[:, columns].sort_values(
-        ["node_u", "node_v"], kind="stable"
-    ).reset_index(drop=True)
+    expected_edges = _normalize_undirected_parity_frame(
+        pd.read_csv(root / "rq2c_undirected_view_edges.csv")
+    )
+    actual_edges = _normalize_undirected_parity_frame(
+        result.undirected_edges_by_threshold[1]
+    )
     pdt.assert_frame_equal(expected_edges, actual_edges, check_dtype=False, check_exact=True)
 
     expected_summary = json.loads((root / "rq2c_undirected_view_summary.json").read_text(encoding="utf-8"))
