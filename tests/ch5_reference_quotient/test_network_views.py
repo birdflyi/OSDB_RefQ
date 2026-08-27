@@ -97,3 +97,78 @@ def test_u_g_refq_preserves_explicit_isolated_node_domain():
     assert summary["edge_observed_nodes"] == 2
     assert summary["isolates"] == 1
     assert summary["components"] == 2
+
+
+def test_community_size_uses_canonical_community_order(monkeypatch):
+    graph_edges = pd.DataFrame(
+        [
+            {"node_u": "a", "node_v": "b", "weight": 1, "directed_edge_count": 1},
+            {"node_u": "b", "node_v": "c", "weight": 1, "directed_edge_count": 1},
+            {"node_u": "c", "node_v": "d", "weight": 1, "directed_edge_count": 1},
+            {"node_u": "d", "node_v": "e", "weight": 1, "directed_edge_count": 1},
+        ]
+    )
+
+    def fixed_louvain(graph, **kwargs):
+        return [{"a", "b"}, {"c", "d", "e"}]
+
+    monkeypatch.setattr(network_views.nx.community, "louvain_communities", fixed_louvain)
+    _, _, communities, _ = analyze_undirected_view(
+        graph_edges,
+        random_seed=20260731,
+        brokerage_sample_size=500,
+        node_ids=["a", "b", "c", "d", "e"],
+    )
+
+    observed = communities.set_index("project_id")
+    assert observed.loc["a", "community_id"] == 1
+    assert observed.loc["b", "community_id"] == 1
+    assert observed.loc["c", "community_id"] == 0
+    assert observed.loc["d", "community_id"] == 0
+    assert observed.loc["e", "community_id"] == 0
+    assert observed.loc["a", "community_size"] == 2
+    assert observed.loc["c", "community_size"] == 3
+    assert communities.groupby("community_id").size().to_dict() == communities.groupby("community_id")["community_size"].first().to_dict()
+
+
+def test_community_metadata_fix_preserves_modularity_and_brokerage(monkeypatch):
+    graph_edges = pd.DataFrame(
+        [
+            {"node_u": "a", "node_v": "b", "weight": 1, "directed_edge_count": 1},
+            {"node_u": "b", "node_v": "c", "weight": 1, "directed_edge_count": 1},
+            {"node_u": "c", "node_v": "d", "weight": 1, "directed_edge_count": 1},
+            {"node_u": "d", "node_v": "e", "weight": 1, "directed_edge_count": 1},
+        ]
+    )
+    raw_partition = [{"a", "b"}, {"c", "d", "e"}]
+    monkeypatch.setattr(
+        network_views.nx.community,
+        "louvain_communities",
+        lambda graph, **kwargs: raw_partition,
+    )
+    summary, _, communities, brokerage = analyze_undirected_view(
+        graph_edges,
+        random_seed=20260731,
+        brokerage_sample_size=500,
+        node_ids=["a", "b", "c", "d", "e"],
+    )
+    graph = nx.Graph()
+    graph.add_edges_from((row.node_u, row.node_v, {"weight": row.weight}) for row in graph_edges.itertuples())
+    expected_modularity = nx.community.modularity(graph, raw_partition, weight="weight")
+    expected_brokerage = nx.betweenness_centrality(
+        graph,
+        k=min(500, len(graph)),
+        normalized=True,
+        seed=20260731,
+        weight=None,
+    )
+    assert summary["modularity"] == expected_modularity
+    observed_brokerage = brokerage.set_index("project_id")["betweenness_brokerage"].to_dict()
+    assert observed_brokerage == {node: float(value) for node, value in expected_brokerage.items()}
+    assert communities.set_index("project_id")["community_id"].to_dict() == {
+        "a": 1,
+        "b": 1,
+        "c": 0,
+        "d": 0,
+        "e": 0,
+    }

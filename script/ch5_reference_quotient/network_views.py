@@ -89,13 +89,17 @@ def analyze_undirected_view(
 
     communities = list(nx.community.louvain_communities(lcc, weight="weight", seed=random_seed)) if lcc else []
     modularity = nx.community.modularity(lcc, communities, weight="weight") if communities else 0.0
+    canonical_communities = sorted(
+        communities,
+        key=lambda values: (-len(values), min(values)),
+    )
     membership = {
         node: community_id
-        for community_id, nodes in enumerate(sorted(communities, key=lambda values: (-len(values), min(values))))
+        for community_id, nodes in enumerate(canonical_communities)
         for node in nodes
     }
     community_frame = pd.DataFrame(
-        [{"project_id": node, "community_id": community, "community_size": len(communities[community])}
+        [{"project_id": node, "community_id": community, "community_size": len(canonical_communities[community])}
          for node, community in sorted(membership.items())]
     )
 

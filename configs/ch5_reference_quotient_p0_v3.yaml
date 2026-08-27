@@ -1,0 +1,56 @@
+# Versioned clean corrected-P0 configuration derived from accepted v2.
+# Scientific and input semantics are unchanged; only clean provenance/output
+# identity is versioned for the shared community metadata correction.
+
+study_year: 2023
+data_version: "refq_p0_2023_seed_observation_v2_strict_identity"
+analysis_seed_activity_threshold: 10
+expected_candidate_seed_count: 301
+expected_analysis_seed_count: 294
+relation_type: "Reference"
+reference_dedup_rule: "none"
+membership_prefix: "R_"
+membership_rule: "retained endpoints must have exactly one R_<repo_id> membership; missing/placeholder fine-grained IDs use the unique aggregate project node as canonical identity"
+quotient_self_loop_policy: "preserve"
+rq2_cross_project_self_loop_policy: "exclude"
+edge_aggregation_rule: "sum one unit per retained fine-grained Reference record by ordered source/target membership pair"
+category_assignment_mode: "include_mixed"
+rq3_min_group_size: 5
+random_seed: 20260731
+brokerage_sample_size: 500
+provenance_sample_size: 100
+csv_chunk_size: 100000
+run_id_prefix: "ch5_refq_p0_corrected_v3_clean_asset"
+
+identity_policy: "STRICT_REPOSITORY_IDENTITY"
+project_identity_unit: "GITHUB_NUMERIC_REPOSITORY_ID"
+source_admission_rule: "event_repo_id == annotated_primary_github_repo_id"
+relation_schema_version: "reference_relation_schema_v2_event_repository_provenance"
+repo_created_at_refresh: false
+
+source_repository:
+  path: "D:/github_repo/OSDB_RefQ_source_data"
+  branch: "ch5-direct-reference-coupling-prep"
+  commit: "2944ab7ee828c1af427115d0808d4d62e5ac725e"
+  backup_inventory: "D:/github_repo/OSDB_RefQ_legacy_backup/modified.txt"
+
+input_paths:
+  dbms_repos_key_features: "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/dbfeatfusion_records_202410_automerged_manulabeled_with_repoid.csv"
+  repo_activity_statistics: "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repo_activity_statistics/repo_i_pr_rec_cnt.csv"
+  raw_event_dir: "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_dedup_content"
+  gh_core_relation_v1_dir: "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE"
+  gh_core_relation_v2_dir: "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_v2_identity_corrected"
+  gh_core_ref_node_agg_v1_dir: "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg"
+  gh_core_ref_node_agg_v2_dir: "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected"
+  gh_core_ref_node_agg_dir: "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected"
+
+frozen_seed_manifest: "D:/github_repo/OSDB_RefQ/outputs/reference_quotient_p0_frozen/analysis_seed_manifest_294.csv"
+candidate_seed_manifest: "D:/github_repo/OSDB_RefQ/outputs/reference_quotient_p0_frozen/candidate_seed_observation_audit.csv"
+annotation_sha256: "f35b2d646f84248ab6a32ae04dc2ef4df9e12d697f84a53d9abadd741e9c24a8"
+historical_baseline_tag: "chapter5-refq-freeze-v1.0"
+historical_baseline_commit: "68d001551359d120bf2a06cc5e571742df7e7822"
+c1_implementation_commit: "bd9586696336d766e400fe6242267417ccbd60c9"
+c2_start_tip: "a75523cfad76aa507672cd2f0138cfcdfb1a86c0"
+
+# P0 v3 is a one-time regeneration from the accepted corrected aggregate.
+frozen_output_root: "outputs/reference_quotient_p0_corrected_v3"
