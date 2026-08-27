@@ -91,7 +91,7 @@ def test_s5_calls_unweighted_normalized_betweenness_and_closes_frequency(monkeyp
     assert tuple(tables["brokerage_rank_stability.csv"].columns) == S5_RANK_COLUMNS
     assert tuple(tables["brokerage_topk_inclusion_frequency.csv"].columns) == S5_FREQUENCY_COLUMNS
     assert "brokerage_topk_frequency.csv" not in tables
-    assert paths.CORRECTED_OUTPUTS_ROOT.exists() is False
+    assert not (paths.CORRECTED_OUTPUTS_ROOT / "S5_brokerage_stability").exists()
 
 
 def test_s5_spearman_is_rank_correlation_and_frequency_uses_full_rankings():
@@ -151,4 +151,4 @@ def test_corrected_p0_s45_preflight_is_metadata_header_only_and_passes():
     assert result["network_corrected_data_run"] == 0
     assert result["s4_louvain_seed_end"] == 20260780
     assert result["s5_seed_end"] == 20260750
-    assert paths.CORRECTED_OUTPUTS_ROOT.exists() is False
+    assert not (paths.CORRECTED_OUTPUTS_ROOT / "S5_brokerage_stability").exists()

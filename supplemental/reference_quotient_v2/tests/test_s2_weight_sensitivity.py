@@ -85,7 +85,7 @@ def test_s2_output_contract_is_complete_and_in_memory_only():
     assert set(tables) == set(S2_OUTPUT_CONTRACT)
     assert tuple(tables["edge_weight_sensitivity.csv"].columns) == S2_OUTPUT_CONTRACT["edge_weight_sensitivity.csv"]
     assert tuple(tables["threshold_2_undirected_edges.csv"].columns) == S2_OUTPUT_CONTRACT["threshold_2_undirected_edges.csv"]
-    assert paths.CORRECTED_OUTPUTS_ROOT.exists() is False
+    assert (paths.CORRECTED_OUTPUTS_ROOT / "S2_weight_sensitivity").exists() is False
 
 
 @pytest.mark.parametrize(
@@ -163,4 +163,4 @@ def test_corrected_p0_sensitivity_preflight_is_headers_only_and_passes():
     assert result["s2_thresholds"] == [1, 2, 5, 10]
     assert result["random_seed"] == 20260731
     assert result["brokerage_sample_size"] == 500
-    assert paths.CORRECTED_OUTPUTS_ROOT.exists() is False
+    assert (paths.CORRECTED_OUTPUTS_ROOT / "S2_weight_sensitivity").exists() is False

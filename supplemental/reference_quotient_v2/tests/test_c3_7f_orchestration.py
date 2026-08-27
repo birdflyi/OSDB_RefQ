@@ -94,14 +94,14 @@ def test_production_authorization_rejects_unknown_stage_and_phase_map_is_closed(
 def test_run_stage_production_entrypoint_dry_run_reaches_preflight(monkeypatch):
     _mock_valid_git_state(monkeypatch)
     result = run_stage(
-        "S1",
-        authorization_phase="C4-S1",
+        "S2",
+        authorization_phase="C4-S2",
         expected_implementation_commit="e4159f1183463085c68cf1cca5549c083404d16b",
         baseline_path="docs/freeze/ch5_refq_c3_7f_historical_immutability_baseline_v1.json",
         dry_run=True,
     )
     assert result["status"] == "PREFLIGHT_PASS"
-    assert result["stage"] == "S1_evidence_universe"
+    assert result["stage"] == "S2_weight_sensitivity"
     assert result["scientific_execution"] is False
 
 

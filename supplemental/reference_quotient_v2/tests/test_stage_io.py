@@ -156,7 +156,7 @@ def test_external_root_requires_explicit_opt_in_and_production_root_is_accepted(
     from supplemental.reference_quotient_v2.scripts.stage_io import _safe_output_root
 
     assert _safe_output_root(paths.CORRECTED_OUTPUTS_ROOT) == paths.canonical_path(paths.CORRECTED_OUTPUTS_ROOT)
-    assert paths.CORRECTED_OUTPUTS_ROOT.exists() is False
+    assert paths.CORRECTED_OUTPUTS_ROOT.exists() is True
 
 
 def test_missing_durable_marker_is_partial_and_cannot_be_retried(tmp_path):

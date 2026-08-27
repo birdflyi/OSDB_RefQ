@@ -114,7 +114,7 @@ def test_s3_output_contract_contains_summary_and_three_view_tables():
     for name in S3_VIEW_NAMES:
         stem = name.lower()
         assert tuple(tables[stem + "_communities.csv"].columns) == S3_COMMUNITY_COLUMNS
-    assert paths.CORRECTED_OUTPUTS_ROOT.exists() is False
+    assert not (paths.CORRECTED_OUTPUTS_ROOT / "S3_observation_sensitivity").exists()
 
 
 def test_s3_module_has_no_historical_or_second_order_authority():

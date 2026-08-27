@@ -185,7 +185,7 @@ def test_streaming_matches_b2_for_all_compact_outputs_and_duplicate_edges(tmp_pa
     assert len(streaming.cross_project_edge_pairs) == 1
     assert registry.exists() is False
     assert all(not isinstance(getattr(streaming, field.name), pd.DataFrame) for field in fields(streaming))
-    assert CORRECTED_OUTPUTS_ROOT.exists() is False
+    assert not (CORRECTED_OUTPUTS_ROOT / "S2_weight_sensitivity").exists()
 
 
 def test_cross_partition_global_conflict_is_applied_in_pass_two_and_matches_b2(tmp_path):

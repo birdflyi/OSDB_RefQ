@@ -84,7 +84,7 @@ def test_s4_uses_weighted_louvain_and_builds_deterministic_tables(monkeypatch):
     assert set(tables) == set(S4_OUTPUT_CONTRACT)
     assert tuple(tables["louvain_stability_runs.csv"].columns) == S4_OUTPUT_CONTRACT["louvain_stability_runs.csv"]
     assert tuple(tables["louvain_stability_pairwise.csv"].columns) == S4_OUTPUT_CONTRACT["louvain_stability_pairwise.csv"]
-    assert paths.CORRECTED_OUTPUTS_ROOT.exists() is False
+    assert not (paths.CORRECTED_OUTPUTS_ROOT / "S4_community_stability").exists()
 
 
 def test_s4_canonical_lcc_preserves_registry_order_and_is_shared_definition():

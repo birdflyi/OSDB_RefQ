@@ -380,10 +380,11 @@ def assert_s2_threshold_one_matches_corrected_p0(
         raise S2ContractError("S2 parity authority must be corrected P0 root")
     expected_edges = pd.read_csv(root / "rq2c_undirected_view_edges.csv")
     actual_edges = result.undirected_edges_by_threshold[1]
-    expected_edges = expected_edges[S2_UNDIRECTED_EDGE_COLUMNS].sort_values(
+    columns = list(S2_UNDIRECTED_EDGE_COLUMNS)
+    expected_edges = expected_edges.loc[:, columns].sort_values(
         ["node_u", "node_v"], kind="stable"
     ).reset_index(drop=True)
-    actual_edges = actual_edges[S2_UNDIRECTED_EDGE_COLUMNS].sort_values(
+    actual_edges = actual_edges.loc[:, columns].sort_values(
         ["node_u", "node_v"], kind="stable"
     ).reset_index(drop=True)
     pdt.assert_frame_equal(expected_edges, actual_edges, check_dtype=False, check_exact=True)

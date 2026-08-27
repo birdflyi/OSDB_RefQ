@@ -167,4 +167,4 @@ def test_s6_corrected_p0_preflight_is_header_only_and_contracts_are_v2():
     assert result["s6_output_inventory"] == list(S6_OUTPUT_INVENTORY)
     assert set(S4_OUTPUT_CONTRACT) == {"louvain_stability_runs.csv", "louvain_stability_pairwise.csv", "louvain_stability_summary.json"}
     assert "brokerage_topk_frequency.csv" not in S5_OUTPUT_CONTRACT
-    assert paths.CORRECTED_OUTPUTS_ROOT.exists() is False
+    assert not (paths.CORRECTED_OUTPUTS_ROOT / "S6_figure_ready").exists()

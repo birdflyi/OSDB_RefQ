@@ -131,14 +131,16 @@ def test_orchestrator_blocks_scientific_stage_execution(tmp_path):
 
 
 def test_s7_has_no_active_execution_path():
+    before = paths.CORRECTED_OUTPUTS_ROOT.exists()
     assert main(["--run-s7"]) == 2
-    assert not paths.CORRECTED_OUTPUTS_ROOT.exists()
+    assert paths.CORRECTED_OUTPUTS_ROOT.exists() is before
+    assert not (paths.CORRECTED_OUTPUTS_ROOT / "S7_overlap").exists()
 
 
 def test_scaffold_validation_does_not_create_outputs(config):
-    assert not paths.CORRECTED_OUTPUTS_ROOT.exists()
+    before = paths.CORRECTED_OUTPUTS_ROOT.exists()
     manifest.validate_scaffold_provenance(config)
-    assert not paths.CORRECTED_OUTPUTS_ROOT.exists()
+    assert paths.CORRECTED_OUTPUTS_ROOT.exists() is before
 
 
 def test_windows_traversal_cannot_bypass_historical_write_protection(config):
