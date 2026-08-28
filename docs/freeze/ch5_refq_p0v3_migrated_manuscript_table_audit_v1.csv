@@ -1,0 +1,14 @@
+table_id,section,source_authority,source_rows_selected,manuscript_rows,column_count,status,notes
+Table 4.1,RQ1,outputs/reference_quotient_p0_corrected_v3/rq1_referencing_entity_distribution.csv,8,9,3,PASS,complete fine-grained source-event rows
+Table 4.2,RQ1,outputs/reference_quotient_p0_corrected_v3/rq1_referenced_entity_distribution.csv,19,20,3,PASS,complete fine-grained target-entity rows
+Table 4.3,RQ1,outputs/reference_quotient_p0_corrected_v3/rq1_descriptive_statistics.csv,1,2,11,PASS,active_issue_pr_count row
+Table 4.4,RQ1,outputs/reference_quotient_p0_corrected_v3/rq1_descriptive_statistics.csv,1,2,11,PASS,comment_per_issue row
+Table 4.5,RQ1,outputs/reference_quotient_p0_corrected_v3/rq1_descriptive_statistics.csv,1,2,11,PASS,comment_reference_density row
+Table 4.6a,RQ1,outputs/reference_quotient_p0_corrected_v3/rq1_project_age_cross_sectional_association.csv,4,5,5,PASS,four frozen association rows
+Table 4.6b,RQ2,outputs/reference_quotient_p0_corrected_v3/quotient_construction_audit.json; rq2c_undirected_view_summary.json,4,5,4,PASS,directed/undirected denominators separated
+Table 4.6c,RQ2a,supplemental/reference_quotient_v2/outputs_p0v3/S6_figure_ready/rq2a_source_role_quantiles.csv,5,6,5,PASS,quantile authority; relation totals in prose
+Table 4.6d,RQ2b,outputs/reference_quotient_p0_corrected_v3/rq2b_target_role_metrics.csv; rq2b_target_concentration.json,8,9,2,PASS,observable/seed/expanded target roles separated
+Table 4.6e,RQ2c,outputs/reference_quotient_p0_corrected_v3/rq2c_undirected_view_summary.json; supplemental/.../S4_community_stability/louvain_stability_summary.json,9,10,2,PASS,canonical realization plus S4 limitation
+Table 4.6f,RQ2c,outputs/reference_quotient_p0_corrected_v3/rq2c_structural_brokerage_top50.csv,5,6,5,PASS,corrected top-five rows; algorithmic labels
+Table 4.7,RQ3,outputs/reference_quotient_p0_corrected_v3/rq3_subdomain_descriptive_comparison.csv,10,11,5,PASS,include_mixed complete category rows
+Table 4.8,RQ3,outputs/reference_quotient_p0_corrected_v3/rq3_kruskal_fdr_effect_sizes.csv,11,12,11,PASS,both label modes; H/p/FDR/epsilon/test status
