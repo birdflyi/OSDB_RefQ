@@ -1,0 +1,8 @@
+gate,command,runtime,collected,passed,failed,deselected,skipped,status,notes
+supplemental_full,"D:\\codex_envs\\ch5_refq_supplemental_p0v3_runtime\\Scripts\\python.exe -m pytest -q supplemental/reference_quotient_v2/tests",supplemental_p0v3_python3.9.13,201,201,0,0,0,PASS,184 existing deprecation warnings only
+shared_ch5_clean,"D:\\codex_envs\\ch5_refq_supplemental_p0v3_runtime\\Scripts\\python.exe -m pytest -q tests/ch5_reference_quotient -k \"not test_p0_runtime_lock_matches_current_environment\"",supplemental_p0v3_python3.9.13,60,59,0,1,0,PASS,one deselected test requires pandas 1.4.4
+shared_ch5_p0,"D:\\codex_envs\\ch5_refq_p0_v2_runtime\\Scripts\\python.exe -m pytest -q tests/ch5_reference_quotient",p0_v2_python3.9.13,60,60,0,0,0,PASS,accepted P0 locked pandas 1.4.4 runtime
+targeted_hardening,"D:\\codex_envs\\ch5_refq_supplemental_p0v3_runtime\\Scripts\\python.exe -m pytest -q tests/ch5_reference_quotient/test_network_views.py tests/ch5_reference_quotient/test_deterministic_network_authority.py supplemental/reference_quotient_v2/tests/test_s4_community_stability.py supplemental/reference_quotient_v2/tests/test_s5_brokerage_stability.py supplemental/reference_quotient_v2/tests/test_s2_weight_sensitivity.py",supplemental_p0v3_python3.9.13,40,40,0,0,0,PASS,deterministic graph-order and stage contract tests
+compileall_shared,"python -m compileall -q script/ch5_reference_quotient",supplemental_p0v3_python3.9.13,,,,,,PASS,static compile closure
+compileall_supplemental,"python -m compileall -q supplemental/reference_quotient_v2",supplemental_p0v3_python3.9.13,,,,,,PASS,static compile closure
+git_diff_check,"git diff --check",repository,,,,,,,PASS,no whitespace errors
