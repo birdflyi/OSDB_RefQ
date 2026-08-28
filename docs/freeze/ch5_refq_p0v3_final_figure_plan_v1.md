@@ -110,10 +110,13 @@ after replacing every source path.
   `outputs/reference_quotient_p0_corrected_v3/rq3_kruskal_fdr_effect_sizes.csv`,
   `supplemental/reference_quotient_v2/outputs_p0v3/S6_figure_ready/rq3_subdomain_descriptive_comparison_plot.csv`, and
   `S6_figure_ready/rq3_kruskal_fdr_effect_sizes_plot.csv`.
-- Encoding: Panel A is a faceted dot-and-interval display of descriptive
-  medians/means by category and label mode; Panel B is an epsilon-squared dot
-  plot with BH-FDR status markers. Descriptive and inferential layers must be
-  visually distinct.
+- Encoding: Panel A is a `FACETED MEAN/MEDIAN DOT DISPLAY` of descriptive
+  means and medians by category and label mode. It uses no confidence
+  intervals, standard-error bars, quartile bands, bootstrap bounds, or any
+  newly computed uncertainty statistic because the frozen Figure 4 source
+  contains no such fields. Panel B is an epsilon-squared dot plot with
+  BH-FDR status markers. Descriptive and inferential layers must be visually
+  distinct.
 - Deterministic rules: retain both `include_mixed` and
   `exclude_mixed_or_multilabel`; sort features by the frozen file order or a
   declared stable feature order; show `fdr_bh_reject_0_05` explicitly.
