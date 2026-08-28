@@ -1,0 +1,96 @@
+{
+  "completed_at": "2026-08-28T13:12:06.957390+00:00",
+  "implementation_commit": "de9f03a1efb76f3abd2b7b6239f7748f40498d90",
+  "input_artifacts": [
+    {
+      "authority_class": "CORRECTED_P0",
+      "path": "D:/github_repo/OSDB_RefQ/outputs/reference_quotient_p0_corrected_v3/rq2c_undirected_view_edges.csv",
+      "root": "D:/github_repo/OSDB_RefQ/outputs/reference_quotient_p0_corrected_v3",
+      "sha256": "3ae36a7e6d357d250052288f9ca62dac865ab3590dd02189b19ba957113db254",
+      "version": "corrected_p0_v3"
+    },
+    {
+      "authority_class": "CORRECTED_P0",
+      "path": "D:/github_repo/OSDB_RefQ/outputs/reference_quotient_p0_corrected_v3/rq2c_undirected_view_lcc_edges.csv",
+      "root": "D:/github_repo/OSDB_RefQ/outputs/reference_quotient_p0_corrected_v3",
+      "sha256": "67f71f3feb399425546c5ae8dc12b07c47f94a50578324e0abb8d14379ebadc3",
+      "version": "corrected_p0_v3"
+    },
+    {
+      "authority_class": "CORRECTED_P0",
+      "path": "D:/github_repo/OSDB_RefQ/outputs/reference_quotient_p0_corrected_v3/reference_quotient_node_registry.csv",
+      "root": "D:/github_repo/OSDB_RefQ/outputs/reference_quotient_p0_corrected_v3",
+      "sha256": "0e6095341d207ff3c096d759cdd86be172241668b5f8f0f68be460063397571a",
+      "version": "corrected_p0_v3"
+    },
+    {
+      "authority_class": "CORRECTED_P0",
+      "path": "D:/github_repo/OSDB_RefQ/outputs/reference_quotient_p0_corrected_v3/rq2c_algorithmic_communities.csv",
+      "root": "D:/github_repo/OSDB_RefQ/outputs/reference_quotient_p0_corrected_v3",
+      "sha256": "6a0cdae75fb0e430542d49d448cdba41b2fd2fc853d03106e32650c08358e474",
+      "version": "corrected_p0_v3"
+    },
+    {
+      "authority_class": "CORRECTED_P0",
+      "path": "D:/github_repo/OSDB_RefQ/outputs/reference_quotient_p0_corrected_v3/rq2c_undirected_view_summary.json",
+      "root": "D:/github_repo/OSDB_RefQ/outputs/reference_quotient_p0_corrected_v3",
+      "sha256": "489cc280b1f8d835032de7e06b9ed2acd85e97fab799476cfcbdffc844017446",
+      "version": "corrected_p0_v3"
+    },
+    {
+      "authority_class": "CORRECTED_P0",
+      "path": "D:/github_repo/OSDB_RefQ/outputs/reference_quotient_p0_corrected_v3/rq2c_structural_brokerage_candidates.csv",
+      "root": "D:/github_repo/OSDB_RefQ/outputs/reference_quotient_p0_corrected_v3",
+      "sha256": "723a5608f6b837585aed8354720ffa0074b4f0e5ec5628aaa1b6966dd2bb0f6e",
+      "version": "corrected_p0_v3"
+    }
+  ],
+  "output_artifacts": [
+    {
+      "bytes": 13242351,
+      "path": "S5_brokerage_stability/brokerage_rank_stability.csv",
+      "row_count": 382020,
+      "sha256": "12da3450bb044434ac354ae212e8f612d460f8187fab60e5bb62a1df9f2afe42"
+    },
+    {
+      "bytes": 3164,
+      "path": "S5_brokerage_stability/brokerage_stability_runs.csv",
+      "row_count": 60,
+      "sha256": "75177f94b24abf7f010c240be2f19f216e0b216812447e9bd498c218cd7b5dc6"
+    },
+    {
+      "bytes": 1984,
+      "path": "S5_brokerage_stability/brokerage_stability_summary.json",
+      "row_count": null,
+      "sha256": "0491e41e1da51d3ed95f3a1d25a5df9c3ac295ed952e75aab66706d8603ae3a6"
+    },
+    {
+      "bytes": 9492,
+      "path": "S5_brokerage_stability/brokerage_topk_inclusion_frequency.csv",
+      "row_count": 357,
+      "sha256": "d75379421ae7d9f60d3e1ce5b2d0fd4c4c5c5f72cda17c59fd37bc3af2a1e284"
+    }
+  ],
+  "output_root": "D:\\github_repo\\OSDB_RefQ\\supplemental\\reference_quotient_v2\\outputs_p0v3",
+  "parameters": {
+    "clean_output_root": "D:\\github_repo\\OSDB_RefQ\\supplemental\\reference_quotient_v2\\outputs_p0v3",
+    "corrected_data": true,
+    "p0_authority_version": "corrected_p0_v3",
+    "p0_config_sha256": "43f97f9a2d177d325415bfbcc504f1779882cf83685b4fdebe505c8fed8e7cb0",
+    "p0_manifest_sha256": "be802b9df223c99bc2089a76ae9ec6e0b6047ab0c58237a5fc3050b51dcc9776",
+    "scientific_logic_change_count": 0,
+    "stage": "S5",
+    "supplemental_authority_version": "corrected_supplemental_p0v3_clean"
+  },
+  "runtime_versions": {
+    "gh_core": "2.3.1",
+    "networkx": "3.1",
+    "numpy": "1.26.4",
+    "pandas": "1.5.3",
+    "python": "3.9.13",
+    "python_executable": "D:\\codex_envs\\ch5_refq_supplemental_p0v3_runtime\\Scripts\\python.exe",
+    "scipy": "1.13.1"
+  },
+  "stage": "S5_brokerage_stability",
+  "status": "PASS"
+}
