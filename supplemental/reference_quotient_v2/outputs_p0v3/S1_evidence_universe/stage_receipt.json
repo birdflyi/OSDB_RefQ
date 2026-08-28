@@ -1,0 +1,2136 @@
+{
+  "completed_at": "2026-08-28T05:23:33.176395+00:00",
+  "implementation_commit": "e13eaf2b3bff040639e6256ea98aa1fa5bb0ef1f",
+  "input_artifacts": [
+    {
+      "authority_class": "CORRECTED_AGGREGATE",
+      "path": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected/pingcap_tidb_2023.csv",
+      "root": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected",
+      "sha256": "f103831bf55fe0d29c7c90bb194e5ec24a08db8a972c941f906c185a71591cbf",
+      "version": "corrected_aggregate_v2"
+    },
+    {
+      "authority_class": "CORRECTED_AGGREGATE",
+      "path": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected/cockroachdb_cockroach_2023.csv",
+      "root": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected",
+      "sha256": "62a65b1d22842c81e763a176aadbb991fa15e4af2761c0754a8195bc15b6b481",
+      "version": "corrected_aggregate_v2"
+    },
+    {
+      "authority_class": "CORRECTED_AGGREGATE",
+      "path": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected/apache_doris_2023.csv",
+      "root": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected",
+      "sha256": "7dd6744989c2b81a06eaa16242d04eb91c624af7339e6f08cffba35bce2ec58b",
+      "version": "corrected_aggregate_v2"
+    },
+    {
+      "authority_class": "CORRECTED_AGGREGATE",
+      "path": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected/elastic_elasticsearch_2023.csv",
+      "root": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected",
+      "sha256": "e6860299bbd1fec6f3276f3131e175c8c696eac31b1dfa24a48833068fcf73dd",
+      "version": "corrected_aggregate_v2"
+    },
+    {
+      "authority_class": "CORRECTED_AGGREGATE",
+      "path": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected/ClickHouse_ClickHouse_2023.csv",
+      "root": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected",
+      "sha256": "3d21c9d96c2ff0279ea3a59b004a898d3f7f872806e799f1884e304db711eb12",
+      "version": "corrected_aggregate_v2"
+    },
+    {
+      "authority_class": "CORRECTED_AGGREGATE",
+      "path": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected/opensearch-project_OpenSearch_2023.csv",
+      "root": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected",
+      "sha256": "631c0cc50da59dab58d465bcc61d5a11d802798f8c3415e6db516dbd41cda500",
+      "version": "corrected_aggregate_v2"
+    },
+    {
+      "authority_class": "CORRECTED_AGGREGATE",
+      "path": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected/apache_spark_2023.csv",
+      "root": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected",
+      "sha256": "780a0d10f6911a8410751144a1a528f3ab94df7617ca6d38e660eea34d7418ad",
+      "version": "corrected_aggregate_v2"
+    },
+    {
+      "authority_class": "CORRECTED_AGGREGATE",
+      "path": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected/milvus-io_milvus_2023.csv",
+      "root": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected",
+      "sha256": "bf545bdcad7b2fee1590b05bf52471e6c84870ce69460a053a582a7819f3f40e",
+      "version": "corrected_aggregate_v2"
+    },
+    {
+      "authority_class": "CORRECTED_AGGREGATE",
+      "path": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected/facebookincubator_velox_2023.csv",
+      "root": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected",
+      "sha256": "11d1ffda687f739e28cc9be4df1f2dba3088fbf9d49b2d95e54bbbd3ce273f8e",
+      "version": "corrected_aggregate_v2"
+    },
+    {
+      "authority_class": "CORRECTED_AGGREGATE",
+      "path": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected/trinodb_trino_2023.csv",
+      "root": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected",
+      "sha256": "b3d8ca4a5a76b5d0765d996ccd2aa127a9272173a1280470a774d6def6e6328f",
+      "version": "corrected_aggregate_v2"
+    },
+    {
+      "authority_class": "CORRECTED_AGGREGATE",
+      "path": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected/risingwavelabs_risingwave_2023.csv",
+      "root": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected",
+      "sha256": "368ca59a2019261e29d9d1ca4d09fd40ed7f9872447cf427815ae3993a5e4fbb",
+      "version": "corrected_aggregate_v2"
+    },
+    {
+      "authority_class": "CORRECTED_AGGREGATE",
+      "path": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected/apple_foundationdb_2023.csv",
+      "root": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected",
+      "sha256": "92fd8da176550debb781d784722922871ae588ebd0f2fb0e790d62f2d4642560",
+      "version": "corrected_aggregate_v2"
+    },
+    {
+      "authority_class": "CORRECTED_AGGREGATE",
+      "path": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected/matrixorigin_matrixone_2023.csv",
+      "root": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected",
+      "sha256": "30d0863b5d4006a0cf4b6a0d2ca336636d87f67ad25e0aa43b7e5db7c328d3ef",
+      "version": "corrected_aggregate_v2"
+    },
+    {
+      "authority_class": "CORRECTED_AGGREGATE",
+      "path": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected/apache_arrow-datafusion_2023.csv",
+      "root": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected",
+      "sha256": "993c8421508b60a0aa0a32723d98ab993a4e454cd5b250980918dc06ec398b72",
+      "version": "corrected_aggregate_v2"
+    },
+    {
+      "authority_class": "CORRECTED_AGGREGATE",
+      "path": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected/apache_flink_2023.csv",
+      "root": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected",
+      "sha256": "736de7dce62616c63f9c994d2f83f7f4d7cd20dd245066753860dd83f8b92db1",
+      "version": "corrected_aggregate_v2"
+    },
+    {
+      "authority_class": "CORRECTED_AGGREGATE",
+      "path": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected/hazelcast_hazelcast_2023.csv",
+      "root": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected",
+      "sha256": "5283cee72150bb949b71ff18b4ea13e969e2b465d692e090eb646f2866f2303a",
+      "version": "corrected_aggregate_v2"
+    },
+    {
+      "authority_class": "CORRECTED_AGGREGATE",
+      "path": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected/datafuselabs_databend_2023.csv",
+      "root": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected",
+      "sha256": "7e6737a62352221b7e5ae9338f03478705c34e037dea99553f22a9cf5afae135",
+      "version": "corrected_aggregate_v2"
+    },
+    {
+      "authority_class": "CORRECTED_AGGREGATE",
+      "path": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected/neondatabase_neon_2023.csv",
+      "root": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected",
+      "sha256": "18a5b2414527e02052b3c2eb9765918259471c07259d3e7a56a61b708ee0c134",
+      "version": "corrected_aggregate_v2"
+    },
+    {
+      "authority_class": "CORRECTED_AGGREGATE",
+      "path": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected/apache_shardingsphere_2023.csv",
+      "root": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected",
+      "sha256": "db2b9b0ad1679201cdd25b07ddb7483413eeba00d764cced57828c7d76eed067",
+      "version": "corrected_aggregate_v2"
+    },
+    {
+      "authority_class": "CORRECTED_AGGREGATE",
+      "path": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected/greenplum-db_gpdb_2023.csv",
+      "root": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected",
+      "sha256": "d0fbab4f3bc2e131057a0ccbd3cd72e0c148b5eb4e1c2a9f0d6254871bb4a4fd",
+      "version": "corrected_aggregate_v2"
+    },
+    {
+      "authority_class": "CORRECTED_AGGREGATE",
+      "path": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected/tikv_tikv_2023.csv",
+      "root": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected",
+      "sha256": "94f6ae6b8907be6d28f9e4f84794b4604107ccd677bf37d6dd5bed42ccd806f3",
+      "version": "corrected_aggregate_v2"
+    },
+    {
+      "authority_class": "CORRECTED_AGGREGATE",
+      "path": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected/prestodb_presto_2023.csv",
+      "root": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected",
+      "sha256": "bb12f3d2c1f8ae67f342474ec3b50b02d3fe76c80ba1a4e79e1215128f2f7b3e",
+      "version": "corrected_aggregate_v2"
+    },
+    {
+      "authority_class": "CORRECTED_AGGREGATE",
+      "path": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected/grafana_mimir_2023.csv",
+      "root": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected",
+      "sha256": "d93f227409475e0d4d968e4810fbbac4f326d2421f2041ccef5762d43a675148",
+      "version": "corrected_aggregate_v2"
+    },
+    {
+      "authority_class": "CORRECTED_AGGREGATE",
+      "path": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected/apache_druid_2023.csv",
+      "root": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected",
+      "sha256": "9d4c277fe4d4a0f7fdd4d41bddb9059149598205da1b751fc1225fe4b4ce5d93",
+      "version": "corrected_aggregate_v2"
+    },
+    {
+      "authority_class": "CORRECTED_AGGREGATE",
+      "path": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected/vitessio_vitess_2023.csv",
+      "root": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected",
+      "sha256": "7fd8a2b5f88ff91bc4d9da7d0ea5f74c07347c626b1d40975dfeb2fcb801eadb",
+      "version": "corrected_aggregate_v2"
+    },
+    {
+      "authority_class": "CORRECTED_AGGREGATE",
+      "path": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected/apache_pinot_2023.csv",
+      "root": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected",
+      "sha256": "1e8fbeb311bc1a98e9630d22762bdc643e36bfa2b1f0c8b8220dd70366ec6f05",
+      "version": "corrected_aggregate_v2"
+    },
+    {
+      "authority_class": "CORRECTED_AGGREGATE",
+      "path": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected/duckdb_duckdb_2023.csv",
+      "root": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected",
+      "sha256": "5c958517364b84176b2a8f1bcd643c12eabdf94f0a5264e85805c810cdd58934",
+      "version": "corrected_aggregate_v2"
+    },
+    {
+      "authority_class": "CORRECTED_AGGREGATE",
+      "path": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected/GreptimeTeam_greptimedb_2023.csv",
+      "root": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected",
+      "sha256": "1374ec0b2bebc576a9b2cea6eb7cdc1138e233f05bc8f4cdca58a624c4405596",
+      "version": "corrected_aggregate_v2"
+    },
+    {
+      "authority_class": "CORRECTED_AGGREGATE",
+      "path": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected/yugabyte_yugabyte-db_2023.csv",
+      "root": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected",
+      "sha256": "2ed686264cfc5e735b40c6640865cd750b469f09558ba86b74a748607fb22a7f",
+      "version": "corrected_aggregate_v2"
+    },
+    {
+      "authority_class": "CORRECTED_AGGREGATE",
+      "path": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected/wiredtiger_wiredtiger_2023.csv",
+      "root": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected",
+      "sha256": "58aa323e2e08aca62f72502645a7151a8a3b07b2432ff7f0c0e07341d181f5e0",
+      "version": "corrected_aggregate_v2"
+    },
+    {
+      "authority_class": "CORRECTED_AGGREGATE",
+      "path": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected/FerretDB_FerretDB_2023.csv",
+      "root": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected",
+      "sha256": "9106b09b4fdbb85b3d2a7531e22fe413ae8e0e4895e4761d28bc8e3e98bb2baf",
+      "version": "corrected_aggregate_v2"
+    },
+    {
+      "authority_class": "CORRECTED_AGGREGATE",
+      "path": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected/apache_hive_2023.csv",
+      "root": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected",
+      "sha256": "24fb4b9c1c506c7bd19a7872b702b60349597f6533e0e2a4adafcbb42f024d9d",
+      "version": "corrected_aggregate_v2"
+    },
+    {
+      "authority_class": "CORRECTED_AGGREGATE",
+      "path": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected/tarantool_tarantool_2023.csv",
+      "root": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected",
+      "sha256": "32a1e474ed9814a3c9007554f908b4771b007cb026ea4e43cb304f2888d32cbb",
+      "version": "corrected_aggregate_v2"
+    },
+    {
+      "authority_class": "CORRECTED_AGGREGATE",
+      "path": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected/etcd-io_etcd_2023.csv",
+      "root": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected",
+      "sha256": "f6e9347b0a9225b7f5942652134c6a05672e70bd49321c86929875c0dee02ffa",
+      "version": "corrected_aggregate_v2"
+    },
+    {
+      "authority_class": "CORRECTED_AGGREGATE",
+      "path": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected/arangodb_arangodb_2023.csv",
+      "root": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected",
+      "sha256": "a13ec458cc2746737b54a7080adcfbdce86bbdf647a4268e20787b3b5c75cdb2",
+      "version": "corrected_aggregate_v2"
+    },
+    {
+      "authority_class": "CORRECTED_AGGREGATE",
+      "path": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected/apache_kyuubi_2023.csv",
+      "root": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected",
+      "sha256": "552c596d951fcd3bc317bd074ea4df6e598ab1264d58102892a6f4f28a96cfe2",
+      "version": "corrected_aggregate_v2"
+    },
+    {
+      "authority_class": "CORRECTED_AGGREGATE",
+      "path": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected/vespa-engine_vespa_2023.csv",
+      "root": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected",
+      "sha256": "1d7ba37a8abb4accf11cf21f544e57e86bc37d3390064c181b58edc8e0f8ae45",
+      "version": "corrected_aggregate_v2"
+    },
+    {
+      "authority_class": "CORRECTED_AGGREGATE",
+      "path": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected/ravendb_ravendb_2023.csv",
+      "root": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected",
+      "sha256": "6f2eaa713774ff0e5f42d3951a108b94540f793d1f8c82e42e41e6b11403a221",
+      "version": "corrected_aggregate_v2"
+    },
+    {
+      "authority_class": "CORRECTED_AGGREGATE",
+      "path": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected/apache_iotdb_2023.csv",
+      "root": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected",
+      "sha256": "598c42cdfa66e6185639f24b6197280c629936ffd4e9526578726af5ac137a40",
+      "version": "corrected_aggregate_v2"
+    },
+    {
+      "authority_class": "CORRECTED_AGGREGATE",
+      "path": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected/apache_cassandra_2023.csv",
+      "root": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected",
+      "sha256": "6b3771d538249bdc1436e77a9bde57af044738a0845eba9a998dd6ca3494ecc5",
+      "version": "corrected_aggregate_v2"
+    },
+    {
+      "authority_class": "CORRECTED_AGGREGATE",
+      "path": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected/redis_redis_2023.csv",
+      "root": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected",
+      "sha256": "cbaed2241fd3b3773da5278ff6b9bde8a1aba27795838fe217abfe56b551bcac",
+      "version": "corrected_aggregate_v2"
+    },
+    {
+      "authority_class": "CORRECTED_AGGREGATE",
+      "path": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected/taosdata_TDengine_2023.csv",
+      "root": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected",
+      "sha256": "1a3cc3d4dfe7542d139327d1f6995bf9859165787de02b487eda21532e7e66d5",
+      "version": "corrected_aggregate_v2"
+    },
+    {
+      "authority_class": "CORRECTED_AGGREGATE",
+      "path": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected/timescale_timescaledb_2023.csv",
+      "root": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected",
+      "sha256": "4f16c8b8a08ab8f4345cd7fef0e0975849fb227a720496a8dd4202225d01008c",
+      "version": "corrected_aggregate_v2"
+    },
+    {
+      "authority_class": "CORRECTED_AGGREGATE",
+      "path": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected/crate_crate_2023.csv",
+      "root": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected",
+      "sha256": "fd52821f3677e51bc9d5c33e7dabadcb1c2eca0883c2fd8a884bcdc33674e4ff",
+      "version": "corrected_aggregate_v2"
+    },
+    {
+      "authority_class": "CORRECTED_AGGREGATE",
+      "path": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected/VictoriaMetrics_VictoriaMetrics_2023.csv",
+      "root": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected",
+      "sha256": "809325d50446a1976ff244a11824f3bd2ef20d99ae2fbbdb7191f79828f7123e",
+      "version": "corrected_aggregate_v2"
+    },
+    {
+      "authority_class": "CORRECTED_AGGREGATE",
+      "path": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected/qdrant_qdrant_2023.csv",
+      "root": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected",
+      "sha256": "ef44a7f137e4b0ce2b06e9b482b5c9b6df9b9b19736e97de5e1c2f4e655bb472",
+      "version": "corrected_aggregate_v2"
+    },
+    {
+      "authority_class": "CORRECTED_AGGREGATE",
+      "path": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected/facebook_rocksdb_2023.csv",
+      "root": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected",
+      "sha256": "4bad92e446f629be722439b96f11696fced73c7e55f64a1b3904cd0309d1ded7",
+      "version": "corrected_aggregate_v2"
+    },
+    {
+      "authority_class": "CORRECTED_AGGREGATE",
+      "path": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected/apache_hbase_2023.csv",
+      "root": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected",
+      "sha256": "7cab685bba01049148b08db3f6bb23b35dceecc696c864ee67627cfd4aca58c1",
+      "version": "corrected_aggregate_v2"
+    },
+    {
+      "authority_class": "CORRECTED_AGGREGATE",
+      "path": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected/chroma-core_chroma_2023.csv",
+      "root": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected",
+      "sha256": "899c65d4245ddd4149aaf95f0a44bf66a9c0e45444fa8527b989a91e31ef739c",
+      "version": "corrected_aggregate_v2"
+    },
+    {
+      "authority_class": "CORRECTED_AGGREGATE",
+      "path": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected/apache_lucene_2023.csv",
+      "root": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected",
+      "sha256": "bcc2e3d46afa1008cded99d1277a1684319f943871e3847165ebb29e851e26ba",
+      "version": "corrected_aggregate_v2"
+    },
+    {
+      "authority_class": "CORRECTED_AGGREGATE",
+      "path": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected/prometheus_prometheus_2023.csv",
+      "root": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected",
+      "sha256": "b9957a0fe75eb86dcd74e923fde60ea0760568e1e3ed4125a036730d3d013dcd",
+      "version": "corrected_aggregate_v2"
+    },
+    {
+      "authority_class": "CORRECTED_AGGREGATE",
+      "path": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected/questdb_questdb_2023.csv",
+      "root": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected",
+      "sha256": "a4386359200c79440c422cffd71fbbc3ed9aa2081e1f3e7f606d0ba76e6a3127",
+      "version": "corrected_aggregate_v2"
+    },
+    {
+      "authority_class": "CORRECTED_AGGREGATE",
+      "path": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected/apache_accumulo_2023.csv",
+      "root": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected",
+      "sha256": "b539df9ed95b22fbbc7a7ca92971e017419a83a7697f909b26ab43da76c63ebd",
+      "version": "corrected_aggregate_v2"
+    },
+    {
+      "authority_class": "CORRECTED_AGGREGATE",
+      "path": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected/dolthub_dolt_2023.csv",
+      "root": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected",
+      "sha256": "663fedc7a49e4846e80a3d2434c705d35998c05b7b5e5344f8198ce9b3b9cbcd",
+      "version": "corrected_aggregate_v2"
+    },
+    {
+      "authority_class": "CORRECTED_AGGREGATE",
+      "path": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected/kuzudb_kuzu_2023.csv",
+      "root": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected",
+      "sha256": "1bf1ffb88fefd43ae290456957d4ef76ab68d5b244031c1ea4270f89a69791b1",
+      "version": "corrected_aggregate_v2"
+    },
+    {
+      "authority_class": "CORRECTED_AGGREGATE",
+      "path": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected/citusdata_citus_2023.csv",
+      "root": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected",
+      "sha256": "b3d0c8d2a93f102b012949dbd3eccb88191bd6f1d076b40ccdb75e5d01feef4f",
+      "version": "corrected_aggregate_v2"
+    },
+    {
+      "authority_class": "CORRECTED_AGGREGATE",
+      "path": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected/quickwit-oss_quickwit_2023.csv",
+      "root": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected",
+      "sha256": "72506289e1e33efca32f7d37d1f20850035bdaa7c4f77a25409d2ca23a16428a",
+      "version": "corrected_aggregate_v2"
+    },
+    {
+      "authority_class": "CORRECTED_AGGREGATE",
+      "path": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected/realm_realm-core_2023.csv",
+      "root": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected",
+      "sha256": "a6e89afc45c1c9c354b35937872059b40854bb3b047494a0a66447ff67160439",
+      "version": "corrected_aggregate_v2"
+    },
+    {
+      "authority_class": "CORRECTED_AGGREGATE",
+      "path": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected/edgedb_edgedb_2023.csv",
+      "root": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected",
+      "sha256": "2377cf8ebf81ef8d636261eeb6237d56cce5ca9786c18a496834f96c45fb3f7c",
+      "version": "corrected_aggregate_v2"
+    },
+    {
+      "authority_class": "CORRECTED_AGGREGATE",
+      "path": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected/CUBRID_cubrid_2023.csv",
+      "root": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected",
+      "sha256": "b3a0adce427f110fff82eef3ab42b24419f53ad491b9c5833a00d52a02906252",
+      "version": "corrected_aggregate_v2"
+    },
+    {
+      "authority_class": "CORRECTED_AGGREGATE",
+      "path": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected/infinispan_infinispan_2023.csv",
+      "root": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected",
+      "sha256": "ebce46c0fe44e5430f1c0a9859af424156670252c51c354fd9943f75cd3fd267",
+      "version": "corrected_aggregate_v2"
+    },
+    {
+      "authority_class": "CORRECTED_AGGREGATE",
+      "path": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected/nuclia_nucliadb_2023.csv",
+      "root": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected",
+      "sha256": "3d5e22184cb8d1aea32a3db3d52b5753f5c358a2d6d82c1dc6be6fcce2810a40",
+      "version": "corrected_aggregate_v2"
+    },
+    {
+      "authority_class": "CORRECTED_AGGREGATE",
+      "path": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected/vdaas_vald_2023.csv",
+      "root": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected",
+      "sha256": "8148e95890941222260b236ada08d539fe7a56c6b8fed64d92c833adf15e0f2d",
+      "version": "corrected_aggregate_v2"
+    },
+    {
+      "authority_class": "CORRECTED_AGGREGATE",
+      "path": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected/delta-io_delta_2023.csv",
+      "root": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected",
+      "sha256": "1f6b8c7e9ee7c0c67d6d61222d751ee89a0c3847f7357c348bbb782276678471",
+      "version": "corrected_aggregate_v2"
+    },
+    {
+      "authority_class": "CORRECTED_AGGREGATE",
+      "path": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected/TileDB-Inc_TileDB_2023.csv",
+      "root": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected",
+      "sha256": "3032d717ff37140637969c0c7e26b7d73d93f1830d23be8dd3f280fc8a179ca9",
+      "version": "corrected_aggregate_v2"
+    },
+    {
+      "authority_class": "CORRECTED_AGGREGATE",
+      "path": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected/GlareDB_glaredb_2023.csv",
+      "root": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected",
+      "sha256": "b00f4b0702b8b69535796114b8e5a3c9f4a073cc2fc82106b79d56d7aee38ed9",
+      "version": "corrected_aggregate_v2"
+    },
+    {
+      "authority_class": "CORRECTED_AGGREGATE",
+      "path": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected/meilisearch_meilisearch_2023.csv",
+      "root": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected",
+      "sha256": "321d0c92134b2768a117b10c1fe66b5286a02ae0b012d81e79bd1bfe5c83c9d4",
+      "version": "corrected_aggregate_v2"
+    },
+    {
+      "authority_class": "CORRECTED_AGGREGATE",
+      "path": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected/apache_age_2023.csv",
+      "root": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected",
+      "sha256": "2909b869efbba7e0109a78b64647b976eaefebecea71905289b36c60cdf86576",
+      "version": "corrected_aggregate_v2"
+    },
+    {
+      "authority_class": "CORRECTED_AGGREGATE",
+      "path": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected/MariaDB_server_2023.csv",
+      "root": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected",
+      "sha256": "ff35eb88b1777c132df58de7616747a00576ecf92314f49c13785f2156afcd38",
+      "version": "corrected_aggregate_v2"
+    },
+    {
+      "authority_class": "CORRECTED_AGGREGATE",
+      "path": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected/apache_ignite_2023.csv",
+      "root": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected",
+      "sha256": "fd07af87de35502972e2c7e144ea9d747c181e828f23a5dbaf78780ef891716a",
+      "version": "corrected_aggregate_v2"
+    },
+    {
+      "authority_class": "CORRECTED_AGGREGATE",
+      "path": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected/dgraph-io_dgraph_2023.csv",
+      "root": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected",
+      "sha256": "770b548a69ea169795c18109dee97bcc44329cb9c09934a8439ca5983a50e6c5",
+      "version": "corrected_aggregate_v2"
+    },
+    {
+      "authority_class": "CORRECTED_AGGREGATE",
+      "path": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected/4paradigm_OpenMLDB_2023.csv",
+      "root": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected",
+      "sha256": "ce342084aaf0dc36917dd802c4513900404b0c50daebb14d19fb07b948d27b1a",
+      "version": "corrected_aggregate_v2"
+    },
+    {
+      "authority_class": "CORRECTED_AGGREGATE",
+      "path": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected/apache_couchdb_2023.csv",
+      "root": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected",
+      "sha256": "2bf14a49437eaac206fb93362f48e586c26ec5674ea12f92ecf1c034ae6b2417",
+      "version": "corrected_aggregate_v2"
+    },
+    {
+      "authority_class": "CORRECTED_AGGREGATE",
+      "path": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected/activeloopai_deeplake_2023.csv",
+      "root": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected",
+      "sha256": "dfc4f634137690c0b8dffbf4c1e5f242c3b72879aa1ee8b2daad51f015a58655",
+      "version": "corrected_aggregate_v2"
+    },
+    {
+      "authority_class": "CORRECTED_AGGREGATE",
+      "path": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected/authzed_spicedb_2023.csv",
+      "root": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected",
+      "sha256": "d10a2044c4ef7dd33e444a82a592460beea6af30b38591685419063e8b3a5e26",
+      "version": "corrected_aggregate_v2"
+    },
+    {
+      "authority_class": "CORRECTED_AGGREGATE",
+      "path": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected/ByConity_ByConity_2023.csv",
+      "root": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected",
+      "sha256": "5415985dbc2b59b2dd2764921f31bb2a0966b6bbf6b4fbe4bbbaa9eb8a54b52d",
+      "version": "corrected_aggregate_v2"
+    },
+    {
+      "authority_class": "CORRECTED_AGGREGATE",
+      "path": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected/eXist-db_exist_2023.csv",
+      "root": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected",
+      "sha256": "5d7806777e286397fba6e8c0d4af3dddcca71ad5ce5391130716fcb8b23b715c",
+      "version": "corrected_aggregate_v2"
+    },
+    {
+      "authority_class": "CORRECTED_AGGREGATE",
+      "path": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected/cnosdb_cnosdb_2023.csv",
+      "root": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected",
+      "sha256": "17ace55b12775576f2b12f008c6c44ea1a5c1aee9ede472ad09046bc8c121c45",
+      "version": "corrected_aggregate_v2"
+    },
+    {
+      "authority_class": "CORRECTED_AGGREGATE",
+      "path": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected/quickwit-oss_tantivy_2023.csv",
+      "root": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected",
+      "sha256": "ac3160595942f7adfd7ef08875e5fb5375de7825fe62621a73772f1dfef4a244",
+      "version": "corrected_aggregate_v2"
+    },
+    {
+      "authority_class": "CORRECTED_AGGREGATE",
+      "path": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected/tigrisdata_tigris_2023.csv",
+      "root": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected",
+      "sha256": "79017c91e0f0457e2230677187b88d9c7206eb8837a25de6af332c08b5508f9c",
+      "version": "corrected_aggregate_v2"
+    },
+    {
+      "authority_class": "CORRECTED_AGGREGATE",
+      "path": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected/FirebirdSQL_firebird_2023.csv",
+      "root": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected",
+      "sha256": "588e3d3b2819265ca1cdab8822b67612a5584ab06a5dfcbaff2568e90304f95d",
+      "version": "corrected_aggregate_v2"
+    },
+    {
+      "authority_class": "CORRECTED_AGGREGATE",
+      "path": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected/oceanbase_oceanbase_2023.csv",
+      "root": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected",
+      "sha256": "f4ff2bc966cfcbeeedcc2f6cc86a0f2b883bec1190143d268a33cf9db99e35c0",
+      "version": "corrected_aggregate_v2"
+    },
+    {
+      "authority_class": "CORRECTED_AGGREGATE",
+      "path": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected/EventStore_EventStore_2023.csv",
+      "root": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected",
+      "sha256": "532e207514f28d43cf4e67bb6021b1e7cbf768d815f7f56e62f5334df29dd125",
+      "version": "corrected_aggregate_v2"
+    },
+    {
+      "authority_class": "CORRECTED_AGGREGATE",
+      "path": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected/marqo-ai_marqo_2023.csv",
+      "root": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected",
+      "sha256": "abd13bad59c3123e373474781ea248ef6b21e44c9c1ebc5c5925fd4acef2ae87",
+      "version": "corrected_aggregate_v2"
+    },
+    {
+      "authority_class": "CORRECTED_AGGREGATE",
+      "path": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected/vesoft-inc_nebula_2023.csv",
+      "root": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected",
+      "sha256": "2c9701a4fe2754cb827a8d859e46bcc0e740dfe973f6e97630e3fa89ce1335f4",
+      "version": "corrected_aggregate_v2"
+    },
+    {
+      "authority_class": "CORRECTED_AGGREGATE",
+      "path": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected/apache_tinkerpop_2023.csv",
+      "root": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected",
+      "sha256": "c28bac9813729cb367aa2e3fedf26a2937eb8b26c73c9a740ca5a106c6fa9ac9",
+      "version": "corrected_aggregate_v2"
+    },
+    {
+      "authority_class": "CORRECTED_AGGREGATE",
+      "path": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected/speedb-io_speedb_2023.csv",
+      "root": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected",
+      "sha256": "7e6eb56df3a696ef29b90859a6671536ea2a8601effe773fde3bc683c64b9ca8",
+      "version": "corrected_aggregate_v2"
+    },
+    {
+      "authority_class": "CORRECTED_AGGREGATE",
+      "path": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected/pubkey_rxdb_2023.csv",
+      "root": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected",
+      "sha256": "2974ef7dd7c1cc2c27416a35277899aeeabc9dedab2544afbf5aabab9a7f77b6",
+      "version": "corrected_aggregate_v2"
+    },
+    {
+      "authority_class": "CORRECTED_AGGREGATE",
+      "path": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected/apache_incubator-hugegraph_2023.csv",
+      "root": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected",
+      "sha256": "a077f7ecd840ab00624d4104e10bd04a1d9377b1bb95751b014bba0267558cba",
+      "version": "corrected_aggregate_v2"
+    },
+    {
+      "authority_class": "CORRECTED_AGGREGATE",
+      "path": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected/bloomberg_comdb2_2023.csv",
+      "root": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected",
+      "sha256": "bad25b33f41971e0d74f511bd85fff0f4105bee9254b93c15fa0829db464e18d",
+      "version": "corrected_aggregate_v2"
+    },
+    {
+      "authority_class": "CORRECTED_AGGREGATE",
+      "path": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected/etcd-io_bbolt_2023.csv",
+      "root": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected",
+      "sha256": "c6e12dc34b4190021484955afd0d115ec2a17e1f9aa4ac4565c0cd31d641c02c",
+      "version": "corrected_aggregate_v2"
+    },
+    {
+      "authority_class": "CORRECTED_AGGREGATE",
+      "path": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected/manticoresoftware_manticoresearch_2023.csv",
+      "root": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected",
+      "sha256": "5657ed1f42b082d115121f7fd0d6dfef136a8062b63fd323b72faef5c849d537",
+      "version": "corrected_aggregate_v2"
+    },
+    {
+      "authority_class": "CORRECTED_AGGREGATE",
+      "path": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected/lancedb_lancedb_2023.csv",
+      "root": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected",
+      "sha256": "a4d0c5b84c7684dd6063a49f36c8ec81ed19b1601bc15b5a3af76dfdb00804fe",
+      "version": "corrected_aggregate_v2"
+    },
+    {
+      "authority_class": "CORRECTED_AGGREGATE",
+      "path": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected/JanusGraph_janusgraph_2023.csv",
+      "root": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected",
+      "sha256": "a3517be2fd4f920b97c45774330f88429c958a6c11318c75f7bacb03cc81fe7b",
+      "version": "corrected_aggregate_v2"
+    },
+    {
+      "authority_class": "CORRECTED_AGGREGATE",
+      "path": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected/apache_phoenix_2023.csv",
+      "root": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected",
+      "sha256": "6eea369a5accc08a0d93f10bb7581cddd24abfb8331681bd0c73bb6eaaa87712",
+      "version": "corrected_aggregate_v2"
+    },
+    {
+      "authority_class": "CORRECTED_AGGREGATE",
+      "path": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected/codenotary_immudb_2023.csv",
+      "root": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected",
+      "sha256": "f15a3dacbb33469949a2f6d9f0e4291aa3ba0323b8ad0d2e277c6f116cbdf7c1",
+      "version": "corrected_aggregate_v2"
+    },
+    {
+      "authority_class": "CORRECTED_AGGREGATE",
+      "path": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected/pocketbase_pocketbase_2023.csv",
+      "root": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected",
+      "sha256": "e0e698924b29340345c097cc0219de15ddb981d8f8e84d8ab80c8e8fffbf6e4c",
+      "version": "corrected_aggregate_v2"
+    },
+    {
+      "authority_class": "CORRECTED_AGGREGATE",
+      "path": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected/georgia-tech-db_eva_2023.csv",
+      "root": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected",
+      "sha256": "4c6b29de8fc455831da3c0f0a50210e7721130263310757c33ebacac3208a2e4",
+      "version": "corrected_aggregate_v2"
+    },
+    {
+      "authority_class": "CORRECTED_AGGREGATE",
+      "path": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected/ArcadeData_arcadedb_2023.csv",
+      "root": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected",
+      "sha256": "0203e41872094b76d968e4b5cf74fa51eef7de04ce6e609add1f9abe16a1e7cd",
+      "version": "corrected_aggregate_v2"
+    },
+    {
+      "authority_class": "CORRECTED_AGGREGATE",
+      "path": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected/ydb-platform_ydb_2023.csv",
+      "root": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected",
+      "sha256": "5f7500382bac45fbd3d1fb71fc2ed53138ad20d56966623be3d3fad88c58a978",
+      "version": "corrected_aggregate_v2"
+    },
+    {
+      "authority_class": "CORRECTED_AGGREGATE",
+      "path": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected/apache_sedona_2023.csv",
+      "root": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected",
+      "sha256": "30cf91641025aeedcec1a28cd6e4c6f9098284a32b59c41d2cf749e8e0eddb90",
+      "version": "corrected_aggregate_v2"
+    },
+    {
+      "authority_class": "CORRECTED_AGGREGATE",
+      "path": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected/typesense_typesense_2023.csv",
+      "root": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected",
+      "sha256": "a870a5c3ccb74d4bc37ae1e5b110092b9c13f6f7669bed444eb670793732c8cf",
+      "version": "corrected_aggregate_v2"
+    },
+    {
+      "authority_class": "CORRECTED_AGGREGATE",
+      "path": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected/xtdb_xtdb_2023.csv",
+      "root": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected",
+      "sha256": "02d785d990e557cec2128319802e17c3e2b14c240845be05b86fea5edd12dac1",
+      "version": "corrected_aggregate_v2"
+    },
+    {
+      "authority_class": "CORRECTED_AGGREGATE",
+      "path": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected/hyrise_hyrise_2023.csv",
+      "root": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected",
+      "sha256": "7cd4e0b1ca3fc22cc004b8daa175e500ed14be0e786221475c5e02795f110b86",
+      "version": "corrected_aggregate_v2"
+    },
+    {
+      "authority_class": "CORRECTED_AGGREGATE",
+      "path": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected/timeplus-io_proton_2023.csv",
+      "root": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected",
+      "sha256": "0ca7df08973087f27d74aa6696c87738b8f6f94d5c3dd1e5a58f263a98e0044d",
+      "version": "corrected_aggregate_v2"
+    },
+    {
+      "authority_class": "CORRECTED_AGGREGATE",
+      "path": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected/cloudberrydb_cloudberrydb_2023.csv",
+      "root": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected",
+      "sha256": "9f512661f9b423b1dba81efbf7c4ed4a83708624287c46e9f24a0698dd93b169",
+      "version": "corrected_aggregate_v2"
+    },
+    {
+      "authority_class": "CORRECTED_AGGREGATE",
+      "path": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected/gchq_Gaffer_2023.csv",
+      "root": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected",
+      "sha256": "f5283bb8714ff6f6747795d1a3a431ba853f5a2eb1c864635eef43993dc93a9d",
+      "version": "corrected_aggregate_v2"
+    },
+    {
+      "authority_class": "CORRECTED_AGGREGATE",
+      "path": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected/fluree_db_2023.csv",
+      "root": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected",
+      "sha256": "04b1e4d4db42243cfd1c701f56f8757d751b8a47c88fc19cdb1aabd42977ab40",
+      "version": "corrected_aggregate_v2"
+    },
+    {
+      "authority_class": "CORRECTED_AGGREGATE",
+      "path": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected/couchbase_couchbase-lite-core_2023.csv",
+      "root": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected",
+      "sha256": "9a2827b5d38914e29737e3d3c97df8cfc6df7c1036b3766239e9edd662d3f22a",
+      "version": "corrected_aggregate_v2"
+    },
+    {
+      "authority_class": "CORRECTED_AGGREGATE",
+      "path": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected/RedisGraph_RedisGraph_2023.csv",
+      "root": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected",
+      "sha256": "ce1869e50874d719ef6a8ad7566d4999e95b03881bb31251a7885cd873d467a2",
+      "version": "corrected_aggregate_v2"
+    },
+    {
+      "authority_class": "CORRECTED_AGGREGATE",
+      "path": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected/mabel-dev_opteryx_2023.csv",
+      "root": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected",
+      "sha256": "fca0d57cd92f6e7507c1a83f950b5cfba1282e3a92e7f029322d026dabe52206",
+      "version": "corrected_aggregate_v2"
+    },
+    {
+      "authority_class": "CORRECTED_AGGREGATE",
+      "path": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected/apache_jena_2023.csv",
+      "root": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected",
+      "sha256": "74a0f4710a992a4f5135009d8d7cba3aa77812019266370ca6c4e8fdb92dd189",
+      "version": "corrected_aggregate_v2"
+    },
+    {
+      "authority_class": "CORRECTED_AGGREGATE",
+      "path": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected/influxdata_influxdb_2023.csv",
+      "root": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected",
+      "sha256": "b7fc2fec868549f8a9ecc392a80be6f83bb9240e5885d51d79e9a71344c813b9",
+      "version": "corrected_aggregate_v2"
+    },
+    {
+      "authority_class": "CORRECTED_AGGREGATE",
+      "path": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected/openGemini_openGemini_2023.csv",
+      "root": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected",
+      "sha256": "4337ee8bb1c6d24c17d2c87f135325e53c19262ae6e3bcf77d543f9fabff200d",
+      "version": "corrected_aggregate_v2"
+    },
+    {
+      "authority_class": "CORRECTED_AGGREGATE",
+      "path": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected/neo4j_neo4j_2023.csv",
+      "root": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected",
+      "sha256": "3ffc38accd86ad4f080d5d5d7fc1989152d106c82e3bbe610f15672a4a911344",
+      "version": "corrected_aggregate_v2"
+    },
+    {
+      "authority_class": "CORRECTED_AGGREGATE",
+      "path": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected/polarsignals_frostdb_2023.csv",
+      "root": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected",
+      "sha256": "6ec36c81d421a85fdb8e66adc76abd2387fcbadbd0e0db4dc471e1e1b5eb45fb",
+      "version": "corrected_aggregate_v2"
+    },
+    {
+      "authority_class": "CORRECTED_AGGREGATE",
+      "path": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected/TuGraph-family_tugraph-db_2023.csv",
+      "root": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected",
+      "sha256": "10abf9cd1c90f58a4a91d9983f8841f5f468036abed614bb9e2b73034069542b",
+      "version": "corrected_aggregate_v2"
+    },
+    {
+      "authority_class": "CORRECTED_AGGREGATE",
+      "path": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected/paradedb_paradedb_2023.csv",
+      "root": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected",
+      "sha256": "08fb0c130bba715fcc2de0d215245cb6dc874b68cbc91ac3745ef9daebe7c334",
+      "version": "corrected_aggregate_v2"
+    },
+    {
+      "authority_class": "CORRECTED_AGGREGATE",
+      "path": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected/gridgain_gridgain_2023.csv",
+      "root": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected",
+      "sha256": "43987f178320b654000cb8203aa0d3bf606f150aceb62c3be729109ab0867319",
+      "version": "corrected_aggregate_v2"
+    },
+    {
+      "authority_class": "CORRECTED_AGGREGATE",
+      "path": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected/eclipse_rdf4j_2023.csv",
+      "root": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected",
+      "sha256": "290ee90e2c657b5e2e509e39163f87c87aae70a2860e88a903397dff466d933f",
+      "version": "corrected_aggregate_v2"
+    },
+    {
+      "authority_class": "CORRECTED_AGGREGATE",
+      "path": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected/ytsaurus_ytsaurus_2023.csv",
+      "root": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected",
+      "sha256": "472cfea2a15da5fdf4912c412bd36e5969b7d7623e5e0857c4789e431109b935",
+      "version": "corrected_aggregate_v2"
+    },
+    {
+      "authority_class": "CORRECTED_AGGREGATE",
+      "path": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected/hstreamdb_hstream_2023.csv",
+      "root": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected",
+      "sha256": "e94d44fe54060848a4b9960b99370587f929062ab1a36ed7192176bbd2c3cae6",
+      "version": "corrected_aggregate_v2"
+    },
+    {
+      "authority_class": "CORRECTED_AGGREGATE",
+      "path": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected/vmware_splinterdb_2023.csv",
+      "root": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected",
+      "sha256": "f6081bcd0a400aa1ecaaf150c9389648249b92d69e9732aa6b062d0675b3b517",
+      "version": "corrected_aggregate_v2"
+    },
+    {
+      "authority_class": "CORRECTED_AGGREGATE",
+      "path": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected/apache_zookeeper_2023.csv",
+      "root": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected",
+      "sha256": "6462e7999823f0cf4e6eab656dff3c9df57ea9e888678b9658641680a8ad5fe0",
+      "version": "corrected_aggregate_v2"
+    },
+    {
+      "authority_class": "CORRECTED_AGGREGATE",
+      "path": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected/h2database_h2database_2023.csv",
+      "root": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected",
+      "sha256": "e5d36da100154d8657e1ce6bec144ee9d614aded8ad03faa1ba584c353b3c28f",
+      "version": "corrected_aggregate_v2"
+    },
+    {
+      "authority_class": "CORRECTED_AGGREGATE",
+      "path": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected/xap_xap_2023.csv",
+      "root": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected",
+      "sha256": "f83cdb178e50c5afbe57ad9e7dcac4804fb9154f4750cd89270c783a9d5feaa5",
+      "version": "corrected_aggregate_v2"
+    },
+    {
+      "authority_class": "CORRECTED_AGGREGATE",
+      "path": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected/percona_percona-server_2023.csv",
+      "root": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected",
+      "sha256": "0f225fb0d5547032492d88ad1c61701f8a15cc8505e851f48bc231db5a1a2a7d",
+      "version": "corrected_aggregate_v2"
+    },
+    {
+      "authority_class": "CORRECTED_AGGREGATE",
+      "path": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected/maxnowack_signaldb_2023.csv",
+      "root": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected",
+      "sha256": "4f7a597d19c72879f272d3bed2316916165a6b5efd981748b8e2b2b84c03da5f",
+      "version": "corrected_aggregate_v2"
+    },
+    {
+      "authority_class": "CORRECTED_AGGREGATE",
+      "path": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected/Expensify_Bedrock_2023.csv",
+      "root": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected",
+      "sha256": "dfd10129bc4ffba1d03aa7629bfe7a52e7244f48db0ccdfd139baccab5a67025",
+      "version": "corrected_aggregate_v2"
+    },
+    {
+      "authority_class": "CORRECTED_AGGREGATE",
+      "path": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected/memcached_memcached_2023.csv",
+      "root": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected",
+      "sha256": "57d8c6844c89b000080dc1e1b5a54366765b1472f961604c1af3c6bf75d32d47",
+      "version": "corrected_aggregate_v2"
+    },
+    {
+      "authority_class": "CORRECTED_AGGREGATE",
+      "path": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected/logicalclocks_rondb_2023.csv",
+      "root": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected",
+      "sha256": "e853064c8de1ac8a228c688d3862c505e03c89d27d29fcf28bf6f268e2ed1195",
+      "version": "corrected_aggregate_v2"
+    },
+    {
+      "authority_class": "CORRECTED_AGGREGATE",
+      "path": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected/terminusdb_terminusdb_2023.csv",
+      "root": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected",
+      "sha256": "be63df56d1cb66689ae0a3974b86edd48d70a972b1533d5c5ce50950dfba3184",
+      "version": "corrected_aggregate_v2"
+    },
+    {
+      "authority_class": "CORRECTED_AGGREGATE",
+      "path": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected/rqlite_rqlite_2023.csv",
+      "root": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected",
+      "sha256": "3984d287e6515409f230d9ea33a53299be9cca67a3fa8b14f55fb2e1a5d36c5e",
+      "version": "corrected_aggregate_v2"
+    },
+    {
+      "authority_class": "CORRECTED_AGGREGATE",
+      "path": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected/dgraph-io_badger_2023.csv",
+      "root": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected",
+      "sha256": "70082761699afca4a1e5bf694e22899a6d26ddc685360e543cd93142933e127b",
+      "version": "corrected_aggregate_v2"
+    },
+    {
+      "authority_class": "CORRECTED_AGGREGATE",
+      "path": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected/senx_warp10-platform_2023.csv",
+      "root": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected",
+      "sha256": "4c9e1e035f78dc46346b7b438a6379d79949b8bafcde12f1d9450a7e2b1e2d78",
+      "version": "corrected_aggregate_v2"
+    },
+    {
+      "authority_class": "CORRECTED_AGGREGATE",
+      "path": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected/cberner_redb_2023.csv",
+      "root": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected",
+      "sha256": "75573e40b0649174234a0179f42430866f4b7dc016def9a6d4af6bb17eff419e",
+      "version": "corrected_aggregate_v2"
+    },
+    {
+      "authority_class": "CORRECTED_AGGREGATE",
+      "path": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected/pouchdb_pouchdb_2023.csv",
+      "root": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected",
+      "sha256": "4ad33795d5adbd87481140e8b46bde9ed1205b5c3b18aa7d550f6772fd8990a3",
+      "version": "corrected_aggregate_v2"
+    },
+    {
+      "authority_class": "CORRECTED_AGGREGATE",
+      "path": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected/mirage_irmin_2023.csv",
+      "root": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected",
+      "sha256": "9d0b69b2ebd1fdaa4cd80c259f13a4834fd08a670d7ab66a688df1ac66fdb9ed",
+      "version": "corrected_aggregate_v2"
+    },
+    {
+      "authority_class": "CORRECTED_AGGREGATE",
+      "path": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected/libsql_libsql_2023.csv",
+      "root": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected",
+      "sha256": "5abd8dc67c2c01bdfd796f38cb7e8706b8ec5118784eefd8dee9f39d28231ebf",
+      "version": "corrected_aggregate_v2"
+    },
+    {
+      "authority_class": "CORRECTED_AGGREGATE",
+      "path": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected/splitgraph_seafowl_2023.csv",
+      "root": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected",
+      "sha256": "f30cbf6dceb7f85f0979160d4c5c37d8149fa3eb8af6a779fb182b8bb6909336",
+      "version": "corrected_aggregate_v2"
+    },
+    {
+      "authority_class": "CORRECTED_AGGREGATE",
+      "path": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected/Snapchat_KeyDB_2023.csv",
+      "root": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected",
+      "sha256": "8962c2a22e2922eadc04f56a3c5ea336480e157b45b65e733dc71fa01f56d1ed",
+      "version": "corrected_aggregate_v2"
+    },
+    {
+      "authority_class": "CORRECTED_AGGREGATE",
+      "path": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected/AlaSQL_alasql_2023.csv",
+      "root": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected",
+      "sha256": "0b7a209eb75d1459956f4ab5874b6573a7461bb5ac596e965a93c53d1129fee8",
+      "version": "corrected_aggregate_v2"
+    },
+    {
+      "authority_class": "CORRECTED_AGGREGATE",
+      "path": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected/ceramicstudio_js-composedb_2023.csv",
+      "root": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected",
+      "sha256": "8e17c4b7e91db1a041a41743d2049a3f187ee0fcada3a905cfa6a8a534fb5a07",
+      "version": "corrected_aggregate_v2"
+    },
+    {
+      "authority_class": "CORRECTED_AGGREGATE",
+      "path": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected/apache_drill_2023.csv",
+      "root": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected",
+      "sha256": "75dfc866eea2886c8184d2be921de0379f255ee3c42a28cf87192e9dc302fe1a",
+      "version": "corrected_aggregate_v2"
+    },
+    {
+      "authority_class": "CORRECTED_AGGREGATE",
+      "path": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected/sirixdb_sirix_2023.csv",
+      "root": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected",
+      "sha256": "0631c3b9b6fc45befebdb4f9b0843c9c73ad23dee1fbbd45a141a2c8bdc643ff",
+      "version": "corrected_aggregate_v2"
+    },
+    {
+      "authority_class": "CORRECTED_AGGREGATE",
+      "path": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected/cmu-db_bustub_2023.csv",
+      "root": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected",
+      "sha256": "f5c9eb61ab43c18d72104afd248db8dbc1766316ecfeec2dc76bc39562dfeb68",
+      "version": "corrected_aggregate_v2"
+    },
+    {
+      "authority_class": "CORRECTED_AGGREGATE",
+      "path": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected/lsst_qserv_2023.csv",
+      "root": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected",
+      "sha256": "c9b2d0183af1bc88c0af8db99d42e9580c942f857d27514519222137d11d6a5e",
+      "version": "corrected_aggregate_v2"
+    },
+    {
+      "authority_class": "CORRECTED_AGGREGATE",
+      "path": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected/percona_percona-server-mongodb_2023.csv",
+      "root": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected",
+      "sha256": "1a0b5fa81a5fb770ef9a371da3bbb55a691c1738f6d6288e4288208c56d031aa",
+      "version": "corrected_aggregate_v2"
+    },
+    {
+      "authority_class": "CORRECTED_AGGREGATE",
+      "path": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected/ehcache_ehcache3_2023.csv",
+      "root": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected",
+      "sha256": "e479f255c87bc9f368c2d16b29a06f01021d779843cf6e4e90d3db6feb5ac490",
+      "version": "corrected_aggregate_v2"
+    },
+    {
+      "authority_class": "CORRECTED_AGGREGATE",
+      "path": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected/Kinto_kinto_2023.csv",
+      "root": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected",
+      "sha256": "60a8499a381c367694563ed28001e4ae691766672f29ee776068f72ba4e478d7",
+      "version": "corrected_aggregate_v2"
+    },
+    {
+      "authority_class": "CORRECTED_AGGREGATE",
+      "path": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected/orioledb_orioledb_2023.csv",
+      "root": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected",
+      "sha256": "de012d47e22bbd00e1f02b10ae71c8159de4d289cf4a884193c22d61a2b4b3d4",
+      "version": "corrected_aggregate_v2"
+    },
+    {
+      "authority_class": "CORRECTED_AGGREGATE",
+      "path": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected/chdb-io_chdb_2023.csv",
+      "root": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected",
+      "sha256": "df271c7fcd560f72742b39fc4d1d5c6d7cf2ab996efc4b88b24fa22aef7bfc71",
+      "version": "corrected_aggregate_v2"
+    },
+    {
+      "authority_class": "CORRECTED_AGGREGATE",
+      "path": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected/openlink_virtuoso-opensource_2023.csv",
+      "root": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected",
+      "sha256": "0d699060d2ac85ffc6be66eeb6ff36c0918405a4d1bd76acdbb007877eb201fa",
+      "version": "corrected_aggregate_v2"
+    },
+    {
+      "authority_class": "CORRECTED_AGGREGATE",
+      "path": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected/IceFireDB_IceFireDB_2023.csv",
+      "root": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected",
+      "sha256": "0938e7f9d806ce7c65ae2642ee0005c76a022f77a15dbbd9b062ea628e42f713",
+      "version": "corrected_aggregate_v2"
+    },
+    {
+      "authority_class": "CORRECTED_AGGREGATE",
+      "path": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected/cozodb_cozo_2023.csv",
+      "root": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected",
+      "sha256": "8c7b92930df061b06149f7b558862e6e860145224bffed401b6c6aed8e0814ee",
+      "version": "corrected_aggregate_v2"
+    },
+    {
+      "authority_class": "CORRECTED_AGGREGATE",
+      "path": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected/risinglightdb_risinglight_2023.csv",
+      "root": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected",
+      "sha256": "2c98186c3f84ff2b63de4dfb5ae8857a03b223bb06d5cf495a4f3797d3c286b7",
+      "version": "corrected_aggregate_v2"
+    },
+    {
+      "authority_class": "CORRECTED_AGGREGATE",
+      "path": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected/apache_kylin_2023.csv",
+      "root": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected",
+      "sha256": "4121bb7eef38de9b8af92f6e2f8833fe6374dfc09101c41530e5fd20324b97c2",
+      "version": "corrected_aggregate_v2"
+    },
+    {
+      "authority_class": "CORRECTED_AGGREGATE",
+      "path": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected/gnocchixyz_gnocchi_2023.csv",
+      "root": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected",
+      "sha256": "fb7c2b06a08bbd6dee71b0de45027105195e730190ac43b1e9740bc72e2b7bfc",
+      "version": "corrected_aggregate_v2"
+    },
+    {
+      "authority_class": "CORRECTED_AGGREGATE",
+      "path": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected/danielealbano_cachegrand_2023.csv",
+      "root": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected",
+      "sha256": "f15222429dc2d951d048fda6f62ade7a5f009f10e214a126e333270f1e1197fc",
+      "version": "corrected_aggregate_v2"
+    },
+    {
+      "authority_class": "CORRECTED_AGGREGATE",
+      "path": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected/lealone_Lealone_2023.csv",
+      "root": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected",
+      "sha256": "7fda24ba920dbbc250ca9a928b1f6e6f89edb61b3585811cbfc96394dc1cd72c",
+      "version": "corrected_aggregate_v2"
+    },
+    {
+      "authority_class": "CORRECTED_AGGREGATE",
+      "path": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected/scratchdata_ScratchDB_2023.csv",
+      "root": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected",
+      "sha256": "c1cd5a6693a90972ca04afdc4f7b1dc65b4668ac087c559fd133450a09177db8",
+      "version": "corrected_aggregate_v2"
+    },
+    {
+      "authority_class": "CORRECTED_AGGREGATE",
+      "path": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected/MonetDB_MonetDB_2023.csv",
+      "root": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected",
+      "sha256": "d444bfab8066ab24dd8fc3484f68a254678712903189f5a18ba5dcc5181e4162",
+      "version": "corrected_aggregate_v2"
+    },
+    {
+      "authority_class": "CORRECTED_AGGREGATE",
+      "path": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected/canonical_dqlite_2023.csv",
+      "root": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected",
+      "sha256": "f7beb62dfabcdca192b7005419bef25e28097595a739a78350f7c0e842ca9bb7",
+      "version": "corrected_aggregate_v2"
+    },
+    {
+      "authority_class": "CORRECTED_AGGREGATE",
+      "path": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected/objectbox_objectbox-java_2023.csv",
+      "root": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected",
+      "sha256": "91f0d9749a95d2e54d09ce934052a788522f6938c0adce0cc51352f6afadb732",
+      "version": "corrected_aggregate_v2"
+    },
+    {
+      "authority_class": "CORRECTED_AGGREGATE",
+      "path": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected/m3db_m3_2023.csv",
+      "root": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected",
+      "sha256": "dbb5747d097f184f541647510b481189b8b04e68a0353f733145f031c98180c0",
+      "version": "corrected_aggregate_v2"
+    },
+    {
+      "authority_class": "CORRECTED_AGGREGATE",
+      "path": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected/orientechnologies_orientdb_2023.csv",
+      "root": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected",
+      "sha256": "da1d84ea8aaf18bab41be3ccf66d1ca4430e3e9fe4a7814abde43afa8407c098",
+      "version": "corrected_aggregate_v2"
+    },
+    {
+      "authority_class": "CORRECTED_AGGREGATE",
+      "path": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected/mysql_mysql-server_2023.csv",
+      "root": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected",
+      "sha256": "be4c28886dd1cbf30dc546096640822cd1b1bc00fec32f0647228e68eada79e8",
+      "version": "corrected_aggregate_v2"
+    },
+    {
+      "authority_class": "CORRECTED_AGGREGATE",
+      "path": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected/epsilla-cloud_vectordb_2023.csv",
+      "root": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected",
+      "sha256": "c2583b1a7fa12fec71ee88681e717e25d8ec58ca1459727869109aa755adf91e",
+      "version": "corrected_aggregate_v2"
+    },
+    {
+      "authority_class": "CORRECTED_AGGREGATE",
+      "path": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected/hivedb_hive_2023.csv",
+      "root": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected",
+      "sha256": "66f85cae95b46ad9dfbb10ec936eba890b043df00fcdbda42809cd4c726ff31c",
+      "version": "corrected_aggregate_v2"
+    },
+    {
+      "authority_class": "CORRECTED_AGGREGATE",
+      "path": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected/mbdavid_LiteDB_2023.csv",
+      "root": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected",
+      "sha256": "ac27f17fe62b9ba8707a3742f715e099717d43671ee99433dbf447d9f6c1df3b",
+      "version": "corrected_aggregate_v2"
+    },
+    {
+      "authority_class": "CORRECTED_AGGREGATE",
+      "path": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected/microsoft_FASTER_2023.csv",
+      "root": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected",
+      "sha256": "68c813dbe2ba07f55ab94e950edc41ed7a6721af22bb91ea7f52e13cf2b2f1b1",
+      "version": "corrected_aggregate_v2"
+    },
+    {
+      "authority_class": "CORRECTED_AGGREGATE",
+      "path": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected/reductstore_reductstore_2023.csv",
+      "root": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected",
+      "sha256": "0a9384b20b41d4895af4e38066a71a880230b29893adc2d288ea5e978c91a4a2",
+      "version": "corrected_aggregate_v2"
+    },
+    {
+      "authority_class": "CORRECTED_AGGREGATE",
+      "path": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected/BaseXdb_basex_2023.csv",
+      "root": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected",
+      "sha256": "bda14ce3cde0d977946cfa173ba17e55e0d373ad4d251bb6b1bca4f5b151a76a",
+      "version": "corrected_aggregate_v2"
+    },
+    {
+      "authority_class": "CORRECTED_AGGREGATE",
+      "path": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected/EuclidOLAP_EuclidOLAP_2023.csv",
+      "root": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected",
+      "sha256": "4d3be0a4dd121d8629957bc1ef1aa67b073473a51232de059bd490c171fa4dea",
+      "version": "corrected_aggregate_v2"
+    },
+    {
+      "authority_class": "CORRECTED_AGGREGATE",
+      "path": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected/LineairDB_LineairDB_2023.csv",
+      "root": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected",
+      "sha256": "5bc86f02eb7ba5403a2d592e85364f1adcf96ddba69ae834a8e5999b386ba2fa",
+      "version": "corrected_aggregate_v2"
+    },
+    {
+      "authority_class": "CORRECTED_AGGREGATE",
+      "path": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected/jnidzwetzki_bboxdb_2023.csv",
+      "root": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected",
+      "sha256": "8a17d15985146fc08c9b95e1232d48a60438f6ed206a926906a141664e41edc0",
+      "version": "corrected_aggregate_v2"
+    },
+    {
+      "authority_class": "CORRECTED_AGGREGATE",
+      "path": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected/resilientdb_resilientdb_2023.csv",
+      "root": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected",
+      "sha256": "b7db963b054c362e3742a876c14f8fedeb0d0e94cdbe326edd02fcb3554a9210",
+      "version": "corrected_aggregate_v2"
+    },
+    {
+      "authority_class": "CORRECTED_AGGREGATE",
+      "path": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected/mongodb_mongo_2023.csv",
+      "root": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected",
+      "sha256": "d2c6977590b03fb316609b3f9ed1f8c97c61cd5ed8821d84c40691d33b8daffa",
+      "version": "corrected_aggregate_v2"
+    },
+    {
+      "authority_class": "CORRECTED_AGGREGATE",
+      "path": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected/armink_FlashDB_2023.csv",
+      "root": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected",
+      "sha256": "7d8897e7e82b244703ec6ab9b36acd114f128dabe419619eb31dd86d82b2069f",
+      "version": "corrected_aggregate_v2"
+    },
+    {
+      "authority_class": "CORRECTED_AGGREGATE",
+      "path": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected/postgis_postgis_2023.csv",
+      "root": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected",
+      "sha256": "5ae1b23c8c6afd8bf537a23f7a207a89806712e3bafd24baf5c70e27146f7d87",
+      "version": "corrected_aggregate_v2"
+    },
+    {
+      "authority_class": "CORRECTED_AGGREGATE",
+      "path": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected/paypal_junodb_2023.csv",
+      "root": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected",
+      "sha256": "a520fe54e26aca00c330c68af25694032959005f4d4229ae252933ca4af49562",
+      "version": "corrected_aggregate_v2"
+    },
+    {
+      "authority_class": "CORRECTED_AGGREGATE",
+      "path": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected/oracle_nosql-java-sdk_2023.csv",
+      "root": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected",
+      "sha256": "ab9f443fda9610dc872966b36428c11d0ffba0eef58d635ca0d3e3875ade08b2",
+      "version": "corrected_aggregate_v2"
+    },
+    {
+      "authority_class": "CORRECTED_AGGREGATE",
+      "path": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected/amark_gun_2023.csv",
+      "root": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected",
+      "sha256": "aa4e55ddedcdb0dda1246f4067a7ec3b5c0390053eb5a9f01ec58e89232bda99",
+      "version": "corrected_aggregate_v2"
+    },
+    {
+      "authority_class": "CORRECTED_AGGREGATE",
+      "path": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected/juji-io_datalevin_2023.csv",
+      "root": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected",
+      "sha256": "67e2a7d9f00effa39c2b0013b7e8357ff27a25a709a7bfef783c8d012bde1b1c",
+      "version": "corrected_aggregate_v2"
+    },
+    {
+      "authority_class": "CORRECTED_AGGREGATE",
+      "path": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected/streamnative_oxia_2023.csv",
+      "root": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected",
+      "sha256": "f101aaed692f59510050dc6fa934c5e38385979237ddf740f4e4e84e0181b91d",
+      "version": "corrected_aggregate_v2"
+    },
+    {
+      "authority_class": "CORRECTED_AGGREGATE",
+      "path": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected/tinyplex_tinybase_2023.csv",
+      "root": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected",
+      "sha256": "d28a54b9bf1638c975cbfbabe573be307b5e8fb191517974107e99cde931e3fc",
+      "version": "corrected_aggregate_v2"
+    },
+    {
+      "authority_class": "CORRECTED_AGGREGATE",
+      "path": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected/semi-technologies_weaviate_2023.csv",
+      "root": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected",
+      "sha256": "44f792cfc3c6ebafecf4f72026d6015d817a46b1da5b3071d3f76d00b4b2c051",
+      "version": "corrected_aggregate_v2"
+    },
+    {
+      "authority_class": "CORRECTED_AGGREGATE",
+      "path": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected/ostafen_clover_2023.csv",
+      "root": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected",
+      "sha256": "4875266643019a440d7b7ec10422a42ab2e7a9f34370e7afbe17ba0c35d2ca44",
+      "version": "corrected_aggregate_v2"
+    },
+    {
+      "authority_class": "CORRECTED_AGGREGATE",
+      "path": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected/OpenNMS_newts_2023.csv",
+      "root": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected",
+      "sha256": "d683edab1b87554c1abe1f33355f3ccba767ec8c47e7437ff5aa143277cec39c",
+      "version": "corrected_aggregate_v2"
+    },
+    {
+      "authority_class": "CORRECTED_AGGREGATE",
+      "path": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected/JetBrains_xodus_2023.csv",
+      "root": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected",
+      "sha256": "b398edae31b200fa5850186419e7a51fc9be5f06198e3455af8bf2a966fc95d3",
+      "version": "corrected_aggregate_v2"
+    },
+    {
+      "authority_class": "CORRECTED_AGGREGATE",
+      "path": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected/RhizomeDB_rs-rhizome_2023.csv",
+      "root": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected",
+      "sha256": "dd5da868ac4e59b4a7a6411d5d6c2b84f0be726668dd37d0a76f5e77b9b926dd",
+      "version": "corrected_aggregate_v2"
+    },
+    {
+      "authority_class": "CORRECTED_AGGREGATE",
+      "path": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected/google_leveldb_2023.csv",
+      "root": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected",
+      "sha256": "174273a6e11ce9c4b5454ad761ffcbfbc31d69035ae3bb44fc344760b4935f5c",
+      "version": "corrected_aggregate_v2"
+    },
+    {
+      "authority_class": "CORRECTED_AGGREGATE",
+      "path": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected/apache_incubator-horaedb_2023.csv",
+      "root": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected",
+      "sha256": "f9090265c8d9d1f7eaf39bcad9f97973a8bff92716e22b2ebc9eba2304d0b231",
+      "version": "corrected_aggregate_v2"
+    },
+    {
+      "authority_class": "CORRECTED_AGGREGATE",
+      "path": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected/OpenHFT_Chronicle-Map_2023.csv",
+      "root": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected",
+      "sha256": "c9fc75495e64e4bec7ee39432a346c58ae3676b595b816375eb8aff9df7899f0",
+      "version": "corrected_aggregate_v2"
+    },
+    {
+      "authority_class": "CORRECTED_AGGREGATE",
+      "path": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected/rethinkdb_rethinkdb_2023.csv",
+      "root": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected",
+      "sha256": "e09d13f16ed5722b0a159eea24e15f54d7dbbfde0bc090e555e47547414536e5",
+      "version": "corrected_aggregate_v2"
+    },
+    {
+      "authority_class": "CORRECTED_AGGREGATE",
+      "path": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected/heavyai_heavydb_2023.csv",
+      "root": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected",
+      "sha256": "c7473d3a0f39ce9b317ae6ff4c247ab394d5342a50422d4666267457421383c6",
+      "version": "corrected_aggregate_v2"
+    },
+    {
+      "authority_class": "CORRECTED_AGGREGATE",
+      "path": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected/rayokota_kareldb_2023.csv",
+      "root": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected",
+      "sha256": "d10a8934d599d1160c8deab684a94a20d2f9517f677d072882dd4f41521fa9ba",
+      "version": "corrected_aggregate_v2"
+    },
+    {
+      "authority_class": "CORRECTED_AGGREGATE",
+      "path": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected/polypheny_Polypheny-DB_2023.csv",
+      "root": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected",
+      "sha256": "46f69ec7e57623c60c640a701ac77ba6393c9f5fe1f724082ae1f737d8ceaa69",
+      "version": "corrected_aggregate_v2"
+    },
+    {
+      "authority_class": "CORRECTED_AGGREGATE",
+      "path": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected/awa-ai_awadb_2023.csv",
+      "root": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected",
+      "sha256": "2b66c51a3addf3241db0a25d4e94043de6ffeb9aaaad2082f1759a86e6cc27b8",
+      "version": "corrected_aggregate_v2"
+    },
+    {
+      "authority_class": "CORRECTED_AGGREGATE",
+      "path": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected/vearch_vearch_2023.csv",
+      "root": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected",
+      "sha256": "cdda46ae2c8e9866f04beab14aa3302cec6a1830e73a30d720d9f3adb36671a3",
+      "version": "corrected_aggregate_v2"
+    },
+    {
+      "authority_class": "CORRECTED_AGGREGATE",
+      "path": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected/khonsulabs_bonsaidb_2023.csv",
+      "root": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected",
+      "sha256": "8845a2b3b19d12adcc36e0e2a03c5346a93ba90f9839c3e5167246aa843600d8",
+      "version": "corrected_aggregate_v2"
+    },
+    {
+      "authority_class": "CORRECTED_AGGREGATE",
+      "path": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected/elliotchance_vsql_2023.csv",
+      "root": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected",
+      "sha256": "e4b2abedd37ceade6f03092cb6eca80fad81289bd1a3e3e77ee2a5f538aa3c33",
+      "version": "corrected_aggregate_v2"
+    },
+    {
+      "authority_class": "CORRECTED_AGGREGATE",
+      "path": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected/basho_riak_kv_2023.csv",
+      "root": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected",
+      "sha256": "0a497299197218043a78177b6e13d53c6bb90ee9f6342c0fcc99d96586e78f0f",
+      "version": "corrected_aggregate_v2"
+    },
+    {
+      "authority_class": "CORRECTED_AGGREGATE",
+      "path": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected/pentaho_mondrian_2023.csv",
+      "root": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected",
+      "sha256": "ed818cfcfd7b938019badb36af75dfa852d6d47725db4ffcf852246b71934a0a",
+      "version": "corrected_aggregate_v2"
+    },
+    {
+      "authority_class": "CORRECTED_AGGREGATE",
+      "path": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected/spacejam_sled_2023.csv",
+      "root": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected",
+      "sha256": "516f49ca5f69bda505c1cb4fc1849e9b0f0c2b4c1afa49148ccc69cff2f5f5c9",
+      "version": "corrected_aggregate_v2"
+    },
+    {
+      "authority_class": "CORRECTED_AGGREGATE",
+      "path": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected/rayokota_hgraphdb_2023.csv",
+      "root": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected",
+      "sha256": "de533309b77e376e89c969d258ba52ddffc150631194b43f8ca5f9cd91f2e75b",
+      "version": "corrected_aggregate_v2"
+    },
+    {
+      "authority_class": "CORRECTED_AGGREGATE",
+      "path": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected/graphite-project_graphite-web_2023.csv",
+      "root": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected",
+      "sha256": "e8ec66a4b6888e9f3793b9662fd3d52c2d400c4af65bad93f52cbe08a0a7f695",
+      "version": "corrected_aggregate_v2"
+    },
+    {
+      "authority_class": "CORRECTED_AGGREGATE",
+      "path": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected/firstbatchxyz_hollowdb_2023.csv",
+      "root": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected",
+      "sha256": "df973400509f2395215d36c754ff62df28b4fed4ae1851f7c67c25c774286cf2",
+      "version": "corrected_aggregate_v2"
+    },
+    {
+      "authority_class": "CORRECTED_AGGREGATE",
+      "path": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected/genjidb_genji_2023.csv",
+      "root": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected",
+      "sha256": "5664c44a67403d1b747abd991c9f94b58fa88d7c190e10d926b75c5235d01d30",
+      "version": "corrected_aggregate_v2"
+    },
+    {
+      "authority_class": "CORRECTED_AGGREGATE",
+      "path": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected/appy-one_acebase_2023.csv",
+      "root": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected",
+      "sha256": "588e4edf180c8d4ba5521d01f44d55f531de8c93cb97b7a20c44b538a352c237",
+      "version": "corrected_aggregate_v2"
+    },
+    {
+      "authority_class": "CORRECTED_AGGREGATE",
+      "path": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected/postgres_postgres_2023.csv",
+      "root": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected",
+      "sha256": "b7351863125597139ee09f75bc6b28d23cdf20071ef60250961af5ca8929df8c",
+      "version": "corrected_aggregate_v2"
+    },
+    {
+      "authority_class": "CORRECTED_AGGREGATE",
+      "path": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected/skytable_skytable_2023.csv",
+      "root": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected",
+      "sha256": "89b2d02bf14e502463e8d5f3db08044f96d89bdebe49f4b8fa29b0ffb194705b",
+      "version": "corrected_aggregate_v2"
+    },
+    {
+      "authority_class": "CORRECTED_AGGREGATE",
+      "path": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected/cfu288_SylvieJS_2023.csv",
+      "root": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected",
+      "sha256": "66335cc15bbbeae51c26ce64ebf76f48a4411d773a67cc1001d1ce1abcd82efe",
+      "version": "corrected_aggregate_v2"
+    },
+    {
+      "authority_class": "CORRECTED_AGGREGATE",
+      "path": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected/orbisgis_h2gis_2023.csv",
+      "root": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected",
+      "sha256": "8c6ba024c10c0455f46e14af040e7d9bc1603ebbf76cf722fb5c76ee4c72f373",
+      "version": "corrected_aggregate_v2"
+    },
+    {
+      "authority_class": "CORRECTED_AGGREGATE",
+      "path": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected/Tencent_Tendis_2023.csv",
+      "root": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected",
+      "sha256": "753403d386cb45d789429566039062215daf9b7e604840f31a6553765245021b",
+      "version": "corrected_aggregate_v2"
+    },
+    {
+      "authority_class": "CORRECTED_AGGREGATE",
+      "path": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected/OpenTSDB_opentsdb_2023.csv",
+      "root": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected",
+      "sha256": "f6a11184fb0a02a970c449eaab497445d01de0022409375e1280bf96f144710b",
+      "version": "corrected_aggregate_v2"
+    },
+    {
+      "authority_class": "CORRECTED_AGGREGATE",
+      "path": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected/typicode_lowdb_2023.csv",
+      "root": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected",
+      "sha256": "0eb6b3d9e1045fe405be5b588b4c35ea1d421e52fc579e360a599b574f819e7a",
+      "version": "corrected_aggregate_v2"
+    },
+    {
+      "authority_class": "CORRECTED_AGGREGATE",
+      "path": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected/orbitdb_orbit-db_2023.csv",
+      "root": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected",
+      "sha256": "0c71c57e94b7543983b7b8d0086426ba4c203ff7d423204d97ada1cea011a288",
+      "version": "corrected_aggregate_v2"
+    },
+    {
+      "authority_class": "CORRECTED_AGGREGATE",
+      "path": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected/zopefoundation_ZODB_2023.csv",
+      "root": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected",
+      "sha256": "1738b780f7d841a6e019f03890e82c4709e39d72abc55244e1a06f7e462b933e",
+      "version": "corrected_aggregate_v2"
+    },
+    {
+      "authority_class": "CORRECTED_AGGREGATE",
+      "path": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected/jdagdelen_hyperDB_2023.csv",
+      "root": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected",
+      "sha256": "95cdc52eba262deb9d784cb504fee61d6384ff076ee2e8d24d0e335f52d8925f",
+      "version": "corrected_aggregate_v2"
+    },
+    {
+      "authority_class": "CORRECTED_AGGREGATE",
+      "path": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected/oetiker_rrdtool-1.x_2023.csv",
+      "root": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected",
+      "sha256": "e5b69415bfa52b4f5c028f1613a47c63e2587ca39a78f8652f4b5ba0d5b82404",
+      "version": "corrected_aggregate_v2"
+    },
+    {
+      "authority_class": "CORRECTED_AGGREGATE",
+      "path": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected/fireproof-storage_fireproof_2023.csv",
+      "root": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected",
+      "sha256": "a6be8ba2e0764ae34c21e1c165abd61839a6b121423fce290de886efed126d7f",
+      "version": "corrected_aggregate_v2"
+    },
+    {
+      "authority_class": "CORRECTED_AGGREGATE",
+      "path": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected/msiemens_tinydb_2023.csv",
+      "root": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected",
+      "sha256": "9ec37c6e6a53f3c3c8ad682c361cc55ddaf5bc6cc9fbe494010547a00afaa1ed",
+      "version": "corrected_aggregate_v2"
+    },
+    {
+      "authority_class": "CORRECTED_AGGREGATE",
+      "path": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected/proullon_ramsql_2023.csv",
+      "root": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected",
+      "sha256": "feebe4577f4c1089e28beb7403979bff2b2031ada32771cbd357149e043c964d",
+      "version": "corrected_aggregate_v2"
+    },
+    {
+      "authority_class": "CORRECTED_AGGREGATE",
+      "path": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected/diennea_herddb_2023.csv",
+      "root": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected",
+      "sha256": "f68882d4ccc2f3b38191bea3e4bd4d9db99a5ef9bfe3681f4b4b8d15191a96d8",
+      "version": "corrected_aggregate_v2"
+    },
+    {
+      "authority_class": "CORRECTED_AGGREGATE",
+      "path": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected/tontinton_dbeel_2023.csv",
+      "root": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected",
+      "sha256": "290e1a9a8162e66cd9cbc02c6a640bbbcd0249e66746493d14b435345ea75941",
+      "version": "corrected_aggregate_v2"
+    },
+    {
+      "authority_class": "CORRECTED_AGGREGATE",
+      "path": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected/bitnine-oss_agensgraph_2023.csv",
+      "root": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected",
+      "sha256": "841d6ced7d32d1b7604715ae40d63d6e52e0af5731248c9677ff528dfaa3644c",
+      "version": "corrected_aggregate_v2"
+    },
+    {
+      "authority_class": "CORRECTED_AGGREGATE",
+      "path": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected/marsupialtail_quokka_2023.csv",
+      "root": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected",
+      "sha256": "c948edeccd55064768e1b1fd3a8d43e4016667f3233ffdf0e478eb576beb6969",
+      "version": "corrected_aggregate_v2"
+    },
+    {
+      "authority_class": "CORRECTED_AGGREGATE",
+      "path": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected/baidu_BaikalDB_2023.csv",
+      "root": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected",
+      "sha256": "1f68f182629394f95d263ca5b8afd2644ba1285ca458e7ac2549e01a304c7628",
+      "version": "corrected_aggregate_v2"
+    },
+    {
+      "authority_class": "CORRECTED_AGGREGATE",
+      "path": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected/basho_riak_2023.csv",
+      "root": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected",
+      "sha256": "6d784c9f75a53e622dc8b4360fbb88bc8b2353269ad999aa08dfc4571cf06fc7",
+      "version": "corrected_aggregate_v2"
+    },
+    {
+      "authority_class": "CORRECTED_AGGREGATE",
+      "path": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected/jina-ai_vectordb_2023.csv",
+      "root": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected",
+      "sha256": "ea102a354d458d15919d276869524b2c6194b89b5cf444a41fd7520c160b2e55",
+      "version": "corrected_aggregate_v2"
+    },
+    {
+      "authority_class": "CORRECTED_AGGREGATE",
+      "path": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected/griddb_griddb_2023.csv",
+      "root": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected",
+      "sha256": "4615eed4870de4f4924a4bdf3a0f744b62bccc3b8f41aeb23120ffac5af51337",
+      "version": "corrected_aggregate_v2"
+    },
+    {
+      "authority_class": "CORRECTED_AGGREGATE",
+      "path": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected/jankotek_mapdb_2023.csv",
+      "root": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected",
+      "sha256": "43db0a0342cc757d0243249211f7978ebf6f2dff296bb8ab114c150f4d2fcda0",
+      "version": "corrected_aggregate_v2"
+    },
+    {
+      "authority_class": "CORRECTED_AGGREGATE",
+      "path": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected/earthstar-project_earthstar_2023.csv",
+      "root": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected",
+      "sha256": "2a6f08985889577fe21f1bed2575b69a401b6870140b2e0b594784409bd25426",
+      "version": "corrected_aggregate_v2"
+    },
+    {
+      "authority_class": "CORRECTED_AGGREGATE",
+      "path": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected/microsoft_GraphEngine_2023.csv",
+      "root": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected",
+      "sha256": "a1912a78d6ba4c3507d44e17e2f4ab7d914323c45d41ce973ab1b517a5870564",
+      "version": "corrected_aggregate_v2"
+    },
+    {
+      "authority_class": "CORRECTED_AGGREGATE",
+      "path": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected/tonsky_datascript_2023.csv",
+      "root": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected",
+      "sha256": "77106a94e1a3ff7f68376743c130747b7d9ac1f7a34f440b1bd8974ecb29b3e9",
+      "version": "corrected_aggregate_v2"
+    },
+    {
+      "authority_class": "CORRECTED_AGGREGATE",
+      "path": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected/apache_geode_2023.csv",
+      "root": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected",
+      "sha256": "042f514482122a674cd97e66f2efd8e38d03bbe8181993b08250d4659223f4ab",
+      "version": "corrected_aggregate_v2"
+    },
+    {
+      "authority_class": "CORRECTED_AGGREGATE",
+      "path": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected/apache_jackrabbit_2023.csv",
+      "root": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected",
+      "sha256": "2a1f2c33787c3b528b2762ac5beeead2f475167a790450e6b15fb242cecb8e1f",
+      "version": "corrected_aggregate_v2"
+    },
+    {
+      "authority_class": "CORRECTED_AGGREGATE",
+      "path": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected/bytedance_terarkdb_2023.csv",
+      "root": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected",
+      "sha256": "717f629747c37f44b6865eed2f08fdbb6935ecf75c187a9e7bbd99c0dbecc7eb",
+      "version": "corrected_aggregate_v2"
+    },
+    {
+      "authority_class": "CORRECTED_AGGREGATE",
+      "path": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected/cursusdb_cursusdb_2023.csv",
+      "root": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected",
+      "sha256": "ea8aa44ab322a529ee9ec14982a1a2d6865e7e963f28f5afdf11e86d7c46f812",
+      "version": "corrected_aggregate_v2"
+    },
+    {
+      "authority_class": "CORRECTED_AGGREGATE",
+      "path": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected/apache_impala_2023.csv",
+      "root": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected",
+      "sha256": "58487586a48fa030ac76e831164ef6028e561f2166e77f9d9154df1614edad02",
+      "version": "corrected_aggregate_v2"
+    },
+    {
+      "authority_class": "CORRECTED_AGGREGATE",
+      "path": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected/cayleygraph_cayley_2023.csv",
+      "root": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected",
+      "sha256": "9f10ef77960d344f50e61c1b1ca0e41495aff748eaf33d3e7b3a21e9f1687aee",
+      "version": "corrected_aggregate_v2"
+    },
+    {
+      "authority_class": "CORRECTED_AGGREGATE",
+      "path": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected/mateusfreira_nun-db_2023.csv",
+      "root": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected",
+      "sha256": "d693d508849b2a1ec666373773345f31cd0eee2178467ff7e8725d2cfb2a9865",
+      "version": "corrected_aggregate_v2"
+    },
+    {
+      "authority_class": "CORRECTED_AGGREGATE",
+      "path": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected/StereoDB_StereoDB_2023.csv",
+      "root": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected",
+      "sha256": "6b290ad7f0baa4283700c5edf775ded4d3c5080b32886c9f476460fdd5f78148",
+      "version": "corrected_aggregate_v2"
+    },
+    {
+      "authority_class": "CORRECTED_AGGREGATE",
+      "path": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected/Softmotions_ejdb_2023.csv",
+      "root": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected",
+      "sha256": "51386f1add0edff51db852733c1fcf2aa5ca62c69f1f437e74da3657ea78ec70",
+      "version": "corrected_aggregate_v2"
+    },
+    {
+      "authority_class": "CORRECTED_AGGREGATE",
+      "path": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected/akrylysov_pogreb_2023.csv",
+      "root": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected",
+      "sha256": "d0cb840e6bf0f91251259c318d940f7d2c07cf4489e41184c0edea727dbfa4ae",
+      "version": "corrected_aggregate_v2"
+    },
+    {
+      "authority_class": "CORRECTED_AGGREGATE",
+      "path": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected/OpenTenBase_OpenTenBase_2023.csv",
+      "root": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected",
+      "sha256": "2677985afe761fc427b3c27bdbd87cb47881273e432093a9c0398d842d7b3e4d",
+      "version": "corrected_aggregate_v2"
+    },
+    {
+      "authority_class": "CORRECTED_AGGREGATE",
+      "path": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected/pkumod_gStore_2023.csv",
+      "root": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected",
+      "sha256": "d94b35b82820fbe685b50a40d13fdc158140b86c9564d175acfd229afe8e99cd",
+      "version": "corrected_aggregate_v2"
+    },
+    {
+      "authority_class": "CORRECTED_AGGREGATE",
+      "path": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected/oasysai_oasysdb_2023.csv",
+      "root": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected",
+      "sha256": "91f35c8e749d1a6bf04989d728151c47afccc87a15142788384ced2a3cbcb696",
+      "version": "corrected_aggregate_v2"
+    },
+    {
+      "authority_class": "CORRECTED_AGGREGATE",
+      "path": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected/njaard_sonnerie_2023.csv",
+      "root": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected",
+      "sha256": "712a3fe3817395a63dd5e513db65bc6a63545786245b1903eada02c4a3a20c63",
+      "version": "corrected_aggregate_v2"
+    },
+    {
+      "authority_class": "CORRECTED_AGGREGATE",
+      "path": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected/kairosdb_kairosdb_2023.csv",
+      "root": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected",
+      "sha256": "87af285270befc0bbcd06039b03e3df3cbaf752e228161c2231ade0f49abac86",
+      "version": "corrected_aggregate_v2"
+    },
+    {
+      "authority_class": "CORRECTED_AGGREGATE",
+      "path": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected/apache_lucene-solr_2023.csv",
+      "root": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected",
+      "sha256": "bd358fcf0ae6e73985d6bc8a8c69a5143aa6933556112877d5aef25e42151eed",
+      "version": "corrected_aggregate_v2"
+    },
+    {
+      "authority_class": "CORRECTED_AGGREGATE",
+      "path": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected/kelindar_column_2023.csv",
+      "root": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected",
+      "sha256": "8051b9dba1039ee9fee270a2b0bc52f9c6adf6e1efcb3a5abcc1f2e0b07faacc",
+      "version": "corrected_aggregate_v2"
+    },
+    {
+      "authority_class": "CORRECTED_AGGREGATE",
+      "path": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected/arun1729_cog_2023.csv",
+      "root": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected",
+      "sha256": "06257bcaab49207321165f9842a8892ca4d3d0e45d571c218cc539f1b8795410",
+      "version": "corrected_aggregate_v2"
+    },
+    {
+      "authority_class": "CORRECTED_AGGREGATE",
+      "path": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected/techfort_LokiJS_2023.csv",
+      "root": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected",
+      "sha256": "45f997832d5e2c88cd0b733b93fdd4b93fbcf2b6a6210ba1733dfb95021cd17e",
+      "version": "corrected_aggregate_v2"
+    },
+    {
+      "authority_class": "CORRECTED_AGGREGATE",
+      "path": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected/erikgrinaker_toydb_2023.csv",
+      "root": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected",
+      "sha256": "ec8d36a6fb28e4401ffcae0dd39819670e359c0fef038d18a075fbb09be02cf0",
+      "version": "corrected_aggregate_v2"
+    },
+    {
+      "authority_class": "CORRECTED_AGGREGATE",
+      "path": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected/xapian_xapian_2023.csv",
+      "root": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected",
+      "sha256": "0edeb18e9bcb90b8fc6a5c059168cc9db1a119e8e4a3f3409383330dd565588e",
+      "version": "corrected_aggregate_v2"
+    },
+    {
+      "authority_class": "CORRECTED_AGGREGATE",
+      "path": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected/kagisearch_vectordb_2023.csv",
+      "root": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected",
+      "sha256": "f70d4a39956e9df65060e50f474bc986d1040c4ba8143eb09c07d834ce1007ff",
+      "version": "corrected_aggregate_v2"
+    },
+    {
+      "authority_class": "CORRECTED_AGGREGATE",
+      "path": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected/estraier_tkrzw_2023.csv",
+      "root": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected",
+      "sha256": "4c5a580ada6f408dd7f7b0d4a0faaa94b9ede3ef00003918371149c00294bcf8",
+      "version": "corrected_aggregate_v2"
+    },
+    {
+      "authority_class": "CORRECTED_AGGREGATE",
+      "path": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected/elmarti_camadb_2023.csv",
+      "root": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected",
+      "sha256": "2db2125eec0981f369e2bd8769e44c65723a6d1ecdbf1227842cfa9eea0438d0",
+      "version": "corrected_aggregate_v2"
+    },
+    {
+      "authority_class": "CORRECTED_AGGREGATE",
+      "path": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected/cachelot_cachelot_2023.csv",
+      "root": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected",
+      "sha256": "39f212bf7dc3fbfba40193e16adb45754ecdc627daac42f4bbead94b3c5a2f89",
+      "version": "corrected_aggregate_v2"
+    },
+    {
+      "authority_class": "CORRECTED_AGGREGATE",
+      "path": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected/edgelesssys_edgelessdb_2023.csv",
+      "root": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected",
+      "sha256": "3b368506d00eefd4e18fb9e73e45237f81292371f2d11f0fb0e8572b8e0b59ce",
+      "version": "corrected_aggregate_v2"
+    },
+    {
+      "authority_class": "CORRECTED_AGGREGATE",
+      "path": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected/vanilladb_vanillacore_2023.csv",
+      "root": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected",
+      "sha256": "df912224b5e86df05ea380f143944ddb65383b7ddd54499defa35fc45e5e5b0f",
+      "version": "corrected_aggregate_v2"
+    },
+    {
+      "authority_class": "CORRECTED_AGGREGATE",
+      "path": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected/pilgr_Paper_2023.csv",
+      "root": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected",
+      "sha256": "83ab0fa7aafe335bc1e65838a8b9a8587fa10f1bbb38fb3c117c1bca09e3fc1a",
+      "version": "corrected_aggregate_v2"
+    },
+    {
+      "authority_class": "CORRECTED_AGGREGATE",
+      "path": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected/tikv_agatedb_2023.csv",
+      "root": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected",
+      "sha256": "9957b5acbb76b59e3f31331d38f0400a12b2dc7bdd26f188ff052be3d6e555d3",
+      "version": "corrected_aggregate_v2"
+    },
+    {
+      "authority_class": "CORRECTED_AGGREGATE",
+      "path": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected/rakibtg_SleekDB_2023.csv",
+      "root": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected",
+      "sha256": "853686462434490dd08acf1c87582efaa255efbdf0f7921721ff6814f689b226",
+      "version": "corrected_aggregate_v2"
+    },
+    {
+      "authority_class": "CORRECTED_AGGREGATE",
+      "path": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected/SnellerInc_sneller_2023.csv",
+      "root": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected",
+      "sha256": "273749250c6feab62d2d9fcdeb70e6fe888a21653e183c39ffb6a31bc228e175",
+      "version": "corrected_aggregate_v2"
+    },
+    {
+      "authority_class": "CORRECTED_AGGREGATE",
+      "path": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected/microsoft_Extensible-Storage-Engine_2023.csv",
+      "root": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected",
+      "sha256": "64812a333babbd37ee88bd5f20b0e5974be09a10fec15ad5f0e176cf3dbc4bc4",
+      "version": "corrected_aggregate_v2"
+    },
+    {
+      "authority_class": "CORRECTED_AGGREGATE",
+      "path": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected/Netflix_EVCache_2023.csv",
+      "root": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected",
+      "sha256": "666f558d4164711aa09d353b90242cd9c1cdfaf540ebe0d0d731a5fba3fe454a",
+      "version": "corrected_aggregate_v2"
+    },
+    {
+      "authority_class": "CORRECTED_AGGREGATE",
+      "path": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected/tidwall_redcon_2023.csv",
+      "root": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected",
+      "sha256": "0e7ec140073f3508fd7f99ba2da6a1ce9a4399cf4319f348cdc5bbc65a3cd67c",
+      "version": "corrected_aggregate_v2"
+    },
+    {
+      "authority_class": "CORRECTED_AGGREGATE",
+      "path": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected/sqlite_sqlite_2023.csv",
+      "root": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected",
+      "sha256": "65ada04003e5ffc2754f73ed92b2d9d4ffea273496080ef11c66550aee8b083a",
+      "version": "corrected_aggregate_v2"
+    },
+    {
+      "authority_class": "CORRECTED_AGGREGATE",
+      "path": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected/apache_kudu_2023.csv",
+      "root": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected",
+      "sha256": "178e08ebaef332bcca12307a18da7d2b94d435496b8f62b14b50da755823e2b0",
+      "version": "corrected_aggregate_v2"
+    },
+    {
+      "authority_class": "CORRECTED_AGGREGATE",
+      "path": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected/tidwall_buntdb_2023.csv",
+      "root": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected",
+      "sha256": "e304d830bde34d3dc589ef52b7ee809a7096c6472f9bc1ac112ec9c2669e55e9",
+      "version": "corrected_aggregate_v2"
+    },
+    {
+      "authority_class": "CORRECTED_AGGREGATE",
+      "path": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected/dremio_dremio-oss_2023.csv",
+      "root": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected",
+      "sha256": "1119dd28bdde2abd461b0c41f4821f0b125faf08b452e3ca904ec2512bf76600",
+      "version": "corrected_aggregate_v2"
+    },
+    {
+      "authority_class": "CORRECTED_AGGREGATE",
+      "path": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected/Bobris_BTDB_2023.csv",
+      "root": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected",
+      "sha256": "423e39b573d1b34c36fb76e7b3fc1ebe78571f0827bb0f59f224918de3f8e18d",
+      "version": "corrected_aggregate_v2"
+    },
+    {
+      "authority_class": "CORRECTED_AGGREGATE",
+      "path": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected/ncannasse_castle_2023.csv",
+      "root": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected",
+      "sha256": "b0a684f9ea9c2da95777bd6181a37c0e4664511ef959244e7511d934505e9d5a",
+      "version": "corrected_aggregate_v2"
+    },
+    {
+      "authority_class": "CORRECTED_AGGREGATE",
+      "path": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected/apache_asterixdb_2023.csv",
+      "root": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected",
+      "sha256": "6955b6f051a7603930dd0867980b466b5229a28db8cf0143ef47c62032a14e7d",
+      "version": "corrected_aggregate_v2"
+    },
+    {
+      "authority_class": "CORRECTED_AGGREGATE",
+      "path": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected/textileio_go-threads_2023.csv",
+      "root": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected",
+      "sha256": "4da3f98254ecd122a2c011197883f76b9ed15e250f094635c8cf93465bb9a742",
+      "version": "corrected_aggregate_v2"
+    },
+    {
+      "authority_class": "CORRECTED_AGGREGATE",
+      "path": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected/BrightstarDB_BrightstarDB_2023.csv",
+      "root": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected",
+      "sha256": "59725c9b0e4f0c48dcb1705fa0269d45c587607bbb67acb99990d078a680e773",
+      "version": "corrected_aggregate_v2"
+    },
+    {
+      "authority_class": "CORRECTED_AGGREGATE",
+      "path": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected/etoile_CoreObject_2023.csv",
+      "root": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected",
+      "sha256": "b80a253136b80946b435ebf6bc01bd017b80c2d2837b2b144f93ae07ee7c0a7d",
+      "version": "corrected_aggregate_v2"
+    },
+    {
+      "authority_class": "CORRECTED_AGGREGATE",
+      "path": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected/blazegraph_database_2023.csv",
+      "root": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected",
+      "sha256": "f5c195a01d0c7c6adca7890c1bbce624082d4f82d1ecdc1060747e365254ba1c",
+      "version": "corrected_aggregate_v2"
+    },
+    {
+      "authority_class": "CORRECTED_AGGREGATE",
+      "path": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected/NEventStore_NEventStore_2023.csv",
+      "root": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected",
+      "sha256": "f8729d00943ee31f10c547049cb6f539dda3f7cb7e49e8a9a1c5755783d21f81",
+      "version": "corrected_aggregate_v2"
+    },
+    {
+      "authority_class": "CORRECTED_AGGREGATE",
+      "path": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected/redwood_redwood_2023.csv",
+      "root": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected",
+      "sha256": "313430ba0675af4009b2192d9ae9cf28c1efa66a6b72e1e0b3bfd8cd57aa9afb",
+      "version": "corrected_aggregate_v2"
+    },
+    {
+      "authority_class": "CORRECTED_AGGREGATE",
+      "path": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected/lambdazen_bitsy_2023.csv",
+      "root": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected",
+      "sha256": "41ac2e2d690d9bc1ba221b1559088f25c82acaf4957d8889f81a3ff57998a6a3",
+      "version": "corrected_aggregate_v2"
+    },
+    {
+      "authority_class": "CORRECTED_AGGREGATE",
+      "path": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected/pysonDB_pysonDB-v2_2023.csv",
+      "root": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected",
+      "sha256": "8134639f5e6f2635431ecb91be8bb61866f5ed1576333d129933d5881ef5d86b",
+      "version": "corrected_aggregate_v2"
+    },
+    {
+      "authority_class": "CORRECTED_AGGREGATE",
+      "path": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected/ideawu_ssdb_2023.csv",
+      "root": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected",
+      "sha256": "0e3766fe98b43866fe483d4ebde82d92efb08331c676f4af700f43e649407386",
+      "version": "corrected_aggregate_v2"
+    },
+    {
+      "authority_class": "CORRECTED_AGGREGATE",
+      "path": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected/aerospike_aerospike-server_2023.csv",
+      "root": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected",
+      "sha256": "4b76c6249dfc9a91dcdcf4234e9831257e00f86bcf6549366cfbf96349f8d264",
+      "version": "corrected_aggregate_v2"
+    },
+    {
+      "authority_class": "CORRECTED_AGGREGATE",
+      "path": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected/quoll_asami_2023.csv",
+      "root": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected",
+      "sha256": "2f7196b83e357d37c194e3dc91f37dd8786a4bfb7625af33a2f8f6ecf8ba6e90",
+      "version": "corrected_aggregate_v2"
+    },
+    {
+      "authority_class": "CORRECTED_AGGREGATE",
+      "path": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected/lingo-db_lingo-db_2023.csv",
+      "root": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected",
+      "sha256": "f1843139937009ed3401d8c0f141df62da268a84c11bac27581b8fe6e0ac2925",
+      "version": "corrected_aggregate_v2"
+    },
+    {
+      "authority_class": "CORRECTED_AGGREGATE",
+      "path": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected/GreatSQL_GreatSQL_2023.csv",
+      "root": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected",
+      "sha256": "a09856cd74d66c8ac22b757ae5a89eee50eac6a1fd452d444e86fe72abb36820",
+      "version": "corrected_aggregate_v2"
+    },
+    {
+      "authority_class": "CORRECTED_AGGREGATE",
+      "path": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected/endatabas_endb_2023.csv",
+      "root": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected",
+      "sha256": "ddd025081bfbae32972c8e198da90abf15adc627430dfe0f3dca80fc80afad6f",
+      "version": "corrected_aggregate_v2"
+    },
+    {
+      "authority_class": "CORRECTED_AGGREGATE",
+      "path": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected/bigchaindb_bigchaindb_2023.csv",
+      "root": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected",
+      "sha256": "b7a3fe2961a22704a5efdbca2c5363c0f33002dc1156841ddbdc5422224c35bf",
+      "version": "corrected_aggregate_v2"
+    },
+    {
+      "authority_class": "CORRECTED_AGGREGATE",
+      "path": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected/CovenantSQL_CovenantSQL_2023.csv",
+      "root": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected",
+      "sha256": "5dfbfadee0f2bf6694bad3316b31fb70782cf9f753e00ef32c867d0b69685906",
+      "version": "corrected_aggregate_v2"
+    },
+    {
+      "authority_class": "CORRECTED_AGGREGATE",
+      "path": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected/patx_pickledb_2023.csv",
+      "root": "D:/github_repo/OSDB_RefQ_source_data/data/github_osdb_data/repos_GH_CoRE_ref_node_agg_v2_identity_corrected",
+      "sha256": "2eebf1b390cc561c55cd430af0fc62b69275773eb6db6e1224be522e60f3a0c2",
+      "version": "corrected_aggregate_v2"
+    }
+  ],
+  "output_artifacts": [
+    {
+      "bytes": 184,
+      "path": "S1_evidence_universe/edge_class_counts.csv",
+      "row_count": 3,
+      "sha256": "a023d557fd43971ebc27304993f33a4043a5760a1f61c98fdbbeda4c8e3e4c08"
+    },
+    {
+      "bytes": 1749,
+      "path": "S1_evidence_universe/event_type_x_quotient_eligibility.csv",
+      "row_count": 16,
+      "sha256": "b000c44ad4e8a385a9d1d47574e9092e74b34536138f5aa287bd191f1142b098"
+    },
+    {
+      "bytes": 2440,
+      "path": "S1_evidence_universe/event_type_x_target_membership_status.csv",
+      "row_count": 24,
+      "sha256": "0732e5e330a9e7853a71f51b89223987ffca1486b2aa086f6877e7838128b934"
+    },
+    {
+      "bytes": 866,
+      "path": "S1_evidence_universe/evidence_universe_flow.csv",
+      "row_count": 15,
+      "sha256": "92e813ffcd189abea9320489b39e52d0baca8855eec7cb8ec3c8e3c285693366"
+    },
+    {
+      "bytes": 1675,
+      "path": "S1_evidence_universe/source_entity_type_x_quotient_eligibility.csv",
+      "row_count": 16,
+      "sha256": "9ec667ab33606f88ade507d22b6780f2812074051bcce8bb3c456ff794f51912"
+    },
+    {
+      "bytes": 2325,
+      "path": "S1_evidence_universe/source_entity_type_x_target_membership_status.csv",
+      "row_count": 24,
+      "sha256": "19026f37fb68681cdd7eaa5082c5bc11a4370bd5f673278daf72e402659b15bd"
+    },
+    {
+      "bytes": 3138,
+      "path": "S1_evidence_universe/target_entity_type_x_quotient_eligibility.csv",
+      "row_count": 31,
+      "sha256": "74ca96eb3b6e3ab7eaf150f153c05fbfa570bbf6941dac47a35bb62cad83cc15"
+    },
+    {
+      "bytes": 3050,
+      "path": "S1_evidence_universe/target_entity_type_x_target_membership_status.csv",
+      "row_count": 32,
+      "sha256": "a161549a51e883acfa2acd14289cbc4f50e37e89612aba1ca9423e9281bd00cf"
+    }
+  ],
+  "output_root": "D:\\github_repo\\OSDB_RefQ\\supplemental\\reference_quotient_v2\\outputs_p0v3",
+  "parameters": {
+    "clean_output_root": "D:\\github_repo\\OSDB_RefQ\\supplemental\\reference_quotient_v2\\outputs_p0v3",
+    "corrected_data": true,
+    "p0_authority_version": "corrected_p0_v3",
+    "p0_config_sha256": "43f97f9a2d177d325415bfbcc504f1779882cf83685b4fdebe505c8fed8e7cb0",
+    "p0_manifest_sha256": "be802b9df223c99bc2089a76ae9ec6e0b6047ab0c58237a5fc3050b51dcc9776",
+    "scientific_logic_change_count": 0,
+    "stage": "S1",
+    "supplemental_authority_version": "corrected_supplemental_p0v3_clean"
+  },
+  "runtime_versions": {
+    "gh_core": "2.3.1",
+    "networkx": "3.1",
+    "numpy": "1.26.4",
+    "pandas": "1.5.3",
+    "python": "3.9.13",
+    "python_executable": "D:\\codex_envs\\ch5_refq_supplemental_p0v3_runtime\\Scripts\\python.exe",
+    "scipy": "1.13.1"
+  },
+  "stage": "S1_evidence_universe",
+  "status": "PASS"
+}

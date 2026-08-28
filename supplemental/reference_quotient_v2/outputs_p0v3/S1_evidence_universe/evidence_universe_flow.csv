@@ -1,0 +1,16 @@
+stage,count,unit,measure
+reference_records_before_source_admission,3748078,RECORD,
+admitted_source_observation_reference_records,3747958,RECORD,
+out_of_seed_source_observation_reference_records,120,RECORD,
+missing_event_repository_id_reference_records,0,RECORD,
+invalid_event_repository_id_reference_records,0,RECORD,
+target_project_mappable_records,1586047,RECORD,
+target_non_project_records,1686729,RECORD,
+target_unresolved_records,475182,RECORD,
+target_ambiguous_records,0,RECORD,
+conflict_excluded_record_occurrences,0,RECORD,
+quotient_eligible_records,1586047,RECORD,
+self_loop_evidence_weight,1447073,REFERENCE_RECORD,AGGREGATED_EDGE_WEIGHT
+cross_project_evidence_weight,138974,REFERENCE_RECORD,AGGREGATED_EDGE_WEIGHT
+self_loop_edge_count,289,EDGE_COUNT,SELF_LOOP_EDGE_COUNT
+cross_project_directed_edge_count,9595,EDGE_COUNT,CROSS_PROJECT_DIRECTED_EDGE_COUNT
