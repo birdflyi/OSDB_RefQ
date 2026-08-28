@@ -79,6 +79,15 @@ def _fixture_authority_roots(tmp_path):
     )
 
 
+def _production_stage_snapshot(stage: str) -> dict[str, bytes]:
+    root = paths.CORRECTED_OUTPUTS_ROOT / stage
+    return {
+        path.relative_to(root).as_posix(): path.read_bytes()
+        for path in root.rglob("*")
+        if path.is_file()
+    }
+
+
 def test_s6_exact_inventory_and_historical_transform_semantics(tmp_path):
     _, _, source_bundle = _fixture(tmp_path)
     result = build_s6_figure_ready_bundle(source_bundle)
@@ -158,6 +167,7 @@ def test_s6_rejects_historical_roots_and_cross_root_source_records(tmp_path):
 
 
 def test_s6_corrected_p0_preflight_is_header_only_and_contracts_are_v2():
+    before = _production_stage_snapshot("S6_figure_ready")
     result = preflight_corrected_p0_s6_inputs()
     assert result["C3_7E_INPUT_PREFLIGHT"] == "PASS"
     assert result["headers_only"] is True
@@ -167,4 +177,4 @@ def test_s6_corrected_p0_preflight_is_header_only_and_contracts_are_v2():
     assert result["s6_output_inventory"] == list(S6_OUTPUT_INVENTORY)
     assert set(S4_OUTPUT_CONTRACT) == {"louvain_stability_runs.csv", "louvain_stability_pairwise.csv", "louvain_stability_summary.json"}
     assert "brokerage_topk_frequency.csv" not in S5_OUTPUT_CONTRACT
-    assert not (paths.CORRECTED_OUTPUTS_ROOT / "S6_figure_ready").exists()
+    assert _production_stage_snapshot("S6_figure_ready") == before

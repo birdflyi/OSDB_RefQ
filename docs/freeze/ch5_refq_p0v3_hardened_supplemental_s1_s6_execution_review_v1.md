@@ -20,11 +20,15 @@ docs-only commit `e2d728c`, and the superseded S2 inventory is docs-only commit
 | S3 | PASS | `1f99c7c` | three frozen views, canonical parity, receipt/hash closure |
 | S4 | PASS WITH ROBUSTNESS ALERT | `bf7658a` | 50 seeds, 1,225 pairwise rows, minimum ARI 0.6823671359861659 |
 | S5 | PASS | `ceef56c` | 60 runs, k 250/500/1000, inclusion closure; robustness alert false |
-| S6 | PASS | `e13d915` | 23 output artifacts, structural summary and figure-ready manifest |
+| S6 | PASS | `e13d915` | 20 figure-ready tables + 1 figure-ready manifest + 1 stage receipt = 22 stage files |
 
-All stage receipts report `PASS`, use the clean supplemental runtime, and bind
-to the hardened implementation SHA. The complete file-level output inventory is
-frozen in `ch5_refq_p0v3_hardened_supplemental_output_hash_inventory_v1.csv`.
+All stage receipts report `PASS`. S1 was retained from the clean P0-v3
+execution and its receipt binds to `e13eaf2b3bff040639e6256ea98aa1fa5bb0ef1f`.
+S2-S6 were generated after deterministic graph-order hardening and their
+receipts bind to `de9f03a1efb76f3abd2b7b6239f7748f40498d90`. The current
+scientific network implementation authority remains
+`de9f03a1efb76f3abd2b7b6239f7748f40498d90`. The complete file-level output
+inventory is frozen in `ch5_refq_p0v3_hardened_supplemental_output_hash_inventory_v1.csv`.
 
 ## Runtime and regression gates
 
@@ -40,12 +44,11 @@ counts are frozen in `ch5_refq_p0v3_hardened_supplemental_runtime_gate_results_v
 - targeted hardening suite 40/40 passed;
 - compileall and `git diff --check` passed.
 
-After outputs were intentionally materialized, a full supplemental rerun reported
-196 passed and 5 failures, and the targeted rerun reported 37 passed and 3
-failures. Every failure is an old fixture assertion that S3, S4, S5, or S6
-output directories must not exist; it does not inspect scientific values or
-receipt/hash closure. Excluding exactly those five stale absence assertions
-returned 196/196 passed. No code or test patch was made after Phase A.
+Before this QA task, after outputs were intentionally materialized, a full
+supplemental rerun reported 196 passed and 5 failures, and the targeted rerun
+reported 37 passed and 3 failures. Each failure was a stale pre-execution
+absence assertion. The test-only fixture isolation in this QA task removes that
+state coupling; no scientific implementation or output was changed.
 
 ## Deterministic and scientific results
 
@@ -77,6 +80,7 @@ were not executed. `S7=DEFER`, `G09=NOT_EXECUTED`, `G20=NOT_FINALIZED`,
 
 ```text
 C4_DETERMINISTIC_NETWORK_IMPLEMENTATION_COMMIT = de9f03a1efb76f3abd2b7b6239f7748f40498d90
+S1_ACTUAL_EXECUTION_IMPLEMENTATION = e13eaf2b3bff040639e6256ea98aa1fa5bb0ef1f
 AUDIT_DOC_CORRECTION_COMMIT = e2d728c
 S1_RESULT_COMMIT = 5a670d5157c8a84d545795ef3e8114a5724523dd
 S2_RESULT_COMMIT = c879695

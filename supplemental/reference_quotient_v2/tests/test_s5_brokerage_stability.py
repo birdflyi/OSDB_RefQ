@@ -34,6 +34,15 @@ def _graph() -> nx.Graph:
     return graph
 
 
+def _production_stage_snapshot(stage: str) -> dict[str, bytes]:
+    root = paths.CORRECTED_OUTPUTS_ROOT / stage
+    return {
+        path.relative_to(root).as_posix(): path.read_bytes()
+        for path in root.rglob("*")
+        if path.is_file()
+    }
+
+
 def test_s5_production_contract_is_exact():
     config = paths.load_config(paths.DEFAULT_CONFIG_PATH)
     settings = s5_production_settings(config)
@@ -54,6 +63,7 @@ def test_s5_ranking_tiebreak_is_score_degree_then_project_id():
 
 
 def test_s5_calls_unweighted_normalized_betweenness_and_closes_frequency(monkeypatch):
+    before = _production_stage_snapshot("S5_brokerage_stability")
     graph = _graph()
     canonical_graph = canonicalize_undirected_graph_order(graph)
     canonical_scores = nx.betweenness_centrality(
@@ -93,7 +103,7 @@ def test_s5_calls_unweighted_normalized_betweenness_and_closes_frequency(monkeyp
     assert tuple(tables["brokerage_rank_stability.csv"].columns) == S5_RANK_COLUMNS
     assert tuple(tables["brokerage_topk_inclusion_frequency.csv"].columns) == S5_FREQUENCY_COLUMNS
     assert "brokerage_topk_frequency.csv" not in tables
-    assert not (paths.CORRECTED_OUTPUTS_ROOT / "S5_brokerage_stability").exists()
+    assert _production_stage_snapshot("S5_brokerage_stability") == before
 
 
 def test_s5_spearman_is_rank_correlation_and_frequency_uses_full_rankings():
@@ -164,6 +174,7 @@ def test_s5_source_excludes_deprecated_and_historical_executable_authority():
 def test_corrected_p0_s45_preflight_is_metadata_header_only_and_passes():
     from supplemental.reference_quotient_v2.scripts.s45_canonical_graph import preflight_corrected_p0_s45_inputs
 
+    before = _production_stage_snapshot("S5_brokerage_stability")
     result = preflight_corrected_p0_s45_inputs()
     assert result["C3_7D_INPUT_PREFLIGHT"] == "PASS"
     assert result["headers_only"] is True
@@ -171,4 +182,4 @@ def test_corrected_p0_s45_preflight_is_metadata_header_only_and_passes():
     assert result["network_corrected_data_run"] == 0
     assert result["s4_louvain_seed_end"] == 20260780
     assert result["s5_seed_end"] == 20260750
-    assert not (paths.CORRECTED_OUTPUTS_ROOT / "S5_brokerage_stability").exists()
+    assert _production_stage_snapshot("S5_brokerage_stability") == before

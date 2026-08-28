@@ -37,6 +37,15 @@ def _partition() -> dict[str, int]:
     return {"z": 0, "a": 0, "b": 0, "c": 1, "d": 1, "e": 1}
 
 
+def _production_stage_snapshot(stage: str) -> dict[str, bytes]:
+    root = paths.CORRECTED_OUTPUTS_ROOT / stage
+    return {
+        path.relative_to(root).as_posix(): path.read_bytes()
+        for path in root.rglob("*")
+        if path.is_file()
+    }
+
+
 def test_s4_production_seed_contract_is_exact():
     config = paths.load_config(paths.DEFAULT_CONFIG_PATH)
     seeds = s4_production_seeds(config)
@@ -55,6 +64,7 @@ def test_ari_is_identical_and_label_permutation_invariant():
 
 
 def test_s4_uses_weighted_louvain_and_builds_deterministic_tables(monkeypatch):
+    before = _production_stage_snapshot("S4_community_stability")
     calls = []
     original = nx.community.louvain_communities
 
@@ -84,7 +94,7 @@ def test_s4_uses_weighted_louvain_and_builds_deterministic_tables(monkeypatch):
     assert set(tables) == set(S4_OUTPUT_CONTRACT)
     assert tuple(tables["louvain_stability_runs.csv"].columns) == S4_OUTPUT_CONTRACT["louvain_stability_runs.csv"]
     assert tuple(tables["louvain_stability_pairwise.csv"].columns) == S4_OUTPUT_CONTRACT["louvain_stability_pairwise.csv"]
-    assert not (paths.CORRECTED_OUTPUTS_ROOT / "S4_community_stability").exists()
+    assert _production_stage_snapshot("S4_community_stability") == before
 
 
 def test_s4_same_seed_is_independent_of_input_graph_order_and_other_seeds_remain_supported():

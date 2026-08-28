@@ -46,6 +46,15 @@ def _seeds() -> pd.DataFrame:
     return pd.DataFrame({"repo_id": ["20", "10", "40", "60"]})
 
 
+def _production_stage_snapshot(stage: str) -> dict[str, bytes]:
+    root = paths.CORRECTED_OUTPUTS_ROOT / stage
+    return {
+        path.relative_to(root).as_posix(): path.read_bytes()
+        for path in root.rglob("*")
+        if path.is_file()
+    }
+
+
 def test_s3_defines_exact_three_views_and_first_order_edges():
     views = build_s3_view_inputs(_edges(), _registry(), _seeds())
     assert tuple(views) == S3_VIEW_NAMES
@@ -105,6 +114,7 @@ def test_s3_repeated_identical_ordered_execution_is_identical():
 
 
 def test_s3_output_contract_contains_summary_and_three_view_tables():
+    before = _production_stage_snapshot("S3_observation_sensitivity")
     result = compute_s3_observation_sensitivity(
         _edges(), _registry(), _seeds(), random_seed=20260731, brokerage_sample_size=500
     )
@@ -114,7 +124,7 @@ def test_s3_output_contract_contains_summary_and_three_view_tables():
     for name in S3_VIEW_NAMES:
         stem = name.lower()
         assert tuple(tables[stem + "_communities.csv"].columns) == S3_COMMUNITY_COLUMNS
-    assert not (paths.CORRECTED_OUTPUTS_ROOT / "S3_observation_sensitivity").exists()
+    assert _production_stage_snapshot("S3_observation_sensitivity") == before
 
 
 def test_s3_module_has_no_historical_or_second_order_authority():
