@@ -87,6 +87,24 @@ def test_s4_uses_weighted_louvain_and_builds_deterministic_tables(monkeypatch):
     assert not (paths.CORRECTED_OUTPUTS_ROOT / "S4_community_stability").exists()
 
 
+def test_s4_same_seed_is_independent_of_input_graph_order_and_other_seeds_remain_supported():
+    left = _graph()
+    right = nx.Graph()
+    right.add_nodes_from(reversed(tuple(left.nodes)))
+    right.add_edges_from(reversed(tuple((u, v, dict(data)) for u, v, data in left.edges(data=True))))
+
+    left_result = compute_s4_community_stability(
+        left, _partition(), seeds=[11, 12], canonical_seed=11
+    )
+    right_result = compute_s4_community_stability(
+        right, _partition(), seeds=[11, 12], canonical_seed=11
+    )
+
+    pdt.assert_frame_equal(left_result.runs, right_result.runs, check_exact=True)
+    assert left_result.partitions_by_seed[11] == right_result.partitions_by_seed[11]
+    assert set(left_result.partitions_by_seed) == {11, 12}
+
+
 def test_s4_canonical_lcc_preserves_registry_order_and_is_shared_definition():
     edges = pd.DataFrame(
         [

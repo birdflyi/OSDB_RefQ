@@ -74,6 +74,12 @@ def test_s2_keeps_fixed_node_domain_and_threshold_can_increase_isolates():
 
 
 def test_s2_output_contract_is_complete_and_in_memory_only():
+    existing_root = paths.CORRECTED_OUTPUTS_ROOT / "S2_weight_sensitivity"
+    before = {
+        path.name: path.read_bytes()
+        for path in existing_root.glob("*")
+        if path.is_file()
+    }
     result = compute_s2_weight_sensitivity(
         _edges(),
         _registry(),
@@ -85,7 +91,12 @@ def test_s2_output_contract_is_complete_and_in_memory_only():
     assert set(tables) == set(S2_OUTPUT_CONTRACT)
     assert tuple(tables["edge_weight_sensitivity.csv"].columns) == S2_OUTPUT_CONTRACT["edge_weight_sensitivity.csv"]
     assert tuple(tables["threshold_2_undirected_edges.csv"].columns) == S2_OUTPUT_CONTRACT["threshold_2_undirected_edges.csv"]
-    assert (paths.CORRECTED_OUTPUTS_ROOT / "S2_weight_sensitivity").exists() is False
+    after = {
+        path.name: path.read_bytes()
+        for path in existing_root.glob("*")
+        if path.is_file()
+    }
+    assert after == before
 
 
 @pytest.mark.parametrize(
@@ -154,6 +165,12 @@ def test_s2_source_has_no_historical_numeric_or_v1_execution_authority():
 
 
 def test_corrected_p0_sensitivity_preflight_is_headers_only_and_passes():
+    existing_root = paths.CORRECTED_OUTPUTS_ROOT / "S2_weight_sensitivity"
+    before = {
+        path.name: path.read_bytes()
+        for path in existing_root.glob("*")
+        if path.is_file()
+    }
     result = preflight_corrected_p0_sensitivity_inputs()
     assert result["C3_7C_INPUT_PREFLIGHT"] == "PASS"
     assert result["headers_only"] is True
@@ -163,4 +180,9 @@ def test_corrected_p0_sensitivity_preflight_is_headers_only_and_passes():
     assert result["s2_thresholds"] == [1, 2, 5, 10]
     assert result["random_seed"] == 20260731
     assert result["brokerage_sample_size"] == 500
-    assert (paths.CORRECTED_OUTPUTS_ROOT / "S2_weight_sensitivity").exists() is False
+    after = {
+        path.name: path.read_bytes()
+        for path in existing_root.glob("*")
+        if path.is_file()
+    }
+    assert after == before

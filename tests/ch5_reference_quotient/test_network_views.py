@@ -1,9 +1,16 @@
+import json
+import os
+import subprocess
+import sys
+import textwrap
+
 import networkx as nx
 import pandas as pd
 
 from script.ch5_reference_quotient import network_views
 from script.ch5_reference_quotient.network_views import (
     analyze_undirected_view,
+    canonicalize_undirected_graph_order,
     directed_to_undirected_edges,
 )
 
@@ -97,6 +104,72 @@ def test_u_g_refq_preserves_explicit_isolated_node_domain():
     assert summary["edge_observed_nodes"] == 2
     assert summary["isolates"] == 1
     assert summary["components"] == 2
+
+
+def test_canonical_graph_order_is_independent_of_node_and_edge_insertion():
+    left = nx.Graph()
+    left.add_nodes_from(["d", "b", "a", "c"])
+    left.add_weighted_edges_from([("d", "a", 2), ("c", "b", 1), ("b", "a", 3)])
+    right = nx.Graph()
+    right.add_nodes_from(["c", "a", "d", "b"])
+    right.add_weighted_edges_from([("a", "b", 3), ("b", "c", 1), ("a", "d", 2)])
+
+    canonical_left = canonicalize_undirected_graph_order(left)
+    canonical_right = canonicalize_undirected_graph_order(right)
+
+    assert tuple(canonical_left.nodes) == ("a", "b", "c", "d")
+    assert tuple(canonical_left.nodes) == tuple(canonical_right.nodes)
+    assert list(canonical_left.edges(data="weight")) == list(canonical_right.edges(data="weight"))
+    assert {
+        node: tuple(canonical_left[node]) for node in canonical_left
+    } == {
+        node: tuple(canonical_right[node]) for node in canonical_right
+    }
+
+
+def test_fixed_seed_louvain_is_stable_across_fresh_hashseed_processes():
+    source = textwrap.dedent(
+        """
+        import json
+        import pandas as pd
+        from script.ch5_reference_quotient.network_views import analyze_undirected_view
+
+        edges = pd.DataFrame([
+            {"node_u": "a", "node_v": "b", "weight": 3, "directed_edge_count": 1},
+            {"node_u": "a", "node_v": "d", "weight": 2, "directed_edge_count": 1},
+            {"node_u": "b", "node_v": "c", "weight": 1, "directed_edge_count": 1},
+            {"node_u": "c", "node_v": "d", "weight": 4, "directed_edge_count": 1},
+            {"node_u": "d", "node_v": "e", "weight": 2, "directed_edge_count": 1},
+            {"node_u": "e", "node_v": "f", "weight": 5, "directed_edge_count": 1},
+            {"node_u": "b", "node_v": "f", "weight": 1, "directed_edge_count": 1},
+        ])
+        summary, _, communities, _ = analyze_undirected_view(
+            edges.sample(frac=1, random_state=17),
+            random_seed=20260731,
+            brokerage_sample_size=3,
+            node_ids=["f", "d", "b", "a", "e", "c"],
+        )
+        print(json.dumps({
+            "communities": communities.sort_values("project_id").to_dict("records"),
+            "count": summary["algorithmic_communities"],
+            "modularity": summary["modularity"],
+        }, sort_keys=True))
+        """
+    )
+    observed = []
+    for hashseed in ("0", "1", "2", "42", "20260731"):
+        environment = os.environ.copy()
+        environment["PYTHONHASHSEED"] = hashseed
+        result = subprocess.run(
+            [sys.executable, "-c", source],
+            cwd=str(network_views.__file__.rsplit("script", 1)[0]),
+            env=environment,
+            check=True,
+            text=True,
+            stdout=subprocess.PIPE,
+        )
+        observed.append(json.loads(result.stdout.splitlines()[-1]))
+    assert observed == [observed[0]] * len(observed)
 
 
 def test_community_size_uses_canonical_community_order(monkeypatch):

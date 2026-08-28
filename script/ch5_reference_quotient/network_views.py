@@ -10,6 +10,32 @@ import pandas as pd
 from script.complex_network_analysis.build_network.build_Graph import DG2G
 
 
+def canonicalize_undirected_graph_order(graph: nx.Graph) -> nx.Graph:
+    """Rebuild an undirected graph with stable string node and edge order."""
+
+    if graph.is_directed() or graph.is_multigraph():
+        raise TypeError("canonical graph ordering requires a simple undirected graph")
+    node_records = sorted(
+        ((str(node), dict(data)) for node, data in graph.nodes(data=True)),
+        key=lambda record: record[0],
+    )
+    if len({node for node, _ in node_records}) != len(node_records):
+        raise ValueError("graph nodes collide after string normalization")
+    edge_records = sorted(
+        (
+            min(str(node_u), str(node_v)),
+            max(str(node_u), str(node_v)),
+            dict(data),
+        )
+        for node_u, node_v, data in graph.edges(data=True)
+    )
+    canonical = nx.Graph()
+    canonical.add_nodes_from(node_records)
+    for node_u, node_v, data in edge_records:
+        canonical.add_edge(node_u, node_v, **data)
+    return canonical
+
+
 def cross_project_edges(edges: pd.DataFrame) -> pd.DataFrame:
     return edges[~edges["is_self_loop"]].copy()
 
@@ -80,9 +106,12 @@ def analyze_undirected_view(
         graph.add_nodes_from(str(node) for node in node_ids)
     for row in undirected_edges.itertuples(index=False):
         graph.add_edge(str(row.node_u), str(row.node_v), weight=float(row.weight))
-    components = sorted(nx.connected_components(graph), key=len, reverse=True)
+    components = sorted(
+        nx.connected_components(graph),
+        key=lambda values: (-len(values), min(str(node) for node in values)),
+    )
     lcc_nodes = components[0] if components else set()
-    lcc = graph.subgraph(lcc_nodes).copy()
+    lcc = canonicalize_undirected_graph_order(graph.subgraph(lcc_nodes))
     lcc_edges = undirected_edges[
         undirected_edges["node_u"].isin(lcc_nodes) & undirected_edges["node_v"].isin(lcc_nodes)
     ].copy()

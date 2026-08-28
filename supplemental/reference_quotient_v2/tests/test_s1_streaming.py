@@ -151,6 +151,12 @@ def _assert_result_parity(in_memory, streaming):
 
 
 def test_streaming_matches_b2_for_all_compact_outputs_and_duplicate_edges(tmp_path):
+    existing_stage = CORRECTED_OUTPUTS_ROOT / "S2_weight_sensitivity"
+    before = {
+        path.name: path.read_bytes()
+        for path in existing_stage.glob("*")
+        if path.is_file()
+    }
     adapter, paths = _make_adapter(
         tmp_path,
         [
@@ -185,7 +191,12 @@ def test_streaming_matches_b2_for_all_compact_outputs_and_duplicate_edges(tmp_pa
     assert len(streaming.cross_project_edge_pairs) == 1
     assert registry.exists() is False
     assert all(not isinstance(getattr(streaming, field.name), pd.DataFrame) for field in fields(streaming))
-    assert not (CORRECTED_OUTPUTS_ROOT / "S2_weight_sensitivity").exists()
+    after = {
+        path.name: path.read_bytes()
+        for path in existing_stage.glob("*")
+        if path.is_file()
+    }
+    assert after == before
 
 
 def test_cross_partition_global_conflict_is_applied_in_pass_two_and_matches_b2(tmp_path):

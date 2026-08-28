@@ -14,6 +14,7 @@ from typing import Any, Iterable, Mapping, Sequence
 
 import networkx as nx
 import pandas as pd
+from script.ch5_reference_quotient.network_views import canonicalize_undirected_graph_order
 
 from .paths import CORRECTED_P0_ROOT, DEFAULT_CONFIG_PATH, PathGuardError, canonical_path, validate_scaffold_config
 from .s45_canonical_graph import (
@@ -337,7 +338,7 @@ def compute_s5_brokerage_stability(
             raise S5ContractError("%s must be between 0 and 1" % name)
     if float_tolerance < 0:
         raise S5ContractError("S5 floating tolerance must be non-negative")
-    graph = canonical_lcc.copy()
+    graph = canonicalize_undirected_graph_order(canonical_lcc)
     if graph.number_of_nodes() == 0:
         raise S5ContractError("S5 canonical LCC must not be empty")
     expected_scores = _score_mapping(canonical_scores)

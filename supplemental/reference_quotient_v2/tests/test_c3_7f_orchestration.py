@@ -93,7 +93,10 @@ def test_production_authorization_rejects_unknown_stage_and_phase_map_is_closed(
 
 def test_run_stage_production_entrypoint_dry_run_requires_clean_upstream(monkeypatch):
     _mock_valid_git_state(monkeypatch)
-    with pytest.raises(OrchestrationError, match="upstream durable receipt is missing"):
+    # The authorized task preserves an existing partial S2 directory.  The
+    # production gate therefore rejects this invocation at the write-once
+    # guard before it can inspect upstream receipts.
+    with pytest.raises(OrchestrationError, match="(upstream durable receipt is missing|target stage directory already exists)"):
         run_stage(
             "S2",
             authorization_phase="C4-S2",

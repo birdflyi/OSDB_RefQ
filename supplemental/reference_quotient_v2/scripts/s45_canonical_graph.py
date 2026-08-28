@@ -16,6 +16,7 @@ from typing import Any, Iterable, Mapping
 
 import networkx as nx
 import pandas as pd
+from script.ch5_reference_quotient.network_views import canonicalize_undirected_graph_order
 
 from .manifest import validate_scaffold_provenance
 from .paths import (
@@ -238,19 +239,13 @@ def canonical_lcc_from_edges(
             raise S45ContractError("canonical edge references a node outside the registry")
         graph.add_edge(row.node_u, row.node_v, weight=float(row.weight))
 
-    components = list(nx.connected_components(graph))
+    components = sorted(
+        nx.connected_components(graph),
+        key=lambda component: (-len(component), min(str(node) for node in component)),
+    )
     if not components:
         return nx.Graph()
-    lcc_nodes = max(
-        components,
-        key=lambda component: (len(component), -min(node_position[node] for node in component)),
-    )
-    lcc = nx.Graph()
-    lcc.add_nodes_from(node for node in node_ids if node in lcc_nodes)
-    for row in canonical_edges.itertuples(index=False):
-        if row.node_u in lcc_nodes and row.node_v in lcc_nodes:
-            lcc.add_edge(row.node_u, row.node_v, weight=float(row.weight))
-    return lcc
+    return canonicalize_undirected_graph_order(graph.subgraph(components[0]))
 
 
 def canonical_lcc_edges(edges: pd.DataFrame, lcc: nx.Graph) -> pd.DataFrame:

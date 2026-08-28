@@ -10,6 +10,7 @@ import pandas.testing as pdt
 
 from supplemental.reference_quotient_v2.scripts import paths
 from supplemental.reference_quotient_v2.scripts.s45_canonical_graph import canonical_lcc_from_edges
+from script.ch5_reference_quotient.network_views import canonicalize_undirected_graph_order
 from supplemental.reference_quotient_v2.scripts.s5_brokerage_stability import (
     S5_FREQUENCY_COLUMNS,
     S5_OUTPUT_CONTRACT,
@@ -54,8 +55,9 @@ def test_s5_ranking_tiebreak_is_score_degree_then_project_id():
 
 def test_s5_calls_unweighted_normalized_betweenness_and_closes_frequency(monkeypatch):
     graph = _graph()
+    canonical_graph = canonicalize_undirected_graph_order(graph)
     canonical_scores = nx.betweenness_centrality(
-        graph, k=2, normalized=True, seed=11, weight=None
+        canonical_graph, k=2, normalized=True, seed=11, weight=None
     )
     calls = []
     original = nx.betweenness_centrality
@@ -129,6 +131,24 @@ def test_s4_and_s5_use_the_same_canonical_lcc_definition():
     s5_graph = canonical_lcc_from_edges(edges, registry)
     assert tuple(s4_graph.nodes) == tuple(s5_graph.nodes)
     assert set(s4_graph.edges) == set(s5_graph.edges)
+
+
+def test_s5_canonical_brokerage_is_independent_of_input_graph_order():
+    left = _graph()
+    right = nx.Graph()
+    right.add_nodes_from(reversed(tuple(left.nodes)))
+    right.add_edges_from(reversed(tuple(left.edges)))
+    left_scores = nx.betweenness_centrality(left, k=2, normalized=True, seed=11, weight=None)
+    right_scores = dict(left_scores)
+
+    left_result = compute_s5_brokerage_stability(
+        left, left_scores, k_values=[2], seeds=[11], top_ks=[1, 2], canonical_k=2, canonical_seed=11
+    )
+    right_result = compute_s5_brokerage_stability(
+        right, right_scores, k_values=[2], seeds=[11], top_ks=[1, 2], canonical_k=2, canonical_seed=11
+    )
+
+    pdt.assert_frame_equal(left_result.rankings, right_result.rankings, check_exact=True)
 
 
 def test_s5_source_excludes_deprecated_and_historical_executable_authority():

@@ -15,6 +15,7 @@ from typing import Any, Iterable, Mapping
 
 import networkx as nx
 import pandas as pd
+from script.ch5_reference_quotient.network_views import canonicalize_undirected_graph_order
 
 from .paths import CORRECTED_P0_ROOT, DEFAULT_CONFIG_PATH, PathGuardError, canonical_path, validate_scaffold_config
 from .s45_canonical_graph import (
@@ -198,7 +199,7 @@ def compute_s4_community_stability(
         raise S4ContractError("ARI alert threshold must be numeric")
     if not 0.0 <= float(ari_alert_threshold) <= 1.0:
         raise S4ContractError("ARI alert threshold must be between 0 and 1")
-    graph = canonical_lcc.copy()
+    graph = canonicalize_undirected_graph_order(canonical_lcc)
     expected_partition = _partition_mapping(canonical_partition)
     graph_nodes = tuple(str(node) for node in graph.nodes)
     if set(expected_partition) != set(graph_nodes):
