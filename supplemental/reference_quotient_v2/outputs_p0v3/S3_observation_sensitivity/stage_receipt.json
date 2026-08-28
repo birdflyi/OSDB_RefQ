@@ -1,0 +1,111 @@
+{
+  "completed_at": "2026-08-28T12:33:34.583066+00:00",
+  "implementation_commit": "de9f03a1efb76f3abd2b7b6239f7748f40498d90",
+  "input_artifacts": [
+    {
+      "authority_class": "CORRECTED_P0",
+      "path": "D:/github_repo/OSDB_RefQ/outputs/reference_quotient_p0_corrected_v3/reference_quotient_cross_project_edges.csv",
+      "root": "D:/github_repo/OSDB_RefQ/outputs/reference_quotient_p0_corrected_v3",
+      "sha256": "a73b410753d66ea5d2e7378bc496095e0617432f3463819050159417a3a101bd",
+      "version": "corrected_p0_v3"
+    },
+    {
+      "authority_class": "CORRECTED_P0",
+      "path": "D:/github_repo/OSDB_RefQ/outputs/reference_quotient_p0_corrected_v3/reference_quotient_node_registry.csv",
+      "root": "D:/github_repo/OSDB_RefQ/outputs/reference_quotient_p0_corrected_v3",
+      "sha256": "0e6095341d207ff3c096d759cdd86be172241668b5f8f0f68be460063397571a",
+      "version": "corrected_p0_v3"
+    },
+    {
+      "authority_class": "CORRECTED_P0",
+      "path": "D:/github_repo/OSDB_RefQ/outputs/reference_quotient_p0_corrected_v3/analysis_seed_manifest_294.csv",
+      "root": "D:/github_repo/OSDB_RefQ/outputs/reference_quotient_p0_corrected_v3",
+      "sha256": "dbf33e612c19976b406a3e5b19dfb781faf5e8a36afbbf13582dbe609ffa53e2",
+      "version": "corrected_p0_v3"
+    }
+  ],
+  "output_artifacts": [
+    {
+      "bytes": 99873,
+      "path": "S3_observation_sensitivity/canonical_seed_centered_observed_communities.csv",
+      "row_count": 6367,
+      "sha256": "1ac9efb674a4680c41ac3477fc916ce537f1eaa972de6db913ab69b900276bc1"
+    },
+    {
+      "bytes": 215718,
+      "path": "S3_observation_sensitivity/canonical_seed_centered_observed_lcc_edges.csv",
+      "row_count": 9462,
+      "sha256": "5d85dc3fc479ef06f4337957debba05db326210b1e97f9b56f24d226e9c53916"
+    },
+    {
+      "bytes": 217657,
+      "path": "S3_observation_sensitivity/canonical_seed_centered_observed_undirected_edges.csv",
+      "row_count": 9547,
+      "sha256": "30514267865f5baa3a50df6a3058e0b1ea5bddf83ef72b9884b302a156e06fc9"
+    },
+    {
+      "bytes": 18612,
+      "path": "S3_observation_sensitivity/multi_seed_target_view_communities.csv",
+      "row_count": 1237,
+      "sha256": "d8de026d8cf4ee539ef38130a76cd808a1402695a61681e669a8ac79de4afb20"
+    },
+    {
+      "bytes": 97569,
+      "path": "S3_observation_sensitivity/multi_seed_target_view_lcc_edges.csv",
+      "row_count": 4310,
+      "sha256": "1d09c167247c731e12fdf47ae33eac7ab8763a7019243859afd81d070426c714"
+    },
+    {
+      "bytes": 97569,
+      "path": "S3_observation_sensitivity/multi_seed_target_view_undirected_edges.csv",
+      "row_count": 4310,
+      "sha256": "1d09c167247c731e12fdf47ae33eac7ab8763a7019243859afd81d070426c714"
+    },
+    {
+      "bytes": 1020,
+      "path": "S3_observation_sensitivity/observation_boundary_sensitivity.csv",
+      "row_count": 3,
+      "sha256": "1c59e5e1fd0e402df84595bdd6711d14464cf62d89fd9db957951eecc2f7e7af"
+    },
+    {
+      "bytes": 2227,
+      "path": "S3_observation_sensitivity/seed_only_induced_communities.csv",
+      "row_count": 156,
+      "sha256": "b7589cb74c1367504f93285115d9d9a71f1cd39a825e6564c0ff407e32b8be1e"
+    },
+    {
+      "bytes": 8130,
+      "path": "S3_observation_sensitivity/seed_only_induced_lcc_edges.csv",
+      "row_count": 361,
+      "sha256": "6e032be5789a97ca93e2a09a716856d3d5427653823da6a8019d686255ec3d01"
+    },
+    {
+      "bytes": 8323,
+      "path": "S3_observation_sensitivity/seed_only_induced_undirected_edges.csv",
+      "row_count": 370,
+      "sha256": "20775c511bb5cef59f5ea97c730e597aebc43ba8854dc76245565247f2a2bf06"
+    }
+  ],
+  "output_root": "D:\\github_repo\\OSDB_RefQ\\supplemental\\reference_quotient_v2\\outputs_p0v3",
+  "parameters": {
+    "clean_output_root": "D:\\github_repo\\OSDB_RefQ\\supplemental\\reference_quotient_v2\\outputs_p0v3",
+    "corrected_data": true,
+    "p0_authority_version": "corrected_p0_v3",
+    "p0_config_sha256": "43f97f9a2d177d325415bfbcc504f1779882cf83685b4fdebe505c8fed8e7cb0",
+    "p0_manifest_sha256": "be802b9df223c99bc2089a76ae9ec6e0b6047ab0c58237a5fc3050b51dcc9776",
+    "scientific_logic_change_count": 0,
+    "stage": "S3",
+    "supplemental_authority_version": "corrected_supplemental_p0v3_clean"
+  },
+  "runtime_versions": {
+    "gh_core": "2.3.1",
+    "networkx": "3.1",
+    "numpy": "1.26.4",
+    "pandas": "1.5.3",
+    "python": "3.9.13",
+    "python_executable": "D:\\codex_envs\\ch5_refq_supplemental_p0v3_runtime\\Scripts\\python.exe",
+    "scipy": "1.13.1"
+  },
+  "stage": "S3_observation_sensitivity",
+  "status": "PASS"
+}
