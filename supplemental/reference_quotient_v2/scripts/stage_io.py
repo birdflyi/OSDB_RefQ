@@ -1,4 +1,4 @@
-"""Controlled, deterministic serialization for future corrected v2 stages.
+"""Controlled, deterministic serialization for clean P0 v3 stages.
 
 This module is intentionally independent of the scientific stage runners. It
 only serializes already-computed tables/metadata into an explicitly supplied
@@ -50,6 +50,9 @@ STAGE_CONTRACT_VERSION = "C3.7-F"
 CORRECTED_AGGREGATE = "CORRECTED_AGGREGATE"
 CORRECTED_P0 = "CORRECTED_P0"
 CORRECTED_SUPPLEMENTAL_V2 = "CORRECTED_SUPPLEMENTAL_V2"
+CORRECTED_AGGREGATE_VERSION = "corrected_aggregate_v2"
+CORRECTED_P0_VERSION = "corrected_p0_v3"
+CORRECTED_SUPPLEMENTAL_VERSION = "corrected_supplemental_p0v3_clean"
 COMPLETED_STAGE_STATUSES = frozenset({"PASS", "COMPLETE", "STAGE_COMPLETE"})
 STAGE_INPUT_AUTHORITIES: Mapping[str, frozenset[str]] = {
     "S1_evidence_universe": frozenset({CORRECTED_AGGREGATE, CORRECTED_P0}),
@@ -301,11 +304,11 @@ def _safe_output_root(
         if candidate == root or candidate.is_relative_to(root):
             raise StageIOError("stage output root crosses protected authority: %s" % root)
     if fixture_context and candidate == canonical_path(CORRECTED_OUTPUTS_ROOT):
-        raise StageIOError("fixture stage output root cannot be the production corrected v2 outputs")
+        raise StageIOError("fixture stage output root cannot be the production clean P0 v3 outputs")
     if fixture_context and not allow_external_test_root:
         raise StageIOError("fixture stage output root requires explicit external-root opt-in")
     if not allow_external_test_root and candidate != expected:
-        raise StageIOError("production stage output root must be exactly corrected v2 outputs")
+        raise StageIOError("production stage output root must be exactly clean P0 v3 outputs")
     if allow_external_test_root and not fixture_context and candidate != expected:
         raise StageIOError("external test stage root requires an explicit fixture authority context")
     if allow_external_test_root and inside_repository and candidate != expected:
@@ -354,13 +357,21 @@ def serialize_artifacts(artifacts: Mapping[str, Any]) -> tuple[SerializedArtifac
 
 
 def runtime_versions() -> dict[str, str]:
-    versions: dict[str, str] = {"python": sys.version.split()[0]}
+    versions: dict[str, str] = {
+        "python": sys.version.split()[0],
+        "python_executable": sys.executable,
+    }
     for module in ("numpy", "pandas", "scipy", "networkx"):
         try:
             imported = __import__(module)
             versions[module] = str(imported.__version__)
         except Exception:  # pragma: no cover - optional environment metadata
             versions[module] = "unavailable"
+    try:
+        gh_core = __import__("GH_CoRE")
+        versions["gh_core"] = str(getattr(gh_core, "__version__", "unknown"))
+    except Exception:  # pragma: no cover - optional environment metadata
+        versions["gh_core"] = "unavailable"
     return versions
 
 
@@ -662,6 +673,7 @@ def validate_input_artifact_records(
     checked: list[dict[str, Any]] = []
     forbidden_fragments = (
         "reference_quotient_p0_frozen",
+        "reference_quotient_p0_corrected_v2",
         "reference_quotient_v1",
         "v1_1_completion",
         "v1_2_s3_reproducibility_patch",
@@ -673,6 +685,15 @@ def validate_input_artifact_records(
         if declared_root != expected_root:
             raise StageReceiptContractError(
                 "input artifact root does not match authority class: %s" % artifact["authority_class"]
+            )
+        expected_version = {
+            CORRECTED_AGGREGATE: CORRECTED_AGGREGATE_VERSION,
+            CORRECTED_P0: CORRECTED_P0_VERSION,
+            CORRECTED_SUPPLEMENTAL_V2: CORRECTED_SUPPLEMENTAL_VERSION,
+        }[artifact["authority_class"]]
+        if not context.fixture and artifact.get("version") != expected_version:
+            raise StageReceiptContractError(
+                "input artifact version does not match authority class: %s" % artifact["authority_class"]
             )
         raw_path = Path(artifact["path"])
         path = canonical_path(raw_path, base=declared_root) if declared_root and not raw_path.is_absolute() else canonical_path(raw_path)

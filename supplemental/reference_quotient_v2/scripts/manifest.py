@@ -143,12 +143,17 @@ HISTORICAL_WRITE_AUDIT_REQUIRED_KEYS: tuple[str, ...] = (
 
 
 def _manifest_runtime_versions() -> dict[str, str]:
-    versions: dict[str, str] = {"python": sys.version.split()[0]}
+    versions: dict[str, str] = {"python": sys.version.split()[0], "python_executable": sys.executable}
     for module in ("numpy", "pandas", "scipy", "networkx"):
         try:
             versions[module] = str(__import__(module).__version__)
         except Exception:  # pragma: no cover - optional environment metadata
             versions[module] = "unavailable"
+    try:
+        gh_core = __import__("GH_CoRE")
+        versions["gh_core"] = str(getattr(gh_core, "__version__", "unknown"))
+    except Exception:  # pragma: no cover - optional environment metadata
+        versions["gh_core"] = "unavailable"
     return versions
 
 
@@ -344,7 +349,7 @@ def build_corrected_package_manifest(
     complete = receipt_complete and audit_complete and s6_complete
     manifest = {
         "schema_version": "corrected_supplemental_package_manifest_v2",
-        "package_version": "corrected_supplemental_v2",
+        "package_version": "corrected_supplemental_p0v3_clean",
         "status": "STAGE_PACKAGE_COMPLETE" if complete else "STAGE_PACKAGE_INCOMPLETE",
         "release_status": "RELEASE_READY" if complete and status_value == S7Status.KEPT_FIXED_OBJECT.value else "NOT_RELEASE_READY",
         "implementation_commit": implementation_commit,
@@ -434,7 +439,7 @@ def validate_package_manifest(
     if expected_output_root is not None and package_root != canonical_path(expected_output_root):
         raise ManifestContractError("package output root does not match expected output root")
     if not context.fixture and package_root != context.corrected_supplemental:
-        raise ManifestContractError("package output root does not match configured corrected v2 outputs")
+        raise ManifestContractError("package output root does not match configured clean P0 v3 outputs")
     receipts = _normalized_stage_receipts(manifest["stage_receipts"])
     receipt_complete = True
     for stage in PACKAGE_STAGE_NAMES:

@@ -7,7 +7,7 @@ import json
 import sys
 from typing import Optional, Sequence
 
-from .historical_immutability import DEFAULT_BASELINE_PATH
+from .historical_immutability import CLEAN_DEFAULT_BASELINE_PATH
 from .orchestrator import OrchestrationError, run_stage
 from .paths import DEFAULT_CONFIG_PATH
 
@@ -19,7 +19,7 @@ LEGACY_STAGES = ("S1", "S2", "S3", "S4", "S5", "S6", "S7")
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(description="Corrected supplemental v2 explicit C4 stage runner")
     parser.add_argument("--config", default=str(DEFAULT_CONFIG_PATH))
-    parser.add_argument("--baseline", default=str(DEFAULT_BASELINE_PATH))
+    parser.add_argument("--baseline", default=str(CLEAN_DEFAULT_BASELINE_PATH))
     parser.add_argument("--validate-config", action="store_true")
     parser.add_argument("--preflight-scaffold", action="store_true")
     parser.add_argument("--show-plan", action="store_true")

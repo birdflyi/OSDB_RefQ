@@ -34,7 +34,7 @@ def _input_artifacts(tmp_path):
             "sha256": hashlib.sha256(source.read_bytes()).hexdigest(),
             "authority_class": CORRECTED_P0,
             "root": str(root),
-            "version": "corrected_p0_v2",
+            "version": "corrected_p0_v3",
         },
     )
 
@@ -144,7 +144,7 @@ def test_stage_name_and_artifact_path_guards(tmp_path):
 
 
 def test_external_root_requires_explicit_opt_in_and_production_root_is_accepted(tmp_path):
-    with pytest.raises(StageIOError, match="exactly corrected v2 outputs"):
+    with pytest.raises(StageIOError, match="exactly clean P0 v3 outputs"):
         write_stage_outputs(
             tmp_path / "outputs", "S6", {"table.csv": pd.DataFrame({"x": [1]})},
             implementation_commit="fixture", input_artifacts=_input_artifacts(tmp_path),
@@ -156,7 +156,7 @@ def test_external_root_requires_explicit_opt_in_and_production_root_is_accepted(
     from supplemental.reference_quotient_v2.scripts.stage_io import _safe_output_root
 
     assert _safe_output_root(paths.CORRECTED_OUTPUTS_ROOT) == paths.canonical_path(paths.CORRECTED_OUTPUTS_ROOT)
-    assert paths.CORRECTED_OUTPUTS_ROOT.exists() is True
+    assert paths.CORRECTED_OUTPUTS_ROOT.exists() is False
 
 
 def test_missing_durable_marker_is_partial_and_cannot_be_retried(tmp_path):
@@ -197,7 +197,7 @@ def test_relative_input_path_is_resolved_against_declared_root(tmp_path):
         "sha256": hashlib.sha256(source.read_bytes()).hexdigest(),
         "authority_class": CORRECTED_P0,
         "root": str(root),
-        "version": "corrected_p0_v2",
+        "version": "corrected_p0_v3",
     }
     write_stage_outputs(
         tmp_path / "relative_outputs",

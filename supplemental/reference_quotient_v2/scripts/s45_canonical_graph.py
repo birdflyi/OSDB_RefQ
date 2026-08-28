@@ -65,7 +65,7 @@ CANONICAL_AUTHORITY_FILES: Mapping[str, str] = {
 def _require_corrected_root(value: str | Path) -> Path:
     root = canonical_path(value)
     if os.path.normcase(os.fspath(root)) != os.path.normcase(os.fspath(CORRECTED_P0_ROOT)):
-        raise S45ContractError("S4/S5 authority must be the corrected P0 root")
+        raise S45ContractError("S4/S5 authority must be the official corrected P0 v3 root")
     return root
 
 

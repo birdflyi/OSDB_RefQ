@@ -15,8 +15,8 @@ class CorrectedInputHashError(ValueError):
     """Raised when current corrected inputs diverge from accepted provenance."""
 
 
-EXPECTED_P0_MANIFEST_SHA256 = "21699353d5dc9476547ee7f56881ba0a1ccc842a6d3c95adad9a28dedfd656d7"
-EXPECTED_P0_CONFIG_SHA256 = "e19c0937e0d6f72fa84ad135b55a4056357d132d3a3df4ae5455bda7bc3de658"
+EXPECTED_P0_MANIFEST_SHA256 = "be802b9df223c99bc2089a76ae9ec6e0b6047ab0c58237a5fc3050b51dcc9776"
+EXPECTED_P0_CONFIG_SHA256 = "43f97f9a2d177d325415bfbcc504f1779882cf83685b4fdebe505c8fed8e7cb0"
 EXPECTED_AGGREGATE_PARTITIONS = 294
 
 
@@ -51,9 +51,9 @@ def verify_corrected_input_hash_closure(
     manifest_path = canonical_path(provenance["corrected_p0_manifest"])
     config_file = canonical_path(provenance["corrected_p0_config"])
     if sha256_file(manifest_path) != EXPECTED_P0_MANIFEST_SHA256:
-        raise CorrectedInputHashError("corrected P0 manifest SHA is not the accepted C3.7-F authority")
+        raise CorrectedInputHashError("corrected P0 manifest SHA is not the accepted official P0 v3 authority")
     if sha256_file(config_file) != EXPECTED_P0_CONFIG_SHA256:
-        raise CorrectedInputHashError("corrected P0 config SHA is not the accepted C3.7-F authority")
+        raise CorrectedInputHashError("corrected P0 config SHA is not the accepted official P0 v3 authority")
     manifest = _load_manifest(manifest_path)
     p0_root = canonical_path(provenance["corrected_p0_root"])
     output_records = manifest.get("output_files")
@@ -66,6 +66,17 @@ def verify_corrected_input_hash_closure(
         if not path.is_relative_to(p0_root):
             raise CorrectedInputHashError("corrected P0 output escaped its accepted root")
         _check_record(path, record, "corrected P0 output")
+    accepted_output_paths = {
+        os.path.normcase(os.fspath(canonical_path(record["path"], base=p0_root)))
+        for record in output_records
+    }
+    current_output_paths = {
+        os.path.normcase(os.fspath(canonical_path(path)))
+        for path in p0_root.iterdir()
+        if path.is_file() and path.name != manifest_path.name
+    }
+    if current_output_paths != accepted_output_paths:
+        raise CorrectedInputHashError("current P0 v3 output file set does not equal its accepted manifest inventory")
 
     aggregate_root = canonical_path(provenance["corrected_aggregate_root"])
     input_records = manifest.get("input_files")
@@ -96,10 +107,10 @@ def verify_corrected_input_hash_closure(
     if current_paths != accepted_paths:
         raise CorrectedInputHashError("current corrected aggregate file set does not equal the accepted 294-partition inventory")
     return {
-        "C3_7F_CORRECTED_P0_HASH_CLOSURE": "PASS",
+        "P0_V3_HASH_CLOSURE": "PASS",
         "corrected_p0_output_records": len(output_records),
         "corrected_p0_manifest_sha256": EXPECTED_P0_MANIFEST_SHA256,
         "corrected_p0_config_sha256": EXPECTED_P0_CONFIG_SHA256,
         "corrected_aggregate_partitions": len(aggregate_records),
-        "C3_7F_CORRECTED_AGGREGATE_294_HASH_CLOSURE": "PASS",
+        "AGGREGATE_294_HASH_CLOSURE": "PASS",
     }

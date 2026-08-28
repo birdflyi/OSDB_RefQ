@@ -417,7 +417,7 @@ def write_preflight_report(result: Mapping[str, Any], path: str | Path) -> Path:
 
 def main(argv: Optional[Sequence[str]] = None) -> int:
     parser = argparse.ArgumentParser(description="C3.7-B read-only corrected S1 boundary preflight")
-    parser.add_argument("--config", default=str(DEFAULT_CONFIG_PATH), help="v2 scaffold config")
+    parser.add_argument("--config", default=str(DEFAULT_CONFIG_PATH), help="clean P0 v3 supplemental config")
     parser.add_argument("--preflight", action="store_true", help="run the authorized read-only boundary preflight")
     parser.add_argument("--report", help="optional docs/freeze JSON report path")
     args = parser.parse_args(argv)

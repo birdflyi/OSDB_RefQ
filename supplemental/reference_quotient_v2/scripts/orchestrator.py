@@ -7,13 +7,20 @@ import tempfile
 from pathlib import Path
 from typing import Any, Callable, Mapping, Optional
 
-from .historical_immutability import DEFAULT_BASELINE_PATH, compare_historical_immutability
-from .input_hashes import verify_corrected_input_hash_closure
+from .historical_immutability import CLEAN_DEFAULT_BASELINE_PATH, compare_historical_immutability
+from .input_hashes import (
+    EXPECTED_P0_CONFIG_SHA256,
+    EXPECTED_P0_MANIFEST_SHA256,
+    verify_corrected_input_hash_closure,
+)
 from .manifest import sha256_file, validate_scaffold_provenance
 from .paths import DEFAULT_CONFIG_PATH, canonical_path, load_config
 from .stage_io import (
     CORRECTED_AGGREGATE,
+    CORRECTED_AGGREGATE_VERSION,
     CORRECTED_P0,
+    CORRECTED_P0_VERSION,
+    CORRECTED_SUPPLEMENTAL_VERSION,
     STAGE_DIRECTORY_NAMES,
     STAGE_RECEIPT_NAME,
     StageIOError,
@@ -77,7 +84,7 @@ def _implementation_diff(expected_commit: str) -> tuple[str, ...]:
         [
             "git", "diff", "--name-only", expected_commit, "--",
             "supplemental/reference_quotient_v2/scripts",
-            "supplemental/reference_quotient_v2/configs/supplemental_v2_corrected.yaml",
+            "supplemental/reference_quotient_v2/configs",
         ],
         cwd=str(Path(__file__).resolve().parents[3]),
         check=True,
@@ -155,14 +162,27 @@ def _s1_input_records(config: Mapping[str, Any]) -> tuple[dict[str, Any], ...]:
     adapter = S1SourceObservationAdapter.from_config(config)
     root = canonical_path(config["corrected_aggregate_root"])
     return tuple(
-        _input_record(context.evidence_path, CORRECTED_AGGREGATE, root, "corrected_aggregate_v2")
+        _input_record(context.evidence_path, CORRECTED_AGGREGATE, root, CORRECTED_AGGREGATE_VERSION)
         for context in adapter._partition_contexts.values()
     )
 
 
 def _p0_records(config: Mapping[str, Any], filenames: tuple[str, ...]) -> tuple[dict[str, Any], ...]:
     root = canonical_path(config["corrected_p0_root"])
-    return tuple(_input_record(root / filename, CORRECTED_P0, root, "corrected_p0_v2") for filename in filenames)
+    return tuple(_input_record(root / filename, CORRECTED_P0, root, CORRECTED_P0_VERSION) for filename in filenames)
+
+
+def _stage_parameters(stage: str, config: Mapping[str, Any]) -> dict[str, Any]:
+    return {
+        "stage": stage,
+        "corrected_data": True,
+        "p0_authority_version": CORRECTED_P0_VERSION,
+        "p0_manifest_sha256": EXPECTED_P0_MANIFEST_SHA256,
+        "p0_config_sha256": EXPECTED_P0_CONFIG_SHA256,
+        "clean_output_root": str(canonical_path(config["corrected_output_root"])),
+        "supplemental_authority_version": CORRECTED_SUPPLEMENTAL_VERSION,
+        "scientific_logic_change_count": 0,
+    }
 
 
 def _validate_upstream_receipts(
@@ -213,7 +233,7 @@ def _run_scientific_stage(stage: str, config: Mapping[str, Any], output_root: Pa
             artifacts,
             implementation_commit=implementation_commit,
             input_artifacts=_s1_input_records(config),
-            parameters={"stage": "S1", "corrected_data": True},
+            parameters=_stage_parameters("S1", config),
         )
     if stage == "S2_weight_sensitivity":
         from .s2_weight_sensitivity import (
@@ -235,7 +255,7 @@ def _run_scientific_stage(stage: str, config: Mapping[str, Any], output_root: Pa
             output_root, stage, build_future_s2_output_tables(result),
             implementation_commit=implementation_commit,
             input_artifacts=_p0_records(config, ("reference_quotient_cross_project_edges.csv", "reference_quotient_node_registry.csv")),
-            parameters={"stage": "S2", "corrected_data": True},
+            parameters=_stage_parameters("S2", config),
         )
     if stage == "S3_observation_sensitivity":
         from .s3_observation_sensitivity import (
@@ -256,7 +276,7 @@ def _run_scientific_stage(stage: str, config: Mapping[str, Any], output_root: Pa
             output_root, stage, build_future_s3_output_tables(result),
             implementation_commit=implementation_commit,
             input_artifacts=_p0_records(config, ("reference_quotient_cross_project_edges.csv", "reference_quotient_node_registry.csv", "analysis_seed_manifest_294.csv")),
-            parameters={"stage": "S3", "corrected_data": True},
+            parameters=_stage_parameters("S3", config),
         )
     if stage == "S4_community_stability":
         from .s4_community_stability import assert_s4_canonical_seed_matches_corrected_p0, build_future_s4_output_tables, compute_s4_community_stability, s4_production_seeds
@@ -275,7 +295,7 @@ def _run_scientific_stage(stage: str, config: Mapping[str, Any], output_root: Pa
             output_root, stage, build_future_s4_output_tables(result),
             implementation_commit=implementation_commit,
             input_artifacts=_p0_records(config, ("rq2c_undirected_view_edges.csv", "rq2c_undirected_view_lcc_edges.csv", "reference_quotient_node_registry.csv", "rq2c_algorithmic_communities.csv", "rq2c_undirected_view_summary.json", "rq2c_structural_brokerage_candidates.csv")),
-            parameters={"stage": "S4", "corrected_data": True},
+            parameters=_stage_parameters("S4", config),
         )
     if stage == "S5_brokerage_stability":
         from .s45_canonical_graph import load_corrected_p0_s45_authority
@@ -295,7 +315,7 @@ def _run_scientific_stage(stage: str, config: Mapping[str, Any], output_root: Pa
             output_root, stage, build_future_s5_output_tables(result),
             implementation_commit=implementation_commit,
             input_artifacts=_p0_records(config, ("rq2c_undirected_view_edges.csv", "rq2c_undirected_view_lcc_edges.csv", "reference_quotient_node_registry.csv", "rq2c_algorithmic_communities.csv", "rq2c_undirected_view_summary.json", "rq2c_structural_brokerage_candidates.csv")),
-            parameters={"stage": "S5", "corrected_data": True},
+            parameters=_stage_parameters("S5", config),
         )
     if stage == "S6_figure_ready":
         from .s6_figure_ready import resolve_s6_source_bundle, serialize_s6_figure_ready_bundle
@@ -303,7 +323,7 @@ def _run_scientific_stage(stage: str, config: Mapping[str, Any], output_root: Pa
         bundle = resolve_s6_source_bundle()
         _, receipt, _ = serialize_s6_figure_ready_bundle(
             bundle, output_root, implementation_commit=implementation_commit,
-            parameters={"stage": "S6", "corrected_data": True},
+            parameters=_stage_parameters("S6", config),
         )
         return receipt
     raise OrchestrationError("unsupported stage: %s" % stage)
@@ -364,7 +384,7 @@ def run_stage(
     authorization_phase: str,
     expected_implementation_commit: str,
     config_path: str | Path = DEFAULT_CONFIG_PATH,
-    baseline_path: str | Path = DEFAULT_BASELINE_PATH,
+    baseline_path: str | Path = CLEAN_DEFAULT_BASELINE_PATH,
     dry_run: bool = False,
 ) -> dict[str, Any]:
     """Run or preflight exactly one explicitly authorized C4 stage."""
@@ -378,6 +398,8 @@ def run_stage(
     provenance = validate_scaffold_provenance(config)
     input_hashes = verify_corrected_input_hash_closure(config_path)
     output_root = canonical_path(provenance["corrected_output_root"])
+    if canonical == "S1_evidence_universe" and output_root.exists():
+        raise OrchestrationError("clean output root must be absent before S1 execution")
     stage_dir = output_root / canonical
     if stage_dir.exists():
         raise OrchestrationError("target stage directory already exists; overwrite is forbidden: %s" % stage_dir)

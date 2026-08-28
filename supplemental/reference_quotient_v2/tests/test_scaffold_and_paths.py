@@ -23,11 +23,11 @@ def config():
 
 
 def test_v2_config_loads(config):
-    assert config["schema_version"] == "supplemental_v2_corrected_scaffold_v1"
-    assert config["corrected_p0_root"] == "outputs/reference_quotient_p0_corrected_v2"
+    assert config["schema_version"] == "supplemental_v2_p0v3_clean_v1"
+    assert config["corrected_p0_root"] == "outputs/reference_quotient_p0_corrected_v3"
 
 
-def test_corrected_p0_root_resolves_to_corrected_v2(config):
+def test_corrected_p0_root_resolves_to_official_v3(config):
     resolved = paths.validate_config_paths(config)
     assert resolved["corrected_p0_root"] == paths.CORRECTED_P0_ROOT
 
@@ -44,7 +44,7 @@ def test_historical_supplemental_root_is_explicit_comparison_only(config):
     assert paths.classify_path(historical, config).comparison_only is True
 
 
-def test_corrected_output_root_is_v2_only(config):
+def test_corrected_output_root_is_clean_p0v3_only(config):
     output = paths.validate_corrected_output_root(config)
     assert output == paths.CORRECTED_OUTPUTS_ROOT
     assert paths.classify_path(output, config).role == paths.AuthorityRole.WRITE_TARGET
@@ -56,6 +56,8 @@ def test_corrected_output_root_is_v2_only(config):
         paths.HISTORICAL_P0_ROOT / "new.csv",
         paths.HISTORICAL_SUPPLEMENTAL_ROOT / "outputs" / "new.csv",
         paths.CORRECTED_P0_ROOT / "new.csv",
+        paths.LEGACY_CORRECTED_P0_V2_ROOT / "new.csv",
+        paths.LEGACY_SUPPLEMENTAL_V2_OUTPUTS_ROOT / "S4_community_stability" / "new.csv",
     ],
 )
 def test_protected_roots_rejected_as_write_targets(config, candidate):
@@ -81,7 +83,7 @@ def test_corrected_p0_manifest_status_must_be_pass(tmp_path):
     p0_root = tmp_path / "p0"
     p0_root.mkdir()
     manifest_path = p0_root / "manifest.json"
-    config_path = paths.REPOSITORY_ROOT / "configs" / "ch5_reference_quotient_p0_v2.yaml"
+    config_path = paths.REPOSITORY_ROOT / "configs" / "ch5_reference_quotient_p0_v3.yaml"
     manifest_path.write_text(
         json.dumps(
             {
@@ -98,12 +100,12 @@ def test_corrected_p0_manifest_status_must_be_pass(tmp_path):
 
 def test_corrected_p0_config_hash_validation_works(config):
     result = manifest.validate_scaffold_provenance(config)
-    assert result["corrected_p0_config_sha256"] == "e19c0937e0d6f72fa84ad135b55a4056357d132d3a3df4ae5455bda7bc3de658"
+    assert result["corrected_p0_config_sha256"] == "43f97f9a2d177d325415bfbcc504f1779882cf83685b4fdebe505c8fed8e7cb0"
     with pytest.raises(paths.PathGuardError, match="SHA-256"):
         manifest.validate_corrected_p0_manifest(
             paths.CORRECTED_P0_ROOT / "manifest.json",
             paths.CORRECTED_P0_ROOT,
-            paths.REPOSITORY_ROOT / "configs" / "ch5_reference_quotient_p0_v2.yaml",
+            paths.REPOSITORY_ROOT / "configs" / "ch5_reference_quotient_p0_v3.yaml",
             expected_config_sha256="0" * 64,
         )
 
@@ -147,6 +149,22 @@ def test_windows_traversal_cannot_bypass_historical_write_protection(config):
     traversal = paths.V2_ROOT / "outputs" / ".." / ".." / "reference_quotient_v1" / "outputs" / "new.csv"
     with pytest.raises(paths.PathGuardError):
         paths.validate_write_target(traversal, config)
+
+
+def test_p0_v2_cannot_substitute_for_clean_production_authority(config):
+    bad = dict(config)
+    bad["corrected_p0_root"] = "outputs/reference_quotient_p0_corrected_v2"
+    bad["corrected_p0_manifest"] = "outputs/reference_quotient_p0_corrected_v2/manifest.json"
+    bad["corrected_p0_config"] = "configs/ch5_reference_quotient_p0_v2.yaml"
+    with pytest.raises(paths.PathGuardError):
+        paths.validate_config_paths(bad)
+
+
+def test_legacy_outputs_root_cannot_substitute_for_clean_write_root(config):
+    bad = dict(config)
+    bad["corrected_output_root"] = "supplemental/reference_quotient_v2/outputs"
+    with pytest.raises(paths.PathGuardError):
+        paths.validate_corrected_output_root(bad)
 
 
 def test_required_schema_fields_are_contract_only():

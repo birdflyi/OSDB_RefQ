@@ -91,18 +91,16 @@ def test_production_authorization_rejects_unknown_stage_and_phase_map_is_closed(
     assert {_canonical_stage(short) for short in STAGE_DIRECTORY_NAMES} == set(STAGE_PHASES)
 
 
-def test_run_stage_production_entrypoint_dry_run_reaches_preflight(monkeypatch):
+def test_run_stage_production_entrypoint_dry_run_requires_clean_upstream(monkeypatch):
     _mock_valid_git_state(monkeypatch)
-    result = run_stage(
-        "S2",
-        authorization_phase="C4-S2",
-        expected_implementation_commit="e4159f1183463085c68cf1cca5549c083404d16b",
-        baseline_path="docs/freeze/ch5_refq_c3_7f_historical_immutability_baseline_v1.json",
-        dry_run=True,
-    )
-    assert result["status"] == "PREFLIGHT_PASS"
-    assert result["stage"] == "S2_weight_sensitivity"
-    assert result["scientific_execution"] is False
+    with pytest.raises(OrchestrationError, match="upstream durable receipt is missing"):
+        run_stage(
+            "S2",
+            authorization_phase="C4-S2",
+            expected_implementation_commit="e4159f1183463085c68cf1cca5549c083404d16b",
+            baseline_path="docs/freeze/ch5_refq_c3_7f_historical_immutability_baseline_v1.json",
+            dry_run=True,
+        )
 
 
 def _record(path, authority, root, version):
@@ -149,7 +147,7 @@ def _inputs(stage, p0, aggregate):
             "reference_quotient_node_registry.csv", "rq2c_algorithmic_communities.csv",
             "rq2c_undirected_view_summary.json", "rq2c_structural_brokerage_candidates.csv",
         )
-    return tuple(_record(p0 / name, CORRECTED_P0, p0, "corrected_p0_v2") for name in names)
+    return tuple(_record(p0 / name, CORRECTED_P0, p0, "corrected_p0_v3") for name in names)
 
 
 def _artifacts(stage):

@@ -1,4 +1,4 @@
-"""Corrected v2 S6 figure-ready derivation and provenance contracts.
+"""Clean P0 v3 S6 figure-ready derivation and provenance contracts.
 
 S6 only transforms already-authorized P0/S4/S5 tables.  Source resolution is
 explicit and fail-closed; there is no historical fallback discovery.  The
@@ -31,6 +31,8 @@ from .s4_community_stability import S4_OUTPUT_CONTRACT
 from .s5_brokerage_stability import S5_OUTPUT_CONTRACT
 from .stage_io import (
     AuthorityRoots,
+    CORRECTED_P0_VERSION,
+    CORRECTED_SUPPLEMENTAL_VERSION,
     S6_APPROVED_SUPPLEMENTAL_INPUTS,
     SerializedArtifact,
     StageReceipt,
@@ -174,9 +176,9 @@ def sha256_file(path: str | Path) -> str:
 
 def _validate_root_pair(p0_root: Path, supplemental_root: Path, allow_fixture_roots: bool) -> None:
     if not allow_fixture_roots and p0_root != canonical_path(CORRECTED_P0_ROOT):
-        raise S6ContractError("S6 P0 authority must be corrected P0 v2")
+        raise S6ContractError("S6 P0 authority must be official corrected P0 v3")
     if not allow_fixture_roots and supplemental_root != canonical_path(CORRECTED_OUTPUTS_ROOT):
-        raise S6ContractError("S6 supplemental authority must be corrected v2 outputs")
+        raise S6ContractError("S6 supplemental authority must be clean P0 v3 outputs")
     forbidden_fragments = (
         "reference_quotient_p0_frozen",
         "reference_quotient_v1",
@@ -195,7 +197,7 @@ def resolve_s6_source_bundle(
     corrected_supplemental_root: str | Path = CORRECTED_OUTPUTS_ROOT,
     allow_fixture_roots: bool = False,
 ) -> S6SourceBundle:
-    """Resolve the explicit corrected P0 and future corrected v2 source map."""
+    """Resolve the explicit official P0 v3 and clean supplemental source map."""
 
     p0_root = canonical_path(corrected_p0_root)
     supplemental_root = canonical_path(corrected_supplemental_root)
@@ -208,7 +210,7 @@ def resolve_s6_source_bundle(
             path=p0_root / filename,
             authority_class=CORRECTED_P0,
             root=p0_root,
-            version="corrected_p0_v2",
+            version=CORRECTED_P0_VERSION,
         )
     for key, relative_path in S6_APPROVED_SUPPLEMENTAL_INPUTS.items():
         sources[key] = S6SourceArtifact(
@@ -216,7 +218,7 @@ def resolve_s6_source_bundle(
             path=supplemental_root / relative_path,
             authority_class=CORRECTED_SUPPLEMENTAL_V2,
             root=supplemental_root,
-            version="corrected_supplemental_v2",
+            version=CORRECTED_SUPPLEMENTAL_VERSION,
         )
     bundle = S6SourceBundle(
         sources=sources,
@@ -244,10 +246,10 @@ def validate_s6_source_bundle(bundle: S6SourceBundle, *, require_exists: bool) -
             raise S6ContractError("S6 source crosses its declared root: %s" % source.path)
         if key.startswith("p0/"):
             expected_path = root / key.removeprefix("p0/")
-            expected_version = "corrected_p0_v2"
+            expected_version = CORRECTED_P0_VERSION
         elif key in S6_APPROVED_SUPPLEMENTAL_INPUTS:
             expected_path = root / S6_APPROVED_SUPPLEMENTAL_INPUTS[key]
-            expected_version = "corrected_supplemental_v2"
+            expected_version = CORRECTED_SUPPLEMENTAL_VERSION
         if source.path != expected_path:
             raise S6ContractError("S6 source path does not match declared key: %s" % key)
         if source.version != expected_version:
@@ -475,7 +477,7 @@ def build_s6_manifest_for_bundle(
     ]
     return {
         "schema_version": "figure_ready_manifest_v2",
-        "package_version": "corrected_supplemental_v2",
+        "package_version": "corrected_supplemental_p0v3_clean",
         "classification": "FIGURE_READY_DERIVATION",
         "status": "STAGE_PACKAGE_PENDING",
         "stage": S6_STAGE_NAME,
@@ -621,7 +623,7 @@ def validate_s6_manifest_sha_closure(
                 raise S6ContractError("S6 source has invalid authority class")
             if source_root != resolved_authority_roots[source["authority_class"]]:
                 raise S6ContractError("S6 source root does not match its authority class")
-            expected_version = "corrected_p0_v2" if source["authority_class"] == CORRECTED_P0 else "corrected_supplemental_v2"
+            expected_version = CORRECTED_P0_VERSION if source["authority_class"] == CORRECTED_P0 else CORRECTED_SUPPLEMENTAL_VERSION
             if source["version"] != expected_version:
                 raise S6ContractError("S6 source version does not match its authority class")
             if source["authority_class"] == CORRECTED_SUPPLEMENTAL_V2:

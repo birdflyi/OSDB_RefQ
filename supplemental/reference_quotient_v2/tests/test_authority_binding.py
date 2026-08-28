@@ -54,7 +54,7 @@ def _record(root, authority, relative):
         "authority_class": authority,
         "root": str(root),
         "version": {
-            CORRECTED_P0: "corrected_p0_v2",
+            CORRECTED_P0: "corrected_p0_v3",
             CORRECTED_SUPPLEMENTAL_V2: "corrected_supplemental_v2",
             CORRECTED_AGGREGATE: "corrected_aggregate_v2",
         }[authority],
@@ -170,7 +170,7 @@ def test_production_receipt_output_root_cannot_be_self_declared(tmp_path):
         "sha256": hashlib.sha256(p0_path.read_bytes()).hexdigest(),
         "authority_class": CORRECTED_P0,
         "root": str(paths.CORRECTED_P0_ROOT),
-        "version": "corrected_p0_v2",
+        "version": "corrected_p0_v3",
     }
     receipt = {
         "stage": "S1_evidence_universe",

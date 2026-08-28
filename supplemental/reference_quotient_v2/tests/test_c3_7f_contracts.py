@@ -32,7 +32,7 @@ def _record(root: Path, authority: str, relative: str) -> dict:
     path.write_text("value\n1\n", encoding="utf-8")
     versions = {
         CORRECTED_AGGREGATE: "corrected_aggregate_v2",
-        CORRECTED_P0: "corrected_p0_v2",
+        CORRECTED_P0: "corrected_p0_v3",
         CORRECTED_SUPPLEMENTAL_V2: "corrected_supplemental_v2",
     }
     return {

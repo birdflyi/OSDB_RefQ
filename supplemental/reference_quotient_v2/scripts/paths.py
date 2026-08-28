@@ -1,4 +1,4 @@
-"""Fail-closed path and authority guards for corrected supplemental v2.
+"""Fail-closed path and authority guards for clean supplemental P0 v3.
 
 This module only resolves and validates paths. It never creates output roots,
 reads aggregate rows, or executes a scientific stage.
@@ -17,11 +17,17 @@ from typing import Any, Dict, Mapping, Optional, Sequence
 
 REPOSITORY_ROOT = Path(__file__).resolve().parents[3]
 V2_ROOT = REPOSITORY_ROOT / "supplemental" / "reference_quotient_v2"
-DEFAULT_CONFIG_PATH = V2_ROOT / "configs" / "supplemental_v2_corrected.yaml"
-CORRECTED_P0_ROOT = REPOSITORY_ROOT / "outputs" / "reference_quotient_p0_corrected_v2"
+DEFAULT_CONFIG_PATH = V2_ROOT / "configs" / "supplemental_v2_p0v3_clean.yaml"
+LEGACY_CONFIG_PATH = V2_ROOT / "configs" / "supplemental_v2_corrected.yaml"
+LEGACY_CORRECTED_P0_V2_ROOT = REPOSITORY_ROOT / "outputs" / "reference_quotient_p0_corrected_v2"
+OFFICIAL_CORRECTED_P0_V3_ROOT = REPOSITORY_ROOT / "outputs" / "reference_quotient_p0_corrected_v3"
+# Production authority is deliberately the official clean P0 v3 root.
+CORRECTED_P0_ROOT = OFFICIAL_CORRECTED_P0_V3_ROOT
 HISTORICAL_P0_ROOT = REPOSITORY_ROOT / "outputs" / "reference_quotient_p0_frozen"
 HISTORICAL_SUPPLEMENTAL_ROOT = REPOSITORY_ROOT / "supplemental" / "reference_quotient_v1"
-CORRECTED_OUTPUTS_ROOT = V2_ROOT / "outputs"
+LEGACY_SUPPLEMENTAL_V2_OUTPUTS_ROOT = V2_ROOT / "outputs"
+CLEAN_SUPPLEMENTAL_P0V3_OUTPUTS_ROOT = V2_ROOT / "outputs_p0v3"
+CORRECTED_OUTPUTS_ROOT = CLEAN_SUPPLEMENTAL_P0V3_OUTPUTS_ROOT
 
 
 class AuthorityRole(str, Enum):
@@ -157,7 +163,13 @@ def _p0_config_source_roots(config: Mapping[str, Any]) -> list[Path]:
 
 
 def protected_write_roots(config: Optional[Mapping[str, Any]] = None) -> list[Path]:
-    roots = [HISTORICAL_P0_ROOT, CORRECTED_P0_ROOT, HISTORICAL_SUPPLEMENTAL_ROOT]
+    roots = [
+        HISTORICAL_P0_ROOT,
+        LEGACY_CORRECTED_P0_V2_ROOT,
+        CORRECTED_P0_ROOT,
+        HISTORICAL_SUPPLEMENTAL_ROOT,
+        LEGACY_SUPPLEMENTAL_V2_OUTPUTS_ROOT,
+    ]
     if config is not None:
         roots.extend(_p0_config_source_roots(config))
         manuscript_roots = config.get("manuscript_roots", [])
@@ -178,7 +190,7 @@ def classify_path(value: str | Path, config: Optional[Mapping[str, Any]] = None)
     candidate = canonical_path(value)
     corrected_p0 = canonical_path(config.get("corrected_p0_root")) if config else CORRECTED_P0_ROOT
     corrected_aggregate = _mapping_path(config, "corrected_aggregate_root") if config else None
-    corrected_config = canonical_path(config.get("corrected_p0_config")) if config else REPOSITORY_ROOT / "configs" / "ch5_reference_quotient_p0_v2.yaml"
+    corrected_config = canonical_path(config.get("corrected_p0_config")) if config else REPOSITORY_ROOT / "configs" / "ch5_reference_quotient_p0_v3.yaml"
     corrected_outputs = canonical_path(config.get("corrected_output_root")) if config else CORRECTED_OUTPUTS_ROOT
     if _is_within(candidate, corrected_p0):
         return PathAuthority(candidate, AuthorityRole.EXECUTABLE_CORRECTED_AUTHORITY)
@@ -188,7 +200,12 @@ def classify_path(value: str | Path, config: Optional[Mapping[str, Any]] = None)
         return PathAuthority(candidate, AuthorityRole.EXECUTABLE_CORRECTED_AUTHORITY)
     if _is_within(candidate, corrected_outputs):
         return PathAuthority(candidate, AuthorityRole.WRITE_TARGET)
-    if _is_within(candidate, HISTORICAL_P0_ROOT) or _is_within(candidate, HISTORICAL_SUPPLEMENTAL_ROOT):
+    if (
+        _is_within(candidate, LEGACY_CORRECTED_P0_V2_ROOT)
+        or _is_within(candidate, HISTORICAL_P0_ROOT)
+        or _is_within(candidate, HISTORICAL_SUPPLEMENTAL_ROOT)
+        or _is_within(candidate, LEGACY_SUPPLEMENTAL_V2_OUTPUTS_ROOT)
+    ):
         return PathAuthority(candidate, AuthorityRole.COMPARISON_ONLY_HISTORICAL, comparison_only=True)
     return PathAuthority(candidate, AuthorityRole.UNKNOWN)
 
@@ -210,7 +227,7 @@ def validate_write_target(value: str | Path, config: Optional[Mapping[str, Any]]
     candidate = canonical_path(value)
     corrected_outputs = canonical_path(config.get("corrected_output_root")) if config else CORRECTED_OUTPUTS_ROOT
     if not _is_within(candidate, corrected_outputs):
-        raise PathGuardError("write target must be under corrected v2 outputs: %s" % candidate)
+        raise PathGuardError("write target must be under clean P0 v3 outputs: %s" % candidate)
     for protected in protected_write_roots(config):
         if _is_within(candidate, protected):
             raise PathGuardError("write target crosses protected authority root: %s" % protected)
@@ -219,9 +236,9 @@ def validate_write_target(value: str | Path, config: Optional[Mapping[str, Any]]
 
 def validate_corrected_output_root(config: Mapping[str, Any]) -> Path:
     candidate = _mapping_path(config, "corrected_output_root")
-    expected = canonical_path(CORRECTED_OUTPUTS_ROOT)
-    if not _is_within(candidate, expected):
-        raise PathGuardError("corrected_output_root must be under supplemental/reference_quotient_v2/outputs")
+    expected = canonical_path(CLEAN_SUPPLEMENTAL_P0V3_OUTPUTS_ROOT)
+    if not _same_path(candidate, expected):
+        raise PathGuardError("corrected_output_root must be exactly supplemental/reference_quotient_v2/outputs_p0v3")
     validate_write_target(candidate, config)
     return candidate
 
@@ -246,9 +263,9 @@ def validate_config_paths(config: Mapping[str, Any]) -> Dict[str, Path]:
     if not _is_within(corrected_manifest, corrected_p0):
         raise PathGuardError("corrected_p0_manifest must be inside corrected P0 root")
     corrected_config = _mapping_path(config, "corrected_p0_config")
-    expected_config = REPOSITORY_ROOT / "configs" / "ch5_reference_quotient_p0_v2.yaml"
+    expected_config = REPOSITORY_ROOT / "configs" / "ch5_reference_quotient_p0_v3.yaml"
     if not _same_path(corrected_config, expected_config):
-        raise PathGuardError("corrected_p0_config does not resolve to the approved P0 v2 config")
+        raise PathGuardError("corrected_p0_config does not resolve to the approved P0 v3 config")
     corrected_aggregate = _mapping_path(config, "corrected_aggregate_root")
     if not corrected_aggregate.is_dir():
         raise PathGuardError("corrected aggregate root does not exist: %s" % corrected_aggregate)
@@ -260,9 +277,9 @@ def validate_config_paths(config: Mapping[str, Any]) -> Dict[str, Path]:
     executable_aggregate = p0_inputs.get("gh_core_ref_node_agg_dir")
     historical_aggregate = p0_inputs.get("gh_core_ref_node_agg_v1_dir")
     if not isinstance(expected_aggregate, str) or not _same_path(corrected_aggregate, canonical_path(expected_aggregate)):
-        raise PathGuardError("corrected aggregate root does not match corrected P0 v2 aggregate authority")
+        raise PathGuardError("corrected aggregate root does not match corrected P0 v3 aggregate authority")
     if isinstance(executable_aggregate, str) and not _same_path(corrected_aggregate, canonical_path(executable_aggregate)):
-        raise PathGuardError("corrected aggregate root does not match executable P0 aggregate input")
+        raise PathGuardError("corrected aggregate root does not match executable P0 v3 aggregate input")
     if isinstance(historical_aggregate, str) and _is_within(corrected_aggregate, canonical_path(historical_aggregate)):
         raise PathGuardError("corrected aggregate root resolves to historical aggregate")
     historical_p0 = _mapping_path(config, "historical_p0_root")
@@ -304,8 +321,8 @@ def validate_scaffold_config(config: Mapping[str, Any]) -> Dict[str, Path]:
         raise PathGuardError("s6_structural_summary_authority must be declared")
     if config.get("event_rejoin_required") is not False:
         raise PathGuardError("event_rejoin_required must be false")
-    if config.get("scientific_execution_authorized") is not False:
-        raise PathGuardError("scientific execution must remain unauthorized in C3.7-A")
+    if config.get("scientific_execution_authorized") is not True:
+        raise PathGuardError("clean supplemental scientific execution must be explicitly authorized")
     corrected_p0_config = _load_simple_yaml(
         paths["corrected_p0_config"].read_text(encoding="utf-8")
     )

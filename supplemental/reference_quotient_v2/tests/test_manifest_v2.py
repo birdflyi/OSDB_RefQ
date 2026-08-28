@@ -65,7 +65,7 @@ def _input_record(tmp_path, root=None) -> dict:
         "sha256": hashlib.sha256(source.read_bytes()).hexdigest(),
         "authority_class": CORRECTED_P0,
         "root": str(root),
-        "version": "corrected_p0_v2",
+        "version": "corrected_p0_v3",
     }
 
 

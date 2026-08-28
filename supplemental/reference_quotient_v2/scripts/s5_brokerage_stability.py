@@ -459,7 +459,7 @@ def assert_s5_canonical_setting_matches_corrected_p0(
 
     root = canonical_path(corrected_p0_root)
     if os.path.normcase(os.fspath(root)) != os.path.normcase(os.fspath(CORRECTED_P0_ROOT)):
-        raise S5ContractError("S5 parity authority must be corrected P0 root")
+        raise S5ContractError("S5 parity authority must be official corrected P0 v3 root")
     try:
         authority = load_corrected_p0_s45_authority()
     except (S45ContractError, PathGuardError) as exc:

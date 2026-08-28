@@ -307,7 +307,7 @@ def assert_s3_canonical_view_matches_corrected_p0(
 
     root = canonical_path(corrected_p0_root)
     if os.path.normcase(os.fspath(root)) != os.path.normcase(os.fspath(CORRECTED_P0_ROOT)):
-        raise S3ContractError("S3 parity authority must be corrected P0 root")
+        raise S3ContractError("S3 parity authority must be official corrected P0 v3 root")
     expected_registry = pd.read_csv(
         root / "reference_quotient_node_registry.csv",
         dtype={"project_id": "string"},

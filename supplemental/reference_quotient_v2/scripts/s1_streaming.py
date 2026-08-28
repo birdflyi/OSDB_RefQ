@@ -559,6 +559,8 @@ def run_s1_streaming(
         else _canonical_partition_paths(pass2_partition_paths)
     )
     registry_target = canonical_path(registry_path)
+    # Production orchestration supplies the clean P0 v3 root explicitly; this
+    # helper's default remains the canonical clean root for direct callers.
     output_root = canonical_path(CORRECTED_OUTPUTS_ROOT)
     try:
         registry_target.relative_to(output_root)

@@ -394,7 +394,7 @@ def assert_s2_threshold_one_matches_corrected_p0(
         raise S2ContractError("threshold 1 is required for canonical S2 parity")
     root = canonical_path(corrected_p0_root)
     if os.path.normcase(os.fspath(root)) != os.path.normcase(os.fspath(CORRECTED_P0_ROOT)):
-        raise S2ContractError("S2 parity authority must be corrected P0 root")
+        raise S2ContractError("S2 parity authority must be the official corrected P0 root (v3)")
     expected_edges = _normalize_undirected_parity_frame(
         pd.read_csv(root / "rq2c_undirected_view_edges.csv")
     )
