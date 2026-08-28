@@ -1,0 +1,186 @@
+label_mode,feature,category,n,mean,median,std
+include_mixed,self_reference_ratio,Document,79,0.4516458879744897,0.4444444444444444,0.2527232456541946
+include_mixed,self_reference_ratio,Graph,26,0.4191153826065931,0.3987835807022221,0.1748607373974266
+include_mixed,self_reference_ratio,Key-value,76,0.3826271154406784,0.375,0.2200400851301987
+include_mixed,self_reference_ratio,Object Oriented,19,0.4987579596968393,0.4940905374265963,0.2929837248966809
+include_mixed,self_reference_ratio,RDF,8,0.4230865305107826,0.4141153014328196,0.1673499024826768
+include_mixed,self_reference_ratio,Relational,100,0.4121105359001152,0.4042372881355932,0.2393322878057762
+include_mixed,self_reference_ratio,Search Engine,9,0.4502012906432365,0.3596535529974515,0.217166150338871
+include_mixed,self_reference_ratio,Time Series,21,0.4427528670136668,0.4101694915254237,0.2138525756510282
+include_mixed,self_reference_ratio,Vector,14,0.4828521577454204,0.4521621952713462,0.2650845040137599
+include_mixed,self_reference_ratio,Wide column,11,0.4550943051284895,0.4257690592955863,0.1957643351605776
+include_mixed,external_reference_share,Document,79,0.5483541120255102,0.5555555555555556,0.2527232456541946
+include_mixed,external_reference_share,Graph,26,0.5808846173934069,0.6012164192977778,0.1748607373974266
+include_mixed,external_reference_share,Key-value,76,0.6173728845593216,0.625,0.2200400851301987
+include_mixed,external_reference_share,Object Oriented,19,0.5012420403031608,0.5059094625734037,0.2929837248966809
+include_mixed,external_reference_share,RDF,8,0.5769134694892173,0.5858846985671803,0.1673499024826768
+include_mixed,external_reference_share,Relational,100,0.5878894640998846,0.5957627118644068,0.2393322878057763
+include_mixed,external_reference_share,Search Engine,9,0.5497987093567634,0.6403464470025484,0.217166150338871
+include_mixed,external_reference_share,Time Series,21,0.5572471329863331,0.5898305084745763,0.2138525756510282
+include_mixed,external_reference_share,Vector,14,0.5171478422545795,0.5478378047286536,0.2650845040137599
+include_mixed,external_reference_share,Wide column,11,0.5449056948715104,0.5742309407044137,0.1957643351605776
+include_mixed,non_project_reference_share,Document,79,0.2835203946978313,0.2,0.2456827229608845
+include_mixed,non_project_reference_share,Graph,26,0.3062563436002797,0.3151521575025132,0.1682112533625835
+include_mixed,non_project_reference_share,Key-value,76,0.3369580275144505,0.2805366347569955,0.2329649428307638
+include_mixed,non_project_reference_share,Object Oriented,19,0.3388087645765407,0.2941176470588235,0.2745780840032976
+include_mixed,non_project_reference_share,RDF,8,0.2769446198300819,0.2549840373201515,0.0959019356131927
+include_mixed,non_project_reference_share,Relational,100,0.3673340921891994,0.307784119393704,0.267440347413101
+include_mixed,non_project_reference_share,Search Engine,9,0.2687633828339959,0.2394111570247933,0.1513932671531898
+include_mixed,non_project_reference_share,Time Series,21,0.3154936661392338,0.3009708737864077,0.1937865696558385
+include_mixed,non_project_reference_share,Vector,14,0.2761885324052869,0.1774639899083734,0.2564380713761018
+include_mixed,non_project_reference_share,Wide column,11,0.3292597078558795,0.2992628992628993,0.2004116982159741
+include_mixed,comment_reference_density,Document,79,3.099150244124847,1.6188925081433223,5.252359710282182
+include_mixed,comment_reference_density,Graph,26,2.12708439617906,2.0553015873015874,1.0158934991376551
+include_mixed,comment_reference_density,Key-value,76,2.5834835747410447,1.6704638752052543,3.226754248764287
+include_mixed,comment_reference_density,Object Oriented,19,2.40180056697734,1.5454545454545454,2.6089955895334294
+include_mixed,comment_reference_density,RDF,8,2.048742676480196,2.1193236714975847,0.5652584649015995
+include_mixed,comment_reference_density,Relational,100,2.844436905697429,1.6990620414504791,4.067934857096148
+include_mixed,comment_reference_density,Search Engine,9,2.6893450603087854,2.235241502683363,1.619314321859953
+include_mixed,comment_reference_density,Time Series,21,3.0590626444399343,1.8625498007968129,3.141972373491509
+include_mixed,comment_reference_density,Vector,14,3.030388706544661,1.6293533027582212,3.3965156895070407
+include_mixed,comment_reference_density,Wide column,11,2.2125889750729844,1.7442622950819673,1.4164606583692747
+include_mixed,out_degree,Document,79,23.60759493670886,10.0,32.32265924319608
+include_mixed,out_degree,Graph,26,21.346153846153847,13.0,23.03726078802305
+include_mixed,out_degree,Key-value,76,23.57894736842105,7.0,42.63058781607239
+include_mixed,out_degree,Object Oriented,19,21.31578947368421,5.0,36.73788935989496
+include_mixed,out_degree,RDF,8,17.0,8.0,26.08228736682645
+include_mixed,out_degree,Relational,100,46.93,16.5,71.31949101038086
+include_mixed,out_degree,Search Engine,9,82.77777777777777,58.0,96.58646097898216
+include_mixed,out_degree,Time Series,21,39.04761904761905,23.0,46.84813357058762
+include_mixed,out_degree,Vector,14,31.571428571428573,7.0,54.4987145730052
+include_mixed,out_degree,Wide column,11,46.72727272727273,34.0,39.837396775118
+include_mixed,out_strength,Document,79,270.0379746835443,20.0,623.4225517468988
+include_mixed,out_strength,Graph,26,307.2692307692308,54.5,696.2568811978698
+include_mixed,out_strength,Key-value,76,211.1184210526316,13.5,639.3887490847335
+include_mixed,out_strength,Object Oriented,19,155.94736842105263,11.0,412.4976058764476
+include_mixed,out_strength,RDF,8,95.25,25.0,164.59712720978544
+include_mixed,out_strength,Relational,100,432.04,41.5,883.1352427401463
+include_mixed,out_strength,Search Engine,9,5833.666666666667,1347.0,14217.599691931126
+include_mixed,out_strength,Time Series,21,320.6190476190476,46.0,506.43948070726833
+include_mixed,out_strength,Vector,14,636.0714285714286,25.0,1426.7362682433215
+include_mixed,out_strength,Wide column,11,242.27272727272728,181.0,249.02895048933203
+include_mixed,in_degree,Document,79,0.8860759493670886,0.0,2.25313082331636
+include_mixed,in_degree,Graph,26,0.6538461538461539,0.0,1.3839742105200572
+include_mixed,in_degree,Key-value,76,1.4605263157894737,0.0,3.3958436928052085
+include_mixed,in_degree,Object Oriented,19,1.0526315789473684,0.0,4.1160078313623565
+include_mixed,in_degree,RDF,8,0.25,0.0,0.4629100498862757
+include_mixed,in_degree,Relational,100,2.13,0.0,3.9788709631520023
+include_mixed,in_degree,Search Engine,9,2.7777777777777777,2.0,4.1466184348749096
+include_mixed,in_degree,Time Series,21,1.0,0.0,2.0248456731316584
+include_mixed,in_degree,Vector,14,0.7857142857142857,0.0,1.3114039117603014
+include_mixed,in_degree,Wide column,11,2.727272727272727,2.0,2.4531982835029496
+include_mixed,in_strength,Document,79,19.89873417721519,0.0,95.63600798871823
+include_mixed,in_strength,Graph,26,2.576923076923077,0.0,8.188641288629398
+include_mixed,in_strength,Key-value,76,25.93421052631579,0.0,96.51381048344888
+include_mixed,in_strength,Object Oriented,19,115.26315789473684,0.0,501.9362334561437
+include_mixed,in_strength,RDF,8,0.25,0.0,0.4629100498862757
+include_mixed,in_strength,Relational,100,46.65,0.0,228.3437677332716
+include_mixed,in_strength,Search Engine,9,85.11111111111111,2.0,238.60555549087937
+include_mixed,in_strength,Time Series,21,40.04761904761905,0.0,119.22645519786124
+include_mixed,in_strength,Vector,14,0.7857142857142857,0.0,1.3114039117603014
+include_mixed,in_strength,Wide column,11,36.90909090909091,3.0,88.07889025805734
+include_mixed,local_clustering,Document,62,0.0193515127546509,0.0,0.0687767804670063
+include_mixed,local_clustering,Graph,20,0.0186088922419841,0.0058506308506308,0.0409510916678268
+include_mixed,local_clustering,Key-value,62,0.0118841528142234,0.0,0.0283492881354338
+include_mixed,local_clustering,Object Oriented,14,0.0241277597527079,0.0026405415170886,0.0507007731567059
+include_mixed,local_clustering,RDF,5,0.0,0.0,0.0
+include_mixed,local_clustering,Relational,87,0.0204174928983119,0.0046253469010175,0.0338955167239774
+include_mixed,local_clustering,Search Engine,9,0.057470697421544,0.0016393093610951,0.1659677500232888
+include_mixed,local_clustering,Time Series,21,0.0119728564933991,0.0066560473318921,0.0200489983064965
+include_mixed,local_clustering,Vector,11,0.0030568775920502,0.0,0.0066037327000409
+include_mixed,local_clustering,Wide column,11,0.0257578394261128,0.0127304653204565,0.0264556646020073
+include_mixed,betweenness_brokerage,Document,62,0.0074055254734678,0.0030178961937307,0.0109571951761844
+include_mixed,betweenness_brokerage,Graph,20,0.0053605420916841,0.0036698465750178,0.0050978054073686
+include_mixed,betweenness_brokerage,Key-value,62,0.007997933683005,0.0018319976157958,0.0155212415571529
+include_mixed,betweenness_brokerage,Object Oriented,14,0.0068922656882155,0.0039776246508622,0.0086127862669256
+include_mixed,betweenness_brokerage,RDF,5,0.0068879633339124,0.0032913932283698,0.0087202162980807
+include_mixed,betweenness_brokerage,Relational,87,0.0128878508079761,0.0049600789500651,0.020271984836246
+include_mixed,betweenness_brokerage,Search Engine,9,0.0234947273208988,0.0115731241584839,0.0311696691649963
+include_mixed,betweenness_brokerage,Time Series,21,0.0090241027503108,0.0037877950645099,0.016019894224104
+include_mixed,betweenness_brokerage,Vector,11,0.0098047009259962,0.0014423729424793,0.015700323770922
+include_mixed,betweenness_brokerage,Wide column,11,0.0114124021054073,0.0082355088284645,0.0101444960164845
+include_mixed,project_age_years_at_2023_end,Document,79,6.582486419047125,6.042436687200548,4.543047140125129
+include_mixed,project_age_years_at_2023_end,Graph,26,6.518717422208183,6.847364818617386,2.9322185582187688
+include_mixed,project_age_years_at_2023_end,Key-value,75,7.586767054528862,7.846680355920602,3.995622608015239
+include_mixed,project_age_years_at_2023_end,Object Oriented,19,7.5132389495298835,7.860369609856263,4.750676454052479
+include_mixed,project_age_years_at_2023_end,RDF,8,7.641341546885695,7.990417522245037,2.874076480042161
+include_mixed,project_age_years_at_2023_end,Relational,99,5.38651401074399,5.30321697467488,3.436913395903028
+include_mixed,project_age_years_at_2023_end,Search Engine,9,7.375770020533881,6.945927446954141,4.179793953804736
+include_mixed,project_age_years_at_2023_end,Time Series,21,6.937322773051726,7.542778918548939,3.864436407749881
+include_mixed,project_age_years_at_2023_end,Vector,14,2.5911802092500245,1.574264202600958,2.2610495506366126
+include_mixed,project_age_years_at_2023_end,Wide column,11,8.671769024951775,10.258726899383984,4.223784777586396
+exclude_mixed_or_multilabel,self_reference_ratio,Document,44,0.4337347119274332,0.4092331317784816,0.2562101084701291
+exclude_mixed_or_multilabel,self_reference_ratio,Graph,18,0.3674847205423732,0.3617886178861789,0.1448988093875937
+exclude_mixed_or_multilabel,self_reference_ratio,Key-value,49,0.3568977356324483,0.338403041825095,0.2054199846034205
+exclude_mixed_or_multilabel,self_reference_ratio,RDF,5,0.3850157176224659,0.2962962962962963,0.1585698732449172
+exclude_mixed_or_multilabel,self_reference_ratio,Relational,72,0.4028554550896499,0.3806599557693877,0.233222382800097
+exclude_mixed_or_multilabel,self_reference_ratio,Time Series,7,0.3953031337685729,0.3545561275173846,0.2430284977481211
+exclude_mixed_or_multilabel,self_reference_ratio,Vector,6,0.2910509169984638,0.23905945637179,0.1842368924050551
+exclude_mixed_or_multilabel,external_reference_share,Document,44,0.5662652880725667,0.5907668682215184,0.2562101084701291
+exclude_mixed_or_multilabel,external_reference_share,Graph,18,0.6325152794576266,0.6382113821138211,0.1448988093875937
+exclude_mixed_or_multilabel,external_reference_share,Key-value,49,0.6431022643675517,0.6615969581749049,0.2054199846034205
+exclude_mixed_or_multilabel,external_reference_share,RDF,5,0.6149842823775341,0.7037037037037037,0.1585698732449172
+exclude_mixed_or_multilabel,external_reference_share,Relational,72,0.5971445449103501,0.6193400442306123,0.233222382800097
+exclude_mixed_or_multilabel,external_reference_share,Time Series,7,0.6046968662314269,0.6454438724826154,0.2430284977481211
+exclude_mixed_or_multilabel,external_reference_share,Vector,6,0.708949083001536,0.76094054362821,0.1842368924050551
+exclude_mixed_or_multilabel,non_project_reference_share,Document,44,0.2921440498540973,0.19375,0.2635980019702765
+exclude_mixed_or_multilabel,non_project_reference_share,Graph,18,0.3333129909362087,0.3620995047815537,0.1783730951049143
+exclude_mixed_or_multilabel,non_project_reference_share,Key-value,49,0.3417510325631019,0.2847638057218895,0.240803746230669
+exclude_mixed_or_multilabel,non_project_reference_share,RDF,5,0.2606514585656722,0.2794036443953617,0.0819820266860051
+exclude_mixed_or_multilabel,non_project_reference_share,Relational,72,0.3636232380657592,0.2757987912351198,0.2667904455008898
+exclude_mixed_or_multilabel,non_project_reference_share,Time Series,7,0.3498999207017572,0.3558204641921791,0.1818792928164543
+exclude_mixed_or_multilabel,non_project_reference_share,Vector,6,0.486208692321562,0.4468662533854993,0.2637030157473852
+exclude_mixed_or_multilabel,comment_reference_density,Document,44,2.87701106424543,1.593408134642356,4.75534158746809
+exclude_mixed_or_multilabel,comment_reference_density,Graph,18,2.270619507269726,2.3045656565656567,1.157242155171991
+exclude_mixed_or_multilabel,comment_reference_density,Key-value,49,2.7308795355137243,1.6582278481012658,3.5753704161470856
+exclude_mixed_or_multilabel,comment_reference_density,RDF,5,2.0615494199372333,2.0386473429951693,0.6690004570348753
+exclude_mixed_or_multilabel,comment_reference_density,Relational,72,2.20679075299326,1.6444437682570594,2.0069694872478627
+exclude_mixed_or_multilabel,comment_reference_density,Time Series,7,2.6881925014177663,3.0,0.7233908726296622
+exclude_mixed_or_multilabel,comment_reference_density,Vector,6,5.284738073112534,4.069592902637879,4.382627057402583
+exclude_mixed_or_multilabel,out_degree,Document,44,19.295454545454547,8.5,28.075959711861536
+exclude_mixed_or_multilabel,out_degree,Graph,18,22.88888888888889,14.0,24.50663508927109
+exclude_mixed_or_multilabel,out_degree,Key-value,49,19.571428571428573,7.0,40.2854398842394
+exclude_mixed_or_multilabel,out_degree,RDF,5,20.2,3.0,33.09380606699689
+exclude_mixed_or_multilabel,out_degree,Relational,72,51.44444444444444,16.5,79.61259877804551
+exclude_mixed_or_multilabel,out_degree,Time Series,7,28.857142857142858,7.0,40.41216224285527
+exclude_mixed_or_multilabel,out_degree,Vector,6,54.16666666666666,11.0,73.82795315235731
+exclude_mixed_or_multilabel,out_strength,Document,44,201.4090909090909,15.5,452.7397896416172
+exclude_mixed_or_multilabel,out_strength,Graph,18,380.0,54.5,818.5005659561807
+exclude_mixed_or_multilabel,out_strength,Key-value,49,215.77551020408163,16.0,751.462941681816
+exclude_mixed_or_multilabel,out_strength,RDF,5,108.0,20.0,211.65538027652403
+exclude_mixed_or_multilabel,out_strength,Relational,72,471.47222222222223,34.5,975.6595886990218
+exclude_mixed_or_multilabel,out_strength,Time Series,7,199.57142857142856,28.0,260.031316795277
+exclude_mixed_or_multilabel,out_strength,Vector,6,1342.6666666666667,259.5,2035.6783308437184
+exclude_mixed_or_multilabel,in_degree,Document,44,0.6136363636363636,0.0,1.3156642869122188
+exclude_mixed_or_multilabel,in_degree,Graph,18,0.8333333333333334,0.0,1.6179144164088315
+exclude_mixed_or_multilabel,in_degree,Key-value,49,1.469387755102041,0.0,3.640638913800745
+exclude_mixed_or_multilabel,in_degree,RDF,5,0.2,0.0,0.447213595499958
+exclude_mixed_or_multilabel,in_degree,Relational,72,2.333333333333333,0.5,4.069813298136677
+exclude_mixed_or_multilabel,in_degree,Time Series,7,0.2857142857142857,0.0,0.4879500364742666
+exclude_mixed_or_multilabel,in_degree,Vector,6,1.8333333333333333,1.5,1.4719601443879746
+exclude_mixed_or_multilabel,in_strength,Document,44,11.477272727272728,0.0,55.015637792279854
+exclude_mixed_or_multilabel,in_strength,Graph,18,3.611111111111111,0.0,9.73857634775462
+exclude_mixed_or_multilabel,in_strength,Key-value,49,21.020408163265305,0.0,93.5760585913758
+exclude_mixed_or_multilabel,in_strength,RDF,5,0.2,0.0,0.447213595499958
+exclude_mixed_or_multilabel,in_strength,Relational,72,22.25,0.5,64.80257124093626
+exclude_mixed_or_multilabel,in_strength,Time Series,7,2.2857142857142856,0.0,5.618845839799183
+exclude_mixed_or_multilabel,in_strength,Vector,6,1.8333333333333333,1.5,1.4719601443879746
+exclude_mixed_or_multilabel,local_clustering,Document,34,0.0081139858215357,0.0,0.020610653729729
+exclude_mixed_or_multilabel,local_clustering,Graph,14,0.0131801328581347,0.0064705409532995,0.018368779495134
+exclude_mixed_or_multilabel,local_clustering,Key-value,39,0.0113494757408733,0.0,0.0217043919664911
+exclude_mixed_or_multilabel,local_clustering,Relational,62,0.0215363673137068,0.0046656146269793,0.0367939492176933
+exclude_mixed_or_multilabel,local_clustering,Time Series,7,0.0028787777972687,0.0,0.0051239385121074
+exclude_mixed_or_multilabel,local_clustering,Vector,6,0.0051482792333963,0.0021367521367521,0.00862981010053
+exclude_mixed_or_multilabel,betweenness_brokerage,Document,34,0.0058300364734858,0.0019181238942687,0.0087395785851647
+exclude_mixed_or_multilabel,betweenness_brokerage,Graph,14,0.0060617654256292,0.0042040328945447,0.0058151378502246
+exclude_mixed_or_multilabel,betweenness_brokerage,Key-value,39,0.0070190566684285,0.0011984452179201,0.0152414844669865
+exclude_mixed_or_multilabel,betweenness_brokerage,Relational,62,0.0142628364061574,0.0033075724140767,0.0231641156625686
+exclude_mixed_or_multilabel,betweenness_brokerage,Time Series,7,0.0053417800258403,0.0007859420814512,0.0083442207604803
+exclude_mixed_or_multilabel,betweenness_brokerage,Vector,6,0.0134578616585543,0.0019576574126682,0.0190553416689719
+exclude_mixed_or_multilabel,project_age_years_at_2023_end,Document,44,6.232157301972498,5.62217659137577,4.527813053388194
+exclude_mixed_or_multilabel,project_age_years_at_2023_end,Graph,18,6.422845843790402,6.847364818617386,2.69577402107344
+exclude_mixed_or_multilabel,project_age_years_at_2023_end,Key-value,48,6.946212639744467,6.257357973990418,3.8892029282890905
+exclude_mixed_or_multilabel,project_age_years_at_2023_end,RDF,5,9.09514031485284,9.568788501026694,2.066360120526768
+exclude_mixed_or_multilabel,project_age_years_at_2023_end,Relational,71,5.393296121699397,5.3114305270362765,3.3718446958847994
+exclude_mixed_or_multilabel,project_age_years_at_2023_end,Time Series,7,8.604282780874156,9.932922655715265,3.52637792898762
+exclude_mixed_or_multilabel,project_age_years_at_2023_end,Vector,6,4.371891398585444,4.33949349760438,1.9497184253795936

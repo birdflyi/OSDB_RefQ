@@ -1,0 +1,6 @@
+metric,quantile,value
+directed_cross_project_edge_weight,min,1.0
+directed_cross_project_edge_weight,q25,1.0
+directed_cross_project_edge_weight,median,2.0
+directed_cross_project_edge_weight,q75,4.0
+directed_cross_project_edge_weight,max,2297.0

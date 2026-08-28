@@ -1,0 +1,339 @@
+{
+  "authority_roots": {
+    "CORRECTED_P0": "D:/github_repo/OSDB_RefQ/outputs/reference_quotient_p0_corrected_v3",
+    "CORRECTED_SUPPLEMENTAL_V2": "D:/github_repo/OSDB_RefQ/supplemental/reference_quotient_v2/outputs_p0v3"
+  },
+  "classification": "FIGURE_READY_DERIVATION",
+  "deprecated_outputs_excluded": [
+    "structural_summary.json",
+    "figure_ready_manifest.json",
+    "figure_ready_manifest_v1_1.json"
+  ],
+  "entries": [
+    {
+      "output": "rq1_referencing_entity_distribution_plot.csv",
+      "output_bytes": 342,
+      "output_sha256": "1f837553e300ae038b15f5ca7a88449b0aa2c199c829a071a2cfd0cc93ffcfea",
+      "row_count": 8,
+      "source_artifacts": [
+        {
+          "authority_class": "CORRECTED_P0",
+          "path": "D:/github_repo/OSDB_RefQ/outputs/reference_quotient_p0_corrected_v3/rq1_referencing_entity_distribution.csv",
+          "root": "D:/github_repo/OSDB_RefQ/outputs/reference_quotient_p0_corrected_v3",
+          "sha256": "c8730d77f637b95b0a7527b65030c87dcda4cf12da2e50f8fa2bdc7538a2c2fa",
+          "version": "corrected_p0_v3"
+        }
+      ],
+      "transformation": "stable_copy_for_plotting"
+    },
+    {
+      "output": "rq1_referenced_entity_distribution_plot.csv",
+      "output_bytes": 765,
+      "output_sha256": "ed519afb64244114f31ba0c2de7579436b58de49fbed90764cf87ba54cc88657",
+      "row_count": 19,
+      "source_artifacts": [
+        {
+          "authority_class": "CORRECTED_P0",
+          "path": "D:/github_repo/OSDB_RefQ/outputs/reference_quotient_p0_corrected_v3/rq1_referenced_entity_distribution.csv",
+          "root": "D:/github_repo/OSDB_RefQ/outputs/reference_quotient_p0_corrected_v3",
+          "sha256": "483581ef070895ba4d222f6c285f6ffb35b84defc6252f0f026926ac7f0c5b04",
+          "version": "corrected_p0_v3"
+        }
+      ],
+      "transformation": "stable_copy_for_plotting"
+    },
+    {
+      "output": "rq1_event_type_distribution_plot.csv",
+      "output_bytes": 370,
+      "output_sha256": "0e87543b71ad9387236cba4e058b3fe7dda36091f1368d7a05c9a875b6eab58c",
+      "row_count": 8,
+      "source_artifacts": [
+        {
+          "authority_class": "CORRECTED_P0",
+          "path": "D:/github_repo/OSDB_RefQ/outputs/reference_quotient_p0_corrected_v3/rq1_event_type_distribution.csv",
+          "root": "D:/github_repo/OSDB_RefQ/outputs/reference_quotient_p0_corrected_v3",
+          "sha256": "90d72fde449e5b193fabc1930c9ca1de6e6f10de2a89c1f3c0a741cf3d40edee",
+          "version": "corrected_p0_v3"
+        }
+      ],
+      "transformation": "stable_copy_for_plotting"
+    },
+    {
+      "output": "rq1_project_age_cross_sectional_association_plot.csv",
+      "output_bytes": 388,
+      "output_sha256": "43afce23beb342597171090421a1b1d172c3090345141f22c656f24d8d5ba8a3",
+      "row_count": 4,
+      "source_artifacts": [
+        {
+          "authority_class": "CORRECTED_P0",
+          "path": "D:/github_repo/OSDB_RefQ/outputs/reference_quotient_p0_corrected_v3/rq1_project_age_cross_sectional_association.csv",
+          "root": "D:/github_repo/OSDB_RefQ/outputs/reference_quotient_p0_corrected_v3",
+          "sha256": "a6ce40b4005feb5b763513afba7ba4bd6d2455b5140d2f0c572db816939b2c8c",
+          "version": "corrected_p0_v3"
+        }
+      ],
+      "transformation": "stable_copy_for_plotting"
+    },
+    {
+      "output": "rq2a_source_role_metrics_plot.csv",
+      "output_bytes": 21800,
+      "output_sha256": "98fc301b4c9de5c84e0c13872ffaa21a5cc6851f7a3f26b019b0fb19e4ef37e2",
+      "row_count": 294,
+      "source_artifacts": [
+        {
+          "authority_class": "CORRECTED_P0",
+          "path": "D:/github_repo/OSDB_RefQ/outputs/reference_quotient_p0_corrected_v3/rq2a_source_role_metrics.csv",
+          "root": "D:/github_repo/OSDB_RefQ/outputs/reference_quotient_p0_corrected_v3",
+          "sha256": "895d67b236afacd936f16c593f8cd32457ad27770d53f24ff1593b15ce2c84bc",
+          "version": "corrected_p0_v3"
+        }
+      ],
+      "transformation": "stable_copy_for_plotting"
+    },
+    {
+      "output": "rq2b_target_role_metrics_plot.csv",
+      "output_bytes": 684435,
+      "output_sha256": "e42ffcf156de6ed004b8e0af35d77d79a5867ffe16539a40f17fb5b46bf83ddd",
+      "row_count": 6322,
+      "source_artifacts": [
+        {
+          "authority_class": "CORRECTED_P0",
+          "path": "D:/github_repo/OSDB_RefQ/outputs/reference_quotient_p0_corrected_v3/rq2b_target_role_metrics.csv",
+          "root": "D:/github_repo/OSDB_RefQ/outputs/reference_quotient_p0_corrected_v3",
+          "sha256": "1348f0aadc8a53d9122f95de0000129a2ebafa7ada778df9d3f63a8def166e24",
+          "version": "corrected_p0_v3"
+        }
+      ],
+      "transformation": "stable_copy_for_plotting"
+    },
+    {
+      "output": "rq3_subdomain_descriptive_comparison_plot.csv",
+      "output_bytes": 18538,
+      "output_sha256": "f9f6400a7cf4d14159d4c30b7b4fa9a7a49eee3ebe58a4fe39a27a0f1028dcef",
+      "row_count": 185,
+      "source_artifacts": [
+        {
+          "authority_class": "CORRECTED_P0",
+          "path": "D:/github_repo/OSDB_RefQ/outputs/reference_quotient_p0_corrected_v3/rq3_subdomain_descriptive_comparison.csv",
+          "root": "D:/github_repo/OSDB_RefQ/outputs/reference_quotient_p0_corrected_v3",
+          "sha256": "89a7330959bca41b011a349f424b67dad5106e8d6fa6801664532d402d632277",
+          "version": "corrected_p0_v3"
+        }
+      ],
+      "transformation": "stable_copy_for_plotting"
+    },
+    {
+      "output": "rq3_kruskal_fdr_effect_sizes_plot.csv",
+      "output_bytes": 4805,
+      "output_sha256": "c8031d4882ccd23590d0ba837f9c52155883b3cdc79409044bb9cf8b8800d320",
+      "row_count": 22,
+      "source_artifacts": [
+        {
+          "authority_class": "CORRECTED_P0",
+          "path": "D:/github_repo/OSDB_RefQ/outputs/reference_quotient_p0_corrected_v3/rq3_kruskal_fdr_effect_sizes.csv",
+          "root": "D:/github_repo/OSDB_RefQ/outputs/reference_quotient_p0_corrected_v3",
+          "sha256": "3ba3257c7a0060c95737d57065bea55e5e0d1d8e6a6b40493b6a24ad9b4c7363",
+          "version": "corrected_p0_v3"
+        }
+      ],
+      "transformation": "stable_copy_for_plotting"
+    },
+    {
+      "output": "rq1_profile_quantiles.csv",
+      "output_bytes": 1400,
+      "output_sha256": "28731a25be8e8248dd26d9b6709baedb547ddb5afc754970cc09c4baf1ff4759",
+      "row_count": 30,
+      "source_artifacts": [
+        {
+          "authority_class": "CORRECTED_P0",
+          "path": "D:/github_repo/OSDB_RefQ/outputs/reference_quotient_p0_corrected_v3/rq1_project_reference_profiles.csv",
+          "root": "D:/github_repo/OSDB_RefQ/outputs/reference_quotient_p0_corrected_v3",
+          "sha256": "da5a1ff86bbe95e9655060c8be51f0a57a0a621fac7425c94089aecadadd8813",
+          "version": "corrected_p0_v3"
+        }
+      ],
+      "transformation": "project_profile_metric_quantiles"
+    },
+    {
+      "output": "rq2a_source_role_quantiles.csv",
+      "output_bytes": 966,
+      "output_sha256": "c55de4ce87f3d5dda5eed66e8098e18ca5f67ad416bbca77cef2a6cf07a36337",
+      "row_count": 30,
+      "source_artifacts": [
+        {
+          "authority_class": "CORRECTED_P0",
+          "path": "D:/github_repo/OSDB_RefQ/outputs/reference_quotient_p0_corrected_v3/rq2a_source_role_metrics.csv",
+          "root": "D:/github_repo/OSDB_RefQ/outputs/reference_quotient_p0_corrected_v3",
+          "sha256": "895d67b236afacd936f16c593f8cd32457ad27770d53f24ff1593b15ce2c84bc",
+          "version": "corrected_p0_v3"
+        }
+      ],
+      "transformation": "source_role_quantiles"
+    },
+    {
+      "output": "rq2a_source_role_ecdf_ccdf.csv",
+      "output_bytes": 122421,
+      "output_sha256": "fbca12d57fda8c72c13c4dfd0a5bc4005b9a21f2345820d98384c9bd8102c1e0",
+      "row_count": 1764,
+      "source_artifacts": [
+        {
+          "authority_class": "CORRECTED_P0",
+          "path": "D:/github_repo/OSDB_RefQ/outputs/reference_quotient_p0_corrected_v3/rq2a_source_role_metrics.csv",
+          "root": "D:/github_repo/OSDB_RefQ/outputs/reference_quotient_p0_corrected_v3",
+          "sha256": "895d67b236afacd936f16c593f8cd32457ad27770d53f24ff1593b15ce2c84bc",
+          "version": "corrected_p0_v3"
+        }
+      ],
+      "transformation": "source_role_ecdf_ccdf"
+    },
+    {
+      "output": "rq2b_target_role_quantiles.csv",
+      "output_bytes": 643,
+      "output_sha256": "1b2a1f58db6fa6f01394db6bd217e19ea3e39ad80bac62391c58870654e7b4ee",
+      "row_count": 20,
+      "source_artifacts": [
+        {
+          "authority_class": "CORRECTED_P0",
+          "path": "D:/github_repo/OSDB_RefQ/outputs/reference_quotient_p0_corrected_v3/rq2b_target_role_metrics.csv",
+          "root": "D:/github_repo/OSDB_RefQ/outputs/reference_quotient_p0_corrected_v3",
+          "sha256": "1348f0aadc8a53d9122f95de0000129a2ebafa7ada778df9d3f63a8def166e24",
+          "version": "corrected_p0_v3"
+        }
+      ],
+      "transformation": "target_role_quantiles"
+    },
+    {
+      "output": "edge_weight_ecdf_ccdf.csv",
+      "output_bytes": 773308,
+      "output_sha256": "dfc9def16b82c8ce481d995ef00163aa7f910680f041d41794bb8770454b88f6",
+      "row_count": 9595,
+      "source_artifacts": [
+        {
+          "authority_class": "CORRECTED_P0",
+          "path": "D:/github_repo/OSDB_RefQ/outputs/reference_quotient_p0_corrected_v3/reference_quotient_cross_project_edges.csv",
+          "root": "D:/github_repo/OSDB_RefQ/outputs/reference_quotient_p0_corrected_v3",
+          "sha256": "a73b410753d66ea5d2e7378bc496095e0617432f3463819050159417a3a101bd",
+          "version": "corrected_p0_v3"
+        }
+      ],
+      "transformation": "directed_cross_project_edge_weight_ecdf_ccdf"
+    },
+    {
+      "output": "edge_weight_quantiles.csv",
+      "output_bytes": 243,
+      "output_sha256": "09c665e1f1321bec6539cca4ed972904753a398a7cd091e89b0daced498f015c",
+      "row_count": 5,
+      "source_artifacts": [
+        {
+          "authority_class": "CORRECTED_P0",
+          "path": "D:/github_repo/OSDB_RefQ/outputs/reference_quotient_p0_corrected_v3/reference_quotient_cross_project_edges.csv",
+          "root": "D:/github_repo/OSDB_RefQ/outputs/reference_quotient_p0_corrected_v3",
+          "sha256": "a73b410753d66ea5d2e7378bc496095e0617432f3463819050159417a3a101bd",
+          "version": "corrected_p0_v3"
+        }
+      ],
+      "transformation": "directed_cross_project_edge_weight_quantiles"
+    },
+    {
+      "output": "community_size_distribution.csv",
+      "output_bytes": 243,
+      "output_sha256": "01d00d4a225cfea9600f5553dcc110c1c677394dcc200073e699bab6b4abc60b",
+      "row_count": 35,
+      "source_artifacts": [
+        {
+          "authority_class": "CORRECTED_P0",
+          "path": "D:/github_repo/OSDB_RefQ/outputs/reference_quotient_p0_corrected_v3/rq2c_algorithmic_communities.csv",
+          "root": "D:/github_repo/OSDB_RefQ/outputs/reference_quotient_p0_corrected_v3",
+          "sha256": "6a0cdae75fb0e430542d49d448cdba41b2fd2fc853d03106e32650c08358e474",
+          "version": "corrected_p0_v3"
+        }
+      ],
+      "transformation": "community_size_distribution"
+    },
+    {
+      "output": "structural_summary.csv",
+      "output_bytes": 671,
+      "output_sha256": "e49bcd44c784834bf3d3482f4cc3debd625cbefcb8554cef1c9595d2435a3c7f",
+      "row_count": 1,
+      "source_artifacts": [
+        {
+          "authority_class": "CORRECTED_P0",
+          "path": "D:/github_repo/OSDB_RefQ/outputs/reference_quotient_p0_corrected_v3/rq2c_undirected_view_summary.json",
+          "root": "D:/github_repo/OSDB_RefQ/outputs/reference_quotient_p0_corrected_v3",
+          "sha256": "489cc280b1f8d835032de7e06b9ed2acd85e97fab799476cfcbdffc844017446",
+          "version": "corrected_p0_v3"
+        }
+      ],
+      "transformation": "corrected_p0_summary_json_to_csv"
+    },
+    {
+      "output": "brokerage_plot.csv",
+      "output_bytes": 188817,
+      "output_sha256": "93eba17e8ef61af8a0e4b17405466f4f687844912947567cb871ccb85098f9ed",
+      "row_count": 6367,
+      "source_artifacts": [
+        {
+          "authority_class": "CORRECTED_P0",
+          "path": "D:/github_repo/OSDB_RefQ/outputs/reference_quotient_p0_corrected_v3/rq2c_structural_brokerage_candidates.csv",
+          "root": "D:/github_repo/OSDB_RefQ/outputs/reference_quotient_p0_corrected_v3",
+          "sha256": "723a5608f6b837585aed8354720ffa0074b4f0e5ec5628aaa1b6966dd2bb0f6e",
+          "version": "corrected_p0_v3"
+        }
+      ],
+      "transformation": "stable_brokerage_plot_table"
+    },
+    {
+      "output": "brokerage_top50_plot.csv",
+      "output_bytes": 2998,
+      "output_sha256": "62a861e67829d42bf1fe2fde1a01a406b78fea6db910b8f9dc86d62dc863a42d",
+      "row_count": 50,
+      "source_artifacts": [
+        {
+          "authority_class": "CORRECTED_P0",
+          "path": "D:/github_repo/OSDB_RefQ/outputs/reference_quotient_p0_corrected_v3/rq2c_structural_brokerage_top50.csv",
+          "root": "D:/github_repo/OSDB_RefQ/outputs/reference_quotient_p0_corrected_v3",
+          "sha256": "198be0915086ed495fe2daf56daf67fc5671ad341d7b7e57b5e64be966ae9d6c",
+          "version": "corrected_p0_v3"
+        }
+      ],
+      "transformation": "stable_brokerage_top50_plot_table"
+    },
+    {
+      "output": "louvain_stability_plot.csv",
+      "output_bytes": 2845,
+      "output_sha256": "dce84c2c821083b914edf659ea06d71cce236fdac6f5c24a637a2986526d4760",
+      "row_count": 50,
+      "source_artifacts": [
+        {
+          "authority_class": "CORRECTED_SUPPLEMENTAL_V2",
+          "path": "D:/github_repo/OSDB_RefQ/supplemental/reference_quotient_v2/outputs_p0v3/S4_community_stability/louvain_stability_runs.csv",
+          "root": "D:/github_repo/OSDB_RefQ/supplemental/reference_quotient_v2/outputs_p0v3",
+          "sha256": "913266c48ba0dab8a08b0013c557c350c0f6493c0ee5e993141a8329e85b9d8c",
+          "version": "corrected_supplemental_p0v3_clean"
+        }
+      ],
+      "transformation": "supplemental_stability_plot_table"
+    },
+    {
+      "output": "brokerage_stability_plot.csv",
+      "output_bytes": 3160,
+      "output_sha256": "9f279a1eda33f22b607e5af979e3bd0a4b61467e372aa820ac10a3db5e411d71",
+      "row_count": 60,
+      "source_artifacts": [
+        {
+          "authority_class": "CORRECTED_SUPPLEMENTAL_V2",
+          "path": "D:/github_repo/OSDB_RefQ/supplemental/reference_quotient_v2/outputs_p0v3/S5_brokerage_stability/brokerage_stability_runs.csv",
+          "root": "D:/github_repo/OSDB_RefQ/supplemental/reference_quotient_v2/outputs_p0v3",
+          "sha256": "75177f94b24abf7f010c240be2f19f216e0b216812447e9bd498c218cd7b5dc6",
+          "version": "corrected_supplemental_p0v3_clean"
+        }
+      ],
+      "transformation": "supplemental_stability_plot_table"
+    }
+  ],
+  "manifest_self_hash_not_embedded": true,
+  "package_version": "corrected_supplemental_p0v3_clean",
+  "schema_version": "figure_ready_manifest_v2",
+  "stage": "S6_figure_ready",
+  "status": "STAGE_PACKAGE_PENDING"
+}
