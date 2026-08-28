@@ -2,6 +2,8 @@
 
 Status: accepted for clean supplemental S1-S6 execution.
 
+Frozen implementation commit: `e13eaf2b3bff040639e6256ea98aa1fa5bb0ef1f`.
+
 ## Runtime identity
 
 - Environment: `D:/codex_envs/ch5_refq_supplemental_p0v3_runtime`

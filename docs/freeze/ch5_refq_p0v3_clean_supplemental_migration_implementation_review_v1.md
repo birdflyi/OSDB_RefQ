@@ -2,6 +2,8 @@
 
 Status: implementation review before clean scientific execution.
 
+`C4_CLEAN_SUPPLEMENTAL_IMPLEMENTATION_COMMIT = e13eaf2b3bff040639e6256ea98aa1fa5bb0ef1f`
+
 This migration keeps the single `supplemental/reference_quotient_v2` scientific
 implementation and changes only its executable provenance boundary. Production
 authority is the official P0 v3 result (`2d284f4bc83c42ba6555a09a2e42693c5490b827`),
