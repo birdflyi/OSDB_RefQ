@@ -1,0 +1,24 @@
+{
+  "ari_alert_threshold": 0.9,
+  "ari_to_canonical_summary": {
+    "max": 1.0,
+    "mean": 0.8349375327028501,
+    "median": 0.8428021239753398,
+    "min": 0.6823671359861659,
+    "q1": 0.8015113273472703,
+    "q3": 0.8829726199240396
+  },
+  "canonical_community_count": 35,
+  "canonical_modularity": 0.7969220043681785,
+  "canonical_seed": 20260731,
+  "canonical_seed_matches_p0": true,
+  "pairwise_ari_summary": {
+    "max": 0.9909005516367752,
+    "mean": 0.844734724518271,
+    "median": 0.8552010290058881,
+    "min": 0.6092441840471735,
+    "q1": 0.7906438122735062,
+    "q3": 0.899869642409877
+  },
+  "robustness_alert": true
+}
