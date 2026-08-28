@@ -1,8 +1,8 @@
 stage,old_result_status,p0_v2_dependency,community_size_dependency,scientific_validity,provenance_validity,decision,target_clean_authority,expected_outputs,future_execution_order
-S1,PASS,corrected aggregate only,NONE,PASS,VALID under v2; separate from future v3 chain,KEEP_OR_RERUN,accepted aggregate and v3 package provenance,S1 evidence universe and receipt,1
-S2,PASS,corrected P0 v2 receipt authority,indirect via package authority,PASS,VALID under v2,RERUN,corrected P0 v3,weight sensitivity outputs and receipt,2
-S3,PASS,corrected P0 v2 canonical files,YES,RERUN_REQUIRED,VALID under v2,RERUN,corrected P0 v3,three observation views and receipt,3
-S4,BLOCKED,corrected P0 v2 canonical community authority,YES,scientific computation not completed,INVALID for clean final package,RUN,corrected P0 v3,community stability outputs and receipt,4
-S5,NOT_RUN,corrected P0 v2 canonical LCC/brokerage,indirect via clean authority,NOT_RUN,NOT_RUN,RUN,corrected P0 v3,brokerage stability outputs and receipt,5
-S6,NOT_RUN,corrected P0 v2 and S4/S5,YES,NOT_RUN,NOT_RUN,RUN,corrected P0 v3 plus new S4/S5,figure-ready outputs and receipt,6
+S1,PASS,corrected aggregate only,NONE,PASS,VALID under v2 but mixed with future v3 receipts,RERUN,accepted aggregate plus official P0 v3 package provenance,S1 evidence universe and receipt,1
+S2,PASS,corrected P0 v2 receipt authority,indirect via package authority,PASS,VALID under v2,RERUN,official corrected P0 v3 result commit 2d284f4,weight sensitivity outputs and receipt,2
+S3,PASS,corrected P0 v2 canonical files,YES,RERUN_REQUIRED,VALID under v2,RERUN,official corrected P0 v3 result commit 2d284f4,three observation views and receipt,3
+S4,BLOCKED,corrected P0 v2 canonical community authority,YES,scientific computation not completed,INVALID for clean final package,RUN,official corrected P0 v3 result commit 2d284f4,community stability outputs and receipt,4
+S5,NOT_RUN,corrected P0 v2 canonical LCC/brokerage,indirect via clean authority,NOT_RUN,NOT_RUN,RUN,official corrected P0 v3 result commit 2d284f4,brokerage stability outputs and receipt,5
+S6,NOT_RUN,corrected P0 v2 and S4/S5,YES,NOT_RUN,NOT_RUN,RUN,official corrected P0 v3 plus new S4/S5,figure-ready outputs and receipt,6
 S7,NOT_EVALUATED,separate final boundary,N/A,NOT_EVALUATED,NOT_EVALUATED,DEFER,separate final authority,S7 overlap artifact only under explicit authorization,7

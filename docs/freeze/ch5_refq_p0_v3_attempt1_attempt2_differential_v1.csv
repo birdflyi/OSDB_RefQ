@@ -1,0 +1,5 @@
+artifact,field,attempt1_delta,attempt1_ulp,attempt2_delta,attempt2_status
+rq1_descriptive_statistics.csv,std,5.0931703299284e-11,7,0,BYTE_IDENTICAL
+rq1_project_age_cross_sectional_association.csv,p_value,8.67361737988404e-19,1,0,BYTE_IDENTICAL
+rq3_kruskal_fdr_effect_sizes.csv,p_value,2.220446049250313e-16,2,0,BYTE_IDENTICAL
+rq3_kruskal_fdr_effect_sizes.csv,fdr_bh_p_value,2.220446049250313e-16,2,0,BYTE_IDENTICAL
