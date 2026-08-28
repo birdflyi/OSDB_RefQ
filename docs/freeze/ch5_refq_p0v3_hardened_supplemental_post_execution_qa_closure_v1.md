@@ -2,7 +2,7 @@
 
 ## Decision
 
-`P0V3_HARDENED_S1_S6_QA_CLOSURE_PASS_READY_FOR_S4_SCIENTIFIC_REVIEW`
+`P0V3_S4_ACCEPTED_WITH_LIMITATION_AND_S7_KEEP_GATE_PASS_READY_FOR_FINAL_PACKAGE_FREEZE`
 
 This QA task made no scientific rerun and no scientific implementation change.
 The production output tree, six stage receipts, P0-v3, corrected aggregate, and
@@ -87,7 +87,9 @@ scope.
 ```text
 G18 = PASS
 G19 = PASS
-G09 = NOT_EXECUTED
+S4_SCIENTIFIC_REVIEW = ACCEPT_WITH_LIMITATION
+S7 = KEPT_FIXED_OBJECT
+G09 = PASS
 G20 = NOT_FINALIZED
 P0_RUN = 0
 S1_RUN = 0
@@ -100,3 +102,23 @@ S7_RUN = 0
 FIGURES_GENERATED = 0
 MANUSCRIPT_MODIFIED = NO
 ```
+
+## Post-QA scientific interpretation and G09 closure
+
+The human S4 review is frozen as `S4_SCIENTIFIC_REVIEW =
+ACCEPT_WITH_LIMITATION`. The canonical 35-community partition is retained as
+one deterministic reference realization and is described only as an
+algorithmic modular neighborhood view; the seed-sensitivity alert is not a
+reason to rerun S4.
+
+A separate read-only G09 audit established
+`S7 = KEPT_FIXED_OBJECT` and `G09 = PASS`: fixed source/target/edge sizes are
+50/50/100, affected sizes are 1/11/11, and all three exact numeric-ID
+intersections are empty. S7 writes, reselection, and raw scientific rerun are
+all zero. The audit and complete membership table are frozen in
+`ch5_refq_p0v3_s7_fixed_object_overlap_runtime_gate_v1.md` and
+`ch5_refq_p0v3_s7_fixed_object_overlap_sets_v1.csv`.
+
+This addendum changes no S1-S6 output, receipt, implementation, or test
+record. G20 remains `NOT_FINALIZED`; figures, manuscript edits, merge, and
+final tagging remain outside this authorization.

@@ -2,7 +2,7 @@
 
 ## Decision
 
-`P0V3_HARDENED_SUPPLEMENTAL_S1_S6_COMPLETE_WITH_ROBUSTNESS_ALERTS_READY_FOR_HUMAN_SCIENTIFIC_REVIEW`
+`P0V3_S4_ACCEPTED_WITH_LIMITATION_AND_S7_KEEP_GATE_PASS_READY_FOR_FINAL_PACKAGE_FREEZE`
 
 Post-interruption Phase A integrity recheck passed. The deterministic
 implementation authority remains `de9f03a1efb76f3abd2b7b6239f7748f40498d90`.
@@ -72,8 +72,10 @@ supplemental v1, old supplemental-v2 outputs, and accepted S1 remain unchanged.
 The six-file pre-hardening S2 partial was hash-inventoried and removed; the
 replacement S2 is the only accepted S2 authority.
 
-P0, GH-CoRE, event rejoin, S7, figure rendering, and manuscript modification
-were not executed. `S7=DEFER`, `G09=NOT_EXECUTED`, `G20=NOT_FINALIZED`,
+P0, GH-CoRE, event rejoin, S7 scientific execution, figure rendering, and
+manuscript modification were not executed. The subsequent read-only G09 gate
+kept the historical S7 fixed-object composition: `S7=KEPT_FIXED_OBJECT`,
+`G09=PASS`, `G20=NOT_FINALIZED`,
 `P0_RUN=0`, `GH_CORE_RUN=0`, `EVENT_REJOIN=0`, and `MANUSCRIPT_MODIFIED=NO`.
 
 ## Frozen authority summary
@@ -94,9 +96,13 @@ all_stage_receipts = PASS
 all_output_hash_closures = PASS
 G18 = PASS
 G19 = PASS
-G09 = NOT_EXECUTED
+S4_SCIENTIFIC_REVIEW = ACCEPT_WITH_LIMITATION
+S7 = KEPT_FIXED_OBJECT
+G09 = PASS
 G20 = NOT_FINALIZED
 ```
 
-No merge or tag was created. The branch is ready for human scientific review;
-the S4 robustness alert must remain explicit in any subsequent interpretation.
+No merge or tag was created. The branch is ready for the final supplemental
+package freeze and the separately authorized figure/manuscript update plan;
+the S4 robustness limitation must remain explicit in any subsequent
+interpretation.
