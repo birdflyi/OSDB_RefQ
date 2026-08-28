@@ -1,0 +1,27 @@
+{
+  "direction_preserved": true,
+  "edge_aggregation_rule": "sum one unit per retained fine-grained Reference record by ordered source/target membership pair",
+  "excluded_operators": [
+    "QQ^T",
+    "Q^TQ",
+    "K=X Phi X^T"
+  ],
+  "fine_grained_reference_records": 3747958,
+  "formalization": "Q=M^T R_P M",
+  "operator_order": "first_order_membership_induced_directed_quotient",
+  "quotient_eligible_records": 1586047,
+  "quotient_self_loop_policy": "preserve",
+  "refq_cross_project_weight": 138974,
+  "refq_directed_cross_project_edges": 9595,
+  "refq_directed_edges_including_self_loops": 9884,
+  "refq_edge_observed_nodes": 6505,
+  "refq_node_domain": 6506,
+  "refq_self_loops": 289,
+  "refq_weight_including_self_loops": 1586047,
+  "refq_zero_edge_seed_nodes": 1,
+  "retained_reference_records": 3747958,
+  "rq2_cross_project_self_loop_policy": "exclude",
+  "scanned_input_rows": 3748078,
+  "second_order_projection_executed": false,
+  "status": "PASS"
+}

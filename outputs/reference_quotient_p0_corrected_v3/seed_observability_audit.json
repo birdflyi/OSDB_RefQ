@@ -1,0 +1,14 @@
+{
+  "ambiguous_membership_count": 0,
+  "expanded_target_count": 6212,
+  "expanded_targets_are_source_complete": false,
+  "non_project_external_targets_enter_refqn": false,
+  "observation_design": "294_seed_project_sources_with_project_targets_expanded_from_observed_references",
+  "positive_out_degree_seeds": 262,
+  "seed_count": 294,
+  "status": "PASS",
+  "target_only_count": 6212,
+  "target_only_expanded_target_count": 6212,
+  "unresolved_membership_count": 475182,
+  "zero_out_degree_seeds": 32
+}

@@ -1,0 +1,5 @@
+metric,n,spearman_rho,p_value,design
+self_reference_ratio,291,-0.11817282564989658,0.04398181720895095,cross_sectional_2023
+external_reference_share,291,0.11817282564989658,0.04398181720895095,cross_sectional_2023
+non_project_reference_share,291,0.15735877529004005,0.007154577312033107,cross_sectional_2023
+comment_reference_density,291,0.1417469559448153,0.01552711617900563,cross_sectional_2023

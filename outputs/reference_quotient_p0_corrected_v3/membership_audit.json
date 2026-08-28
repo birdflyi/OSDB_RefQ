@@ -1,0 +1,31 @@
+{
+  "analysis_seed_count": 294,
+  "candidate_seed_count": 301,
+  "canonical_identity_policy": "when a project-mappable endpoint lacks a usable fine-grained ID, use its unique R_<repo_id> aggregate project node as the canonical identity",
+  "conflict_policy": "exclude every endpoint occurrence of globally conflicting artifact identities from Q",
+  "endpoint_counts": {
+    "source_admitted_reference_rows": 3747958,
+    "source_canonical_identity_fallback": 0,
+    "source_invalid_event_repo_reference_rows": 0,
+    "source_membership_conflict": 0,
+    "source_mismatch_after_admission": 0,
+    "source_missing_event_repo_reference_rows": 0,
+    "source_out_of_seed_reference_rows": 120,
+    "source_project_mappable": 3747958,
+    "source_seed_membership_mismatch": 0,
+    "target_canonical_identity_fallback": 285102,
+    "target_membership_conflict": 0,
+    "target_non_project": 1686729,
+    "target_project_mappable": 1586047,
+    "target_unresolved": 475182
+  },
+  "excluded_conflicting_entity_ids": [],
+  "formal_invariant": "forall retained v in V_P, exists! p in P: pi(v)=p; every retained M row has row-sum 1",
+  "maximum_memberships_per_entity": 1,
+  "maximum_memberships_per_retained_entity": 1,
+  "membership_conflict_entities": 0,
+  "membership_rule": "retained endpoints must have exactly one R_<repo_id> membership; missing/placeholder fine-grained IDs use the unique aggregate project node as canonical identity",
+  "retained_single_membership_entities": 1142161,
+  "status": "PASS",
+  "unique_project_mappable_entities": 1142161
+}
