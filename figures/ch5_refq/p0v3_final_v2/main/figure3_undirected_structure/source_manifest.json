@@ -1,0 +1,127 @@
+{
+  "S6_manifest_closure": "PASS",
+  "authority_roots": {
+    "corrected_p0_v3": "outputs/reference_quotient_p0_corrected_v3",
+    "corrected_supplemental_v2": "supplemental/reference_quotient_v2/outputs_p0v3"
+  },
+  "composition_display_policy_path": "docs/freeze/ch5_refq_p0v3_composition_table_display_policy_v1.md",
+  "display_only_transformations": [
+    "stable sorting for display",
+    "formatting frozen values",
+    "no scientific recomputation"
+  ],
+  "expected_key_values": [
+    "35",
+    "0.796922",
+    "32--37",
+    "42/50"
+  ],
+  "figure_id": "figure3_undirected_structure",
+  "figure_plan_path": "docs/freeze/ch5_refq_p0v3_final_figure_plan_v1.md",
+  "final_manuscript_sha256": "5c54bd725becc7ff7253ec023e83258749b1868e14a70d34722adcc1f421bc60",
+  "input_columns": {
+    "D:\\github_repo\\OSDB_RefQ\\outputs\\reference_quotient_p0_corrected_v3\\rq2c_undirected_view_summary.json": [],
+    "D:\\github_repo\\OSDB_RefQ\\supplemental\\reference_quotient_v2\\outputs_p0v3\\S3_observation_sensitivity\\observation_boundary_sensitivity.csv": [
+      "view",
+      "directed_edges",
+      "directed_weight",
+      "undirected_edges",
+      "operator_order",
+      "nodes",
+      "edge_observed_nodes",
+      "components",
+      "isolates",
+      "lcc_nodes",
+      "lcc_edges",
+      "lcc_coverage",
+      "average_clustering_lcc",
+      "transitivity_lcc",
+      "algorithmic_community_method",
+      "algorithmic_communities",
+      "modularity",
+      "brokerage_method",
+      "brokerage_sample_size",
+      "random_seed"
+    ],
+    "D:\\github_repo\\OSDB_RefQ\\supplemental\\reference_quotient_v2\\outputs_p0v3\\S4_community_stability\\louvain_stability_summary.json": [],
+    "D:\\github_repo\\OSDB_RefQ\\supplemental\\reference_quotient_v2\\outputs_p0v3\\S6_figure_ready\\community_size_distribution.csv": [
+      "community_id",
+      "community_size"
+    ],
+    "D:\\github_repo\\OSDB_RefQ\\supplemental\\reference_quotient_v2\\outputs_p0v3\\S6_figure_ready\\louvain_stability_plot.csv": [
+      "seed",
+      "community_count",
+      "modularity",
+      "ari_to_canonical",
+      "is_canonical_seed"
+    ],
+    "D:\\github_repo\\OSDB_RefQ\\supplemental\\reference_quotient_v2\\outputs_p0v3\\S6_figure_ready\\structural_summary.csv": [
+      "algorithmic_communities",
+      "algorithmic_community_method",
+      "average_clustering_lcc",
+      "brokerage_method",
+      "brokerage_sample_size",
+      "components",
+      "directed_cross_project_edges_full",
+      "directed_cross_project_edges_lcc_sensitivity",
+      "directed_cross_project_weight_full",
+      "directed_cross_project_weight_lcc_sensitivity",
+      "edge_observed_nodes",
+      "isolates",
+      "lcc_coverage",
+      "lcc_edges",
+      "lcc_nodes",
+      "modularity",
+      "nodes",
+      "operator_order",
+      "random_seed",
+      "transitivity_lcc",
+      "undirected_edges",
+      "view"
+    ]
+  },
+  "input_files": [
+    "D:\\github_repo\\OSDB_RefQ\\outputs\\reference_quotient_p0_corrected_v3\\rq2c_undirected_view_summary.json",
+    "D:\\github_repo\\OSDB_RefQ\\supplemental\\reference_quotient_v2\\outputs_p0v3\\S3_observation_sensitivity\\observation_boundary_sensitivity.csv",
+    "D:\\github_repo\\OSDB_RefQ\\supplemental\\reference_quotient_v2\\outputs_p0v3\\S4_community_stability\\louvain_stability_summary.json",
+    "D:\\github_repo\\OSDB_RefQ\\supplemental\\reference_quotient_v2\\outputs_p0v3\\S6_figure_ready\\community_size_distribution.csv",
+    "D:\\github_repo\\OSDB_RefQ\\supplemental\\reference_quotient_v2\\outputs_p0v3\\S6_figure_ready\\louvain_stability_plot.csv",
+    "D:\\github_repo\\OSDB_RefQ\\supplemental\\reference_quotient_v2\\outputs_p0v3\\S6_figure_ready\\structural_summary.csv"
+  ],
+  "input_row_counts": {
+    "D:\\github_repo\\OSDB_RefQ\\outputs\\reference_quotient_p0_corrected_v3\\rq2c_undirected_view_summary.json": null,
+    "D:\\github_repo\\OSDB_RefQ\\supplemental\\reference_quotient_v2\\outputs_p0v3\\S3_observation_sensitivity\\observation_boundary_sensitivity.csv": 3,
+    "D:\\github_repo\\OSDB_RefQ\\supplemental\\reference_quotient_v2\\outputs_p0v3\\S4_community_stability\\louvain_stability_summary.json": null,
+    "D:\\github_repo\\OSDB_RefQ\\supplemental\\reference_quotient_v2\\outputs_p0v3\\S6_figure_ready\\community_size_distribution.csv": 35,
+    "D:\\github_repo\\OSDB_RefQ\\supplemental\\reference_quotient_v2\\outputs_p0v3\\S6_figure_ready\\louvain_stability_plot.csv": 50,
+    "D:\\github_repo\\OSDB_RefQ\\supplemental\\reference_quotient_v2\\outputs_p0v3\\S6_figure_ready\\structural_summary.csv": 1
+  },
+  "input_sha256": {
+    "D:\\github_repo\\OSDB_RefQ\\outputs\\reference_quotient_p0_corrected_v3\\rq2c_undirected_view_summary.json": "489cc280b1f8d835032de7e06b9ed2acd85e97fab799476cfcbdffc844017446",
+    "D:\\github_repo\\OSDB_RefQ\\supplemental\\reference_quotient_v2\\outputs_p0v3\\S3_observation_sensitivity\\observation_boundary_sensitivity.csv": "1c59e5e1fd0e402df84595bdd6711d14464cf62d89fd9db957951eecc2f7e7af",
+    "D:\\github_repo\\OSDB_RefQ\\supplemental\\reference_quotient_v2\\outputs_p0v3\\S4_community_stability\\louvain_stability_summary.json": "37594b91e0c25cbfc5b31b0c9036f4e0bdddc324e724e5a2ca4398cf7e307421",
+    "D:\\github_repo\\OSDB_RefQ\\supplemental\\reference_quotient_v2\\outputs_p0v3\\S6_figure_ready\\community_size_distribution.csv": "01d00d4a225cfea9600f5553dcc110c1c677394dcc200073e699bab6b4abc60b",
+    "D:\\github_repo\\OSDB_RefQ\\supplemental\\reference_quotient_v2\\outputs_p0v3\\S6_figure_ready\\louvain_stability_plot.csv": "dce84c2c821083b914edf659ea06d71cce236fdac6f5c24a637a2986526d4760",
+    "D:\\github_repo\\OSDB_RefQ\\supplemental\\reference_quotient_v2\\outputs_p0v3\\S6_figure_ready\\structural_summary.csv": "e49bcd44c784834bf3d3482f4cc3debd625cbefcb8554cef1c9595d2435a3c7f"
+  },
+  "panel_contract": "Structure summary; observation-boundary sensitivity; seed sensitivity.",
+  "pdf_sha256": "e41e82ce06dea186a7c505aac4e2ff23bfb64ec7e7529cf2a4be5f34408ecfff",
+  "png_sha256": "2c19e26d13ea3cfd2bf9b859a670097b4512b44af71fce5b915a9e594986a4cb",
+  "render_runtime": {
+    "backend": "agg",
+    "matplotlib": "3.8.2",
+    "numpy": "1.24.2",
+    "pandas": "1.5.3",
+    "platform": "Windows-10-10.0.26200-SP0",
+    "python": "3.9.13",
+    "pythonhashseed": "0"
+  },
+  "render_script_sha256": "50b81ac6fd146fc5510a45b7921a99fea726aaee45f7985d92a5f0c22302d02a",
+  "renderer_contract_assertions": {
+    "F3_canonical_display_index": 0,
+    "F3_canonical_highlight_resolved_by_seed": "YES",
+    "F3_canonical_seed": 20260731
+  },
+  "status": "PASS",
+  "svg_sha256": "fc6e3446d0ed92b89597d619db2fdecb47971c014a063f513d72170a5dfb64c6"
+}
