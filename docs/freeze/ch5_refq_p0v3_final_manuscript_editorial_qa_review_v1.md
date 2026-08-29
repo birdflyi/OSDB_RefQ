@@ -76,4 +76,5 @@ OLD, MIGRATED_V1, QA and RECONCILED manuscript hashes remained unchanged. P0-v3,
 
 `P0V3_FINAL_MANUSCRIPT_EDITORIAL_QA_PASS_READY_FOR_FIGURE_RENDERING`
 
-`FINAL_MANUSCRIPT_EDITORIAL_QA_COMMIT` and `push_status` are reported after the docs-only commit is created.
+`FINAL_MANUSCRIPT_EDITORIAL_QA_COMMIT = d4ad6b633c95eb2dcdea165c48ccc3cfd68d9a3f`
+`push_status = PASS`
