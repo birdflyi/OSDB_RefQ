@@ -1,0 +1,557 @@
+diff --git "a/C:\\Users\\10651\\Documents\\trae_projects\\thesis\\ch5_analysis_reference_coupling_for_osdbms\\\347\254\2545\347\253\240-paper1_content_v1.4.3.1_reference_quotient_citation_precision_clean.md" "b/C:\\Users\\10651\\Documents\\trae_projects\\thesis\\ch5_analysis_reference_coupling_for_osdbms\\\347\254\2545\347\253\240-paper1_content_v1.4.3.1_reference_quotient_citation_precision_clean_p0v3_reconciled.md"
+index f932e54..cba41b4 100644
+--- "a/C:\\Users\\10651\\Documents\\trae_projects\\thesis\\ch5_analysis_reference_coupling_for_osdbms\\\347\254\2545\347\253\240-paper1_content_v1.4.3.1_reference_quotient_citation_precision_clean.md"
++++ "b/C:\\Users\\10651\\Documents\\trae_projects\\thesis\\ch5_analysis_reference_coupling_for_osdbms\\\347\254\2545\347\253\240-paper1_content_v1.4.3.1_reference_quotient_citation_precision_clean_p0v3_reconciled.md"
+@@ -5,9 +5,9 @@
+ 
+ 本文从可观测的细粒度 Reference evidence universe 出发，并将其与可进入项目级构造的 quotient-eligible、project-mappable 子域分开。对于后者，本文依据 artifact-to-project membership mapping 形成 membership partition，并通过 membership-induced graph coarsening 将工件级有向关系聚合为 weighted directed quotient graph。本文将所得高层关系构念定义为 paper-specific Reference Quotient（RefQ），其网络表示称为 Reference Quotient Network（RefQN）。本文不是提出新的 quotient-graph 或 graph-coarsening algorithm，而是在开源 DBMS 场景中对项目级 Reference aggregation 进行显式语义形式化、边界化实例化和实证分析。RefQ 是可追溯的一阶项目级结构关系，不等同于 package/code dependency、task resolution 或 causal influence。
+ 
+-本文以 GitHub 平台 294 个开源 DBMS 项目作为征引侧种子样本，基于 GH_CoRE（GitHub Collaboration Relation Extraction）处理链抽取、校验并组织协作引用关系。在观测窗口的 GitHub 协作记录中，本文识别并保留 3,748,078 条有效 Reference records；Project-level RefQN 的完整节点域为 6,515 个项目，其中 6,514 个节点有边观测，形成 9,894 条含自环的有向 RefQ edges（其中 289 条为自环、9,605 条为跨项目边）。其无向派生视图包含 9,557 条边，最大连通子图包含 6,376 个节点和 9,472 条无向边。
++本文以 GitHub 平台 294 个开源 DBMS 项目作为征引侧种子样本，基于 GH_CoRE（GitHub Collaboration Relation Extraction）处理链抽取、校验并组织协作引用关系。观测窗口共扫描 3,748,078 条输入 Reference records，经 source-admission 后保留 3,747,958 条 admitted source-observation records，其中 1,586,047 条具有可唯一映射到项目的 target endpoint，因而满足 quotient eligibility 并进入 Project-level RefQ aggregation；Project-level RefQN 的完整节点域为 6,506 个项目，其中 6,505 个节点有边观测，形成 9,884 条含自环的有向 RefQ edges（其中 289 条为自环、9,595 条为跨项目边）。其无向派生视图包含 9,547 条边，最大连通子图包含 6,367 个节点和 9,462 条无向边。
+ 
+-结果显示，开源 DBMS 项目的 Reference behavior 具有讨论场景和外部资源指向特征：IssueComment 是主要征引载体，GitHub external links 是主要被引对象，项目内部与外部 Reference evidence 并存。Project-level RefQN 的 source/target role 输出显示主动引用范围和聚合强度具有明显右偏，target-side weight 也集中于少数项目；无向视图的局部聚集、模块度和算法社区结果提供了结构性观察。就 RQ3 而言，Reference composition 仅呈现 descriptive differences，在两种 label mode 下均无 FDR-supported group difference；selected RefQ role/local-structure/project-age features 仅在 include_mixed 下达到阈值，整体结果表现为 local and label-mode sensitive。上述结果只应理解为 GitHub 可观测 Reference evidence、GH_CoRE 抽取规则和 seed-centered observed RefQN 边界内的经验观察。
++结果显示，开源 DBMS 项目的 Reference behavior 具有讨论场景和外部资源指向特征：IssueComment 是主要征引载体，GitHub external links 是主要被引对象，项目内部与外部 Reference evidence 并存。Project-level RefQN 的 source/target role 输出显示主动引用范围和聚合强度具有明显右偏，target-side weight 也集中于少数项目；无向视图的局部聚集、模块度和 Louvain 算法社区结果提供了结构性观察。就 RQ3 而言，Reference composition 仅呈现 descriptive differences，在两种 label mode 下均无 FDR-supported group difference；selected RefQ role/local-structure/project-age features 仅在 include_mixed 下达到阈值，整体结果表现为 local and label-mode sensitive。上述结果只应理解为 GitHub 可观测 Reference evidence、GH_CoRE 抽取规则和 seed-centered observed RefQN 边界内的经验观察。
+ 
+ 本文的贡献包括：第一，将已有 project-level cross-reference aggregation 中通常隐含的 project mapping 与 aggregation assumptions 显式形式化为 semantic membership quotient / relation-construction contract，并定义 paper-specific RefQ/RefQN；第二，在 DBMS vertical ecosystem 中区分 observable fine-grained Reference evidence universe 与 quotient-eligible project-mappable subset，明确 non-project evidence、self-loop、membership resolution、seed-centered source observation 和 expanded-target asymmetry；第三，基于这一 observation-aware boundary 组织 RQ1 的 evidence composition、RQ2a 的 source role、RQ2b 的 target role、RQ2c 的 undirected structural view 和 RQ3 的 bounded subdomain comparison，形成 role-aware empirical characterization；第四，将 RefQ 定位为可追溯、较弱语义、可复用的 structural evidence layer，为软件生态研究、引用感知工具和需要更强语义验证的后续关系分析提供接口。
+ 
+@@ -98,8 +98,9 @@ DBMS 项目涉及查询处理、事务管理、并发控制、存储布局、日
+ 
+ 本节阐述本文的方法框架，包括数据来源与样本筛选、Reference relation 抽取与实体校验、Project-level RefQN 构建、指标设计与统计分析。为刻画开源 DBMS 的社会技术 Reference evidence，本文采用 GH_CoRE(GitHub_Collaboration_Relation_Extraction) 作为内部协作信息抽取处理链，并基于 artifact-to-project membership mapping 定义 Reference Quotient 的构造规则。
+ 
+-为保证经验分析的可复核性，本文同时明确数据口径、处理链边界和 quotient construction 规则。本文区分四个相互关联但不可混用的口径。第一，**analysis seed projects** 指 294 个满足领域代表性、活跃度和许可证筛选条件的开源 DBMS 项目，它们是本文 GitHub 日志爬取和 Reference source 观测对象。第二，**有效 Reference records** 指从上述 294 个 seed projects 的协作日志中抽取并校验得到的 3,748,078 条 Reference records，它们用于 Reference entity distribution、comment reference density、自引用和 external-reference orientation 等描述性分析。第三，**Project-level RefQN** 指将 project-mappable Reference endpoints 依据 artifact-to-project membership coarsening 到 Repo/project 粒度后形成的 weighted directed quotient network；完整节点域包含 6,515 个项目节点，其中 6,514 个节点有边观测；完整有向表包含 9,894 条边（含 289 条 self-loops），跨项目视图包含 9,605 条边。第四，**最大连通子图**指 Project-level RefQN 的无向派生结构视图中用于聚类系数和社区检测等需要连通性假设的网络子图，包含 6,376 个节点和 9,472 条无向去重边。
+-因此，本文后续统计并非只有单一“294 节点项目网络”口径。第 4.1 节的 Reference behavior 与协作指标主要以 294 个 seed projects 及 3,748,078 条有效 Reference records 为基础；第 4.2 节的 source/target role 和结构分析则以 Project-level RefQN 为对象，其中聚类系数和社区检测基于其无向结构视图的最大连通子图（6,376 个节点、9,472 条边）。更广泛的上游 OSDB 数据基础仅用于项目识别、关系抽取和扩展边界说明，不直接作为本文的实验样本。
++为保证经验分析的可复核性，本文同时明确数据口径、处理链边界和 quotient construction 规则。本文区分四个相互关联但不可混用的口径。第一，**analysis seed projects** 指 294 个满足领域代表性、活跃度和许可证筛选条件的开源 DBMS 项目，它们是本文 GitHub 日志爬取和 Reference source 观测对象。第二，**scanned input Reference records** 指观测窗口中扫描到的 3,748,078 条输入记录；经过 source-admission 后得到 3,747,958 条 admitted source-observation records，用于 Reference entity distribution、comment reference density、自引用和 external-reference orientation 等描述性分析。第三，**quotient-eligible records** 为其中可唯一映射到项目端点的 1,586,047 条记录，聚合后形成 Project-level RefQN；该网络完整节点域包含 6,506 个项目节点，其中 6,505 个节点有边观测。完整有向表包含 9,884 条边（含 289 条 self-loops），跨项目视图包含 9,595 条边。第四，**最大连通子图**指 Project-level RefQN 的无向派生结构视图中用于聚类系数和 Louvain 算法社区检测等需要连通性假设的网络子图，包含 6,367 个节点和 9,462 条无向去重边。
++
++因此，第 4.1 节的 Reference behavior 与协作指标主要以 294 个 seed projects 及 3,747,958 条 admitted source-observation records 为基础；第 4.2 节的 source/target role 和结构分析则以 Project-level RefQN 为对象，其中聚类系数和 Louvain 算法社区检测基于其无向结构视图的最大连通子图。更广泛的上游 OSDB 数据基础仅用于项目识别、关系抽取和扩展边界说明，不直接作为本文的实验样本。
+ ### 3.1 数据来源与样本筛选
+ 
+ #### 3.1.1 目标项目选择与数据口径
+@@ -110,7 +111,9 @@ DBMS 项目涉及查询处理、事务管理、并发控制、存储布局、日
+ 4. **许可证合规性**：优先纳入采用 MIT、Apache 2.0、BSD、GPL、AGPL 等主流开源许可证的公开项目；
+ 5. **可观测性要求**：项目需要具有可访问的 GitHub 协作日志、Issue/PR 记录、提交记录或可解析的引用行为。
+ 
+-最终，本文筛选得到 294 个代表性 DBMS 项目作为征引侧种子样本，并在这些项目的 2023 年 GitHub 协作日志中识别 3,748,078 条有效 Reference records。需要强调的是，294 表示被筛选并实际爬取日志的 DBMS 项目数量，不表示拓扑分析中的全部网络节点数量。对于可解析为 GitHub 仓库的被引对象，本文进一步通过 membership-induced graph coarsening 聚合为 Repo/project 粒度节点，从而形成包含 6,515 个节点、其中 6,514 个节点有边观测的 Project-level RefQN；完整有向表包含 9,894 条边，跨项目表包含 9,605 条边。更广泛的上游 OSDB 数据基础用于项目识别、关系抽取和后续扩展，而不直接作为本文实验样本。
++最终，本文筛选得到 294 个代表性 DBMS 项目作为征引侧种子样本，并在这些项目的 2023 年 GitHub 协作日志中扫描 3,748,078 条输入 Reference records；经 source-admission 后保留 3,747,958 条 admitted source-observation records，其中 1,586,047 条具有可唯一映射到项目的 target endpoint，因而满足 quotient eligibility 并进入 Project-level RefQ aggregation。需要强调的是，294 表示被筛选并实际爬取日志的项目数量，不表示拓扑分析中的全部网络节点数量。对于可解析为 GitHub 仓库的被引对象，本文通过 membership-induced graph coarsening 聚合为 Repo/project 粒度节点，从而形成包含 6,506 个节点、其中 6,505 个节点有边观测的 Project-level RefQN；完整有向表包含 9,884 条边，跨项目表包含 9,595 条边。更广泛的上游 OSDB 数据基础用于项目识别、关系抽取和后续扩展，而不直接作为本文实验样本。
++
++经 source-admission 后保留 3,747,958 条 Reference records，其中 1,586,047 条具有可唯一映射到项目的 target endpoint，因而满足 quotient eligibility 并进入 Project-level RefQ aggregation。
+ 
+ #### 3.1.2 数据获取与清洗
+ 本文的数据基础来自已采集的 GitHub 协作日志，并在对象可达性核验与属性补全阶段结合 GitHub API（包括 GraphQL 与 REST 接口）进行补充验证。纳入的协作日志字段包括：
+@@ -171,9 +174,9 @@ DBMS 项目涉及查询处理、事务管理、并发控制、存储布局、日
+ |---|---|---|---|---|---|---|
+ | 上游 OSDB 数据基础 | broader source dataset; not an analysis denominator | 上游 OSDB 数据基础与 GH_CoRE 处理输出，用于项目识别、关系抽取和扩展边界说明 | 提供项目识别背景、抽取上下文和扩展边界 | RQ1/RQ2a/RQ2b/RQ2c/RQ3 的采样背景 | 否 | 不等同于本文实验样本 |
+ | 种子 DBMS 项目样本 | 294 个项目 | 基于领域、许可证和活跃度条件筛选，并纳入 2023 年协作日志观测窗口 | 征引侧样本、项目级描述统计、自引率和子领域比较 | RQ1/RQ2a/RQ3 | 是 | 仅表示征引侧种子，不等同于网络全部节点 |
+-| 有效 Reference records | 3,748,078 条 | 从 294 个种子项目协作日志中经 GH_CoRE 抽取、校验和标准化得到 | 引用类型分布、社区互动强度、external-reference orientation 和部分子领域比较 | RQ1；部分 RQ3 | 是 | 限于 GitHub 可观测显式或半结构化 Reference，不覆盖全部隐含协作语义 |
+-| Project-level RefQN | 6,515 个节点域；6,514 个 edge-observed nodes；9,894 条有向边（含 289 条自环）；9,605 条跨项目边 | 将 project-mappable Reference endpoints 按 artifact-to-project membership coarsening 为 weighted directed quotient network | source-role（含 seed-to-seed / seed-to-expanded）、target-role、项目级 RefQ 有向结构 | RQ2a/RQ2b | 是 | 包含种子项目及被引扩展节点，不是仅含 294 节点的诱导子图；source 完整观测仅限 294 个种子项目 |
+-| RefQN 最大连通子图 | 6,376 个节点；9,472 条无向去重边；9,520 条有向敏感性边 | 从 Project-level RefQN 的无向派生结构视图中提取用于聚类系数、社区检测和结构位置分析的连通子图 | 聚类、社区检测和 structural brokerage candidate 分析 | RQ2c | 是 | 主文以无向去重主口径解释，有向边仅作敏感性核查；无向视图是 \(U(G_{\mathrm{RefQ}})\)，不是共享引用投影 |
++| Scanned / admitted Reference records | 3,748,078 scanned；3,747,958 admitted | 从 294 个种子项目协作日志中经 GH_CoRE 抽取、source-admission、校验和标准化得到 | 引用类型分布、协作互动强度、external-reference orientation 和部分子领域比较 | RQ1；部分 RQ3 | 是 | scanned input 与 admitted observation 分开报告；限于 GitHub 可观测显式或半结构化 Reference |
++| Project-level RefQN | 6,506 个节点域；6,505 个 edge-observed nodes；9,884 条有向边（含 289 条自环）；9,595 条跨项目边 | 将 1,586,047 条 project-mappable Reference records 按 artifact-to-project membership coarsening 为 weighted directed quotient network | source-role（含 seed-to-seed / seed-to-expanded）、target-role、项目级 RefQ 有向结构 | RQ2a/RQ2b | 是 | 包含种子项目及被引扩展节点，不是仅含 294 节点的诱导子图；source 完整观测仅限 294 个种子项目 |
++| RefQN 最大连通子图 | 6,367 个节点；9,462 条无向去重边；9,510 条有向敏感性边 | 从 Project-level RefQN 的无向派生结构视图中提取用于聚类系数、Louvain 算法社区检测和结构位置分析的连通子图 | 聚类、Louvain 算法社区检测和 structural brokerage candidate 分析 | RQ2c | 是 | 主文以无向去重主口径解释，有向边仅作敏感性核查；无向视图是一阶无向视图，不是共享引用投影 |
+ | 子领域标签与项目级指标 | 见正文 4.3 节和表 4.7、表 4.8 | 基于种子项目子领域标签、引用类型、项目级网络特征和项目年龄关联变量整理 | 子领域差异、项目级网络特征和横截面年龄关联比较 | RQ3 | 是 | 混合标签、多标签项目、样本规模差异和多重检验影响解释 |
+ | 附录 A reproducibility and boundary record | 见附录 A.1-A.4 | 基于 reproducibility identity、membership/observation records、analysis-to-RQ mapping 和 statistical/semantic boundaries 整理 | 支撑可追溯性与解释边界 | 支撑 RQ1/RQ2a/RQ2b/RQ2c/RQ3 | 补充 | 不改变主文 reported results |
+ 
+@@ -186,10 +189,10 @@ DBMS 项目涉及查询处理、事务管理、并发控制、存储布局、日
+    - **征引实体（Referencing Entity）**：主动发起引用的行为载体，包括IssueComment、Push、PullRequest、Issue等，用于分析不同协作场景的引用发起特征；
+    - **被引实体（Referenced Entity）**：被引用的资源对象，除了征引实体的类型外，还包括GitHub_Service_External_Links、PullRequest、Actor、Commit、Issue等，用于刻画开发者在协作语境中的外部资源偏好。
+ 
+-2. **社区互动强度维度**：
++2. **协作互动强度维度**：
+    - **自引率（Self-Reference Ratio）**：项目自引用次数占总引用数的比例（自引率 = 项目自引用次数 / 项目总引用次数 × 100%），度量项目内部 Reference context 的集中程度；
+-   - **活跃议题数（Active Issues/PRs）**：观测期内至少包含一条评论或代码提交的Issue 与 PR总数，反映社区规模与问题复杂度；
+-   - **新增议评率（New Comment Rate）**：评论总数与活跃议题数的比值（新增议评率 = 评论总数 / 活跃议题数），衡量社区讨论的参与密度与深度；
++   - **活跃议题数（Active Issues/PRs）**：观测期内至少包含一条评论或代码提交的Issue 与 PR总数，反映协作规模与问题复杂度；
++   - **新增议评率（New Comment Rate）**：评论总数与活跃议题数的比值（新增议评率 = 评论总数 / 活跃议题数），衡量讨论参与密度与深度；
+    - **新增评引率 / 评论引用密度（New Reference Rate / Comment Reference Density）**：引用总数与评论总数的比值（新增评引率 = 引用总数 / 评论总数），度量评论文本中的 Reference intensity。
+ 
+ 3. **External-reference orientation 维度**：
+@@ -366,16 +369,16 @@ G_{\mathrm{RefQ}}=(P,E_{\mathrm{RefQ}},Q).
+ 
+ 自环在一般 RefQ 定义中具有明确含义：若 \(Q_{aa}>0\)，表示项目 \(a\) 内部的细粒度实体之间存在保留的 Reference evidence。self-reference behavior 可以在 RQ1 中保留并单独统计；cross-project topology 可以按预先规定的分析配置移除 self-loop；是否删除 self-loop 是分析视图选择，不改变 RefQ 的一般定义。
+ 
+-该 quotient construction 确保本文将“294 个 analysis seed projects”“3,748,078 条有效 Reference records”“6,515 个 Project-level RefQN 节点域”“6,514 个 edge-observed 节点”和“6,376 个最大连通子图节点”区分开来。完整 Project-level RefQN 的有向表包含 9,894 条边，其中 289 条为 self-loops，跨项目边表包含 9,605 条边；无向派生视图包含 9,557 条边，LCC 主口径包含 6,376 个节点和 9,472 条边，LCC directed sensitivity 口径包含 9,520 条边。RQ2c 的模块度使用当前分析输出中的值，并明确与 RefQ matrix \(Q=M^\top R_PM\) 区分。
++该 quotient construction 确保本文将“294 个 analysis seed projects”“3,747,958 条 admitted source-observation Reference records”“6,506 个 Project-level RefQN 节点域”“6,505 个 edge-observed 节点”和“6,367 个最大连通子图节点”区分开来。完整 Project-level RefQN 的有向表包含 9,884 条边，其中 289 条为 self-loops，跨项目边表包含 9,595 条边；无向派生视图包含 9,547 条边，LCC 主口径包含 6,367 个节点和 9,462 条边，LCC directed sensitivity 口径包含 9,510 条边。RQ2c 的模块度使用当前分析输出中的值，并明确与 RefQ matrix \(Q=M^\top R_PM\) 区分。
+ 
+ ## 4 结果
+ 
+-本节按 RQ1、RQ2a、RQ2b、RQ2c 和 RQ3 的结构组织实证结果。RQ1 以种子 DBMS 项目的有效直接 Reference 记录为基础，分析征引实体、被引实体、自引用、协作指标和 external-reference orientation，而不是扩展网络全部节点；RQ2a 聚焦征引侧 source-role，即 294 个分析种子项目的 out-degree、out-strength、主动引用范围和 seed-to-seed / seed-to-expanded RefQ relations 差异；RQ2b 聚焦被引侧 target-role，即全部可识别目标项目的 in-degree、in-strength、覆盖率和集中结构；RQ2c 聚焦由直接有向引用关系派生出的无向结构视图，用于连通性、局部聚集、社区结构和 structural brokerage 候选分析，且不构建 shared-reference projection；RQ3 以种子项目的子领域标签、引用类型、项目级网络特征和项目年龄关联变量为基础，重点考察局部性与非均质性差异。
++本节按 RQ1、RQ2a、RQ2b、RQ2c 和 RQ3 的结构组织实证结果。RQ1 以种子 DBMS 项目的有效直接 Reference 记录为基础，分析征引实体、被引实体、自引用、协作指标和 external-reference orientation，而不是扩展网络全部节点；RQ2a 聚焦征引侧 source-role，即 294 个分析种子项目的 out-degree、out-strength、主动引用范围和 seed-to-seed / seed-to-expanded RefQ relations 差异；RQ2b 聚焦被引侧 target-role，即全部可识别目标项目的 in-degree、in-strength、覆盖率和集中结构；RQ2c 聚焦由直接有向引用关系派生出的无向结构视图，用于连通性、局部聚集、Louvain 算法社区结构和 structural brokerage 候选分析，且不构建 shared-reference projection；RQ3 以种子项目的子领域标签、引用类型、项目级网络特征和项目年龄关联变量为基础，重点考察局部性与非均质性差异。
+ 
+ ### 4.1 RQ1：细粒度 Reference behavior、协作互动与外部 Reference 指向
+ 
+ #### 4.1.1 引用类型分布特征与 Reference evidence composition
+-基于 294 个种子 DBMS 项目的 GitHub 协作日志，本文共识别 3,748,078 条有效 Reference records。本节从征引实体、被引实体与自引用比例三个维度考察 fine-grained Reference behavior：征引端刻画 Reference 从哪些协作场景发起，被引端刻画 Reference 指向哪些对象，自引用则刻画项目内部 Reference 与外部 Reference 之间的证据构成。总体来看，DBMS Reference evidence 同时表现为讨论驱动、外部资源指向和项目间比例差异。表 4.1 与表 4.2 报告本文数据口径下的全局计数和占比。
++基于 294 个种子 DBMS 项目的 GitHub 协作日志，本文在 source-admission 后保留 3,747,958 条 admitted source-observation Reference records。本节从征引实体、被引实体与自引用比例三个维度考察 fine-grained Reference behavior：征引端刻画 Reference 从哪些协作场景发起，被引端刻画 Reference 指向哪些对象，自引用则刻画项目内部 Reference 与外部 Reference 之间的证据构成。总体来看，DBMS Reference evidence 同时表现为讨论驱动、外部资源指向和项目间比例差异。表 4.1 与表 4.2 报告 admitted-record universe 下的紧凑全局分布。
+ 
+ 1. **征引实体分布：协作讨论驱动的引用来源**
+ 
+@@ -384,23 +387,20 @@ G_{\mathrm{RefQ}}=(P,E_{\mathrm{RefQ}},Q).
+ **表 4.1 征引实体类型分布统计**
+ 
+ | 征引实体类型 | 引用次数 | 占比（%） |
+-|------------|---------:|----------:|
+-| IssueComment | 1,816,751 | 48.47 |
+-| Push | 1,166,027 | 31.11 |
+-| PullRequest | 335,538 | 8.95 |
+-| Issue | 168,892 | 4.51 |
+-| 其他已导出类型 | 260,870 | 6.96 |
+-| 合计 | 3,748,078 | 100.00 |
+-
+-表中占比为基于 3,748,078 条有效引用记录计算的 global share；“其他已导出类型”是对当前 entity distribution 中未在表内单列类型的聚合。该表不追加未在当前实体输出中单列的项目级离散度。
+-
+-表 4.1 表明，IssueComment 是最主要的征引载体，占全部有效引用记录的 48.47%。这说明，在开源 DBMS 项目中，Reference records 大量出现在问题讨论、方案澄清和维护沟通场景。Push 事件占 31.11%，反映出代码库更新过程也承载了相当比例的 Reference evidence。PullRequest 与 Issue 分别占 8.95% 和 4.51%，体现了功能开发、代码审查和问题追踪过程中的可观测上下文关联。该表是全局分布，不将其解释为与通用 OSS 的总体比较。
++|---|---:|---:|
++| IssueComment | 1,816,696 | 48.47 |
++| Push | 1,165,990 | 31.11 |
++| PullRequest | 335,530 | 8.95 |
++| Issue | 168,876 | 4.51 |
++| 其他已导出类型 | 260,866 | 6.96 |
++| 合计 | 3,747,958 | 100.00 |
++
++表中占比基于 3,747,958 条 admitted source-observation records 计算；“其他已导出类型”是当前完整事件分布中未在表内单列类型的显示聚合。表 4.1 表明，IssueComment 是最主要的征引载体，占 48.47%；Push 占 31.11%，PullRequest 与 Issue 分别占 8.95% 和 4.51%。这些是 observed global shares，不将其解释为任务解决、讨论质量或组织机制。
+ **结果要点**：
+ 
+-- **讨论驱动的 Reference evidence**：IssueComment 以 48.47% 的全局占比成为最主要征引载体，说明 DBMS 项目中的 Reference behavior 大量出现在问题讨论、方案澄清和维护沟通中。这一判断由 IssueComment 的 1,816,751 条引用记录支持。
+-- **Push 场景中的 Reference records**：Push 事件占 31.11%，说明代码库更新和自动化协作过程也承载了相当比例的可观测 Reference evidence。这一判断由 1,166,027 条 Push 引用记录支持，不解释为超出可观测记录的机制过程。
+-- **Issue/PR 场景中的 Reference 关联**：PullRequest 与 Issue 分别占 8.95% 和 4.51%，说明功能开发、代码审查和问题追踪是跨工件 Reference 关联的重要可观测场景。PullRequest 为 335,538 条，Issue 为 168,892 条；该结论仅作描述性解释。
+-
++- **讨论驱动的 Reference evidence**：IssueComment 以 48.47% 的全局占比成为最主要征引载体，说明 DBMS 项目中的 Reference behavior 大量出现在问题讨论、方案澄清和维护沟通中。这一判断由 1,816,696 条 IssueComment 引用记录支持。
++- **Push 场景中的 Reference records**：Push 事件占 31.11%，说明代码库更新和自动化协作过程也承载了相当比例的可观测 Reference evidence。这一判断由 1,165,990 条 Push 引用记录支持，不解释为超出可观测记录的机制过程。
++- **Issue/PR 场景中的 Reference 关联**：PullRequest 与 Issue 分别占 8.95% 和 4.51%，说明功能开发、代码审查和问题追踪是跨工件 Reference 关联的重要可观测场景；对应计数为 335,530 和 168,876。
+ 
+ 2. **被引实体分布：生态资源与完整变更单元的引用对象**
+ 
+@@ -409,41 +409,40 @@ G_{\mathrm{RefQ}}=(P,E_{\mathrm{RefQ}},Q).
+ **表 4.2 被引实体类型分布统计**
+ 
+ | 被引实体类型 | 引用次数 | 占比（%） |
+-|------------|---------:|----------:|
+-| GitHub_Service_External_Links | 1,629,357 | 43.47 |
+-| PullRequest | 672,019 | 17.93 |
+-| Actor | 475,663 | 12.69 |
+-| Issue | 281,662 | 7.51 |
+-| Commit | 255,013 | 6.80 |
+-| 其他已导出类型 | 434,364 | 11.59 |
+-| 合计 | 3,748,078 | 100.00 |
+-
+-本文采用 fine-grained 实体类型口径。表 4.2 表明，GitHub_Service_External_Links 占比最高，为 43.47%，说明 DBMS 项目在协作过程中频繁引用外部服务、文档、规范、讨论页面或其他生态资源。PullRequest 占 17.93%，Commit 占 6.80%；Actor 占 12.69%，Issue 占 7.51%，共同说明被引对象由外部资源、完整变更单元、社会实体和具体协作工件构成。该表只报告 global distribution，不把被引类型占比提升为依赖或采用结论。
++|---|---:|---:|
++| GitHub_Service_External_Links | 1,629,327 | 43.47 |
++| PullRequest | 671,986 | 17.93 |
++| Actor | 475,651 | 12.69 |
++| Issue | 281,648 | 7.51 |
++| Commit | 255,009 | 6.80 |
++| 其他已导出类型 | 434,337 | 11.59 |
++| 合计 | 3,747,958 | 100.00 |
++
++表 4.2 表明，GitHub_Service_External_Links 占 43.47%，PullRequest 占 17.93%，Commit 占 6.80%；Actor 占 12.69%，Issue 占 7.51%。这些频率仅描述当前 admitted-record universe 中的 observed target distribution，不提升为依赖、采用或项目重要性结论。
+ **结果要点**：
+ 
+-- **外部资源指向**：GitHub_Service_External_Links 占 43.47%，说明外部服务、文档、规范和生态资源是 DBMS Reference evidence 中的重要被引对象。External Links 为 1,629,357 条；该比例不直接测量生态依赖，当前结果采用 fine-grained entity-type 口径。
+-- **被引对象频率差异**：在当前被引实体统计中，PullRequest 占 17.93%，Commit 占 6.80%；该差异是 observed target frequency 的描述，不推断开发者偏好或行为机制。PullRequest 为 672,019 条，Commit 为 255,013 条。
+-- **社会实体进入 Reference 对象集合**：Actor 占 12.69%，说明人员或组织实体也是 Reference evidence 中的重要对象。Actor 为 475,663 条；这一观察仅说明社会实体进入引用对象集合，不推断具体协作影响。
+-- **复合 Reference 对象结构**：External Links、PullRequest、Actor、Issue、Commit 和 Other 共同构成被引端结构，说明 DBMS Reference objects 不是单一技术依赖类型。六类实体合计覆盖 3,748,078 条有效引用记录；该结论限定在本文 fine-grained 实体分类和 GitHub 可观测引用范围内。
+-
++- **外部资源指向**：GitHub_Service_External_Links 占 43.47%，说明外部服务、文档、规范和生态资源是 DBMS Reference evidence 中的重要被引对象；计数为 1,629,327 条。
++- **被引对象频率差异**：PullRequest 占 17.93%，Commit 占 6.80%；对应计数为 671,986 和 255,009。该差异是 observed target frequency 的描述，不推断开发者偏好或行为机制。
++- **社会实体进入 Reference 对象集合**：Actor 占 12.69%，计数为 475,651，说明人员或组织实体进入了 Reference evidence 对象集合，但不推断具体协作影响。
++- **复合 Reference 对象结构**：External Links、PullRequest、Actor、Issue、Commit 和 Other 共同构成被引端结构，说明 DBMS Reference objects 不是单一技术依赖类型；六类实体合计覆盖 3,747,958 条 admitted records。
+ 
+ 3. **自引用行为：内部与外部 Reference evidence 的比例分化**
+ 
+-自引率表示项目内部 Reference records 占该项目全部可观测 Reference records 的比例，用于描述不同项目在内部与外部 Reference evidence 构成上的差异。当前 294 个种子 DBMS 项目的项目级自引率均值为 41.68%，中位数为 39.37%，标准差为 23.90%；25% 分位数为 25.63%，75% 分位数为 58.45%。这一分布只说明项目间 Reference evidence 构成存在差异，不测量更强的知识过程、组织属性或能力构念。
++自引率表示项目内部 Reference records 占该项目全部可观测 Reference records 的比例，用于描述不同项目在内部与外部 Reference evidence 构成上的差异。当前 294 个种子 DBMS 项目的项目级自引率均值为 41.82%，中位数为 39.47%，标准差为 23.89%；25% 分位数为 25.75%，75% 分位数为 59.06%。这一分布只说明项目间 Reference evidence 构成存在差异，不测量更强的知识过程、组织属性或能力构念。
+ 
+-从极端项目看，自引率高于 80% 的项目占 7.48%。例如 WiredTiger 的自引率为 84.08%（100,190 条引用中 84,239 条为自引），可作为内部 Reference 占比较高的项目案例。自引率低于 20% 的项目占 19.39%，例如 SSDB 与 GreatSQL 在本文统计中的自引率均为 0.00%，可作为外部 Reference 占比较高的项目案例。H2 在本文统计中的自引率为 39.83%，不属于高自引或低自引极端项目，因此不作为极端案例讨论。
++从项目 profile 看，WiredTiger 的自引率为 84.08%（15,332 条引用中 12,891 条为自引）；SSDB 与 GreatSQL 的自引率均为 0.00%，H2 的自引率为 39.83%。这些案例仅用于说明当前文件支持的分布位置，不构成项目质量或机制判断。
+ 
+ 综合征引实体、被引实体和自引率三类指标可以看到，DBMS Reference behavior 既包含讨论和变更过程中的上下文组织，也包含项目内部与外部 Reference 证据比例的项目间差异。自引率在本文中仅作 evidence composition 的描述性指标，不进入当前分析范围之外的组间推断。
+ **结果要点**：
+ 
+-- **内部与外部 Reference 证据并存**：项目级自引率均值为 41.68%，中位数为 39.37%，Q1 为 25.63%，Q3 为 58.45%，说明不同项目在内部与外部 Reference 指向比例上存在明显差异。该指标仅描述 evidence composition，本文不据此进行组间推断。
+-- **高自引项目的内部 Reference 集中**：WiredTiger 自引率为 84.08%，其中 100,190 条引用中 84,239 条为自引，表示当前抽取口径下 project-internal Reference evidence 占比较高。该案例只用于说明分布高端，不代表所有存储引擎项目。
++- **内部与外部 Reference 证据并存**：项目级自引率均值为 41.82%，中位数为 39.47%，Q1 为 25.75%，Q3 为 59.06%，说明不同项目在内部与外部 Reference 指向比例上存在明显差异。该指标仅描述 evidence composition，本文不据此进行组间推断。
++- **高自引项目的内部 Reference 集中**：WiredTiger 自引率为 84.08%，其中 15,332 条引用中 12,891 条为自引，表示当前抽取口径下 project-internal Reference evidence 占比较高。该案例只用于说明分布高端，不代表所有存储引擎项目。
+ - **低自引项目的外部 Reference 指向**：SSDB 与 GreatSQL 在本文统计中的自引率均为 0.00%，表示当前抽取口径下 external Reference evidence 占比较高。0.00% 需理解为本文抽取和统计口径下的结果，不测量未被操作化的知识过程或能力。
+ - **极端案例边界**：H2 在本文统计中的自引率为 39.83%，接近总体中位数，因此不作为高自引或低自引极端案例。
+ 
+ 
+-#### 4.1.2 社区协作特征与 comment reference density
+-本小节基于 294 个种子 DBMS 项目的项目级协作指标，从社区规模（活跃议题数）、互动强度（新增议评率）与评论引用密度（新增评引率）三个维度考察 Reference behavior 的项目级差异。该三层结构对应“有多少协作议题”“每个议题承载多少讨论”以及“评论中嵌入多少 Reference objects”三个问题，可以避免仅用议题规模解释协作上下文组织。本节聚焦上述三个项目级指标的描述统计，不据此进行额外的分布类型或因果机制推断。
++#### 4.1.2 协作特征与 comment reference density
++本小节基于 294 个种子 DBMS 项目的项目级协作指标，从协作规模（活跃议题数）、互动强度（新增议评率）与评论引用密度（新增评引率）三个维度考察 Reference behavior 的项目级差异。该三层结构对应“有多少协作议题”“每个议题承载多少讨论”以及“评论中嵌入多少 Reference objects”三个问题，可以避免仅用议题规模解释协作上下文组织。本节聚焦上述三个项目级指标的描述统计，不据此进行额外的分布类型或因果机制推断。
+ 
+ 1. **活跃议题数的右偏分布**
+ 
+@@ -451,13 +450,13 @@ G_{\mathrm{RefQ}}=(P,E_{\mathrm{RefQ}},Q).
+ 
+ **表 4.3 活跃议题数分布统计**
+ 
+-| 统计量 | 均值 | 中位数 | 标准差 | 最小值 | 最大值 | 偏度 | 峰度 | 25%分位数 | 75%分位数 |
+-|-------|------:|--------:|--------:|--------:|--------:|------:|------:|----------:|----------:|
+-| 活跃议题数 | 740.06 | 85.50 | 2,025.60 | 0.00 | 22,349.00 | 6.25 | 51.99 | 15.00 | 566.00 |
++| 统计量 | n | 均值 | 中位数 | 标准差 | 最小值 | 最大值 | 偏度 | 峰度 | 25%分位数 | 75%分位数 |
++|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|
++| 活跃议题数 | 294 | 739.92 | 85.50 | 2,025.65 | 0.00 | 22,349.00 | 6.25 | 51.99 | 15.00 | 566.00 |
+ 
+-表 4.3 显示，活跃议题数显著右偏且具有较高峰度。中位数为 85.50，而均值达到 740.06，说明少数大型项目贡献了大量协作活动。CockroachDB 的活跃议题数为 22,349，是当前项目级 profile 中的最大值。换言之，DBMS 协作活动呈现头部项目与大量中低活跃项目并存格局；这一格局为理解后续引用密度和 RefQ source-role 差异提供了背景。这里仅报告项目级 profile 的描述统计，不追加分布拟合。
++表 4.3 显示，活跃议题数显著右偏且具有较高峰度。中位数为 85.50，而均值达到 739.92，说明少数大型项目贡献了大量协作活动。CockroachDB 的活跃议题数为 22,349，是当前项目级 profile 中的最大值。换言之，DBMS 协作活动呈现头部项目与大量中低活跃项目并存格局；这一格局为理解后续引用密度和 RefQ source-role 差异提供了背景。这里仅报告项目级 profile 的描述统计，不追加分布拟合。
+ 
+-**头部项目与大量中低活跃项目并存**：当前样本中，活跃议题数中位数为 85.50，Q1 为 15.00，Q3 为 566.00，均值为 740.06，最大值为 22,349，偏度为 6.25、峰度为 51.99。这说明少数头部项目显著抬高整体协作规模，而大量项目处于中低活跃区间。该表述只作为协作规模的描述性线索，不表示已完成核心—边缘模型检验。
++**头部项目与大量中低活跃项目并存**：当前样本中，活跃议题数中位数为 85.50，Q1 为 15.00，Q3 为 566.00，均值为 739.92，最大值为 22,349，偏度为 6.25、峰度为 51.99。这说明少数头部项目显著抬高整体协作规模，而大量项目处于中低活跃区间。该表述只作为协作规模的描述性线索，不表示已完成核心—边缘模型检验。
+ 
+ 在描述性意义上，活跃议题数呈现右偏和低值项目占多数的分布。本文不据此命名“协作核心”或“边缘”，也不把这一静态分布解释为项目生命周期阶段。
+ 
+@@ -467,9 +466,9 @@ G_{\mathrm{RefQ}}=(P,E_{\mathrm{RefQ}},Q).
+ 
+ **表 4.4 新增议评率分布统计**
+ 
+-| 统计量 | 均值 | 中位数 | 标准差 | 最小值 | 最大值 | 偏度 | 峰度 | 25%分位数 | 75%分位数 |
+-|-------|------:|--------:|--------:|--------:|--------:|------:|------:|----------:|----------:|
+-| 新增议评率 | 2.08 | 1.72 | 1.66 | 0.00 | 15.95 | 5.36 | 36.59 | 1.39 | 2.16 |
++| 统计量 | n | 均值 | 中位数 | 标准差 | 最小值 | 最大值 | 偏度 | 峰度 | 25%分位数 | 75%分位数 |
++|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|
++| 新增议评率 | 294 | 2.08 | 1.72 | 1.66 | 0.00 | 15.95 | 5.36 | 36.59 | 1.39 | 2.16 |
+ 
+ **讨论深度的项目间分化**：新增议评率的均值为 2.08，中位数为 1.72，偏度为 5.36、峰度为 36.59，提示该指标同样右偏且存在高值项目。与活跃议题数相比，新增议评率更强调单个议题内部的交互强度；因此，它补充说明协作上下文组织并不只取决于议题数量。该指标只描述当前观测窗口，不推断讨论质量或问题解决效果。
+ 
+@@ -479,9 +478,9 @@ G_{\mathrm{RefQ}}=(P,E_{\mathrm{RefQ}},Q).
+ 
+ **表 4.5 新增评引率分布统计**
+ 
+-| 统计量 | 均值 | 中位数 | 标准差 | 最小值 | 最大值 | 偏度 | 峰度 | 25%分位数 | 75%分位数 |
+-|-------|------:|--------:|--------:|--------:|--------:|------:|------:|----------:|----------:|
+-| 新增评引率 | 2.70 | 1.70 | 3.58 | 0.00 | 34.62 | 5.44 | 37.11 | 1.40 | 2.49 |
++| 统计量 | n | 均值 | 中位数 | 标准差 | 最小值 | 最大值 | 偏度 | 峰度 | 25%分位数 | 75%分位数 |
++|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|
++| 新增评引率 | 294 | 2.70 | 1.70 | 3.58 | 0.00 | 34.62 | 5.44 | 37.11 | 1.40 | 2.49 |
+ 
+ **评论级 Reference density**：新增评引率的均值为 2.70，中位数为 1.70，偏度为 5.44、峰度为 37.11，表明少数项目具有很高的评论引用密度。AlaSQL 的值为 34.6239，pubkey/rxdb 为 30.9038，是当前项目级 profile 中的高值案例。该指标补充了“讨论深度”之外的 Reference intensity 维度；评论数量多并不必然意味着引用密度高。RQ3 的子领域检验未发现该指标经 FDR 校正后的稳健差异，因此这里仅作描述性报告。
+ 
+@@ -490,7 +489,7 @@ G_{\mathrm{RefQ}}=(P,E_{\mathrm{RefQ}},Q).
+ 综合表 4.3 至表 4.5 可以看到，DBMS 项目协作呈现头部项目与大量中低活跃项目并存；同时，评论深度和评论中的引用密度均表现出项目间异质性。这说明，仅以议题数量衡量协作上下文并不充分，还需要结合讨论深度与引用密度理解 DBMS 项目中的 Reference behavior。对于 RQ1 而言，这组三指标表明 Reference evidence 不只是链接计数问题，也共同刻画协作规模、讨论组织和上下文引用的可观测特征。
+ **结果要点**：
+ 
+-- **头部项目驱动的协作规模差异**：活跃议题数均值为 740.06，中位数为 85.50，最大值为 22,349，说明少数头部项目显著拉高协作规模。
++- **头部项目驱动的协作规模差异**：活跃议题数均值为 739.92，中位数为 85.50，最大值为 22,349，说明少数头部项目显著拉高协作规模。
+ - **规模、深度与密度的互补性**：表 4.3 的活跃议题数中位数为 85.50；表 4.4 的新增议评率均值为 2.08、中位数为 1.72；表 4.5 的新增评引率均值为 2.70、中位数为 1.70。三项指标共同描述协作规模、评论深度和评论 Reference density，但不建立因果链。
+ - **讨论深度存在项目间差异**：新增议评率的 Q1 为 1.39、Q3 为 2.16，最大值为 15.95。该结果只说明项目间离散，不构建讨论类型分类。
+ - **评论级 Reference density**：AlaSQL 与 pubkey/rxdb 是当前项目级 profile 中的高值案例，值分别为 34.6239 和 30.9038。
+@@ -504,23 +503,23 @@ G_{\mathrm{RefQ}}=(P,E_{\mathrm{RefQ}},Q).
+ 
+ 1. **Reference composition 与项目年龄的整体关系**
+ 
+-当前分析中，291 个具有有效项目年龄的种子项目构成相关分析样本。结果见表 4.6a。self-reference ratio 与项目年龄的 Spearman \(\rho=-0.1063\)（p=0.0703），external-reference share 的 \(\rho=0.1063\)（p=0.0703）；二者是互补比例，因此符号相反。non-project reference share 的 \(\rho=0.1542\)（p=0.0084），comment reference density 的 \(\rho=0.1423\)（p=0.0152）。这些效应均较弱，且不表示时间效应或因果机制。
++当前分析中，291 个具有有效项目年龄的种子项目构成相关分析样本。结果见表 4.6a。self-reference ratio 与项目年龄的 Spearman \(\rho=-0.1182\)（p=0.0440），external-reference share 的 \(\rho=0.1182\)（p=0.0440）；二者是互补比例，因此符号相反。non-project reference share 的 \(\rho=0.1574\)（p=0.0072），comment reference density 的 \(\rho=0.1417\)（p=0.0155）。这些效应均较弱，且不表示时间效应或因果机制。
+ 
+ **表 4.6a 项目年龄与 Reference 指标的横截面关联**
+ 
+ | 指标 | n | Spearman \(\rho\) | p | 设计 |
+ |------|--:|-------------------:|--:|:-----|
+-| Self-reference ratio | 291 | -0.1063 | 0.0703 | cross-sectional 2023 |
+-| External-reference share | 291 | 0.1063 | 0.0703 | cross-sectional 2023 |
+-| Non-project reference share | 291 | 0.1542 | 0.0084 | cross-sectional 2023 |
+-| Comment reference density | 291 | 0.1423 | 0.0152 | cross-sectional 2023 |
++| self_reference_ratio | 291 | -0.1182 | 0.0440 | cross_sectional_2023 |
++| external_reference_share | 291 | 0.1182 | 0.0440 | cross_sectional_2023 |
++| non_project_reference_share | 291 | 0.1574 | 0.0072 | cross_sectional_2023 |
++| comment_reference_density | 291 | 0.1417 | 0.0155 | cross_sectional_2023 |
+ 
+ 2. **项目年龄关联的解释边界**
+ 
+ 上述结果只支持 Reference composition 的横截面经验观察，而不是强因果、时间效应或纵向变化结论。四项关联的绝对值均较小，项目年龄不能充分解释项目间差异。若后续要讨论真实变化过程，需要补充跨年份重复观测和相应的 longitudinal design。
+ **结果要点**：
+ 
+-- **弱项目年龄关联**：四项 Spearman 相关的绝对值均不超过 0.155，不能写成显著时间效应或阶段模型。
++- **弱项目年龄关联**：四项 Spearman 相关的绝对值均不超过 0.158，不能写成显著时间效应或阶段模型。
+ - **Reference composition 的互补性**：self-reference ratio 与 external-reference share 的相关系数绝对值相同、符号相反，来自二者在当前定义下的互补关系。
+ - **项目年龄不是充分解释变量**：non-project reference share 与 comment reference density 的 p 值低于 0.05，但相关强度较弱；本文只把它们作为未经因果识别的横截面关联。
+ 
+@@ -531,137 +530,149 @@ G_{\mathrm{RefQ}}=(P,E_{\mathrm{RefQ}},Q).
+ 
+ #### 4.2.0 Project-level RefQN scale 与视图边界
+ 
+-Project-level RefQN 的完整节点域为 6,515，其中 6,514 个节点在含自环有向图中具有边观测，另有 1 个 zero-edge seed node。完整有向表包含 9,894 条边和总权重 1,586,117，其中 289 条为 self-loops；排除自环后得到 9,605 条 directed cross-project RefQ edges，总权重为 139,044。将跨项目边忽略方向并合并互反关系后，\(U(G_{\mathrm{RefQ}})\) 包含 9,557 条无向边。表 4.6b 汇总这些分母，后文不以 9,557 代替有向边数。
++Project-level RefQN 的完整节点域为 6,506，其中 6,505 个节点在含自环有向图中具有边观测，另有 1 个 zero-edge node。完整有向表包含 9,884 条边和总权重 1,586,047，其中 289 条为 self-loops；排除自环后得到 9,595 条 directed cross-project RefQ edges，总权重为 138,974。将跨项目边忽略方向并合并互反关系后，\(U(G_{\mathrm{RefQ}})\) 包含 9,547 条无向边。表 4.6b 汇总这些分母，后文不以 9,547 代替有向边数。
+ 
+ **表 4.6b Project-level RefQN scale**
+ 
+ | 视图 | 节点 | 边 | 权重或补充口径 |
+-|------|-----:|---:|----------------|
+-| 完整 directed RefQN（含自环） | 6,515 node domain；6,514 edge-observed | 9,894 | total weight=1,586,117；self-loops=289 |
+-| Directed cross-project RefQ | 6,515 node domain | 9,605 | total weight=139,044 |
+-| \(U(G_{\mathrm{RefQ}})\) | 6,515 | 9,557 | 6,485 edge-observed；30 isolates；55 components |
+-| \(U(G_{\mathrm{RefQ}})\) LCC | 6,376 | 9,472 | node coverage=97.87%；directed sensitivity edges=9,520 |
++|---|---:|---:|---|
++| 完整 directed RefQN（含自环） | 6,506 node domain；6,505 edge-observed | 9,884 | total weight=1,586,047；self-loops=289 |
++| Directed cross-project RefQ | 6,506 node domain | 9,595 | total weight=138,974 |
++| \(U(G_{\mathrm{RefQ}})\) | 6,506 | 9,547 | 6,476 edge-observed；30 isolates；55 components |
++| \(U(G_{\mathrm{RefQ}})\) LCC | 6,367 | 9,462 | node coverage=97.86%；directed sensitivity edges=9,510 |
+ 
+ #### 4.2a RQ2a：征引侧主动引用范围与强度
+ 
+-294 个 seed projects 中，262 个具有至少一条 cross-project out-edge，32 个在当前 project-mappable cross-project view 中 out-degree 为 0。seed source 的 out-degree 均值为 32.67、中位数为 11、Q1 为 3、Q3 为 39，最大值为 352；out-strength 均值为 472.94、中位数为 27.5、Q1 为 5、Q3 为 192.75，最大值为 43,574。均值明显高于中位数，说明主动引用范围和聚合强度均右偏，但本文未执行分布模型拟合，不据此声称幂律或无标度结构。
++294 个 seed projects 中，262 个具有至少一条 cross-project out-edge，32 个在当前 project-mappable cross-project view 中 out-degree 为 0。冻结 quantile authority 给出 seed source out-degree 的 Q1/median/Q3/max 为 3/11/39/352，out-strength 的 Q1/median/Q3/max 为 5/26.5/192.75/43,574。均值明显高于中位数所反映的右偏仍由冻结分布支持，但本文未执行分布模型拟合，不据此声称幂律或无标度结构。
+ 
+-跨项目 relation 中，419 条为 seed-to-seed，权重合计 7,631；9,186 条为 seed-to-expanded，权重合计 131,413。按 relation count 计算，seed-to-expanded 占 95.64%；按 weight 计算，占 94.51%。这里的 expanded 只表示非 seed target membership，不表示对方项目属于独立生态，也不表示其 source behavior 已完整观测。
++跨项目 relation 中，418 条为 seed-to-seed，权重合计 7,630；9,177 条为 seed-to-expanded，权重合计 131,344。这里的 expanded 只表示非 seed target membership，不表示对方项目属于独立生态，也不表示其 source behavior 已完整观测。
+ 
+ **表 4.6c RQ2a source-role 描述统计**
+ 
+-| 指标 | 均值 | 中位数 | Q1 | Q3 | 最大值 |
+-|------|-----:|-------:|---:|---:|-------:|
+-| Out-degree | 32.67 | 11.00 | 3.00 | 39.00 | 352 |
+-| Out-strength | 472.94 | 27.50 | 5.00 | 192.75 | 43,574 |
+-| Seed-to-seed relation count | 1.43 | 0.00 | 0.00 | 2.00 | 18 |
+-| Seed-to-expanded relation count | 31.24 | 10.00 | 3.00 | 37.00 | 334 |
+-| Source concentration HHI | 0.2649 | 0.1589 | 0.0563 | 0.3600 | 1.0000 |
++| 指标 | Q1 | 中位数 | Q3 | 最大值 |
++|---|---:|---:|---:|---:|
++| Out-degree | 3 | 11 | 39 | 352 |
++| Out-strength | 5 | 26.50 | 192.75 | 43,574 |
++| Source concentration HHI | 0.0563 | 0.1589 | 0.3585 | 1.0000 |
++| Top-target weight share | 14.46% | 28.45% | 50.00% | 100.00% |
++
++**表 4.6c（Block B）关系分区总量**
++
++| 指标 | 当前值 |
++|---|---:|
++| Seed-to-seed relation count | 418 |
++| Seed-to-seed weight | 7,630 |
++| Seed-to-expanded relation count | 9,177 |
++| Seed-to-expanded weight | 131,344 |
+ 
+ 按 out-strength 排序，OpenSearch、qdrant、Hazelcast、Velox 和 CockroachDB 位于前五位；它们的 out-strength 分别为 43,574、5,013、5,000、4,445 和 4,236。该排序表示当前观测范围内的聚合外出 Reference weight，不表示项目质量、影响力或知识输出能力。按 out-degree 排序时项目次序可以不同，因此主动引用范围与重复引用强度应分别解释。
+ 
+ #### 4.2b RQ2b：被引侧覆盖与集中结构
+ 
+-跨项目 edge table 中共有 6,332 个 observable targets，其中 111 个是 analysis seed projects，6,221 个是 expanded target projects。target-side in-degree 中位数为 1、Q1 和 Q3 均为 1，最大值为 42；in-strength 中位数为 2、Q1 为 1、Q3 为 5，最大值为 3,430。多数 observable targets 仅被一个 seed source 指向，而少数 target 获得更高覆盖或更大的重复引用权重。
++跨项目 edge table 中共有 6,322 个 observable targets，其中 110 个是 analysis seed projects，6,212 个是 expanded target projects。target-side in-degree 中位数为 1、最大值为 42；in-strength 中位数为 2、最大值为 3,430。多数 observable targets 仅被一个 seed source 指向，而少数 target 获得更高覆盖或更大的重复引用权重。
+ 
+-target weight 的 top-1、top-10 和 top-50 share 分别为 2.47%、15.99% 和 48.97%。这说明权重存在头部集中，但最大单一 target 并未占据多数 cross-project weight。expanded target 中有 6,200 个未出现在当前 DBMS metadata 中；这表示 category metadata unavailable，不表示它们不是软件项目或不属于任何技术领域。
++target weight 的 top-1、top-10 和 top-50 share 分别为 2.47%、16.00% 和 48.99%。这些 share 的分母是 138,974 的 cross-project weight；top-1 的 3,430/138,974 在两位小数下仍为 2.47%，但支持分母已更新。expanded target 中有 6,191 个未出现在当前 DBMS metadata 中；这表示 category metadata unavailable，不表示它们不是软件项目或不属于任何技术领域。
+ 
+ **表 4.6d RQ2b target-role 与集中度**
+ 
+ | 指标 | Reported value |
+ |------|----------------:|
+-| Observable targets | 6,332 |
+-| Seed-project targets | 111 |
+-| Expanded-project targets | 6,221 |
++| Observable targets | 6,322 |
++| Seed-project targets | 110 |
++| Expanded-project targets | 6,212 |
+ | In-degree median / max | 1 / 42 |
+ | In-strength median / max | 2 / 3,430 |
+ | Top-1 weight share | 2.47% |
+-| Top-10 weight share | 15.99% |
+-| Top-50 weight share | 48.97% |
++| Top-10 weight share | 16.00% |
++| Top-50 weight share | 48.99% |
+ 
+ target coverage 的分母始终为 294 个 analysis seed sources；例如最大 in-degree 42 对应 14.29% 的 seed coverage。该指标只表示有多少 seed projects 指向某 target，不表示被引项目在完整 GitHub 生态中的总体重要性。
+ 
+ #### 4.2c RQ2c：无向派生结构视图
+ 
+-\(U(G_{\mathrm{RefQ}})\) 由 9,605 条 directed cross-project edges 忽略方向并合并互反关系得到，仍是一阶 RefQ 的结构视图，不是 \(QQ^\top\)、\(Q^\top Q\)、shared-reference 或 shared-neighbor projection。完整无向视图包含 6,515 个节点、9,557 条边、55 个 connected components 和 30 个 isolates；最大连通子图包含 6,376 个节点和 9,472 条边，覆盖完整节点域的 97.87%。LCC 的 average clustering 为 0.042198，transitivity 为 0.008046。
++\(U(G_{\mathrm{RefQ}})\) 由 9,595 条 directed cross-project edges 忽略方向并合并互反关系得到，仍是一阶 RefQ 的结构视图，不是 \(QQ^\top\)、\(Q^\top Q\)、shared-reference 或 shared-neighbor projection。完整无向视图包含 6,506 个节点、9,547 条边、55 个 connected components 和 30 个 isolates；最大连通子图包含 6,367 个节点和 9,462 条边，覆盖完整节点域的 97.86%。LCC 的 average clustering 为 0.04225758251235413，transitivity 为 0.008047960961122938。
+ 
+-在 random seed=20260731 的 NetworkX Louvain 实现下，LCC 被划分为 34 个 algorithmic communities，modularity 为 0.797309595。该 modularity 只评价当前无向视图和当前 modularity objective 下的算法分区，不是 RefQ matrix \(Q\)，也不证明这些 communities 是自然形成的 DBMS subdomains。category labels 只能用于 post-hoc composition inspection。
++在 random seed=20260731 的 NetworkX Louvain 实现下，LCC 被划分为 35 个 algorithmic communities，modularity 为 0.7969220043681785。该 canonical 35-community partition 是一个确定性 reference realization；S4 sensitivity 显示 community count 为 32--37，42/50 次运行的 ARI-to-canonical 低于 0.9，minimum ARI 为 0.6823671359861659，minimum pairwise ARI 为 0.6092441840471735。因此这些结果只能解释为当前无向视图和 modularity objective 下的 algorithmic modular neighborhood view，不是唯一、稳定或语义化的 DBMS 社区结构。category labels 只能用于 post-hoc composition inspection。
+ 
+ **表 4.6e RQ2c undirected-view summary**
+ 
+ | 指标 | Reported value |
+ |------|----------------:|
+-| Undirected nodes / edges | 6,515 / 9,557 |
++| Undirected nodes / edges | 6,506 / 9,547 |
+ | Components / isolates | 55 / 30 |
+-| LCC nodes / edges | 6,376 / 9,472 |
+-| LCC directed sensitivity edges | 9,520 |
+-| Average clustering (LCC) | 0.042198 |
+-| Transitivity (LCC) | 0.008046 |
+-| Louvain algorithmic communities | 34 |
+-| Modularity | 0.797309595 |
++| LCC nodes / edges | 6,367 / 9,462 |
++| LCC directed sensitivity edges | 9,510 |
++| Average clustering (LCC) | 0.04225758251235413 |
++| Transitivity (LCC) | 0.008047960961122938 |
++| Louvain algorithmic communities | 35 |
++| Modularity | 0.7969220043681785 |
+ 
+-近似 betweenness 排序用于识别 structural brokerage candidates。ClickHouse、Apache Spark、CockroachDB、RisingWave 和 OpenSearch 位于当前 top-five，其 betweenness_brokerage 分别为 0.109637、0.088634、0.084227、0.080466 和 0.077749。该指标基于 500 个节点的近似抽样，只描述当前 LCC shortest-path structure 中的 bridge-like position；它不表示知识经这些项目传递，也不判定组织协调或实际协作成效。
++近似 betweenness 排序用于识别 structural brokerage candidates。当前 corrected top-five 为 ClickHouse/ClickHouse（0.109604）、opensearch-project/OpenSearch（0.090065）、apache/spark（0.079806）、etcd-io/etcd（0.078377）和 risingwavelabs/risingwave（0.076435）。该指标基于固定 500 个节点的 unweighted approximate-betweenness 抽样，只描述当前 LCC shortest-path structure 中的 bridge-like position；community IDs 只是 algorithmic labels，不表示项目重要性、知识流动或组织协调。
+ 
+ **表 4.6f RQ2c structural brokerage candidates（前五）**
+ 
+ | 项目 | Undirected degree | Undirected strength | Approx. betweenness | Community |
+-|------|------------------:|--------------------:|---------------------:|----------:|
+-| ClickHouse/ClickHouse | 359 | 1,086 | 0.109637 | 4 |
+-| apache/spark | 310 | 2,234 | 0.088634 | 1 |
+-| cockroachdb/cockroach | 272 | 4,257 | 0.084227 | 8 |
+-| risingwavelabs/risingwave | 317 | 2,037 | 0.080466 | 0 |
+-| opensearch-project/OpenSearch | 307 | 43,595 | 0.077749 | 7 |
++|---|---:|---:|---:|---:|
++| ClickHouse/ClickHouse | 359 | 1,086.0 | 0.109604 | 0 |
++| opensearch-project/OpenSearch | 307 | 43,595.0 | 0.090065 | 6 |
++| apache/spark | 310 | 2,234.0 | 0.079806 | 3 |
++| etcd-io/etcd | 233 | 1,734.0 | 0.078377 | 2 |
++| risingwavelabs/risingwave | 317 | 2,037.0 | 0.076435 | 1 |
++
++S5 对 brokerage ranking 的稳定性提供辅助证据：minimum Spearman 为 0.9998339514284217，minimum top-50 overlap 为 0.82，robustness_alert=FALSE。这只说明在已测试 sampling settings 下排名高度稳定，不改变候选位置的弱语义边界。
+ 
+ ### 4.3 RQ3：DBMS 子领域差异的局部性与非均质性
+ 
+-本节使用 rq3_seed_role_aware_features.csv、rq3_subdomain_descriptive_comparison.csv 和 rq3_kruskal_fdr_effect_sizes.csv 回答 RQ3。分析同时报告 include_mixed 与 exclude_mixed_or_multilabel 两种标签口径：前者允许一个项目进入多个 category group，因此 n_with_replacement 可大于 294；后者只保留单一标签项目。Kruskal-Wallis 检验均报告 epsilon-squared effect size，并在每种标签口径内进行 Benjamini-Hochberg FDR correction。
++本节使用 rq3_seed_role_aware_features.csv、rq3_subdomain_descriptive_comparison.csv 和 rq3_kruskal_fdr_effect_sizes.csv 回答 RQ3。分析同时报告 include_mixed 与 exclude_mixed_or_multilabel 两种标签口径：前者允许一个项目进入多个 category group，因此 n_with_replacement 可大于 294；后者只保留单一标签项目。Kruskal-Wallis 检验均报告 H、raw p、epsilon-squared、FDR p、reject flag 和 test_status，不添加新的检验。
+ 
+ #### 4.3.1 Reference composition 的子领域比较
+ 
+-include_mixed 描述统计显示，不同 category 的 external-reference share 中位数存在一定范围差异，例如 Object Oriented 为 50.59%，Search Engine 为 64.03%，但这些只是 descriptive differences，不能直接作为 FDR-supported group differences。self-reference ratio、external-reference share、non-project reference share 和 comment reference density 在 include_mixed 口径下的 FDR-adjusted p 分别为 0.7994、0.7994、0.6751 和 0.6751；在 exclude_mixed_or_multilabel 口径下分别为 0.7821、0.7821、0.5430 和 0.1057。两种口径均未支持这些 Reference composition 指标存在 FDR-supported group difference。
++include_mixed 描述统计显示，不同 category 的 external-reference share 中位数存在一定范围差异；例如 Object Oriented 为 50.59%、Search Engine 为 64.03%，但这些只是 descriptive differences。Reference composition 的四项指标在 include_mixed 下均未通过 FDR，在 exclude_mixed_or_multilabel 下也均未通过 FDR。
+ 
+ **表 4.7 主要子领域的 Reference composition 描述统计（include_mixed）**
+ 
+ | Category | n | Self-reference median | External-reference median | Non-project median |
+-|----------|--:|----------------------:|--------------------------:|-------------------:|
+-| Document | 79 | 44.23% | 55.77% | 20.61% |
++|---|---:|---:|---:|---:|
++| Document | 79 | 44.44% | 55.56% | 20.00% |
+ | Graph | 26 | 39.88% | 60.12% | 31.52% |
+ | Key-value | 76 | 37.50% | 62.50% | 28.05% |
++| Object Oriented | 19 | 49.41% | 50.59% | 29.41% |
++| RDF | 8 | 41.41% | 58.59% | 25.50% |
+ | Relational | 100 | 40.42% | 59.58% | 30.78% |
+ | Search Engine | 9 | 35.97% | 64.03% | 23.94% |
+ | Time Series | 21 | 41.02% | 58.98% | 30.10% |
+ | Vector | 14 | 45.22% | 54.78% | 17.75% |
+ | Wide column | 11 | 42.58% | 57.42% | 29.93% |
+ 
+-表 4.7 只呈现多标签计入口径下的中位数。category labels 描述 DBMS metadata，不等同于 RQ2c 的 algorithmic communities；表中差异也不支持对项目开放性、任务解决或组织能力作推断。
++表 4.7 完整呈现当前 include_mixed 冻结输出中的 10 个 category rows。category labels 描述 DBMS metadata，不等同于 RQ2c 的 algorithmic communities；表中差异也不支持对项目开放性、任务解决或组织能力作推断。
+ 
+ #### 4.3.2 RefQ role 与局部结构指标
+ 
+-include_mixed 口径下，out-degree、out-strength、in-degree、in-strength、local clustering 和 project age 在 FDR 校正后达到 0.05 阈值；epsilon-squared 位于 0.0311 至 0.0686。betweenness brokerage 未达到该阈值。exclude_mixed_or_multilabel 口径下，11 项指标均未在 FDR 校正后达到 0.05。因此，若干 RefQ role、local-structure 和 project-age features 仅在 include_mixed 下达到阈值，结果具有 label-mode sensitivity，不支持跨标签处理口径稳健的全局断言。
++include_mixed 口径下通过 FDR 的 feature 为 out_degree、out_strength、in_degree、in_strength、local_clustering、project_age_years_at_2023_end；exclude_mixed_or_multilabel 口径下通过 FDR 的 feature 为无。因此，若干 RefQ role、local-structure 和 project-age features 仅在 include_mixed 下达到阈值，结果具有 label-mode sensitivity，不支持跨标签处理口径稳健的全局断言。
+ 
+ **表 4.8 RQ3 Kruskal-Wallis、FDR 与效应量摘要**
+ 
+-| Feature | Include-mixed FDR p | Include \(\epsilon^2\) | Exclude-mixed FDR p | Exclude \(\epsilon^2\) | Cross-mode status |
+-|---------|--------------------:|-----------------------:|--------------------:|-----------------------:|:------------------|
+-| Self-reference ratio | 0.7994 | 0.0000 | 0.7821 | 0.0000 | Not supported |
+-| External-reference share | 0.7994 | 0.0000 | 0.7821 | 0.0000 | Not supported |
+-| Non-project reference share | 0.6751 | 0.0000 | 0.5430 | 0.0000 | Not supported |
+-| Comment reference density | 0.6751 | 0.0000 | 0.1057 | 0.0397 | Not supported |
+-| Out-degree | 0.0161 | 0.0414 | 0.2361 | 0.0201 | Label-mode sensitive |
+-| Out-strength | 0.0332 | 0.0311 | 0.2529 | 0.0167 | Label-mode sensitive |
+-| In-degree | 0.0161 | 0.0386 | 0.1057 | 0.0381 | Label-mode sensitive |
+-| In-strength | 0.0161 | 0.0383 | 0.1934 | 0.0259 | Label-mode sensitive |
+-| Local clustering | 0.0126 | 0.0571 | 0.1057 | 0.0465 | Label-mode sensitive |
+-| Betweenness brokerage | 0.2545 | 0.0137 | 0.2978 | 0.0132 | Not supported |
+-| Project age at 2023 end | 0.0014 | 0.0686 | 0.1057 | 0.0380 | Label-mode sensitive |
+-
+-以 out-degree 为例，include_mixed 的 Kruskal-Wallis \(H=23.5972\)、raw p=0.00499、FDR p=0.01614、\(\epsilon^2=0.04135\)；exclude_mixed_or_multilabel 的 \(H=9.9027\)、raw p=0.12881、FDR p=0.23615、\(\epsilon^2=0.02012\)。这一对照说明，重复计入多标签项目会改变组间比较结果，因而不能只报告单一标签口径的显著性。
++| Feature | include-mixed FDR-adjusted p | include-mixed epsilon-squared | exclude-mixed FDR-adjusted p | exclude-mixed epsilon-squared | cross-mode status |
++|---|---:|---:|---:|---:|---|
++| self_reference_ratio | 0.7618 | 0.0000 | 0.7071 | 0.0000 | Not supported |
++| external_reference_share | 0.7618 | 0.0000 | 0.7071 | 0.0000 | Not supported |
++| non_project_reference_share | 0.6504 | 0.0000 | 0.5079 | 0.0004 | Not supported |
++| comment_reference_density | 0.6504 | 0.0000 | 0.1057 | 0.0396 | Not supported |
++| out_degree | 0.0132 | 0.0417 | 0.2228 | 0.0210 | Label-mode sensitive |
++| out_strength | 0.0313 | 0.0316 | 0.2292 | 0.0182 | Label-mode sensitive |
++| in_degree | 0.0132 | 0.0402 | 0.1057 | 0.0422 | Label-mode sensitive |
++| in_strength | 0.0132 | 0.0399 | 0.1517 | 0.0294 | Label-mode sensitive |
++| local_clustering | 0.0128 | 0.0571 | 0.1057 | 0.0461 | Label-mode sensitive |
++| betweenness_brokerage | 0.4051 | 0.0078 | 0.2697 | 0.0150 | Not supported |
++| project_age_years_at_2023_end | 0.0014 | 0.0686 | 0.1057 | 0.0380 | Label-mode sensitive |
++
++以 out-degree 为例，include_mixed 的 Kruskal-Wallis H=23.70761894422262、raw p=0.004788297114467886、FDR p=0.013184709613940915、epsilon-squared=0.04166464290148051；exclude_mixed_or_multilabel 的 H=10.075483276612793、raw p=0.12150903552252654、FDR p=0.222766565124632、epsilon-squared=0.02100764575573605。这一对照说明标签处理口径会改变组间比较结果，不能只报告单一口径的显著性。
+ 
+ #### 4.3.3 Project-age comparison 与解释边界
+ 
+-project age at 2023 end 是横截面属性，不是时间序列。include_mixed 口径下，project age 的 \(H=33.0951\)、raw p=0.000129、FDR p=0.001414、\(\epsilon^2=0.06865\)；exclude_mixed_or_multilabel 口径下，\(H=13.3047\)、raw p=0.03845、FDR p=0.10572、\(\epsilon^2=0.03805\)。因此，项目年龄的子领域差异同样对标签处理敏感。
++project age at 2023 end 是横截面属性，不是时间序列。include_mixed 口径下，project age 的 H=33.09512217039924、raw p=0.00012855369064389884、FDR p=0.0014140905970828873、epsilon-squared=0.06864707171053916；exclude_mixed_or_multilabel 口径下，H=13.304650379098037、raw p=0.03844524008316806、FDR p=0.10572441022871217、epsilon-squared=0.03804505405780228。因此，项目年龄的子领域差异同样对标签处理敏感。
+ 
+-RQ3 的结论是：Reference composition 指标未在两种标签口径下形成 FDR-supported 组间差异；若干 RefQ role 和 local-structure 指标只在 include_mixed 口径下达到阈值；没有指标在两种口径下都通过 FDR correction。该结果支持局部性、非均质性和标签口径敏感性的谨慎解释，不支持所有 DBMS subdomains 之间存在统一、稳健或因果性的结构差异。
++RQ3 的结论是：Reference composition 指标未在两种标签口径下形成 FDR-supported 组间差异；部分 RefQ role、local-structure 和 project-age features 只在 include_mixed 口径下达到阈值；没有 feature 在两种口径下都通过 FDR correction。category labels 是 metadata，不是 Louvain communities、latent classes 或 causal mechanisms。
+ 
+ ## 5 讨论
+ 
+@@ -685,16 +696,16 @@ RefQ 构造还带来 coarse-graining 信息损失。artifact-level Reference 的
+ 
+ ### 5.3 实践含义与使用边界
+ 
+-本文结果可以为维护者、工具构建者和软件生态研究者提供若干分析线索。首先，引用实体和被引实体分布可用于观察项目的协作上下文组织方式，例如讨论评论、外部资源和内部 Reference 在项目中的相对位置。其次，Project-level RefQN 可用于识别需要进一步人工解释的 target coverage、source activity、bridge-role 和社区边界候选线索。再次，子领域差异结果可帮助研究者在比较 DBMS 项目时避免将所有子领域视为同质样本。
++本文结果可以为维护者、工具构建者和软件生态研究者提供若干分析线索。首先，引用实体和被引实体分布可用于观察项目的协作上下文组织方式，例如讨论评论、外部资源和内部 Reference 在项目中的相对位置。其次，Project-level RefQN 可用于识别需要进一步人工解释的 target coverage、source activity、bridge-role 和算法社区边界候选线索。再次，子领域差异结果可帮助研究者在比较 DBMS 项目时避免将所有子领域视为同质样本。
+ 
+-从实践角度看，这些结果可为开源 DBMS 知识管理、生态治理研究和引用感知工具构建提供边界化的分析线索，例如识别引用密集讨论、较高 external-reference share 和跨社区连接候选；但这些线索仍应被理解为基于 GitHub 可观测引用记录的辅助性证据，而不是对依赖关系、治理成效或维护策略的确定性判断。
++从实践角度看，这些结果可为开源 DBMS 知识管理、生态治理研究和引用感知工具构建提供边界化的分析线索，例如识别引用密集讨论、较高 external-reference share 和跨算法社区连接候选；但这些线索仍应被理解为基于 GitHub 可观测引用记录的辅助性证据，而不是对依赖关系、治理成效或维护策略的确定性判断。
+ 
+ 这些含义都应理解为基于经验观察的分析参考，而不是对项目质量、维护效率、社区治理成效或知识扩散机制的直接判断。若后续要将 RefQ 用于工具设计或维护决策，还需要结合引用语义分类、人工主题标注、跨年份动态分析和具体维护情境进行额外检验。
+ 
+ ### 5.4 RQ 归纳与解释边界
+ 
+ - **RQ1：讨论驱动与内外部 Reference evidence 分化**。DBMS Reference behavior 表现为讨论场景中的 Reference evidence、外部资源指向、项目内部与外部 Reference 并存，以及协作规模、讨论深度和引用密度互补。这一归纳由当前 RQ1 artifacts 与表 4.1 至表 4.6a 支持；external-reference share 只表示可观测证据比例，不直接测量 dependency 或组织开放性。
+-- **RQ2a/RQ2b/RQ2c：source-role、target-role 与无向派生结构**。RQ2 输出分别给出 source-side range/strength、target-side coverage/concentration 和 undirected structural view。9,605 条 directed cross-project edges 与 9,557 条 undirected edges 具有不同 operator/view provenance，不能混用；Louvain communities 和 brokerage candidates 也只作算法结构观察。
++- **RQ2a/RQ2b/RQ2c：source-role、target-role 与无向派生结构**。RQ2 输出分别给出 source-side range/strength、target-side coverage/concentration 和 undirected structural view。9,595 条 directed cross-project edges 与 9,547 条 undirected edges 具有不同 operator/view provenance，不能混用；canonical 35-community result 只是一个确定性 reference realization，50-seed sensitivity 将其限定为 algorithmic modular neighborhood view；Louvain communities 和 brokerage candidates 也只作算法结构观察。
+ - **RQ3：子领域差异的局部性与非均质性**。Reference composition 指标未在两种标签口径下通过 FDR；若干 role/local-structure 指标只在 include_mixed 下通过，因此 RQ3 的结论是局部、非均质且 label-mode sensitive，不泛化为所有指标的稳健显著差异。项目年龄始终按 cross-sectional 2023 association 解释。
+ 
+ 总体而言，本文的结果为 RefQ 在开源 DBMS 垂直技术生态中的适用性提供了边界化经验依据，也刻画了 DBMS Reference behavior 在协作讨论、外部生态资源、Project-level RefQN 结构和子领域差异上的多层次特征。上述归纳仅依据本文定义的分析范围和报告结果。
+@@ -765,24 +776,30 @@ RefQ relation 保留引用方向、项目归属和聚合证据强度，但不判
+ ### A.1 Reproducibility identity
+ 
+ - Repository: birdflyi/OSDB_RefQ
+-- Branch: main
+-- Implementation commit: 920286e134ca459c8e155942eabc6798ceab8b65
+-- Output root: outputs/reference_quotient_p0_frozen
+-- Data version: refq_p0_2023_seed_observation_v1
++- Branch: ch5-refq-repository-identity-correction-v1
++- P0-v3 scientific/shared implementation commit: 25c6ef3f49af04e916f10e129d976ce7c2119fd8
++- P0-v3 accepted result commit: 2d284f4bc83c42ba6555a09a2e42693c5490b827
++- P0-v3 output root: outputs/reference_quotient_p0_corrected_v3
++- P0-v3 manifest SHA-256: be802b9df223c99bc2089a76ae9ec6e0b6047ab0c58237a5fc3050b51dcc9776
++- P0-v3 config SHA-256: 43f97f9a2d177d325415bfbcc504f1779882cf83685b4fdebe505c8fed8e7cb0
++- Supplemental root: supplemental/reference_quotient_v2/outputs_p0v3
++- Supplemental package manifest SHA-256: 78d07fbda2a045ba309a1cfcb23a68ca2baafa910008b6483c0c4e0acf9211bd
++- Supplemental package status: STAGE_PACKAGE_COMPLETE / RELEASE_READY
+ - Study year: 2023
+-- Manifest schema: reference_quotient_p0_frozen_manifest_v1
+-- Runtime: Python 3.9.13, NumPy 1.26.4, pandas 1.4.4, SciPy 1.13.1, NetworkX 3.1, GH_CoRE 2.3.1
+-- Manifest status: PASS
+-- Input hash coverage: 296/296 identical in the final provenance refresh
+-- Non-manifest output hash coverage: 30/30 identical in the final provenance refresh
++- P0-v3 runtime: Python 3.9.13, pandas 1.4.4, NumPy 1.26.4, SciPy 1.13.1, NetworkX 3.1, GH-CoRE 2.3.1
++- Supplemental implementation authority: de9f03a1efb76f3abd2b7b6239f7748f40498d90
++- Package-manifest commit: 19e2f9a5d619de9620a6934f53321eb0704fe953
++- Supplemental package runtime: Python 3.9.13, pandas 1.5.3, NumPy 1.26.4, SciPy 1.13.1, NetworkX 3.1, GH-CoRE 2.3.1
++- S4 status: ACCEPT_WITH_LIMITATION
++- S7 status: KEPT_FIXED_OBJECT (G09 = PASS)
+ 
+ The theory field identifies the construct as Reference Quotient, the network as Project-level Reference Quotient Network, the formalization as \(Q=M^\top R_PM\), the edge aggregation rule as one unit per retained fine-grained Reference record, and second_order_projection_executed=false. The self-loop policy is preserve.
+ 
+ ### A.2 Membership and observation audits
+ 
+-membership_audit.json reports PASS and retains only entities with a unique project membership under the stated rule. quotient_construction_audit.json reports PASS, preserves direction, excludes QQ^T, Q^TQ and K=X Phi X^T, and reports 3,748,078 fine-grained records, 1,586,117 quotient-eligible records, 9,894 directed edges including self-loops, 289 self-loops and 9,605 directed cross-project edges.
++membership_audit.json reports PASS and retains only entities with a unique project membership under the stated rule. The source-admission flow contains 3,748,078 scanned input records, 3,747,958 admitted source-observation records, 120 out-of-seed source records, and 1,586,047 quotient-eligible records. The corrected quotient audit reports 1,586,047 total weight, 9,884 directed edges including self-loops, 289 self-loops and 9,595 directed cross-project edges.
+ 
+-seed_observability_audit.json reports 294 analysis seeds, 6,221 expanded targets, 262 positive-out-degree seeds and 32 zero-out-degree seeds. Non-project external targets do not enter RefQN. Expanded targets enter because they are observed as targets of seed projects; they are not source-complete observations.
++seed_observability_audit.json reports 294 analysis seeds, 6,212 expanded targets, 262 positive-out-degree seeds and 32 zero-out-degree seeds. Expanded targets remain not source-complete. Non-project external targets do not enter RefQN.
+ 
+ The observation boundary is therefore seed-centered: the Project-level RefQN is not a complete GitHub or OSS ecosystem graph. RQ1 retains non-project targets in fine-grained Reference analysis, while RefQN requires project-mappable endpoints.
+ 
+@@ -794,13 +811,13 @@ The observation boundary is therefore seed-centered: the Project-level RefQN is
+ - RQ2c: undirected-view edge tables, LCC edge table, undirected summary, algorithmic communities and structural brokerage candidates/top-50.
+ - RQ3: seed role-aware features, subdomain descriptive comparison and Kruskal-FDR effect-size table.
+ 
+-All main-result numbers in sections 3 and 4 are traceable to one of these files or to the manifest/audit fields listed above.
++All main-result numbers in sections 3 and 4 are traceable to the frozen P0-v3 and supplemental package files listed above. No second-order projection was executed.
+ 
+ ### A.4 Statistical and semantic boundaries
+ 
+ Reference evidence is not task resolution, knowledge transfer, dependency ground truth or causal influence. Push, Issue and PR references remain evidence in their respective observable contexts. Self-reference ratio describes the share of a project's observable Reference records whose endpoints remain internal; it does not measure unobserved task semantics or organizational properties.
+ 
+-Project age is a cross-sectional 2023 attribute. Louvain communities are algorithmic partitions under the current undirected view and modularity objective, not semantic DBMS communities. Structural brokerage candidates are bridge-like positions in the current graph, not knowledge brokers or organizational coordinators. No second-order projection enters the main analysis.
++Project age is a cross-sectional 2023 attribute. Louvain communities are algorithmic partitions under the current undirected view and modularity objective; the canonical seed yields one deterministic 35-community reference realization, while the tested sensitivity range is 32--37 communities with 42/50 ARI values below 0.9, minimum ARI 0.6823671359861659 and minimum pairwise ARI 0.6092441840471735. This is an algorithmic modular neighborhood view, not a unique stable community structure or DBMS-subdomain taxonomy. Structural brokerage candidates are bridge-like positions in the current graph, with S5 minimum Spearman 0.9998339514284217, minimum top-50 overlap 0.82 and robustness_alert=FALSE; they are not knowledge brokers or organizational coordinators. Expanded targets remain not source-complete. No second-order projection enters the main analysis.
+ 
+ ## 参考文献
+ 
