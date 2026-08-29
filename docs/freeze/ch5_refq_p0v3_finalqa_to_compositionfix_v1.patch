@@ -1,0 +1,38 @@
+diff --git "a/C:\\Users\\10651\\Documents\\trae_projects\\thesis\\ch5_analysis_reference_coupling_for_osdbms\\\347\254\2545\347\253\240-paper1_content_v1.4.3.1_reference_quotient_citation_precision_clean_p0v3_reconciled_finalqa.md" "b/C:\\Users\\10651\\Documents\\trae_projects\\thesis\\ch5_analysis_reference_coupling_for_osdbms\\\347\254\2545\347\253\240-paper1_content_v1.4.3.1_reference_quotient_citation_precision_clean_p0v3_reconciled_finalqa_composition.md"
+index 8056293..5bf016f 100644
+--- "a/C:\\Users\\10651\\Documents\\trae_projects\\thesis\\ch5_analysis_reference_coupling_for_osdbms\\\347\254\2545\347\253\240-paper1_content_v1.4.3.1_reference_quotient_citation_precision_clean_p0v3_reconciled_finalqa.md"
++++ "b/C:\\Users\\10651\\Documents\\trae_projects\\thesis\\ch5_analysis_reference_coupling_for_osdbms\\\347\254\2545\347\253\240-paper1_content_v1.4.3.1_reference_quotient_citation_precision_clean_p0v3_reconciled_finalqa_composition.md"
+@@ -382,6 +382,8 @@ G_{\mathrm{RefQ}}=(P,E_{\mathrm{RefQ}},Q).
+ 
+ 征引实体分布回答“Reference 从何处发起”的问题。对于 DBMS 项目而言，Reference 并不只附着于代码提交，也大量嵌入 Issue 评论、变更说明和问题追踪过程。因此，表 4.1 可用于观察协作讨论、自动化更新和主动开发活动在 Reference behavior 中的相对位置。
+ 
++为在保持主文紧凑性的同时避免将实质性类别隐藏于 Other，表 4.1 和表 4.2 按冻结计数降序列示类别，直至累计覆盖至少 95%，且单项占比达到 5% 的类别不得并入 Other；其余长尾类别仅作展示性聚合。这里的 5% 是展示规则，不是统计显著性水平。
++
+ **表 4.1 征引实体类型分布统计**
+ 
+ | 征引实体类型 | 引用次数 | 占比（%） |
+@@ -390,7 +392,8 @@ G_{\mathrm{RefQ}}=(P,E_{\mathrm{RefQ}},Q).
+ | Push | 1,165,990 | 31.11 |
+ | PullRequest | 335,530 | 8.95 |
+ | Issue | 168,876 | 4.51 |
+-| 其他已导出类型 | 260,866 | 6.96 |
++| Release | 96,690 | 2.58 |
++| 其他已导出类型 | 164,176 | 4.38 |
+ | 合计 | 3,747,958 | 100.00 |
+ 
+ 表中占比基于 3,747,958 条 admitted source-observation records 计算；“其他已导出类型”是当前完整事件分布中未在表内单列类型的显示聚合。表 4.1 表明，IssueComment 是最主要的征引载体，占 48.47%，显示 Reference evidence 大量出现在问题讨论、方案澄清和维护沟通等可观测场景；Push 占 31.11%，PullRequest 与 Issue 分别占 8.95% 和 4.51%。这些 observed global shares 仅描述上述场景中的 Reference evidence 构成，不将其解释为任务解决、讨论质量或组织机制。
+@@ -408,10 +411,12 @@ G_{\mathrm{RefQ}}=(P,E_{\mathrm{RefQ}},Q).
+ | Actor | 475,651 | 12.69 |
+ | Issue | 281,648 | 7.51 |
+ | Commit | 255,009 | 6.80 |
+-| 其他已导出类型 | 434,337 | 11.59 |
++| GitHub_Files_FileChanges | 193,391 | 5.16 |
++| Repo | 74,468 | 1.99 |
++| 其他已导出类型 | 166,478 | 4.44 |
+ | 合计 | 3,747,958 | 100.00 |
+ 
+-表 4.2 表明，GitHub_Service_External_Links 占 43.47%，PullRequest 占 17.93%，Actor 占 12.69%，Issue 占 7.51%，Commit 占 6.80%。这一构成表明 observed target composition 同时包含外部资源、变更工件和社会实体；这些频率仅描述当前 admitted-record universe，不提升为依赖、采用、项目重要性或具体协作影响结论。
++表 4.2 表明，GitHub_Service_External_Links 占 43.47%，PullRequest 占 17.93%，Actor 占 12.69%，Issue 占 7.51%，Commit 占 6.80%，GitHub_Files_FileChanges 占 5.16%。这一构成表明 observed target composition 同时包含外部资源、变更工件和社会实体；这些频率仅描述当前 admitted-record universe，不提升为依赖、采用、项目重要性或具体协作影响结论。
+ 
+ 3. **自引用行为：内部与外部 Reference evidence 的比例分化**
+ 
