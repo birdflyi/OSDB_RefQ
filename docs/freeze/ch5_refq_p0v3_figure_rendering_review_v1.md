@@ -93,8 +93,8 @@ not publication-ready and does not claim publication acceptance.
 `FIGURE0_MODIFIED = NO`  
 `decision = P0V3_FIGURE_RENDER_PASS_READY_FOR_HUMAN_VISUAL_QA`
 
-`FIGURE_RENDER_COMMIT_A = PENDING`  
-`FIGURE_RENDER_CLOSURE_COMMIT_B = PENDING`  
-`push_status = PENDING`
+`FIGURE_RENDER_COMMIT_A = 71ae8f3ccb78831d443547a412a44d1d3a728d6c`  
+`push_status = PASS`  
+`FIGURE_RENDER_CLOSURE_COMMIT_B = PENDING`
 
 No manuscript or scientific-output commit is included.
