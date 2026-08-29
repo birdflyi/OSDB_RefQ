@@ -1,0 +1,61 @@
+{
+  "S6_manifest_closure": "PASS",
+  "authority_roots": {
+    "corrected_p0_v3": "outputs/reference_quotient_p0_corrected_v3",
+    "corrected_supplemental_v2": "supplemental/reference_quotient_v2/outputs_p0v3"
+  },
+  "composition_display_policy_path": "docs/freeze/ch5_refq_p0v3_composition_table_display_policy_v1.md",
+  "display_only_transformations": [
+    "stable sorting for display",
+    "formatting frozen values",
+    "no scientific recomputation"
+  ],
+  "expected_key_values": [
+    "RECORD",
+    "REFERENCE_RECORD",
+    "EDGE_COUNT"
+  ],
+  "figure_id": "supplementary_s4_unit_contract",
+  "figure_plan_path": "docs/freeze/ch5_refq_p0v3_final_figure_plan_v1.md",
+  "final_manuscript_sha256": "5c54bd725becc7ff7253ec023e83258749b1868e14a70d34722adcc1f421bc60",
+  "input_columns": {
+    "D:\\github_repo\\OSDB_RefQ\\supplemental\\reference_quotient_v2\\outputs_p0v3\\S1_evidence_universe\\edge_class_counts.csv": [
+      "edge_class",
+      "count",
+      "unit"
+    ],
+    "D:\\github_repo\\OSDB_RefQ\\supplemental\\reference_quotient_v2\\outputs_p0v3\\S1_evidence_universe\\evidence_universe_flow.csv": [
+      "stage",
+      "count",
+      "unit",
+      "measure"
+    ]
+  },
+  "input_files": [
+    "D:\\github_repo\\OSDB_RefQ\\supplemental\\reference_quotient_v2\\outputs_p0v3\\S1_evidence_universe\\edge_class_counts.csv",
+    "D:\\github_repo\\OSDB_RefQ\\supplemental\\reference_quotient_v2\\outputs_p0v3\\S1_evidence_universe\\evidence_universe_flow.csv"
+  ],
+  "input_row_counts": {
+    "D:\\github_repo\\OSDB_RefQ\\supplemental\\reference_quotient_v2\\outputs_p0v3\\S1_evidence_universe\\edge_class_counts.csv": 3,
+    "D:\\github_repo\\OSDB_RefQ\\supplemental\\reference_quotient_v2\\outputs_p0v3\\S1_evidence_universe\\evidence_universe_flow.csv": 15
+  },
+  "input_sha256": {
+    "D:\\github_repo\\OSDB_RefQ\\supplemental\\reference_quotient_v2\\outputs_p0v3\\S1_evidence_universe\\edge_class_counts.csv": "a023d557fd43971ebc27304993f33a4043a5760a1f61c98fdbbeda4c8e3e4c08",
+    "D:\\github_repo\\OSDB_RefQ\\supplemental\\reference_quotient_v2\\outputs_p0v3\\S1_evidence_universe\\evidence_universe_flow.csv": "92e813ffcd189abea9320489b39e52d0baca8855eec7cb8ec3c8e3c285693366"
+  },
+  "panel_contract": "Unit-aware table separating RECORD, aggregated Reference-record weight, and EDGE_COUNT.",
+  "pdf_sha256": "c13a5990ab6b12682d1e5c8c2ae596c0b67c5e421cb6bbaaa4f237637e464506",
+  "png_sha256": "29c3a836e02ea622670b046d3d57a40f55d625e4f03b9cdb063ef14f8c0d71d1",
+  "render_runtime": {
+    "backend": "agg",
+    "matplotlib": "3.8.2",
+    "numpy": "1.24.2",
+    "pandas": "1.5.3",
+    "platform": "Windows-10-10.0.26200-SP0",
+    "python": "3.9.13",
+    "pythonhashseed": "0"
+  },
+  "render_script_sha256": "b9e3a51f6e5adeceeefd2f518af8c1e137eee18992cf26ff60858210462ef669",
+  "status": "PASS",
+  "svg_sha256": "84108c313f8c938c53e50ccacaad7e8c4f16259f7efa59b77eb68441cc53e3c5"
+}

@@ -1,0 +1,72 @@
+{
+  "S6_manifest_closure": "PASS",
+  "authority_roots": {
+    "corrected_p0_v3": "outputs/reference_quotient_p0_corrected_v3",
+    "corrected_supplemental_v2": "supplemental/reference_quotient_v2/outputs_p0v3"
+  },
+  "composition_display_policy_path": "docs/freeze/ch5_refq_p0v3_composition_table_display_policy_v1.md",
+  "display_only_transformations": [
+    "stable sorting for display",
+    "formatting frozen values",
+    "no scientific recomputation"
+  ],
+  "expected_key_values": [
+    "3,748,078",
+    "3,747,958",
+    "1,586,047"
+  ],
+  "figure_id": "figure1_evidence_universe",
+  "figure_plan_path": "docs/freeze/ch5_refq_p0v3_final_figure_plan_v1.md",
+  "final_manuscript_sha256": "5c54bd725becc7ff7253ec023e83258749b1868e14a70d34722adcc1f421bc60",
+  "input_columns": {
+    "D:\\github_repo\\OSDB_RefQ\\supplemental\\reference_quotient_v2\\outputs_p0v3\\S1_evidence_universe\\event_type_x_target_membership_status.csv": [
+      "event_type",
+      "target_membership_status",
+      "count",
+      "overall_share",
+      "within_row_share",
+      "within_status_share"
+    ],
+    "D:\\github_repo\\OSDB_RefQ\\supplemental\\reference_quotient_v2\\outputs_p0v3\\S1_evidence_universe\\evidence_universe_flow.csv": [
+      "stage",
+      "count",
+      "unit",
+      "measure"
+    ],
+    "D:\\github_repo\\OSDB_RefQ\\supplemental\\reference_quotient_v2\\outputs_p0v3\\S6_figure_ready\\rq1_referencing_entity_distribution_plot.csv": [
+      "referencing_entity_type",
+      "count",
+      "share"
+    ]
+  },
+  "input_files": [
+    "D:\\github_repo\\OSDB_RefQ\\supplemental\\reference_quotient_v2\\outputs_p0v3\\S1_evidence_universe\\event_type_x_target_membership_status.csv",
+    "D:\\github_repo\\OSDB_RefQ\\supplemental\\reference_quotient_v2\\outputs_p0v3\\S1_evidence_universe\\evidence_universe_flow.csv",
+    "D:\\github_repo\\OSDB_RefQ\\supplemental\\reference_quotient_v2\\outputs_p0v3\\S6_figure_ready\\rq1_referencing_entity_distribution_plot.csv"
+  ],
+  "input_row_counts": {
+    "D:\\github_repo\\OSDB_RefQ\\supplemental\\reference_quotient_v2\\outputs_p0v3\\S1_evidence_universe\\event_type_x_target_membership_status.csv": 24,
+    "D:\\github_repo\\OSDB_RefQ\\supplemental\\reference_quotient_v2\\outputs_p0v3\\S1_evidence_universe\\evidence_universe_flow.csv": 15,
+    "D:\\github_repo\\OSDB_RefQ\\supplemental\\reference_quotient_v2\\outputs_p0v3\\S6_figure_ready\\rq1_referencing_entity_distribution_plot.csv": 8
+  },
+  "input_sha256": {
+    "D:\\github_repo\\OSDB_RefQ\\supplemental\\reference_quotient_v2\\outputs_p0v3\\S1_evidence_universe\\event_type_x_target_membership_status.csv": "0732e5e330a9e7853a71f51b89223987ffca1486b2aa086f6877e7838128b934",
+    "D:\\github_repo\\OSDB_RefQ\\supplemental\\reference_quotient_v2\\outputs_p0v3\\S1_evidence_universe\\evidence_universe_flow.csv": "92e813ffcd189abea9320489b39e52d0baca8855eec7cb8ec3c8e3c285693366",
+    "D:\\github_repo\\OSDB_RefQ\\supplemental\\reference_quotient_v2\\outputs_p0v3\\S6_figure_ready\\rq1_referencing_entity_distribution_plot.csv": "1f837553e300ae038b15f5ca7a88449b0aa2c199c829a071a2cfd0cc93ffcfea"
+  },
+  "panel_contract": "A flow; B complete eight-category source composition; C event-type target-membership shares.",
+  "pdf_sha256": "3d7d01cc1ca3353d507db1fe1830407cd717ad99196cd101784c7f4bff99f609",
+  "png_sha256": "2a0470d5f83923d3110b86af028103595cd76086169461f3594ce8914710e873",
+  "render_runtime": {
+    "backend": "agg",
+    "matplotlib": "3.8.2",
+    "numpy": "1.24.2",
+    "pandas": "1.5.3",
+    "platform": "Windows-10-10.0.26200-SP0",
+    "python": "3.9.13",
+    "pythonhashseed": "0"
+  },
+  "render_script_sha256": "b9e3a51f6e5adeceeefd2f518af8c1e137eee18992cf26ff60858210462ef669",
+  "status": "PASS",
+  "svg_sha256": "38dbaab3bde0c58f9b4270f7afcf41d132307e3c123f54f79b93a5c34b6d5952"
+}
