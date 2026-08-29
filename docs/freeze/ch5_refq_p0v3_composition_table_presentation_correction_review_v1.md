@@ -50,7 +50,11 @@ Figure 1 policy is unchanged: future Figure 1 Panel B uses all eight frozen sour
 
 Execution counts are all zero: `P0_RUN=0`, `S1_RUN=0`, `S2_RUN=0`, `S3_RUN=0`, `S4_RUN=0`, `S5_RUN=0`, `S6_RUN=0`, `S7_RUN=0`, `GH_CORE_RUN=0`, `EVENT_REJOIN=0`, `FIGURES_GENERATED=0`, `scientific_logic_change_count=0`.
 
-`COMPOSITION_PRESENTATION_COMMIT_A` and `COMPOSITION_PRESENTATION_CLOSURE_COMMIT_B` are recorded after the two docs-only commits.
+`COMPOSITION_PRESENTATION_COMMIT_A = d89c925d3a9767f6dbf56bd560fc318d15d6bd73`
+
+`push_status = PASS`
+
+`COMPOSITION_PRESENTATION_CLOSURE_COMMIT_B` is recorded after this review-only closure commit.
 
 ## Decision
 
