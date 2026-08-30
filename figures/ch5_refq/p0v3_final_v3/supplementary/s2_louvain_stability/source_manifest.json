@@ -1,0 +1,66 @@
+{
+  "S6_manifest_closure": "PASS",
+  "authority_roots": {
+    "corrected_p0_v3": "outputs/reference_quotient_p0_corrected_v3",
+    "corrected_supplemental_v2": "supplemental/reference_quotient_v2/outputs_p0v3"
+  },
+  "composition_display_policy_path": "docs/freeze/ch5_refq_p0v3_composition_table_display_policy_v1.md",
+  "display_only_transformations": [
+    "stable sorting for display",
+    "formatting frozen values",
+    "no scientific recomputation"
+  ],
+  "expected_key_values": [
+    "0.682367",
+    "0.609244"
+  ],
+  "figure_id": "supplementary_s2_louvain_stability",
+  "figure_plan_path": "docs/freeze/ch5_refq_p0v3_final_figure_plan_v1.md",
+  "final_manuscript_sha256": "5c54bd725becc7ff7253ec023e83258749b1868e14a70d34722adcc1f421bc60",
+  "input_columns": {
+    "D:\\github_repo\\OSDB_RefQ\\supplemental\\reference_quotient_v2\\outputs_p0v3\\S4_community_stability\\louvain_stability_pairwise.csv": [
+      "seed_left",
+      "seed_right",
+      "ari"
+    ],
+    "D:\\github_repo\\OSDB_RefQ\\supplemental\\reference_quotient_v2\\outputs_p0v3\\S4_community_stability\\louvain_stability_summary.json": [],
+    "D:\\github_repo\\OSDB_RefQ\\supplemental\\reference_quotient_v2\\outputs_p0v3\\S6_figure_ready\\louvain_stability_plot.csv": [
+      "seed",
+      "community_count",
+      "modularity",
+      "ari_to_canonical",
+      "is_canonical_seed"
+    ]
+  },
+  "input_files": [
+    "D:\\github_repo\\OSDB_RefQ\\supplemental\\reference_quotient_v2\\outputs_p0v3\\S4_community_stability\\louvain_stability_pairwise.csv",
+    "D:\\github_repo\\OSDB_RefQ\\supplemental\\reference_quotient_v2\\outputs_p0v3\\S4_community_stability\\louvain_stability_summary.json",
+    "D:\\github_repo\\OSDB_RefQ\\supplemental\\reference_quotient_v2\\outputs_p0v3\\S6_figure_ready\\louvain_stability_plot.csv"
+  ],
+  "input_row_counts": {
+    "D:\\github_repo\\OSDB_RefQ\\supplemental\\reference_quotient_v2\\outputs_p0v3\\S4_community_stability\\louvain_stability_pairwise.csv": 1225,
+    "D:\\github_repo\\OSDB_RefQ\\supplemental\\reference_quotient_v2\\outputs_p0v3\\S4_community_stability\\louvain_stability_summary.json": null,
+    "D:\\github_repo\\OSDB_RefQ\\supplemental\\reference_quotient_v2\\outputs_p0v3\\S6_figure_ready\\louvain_stability_plot.csv": 50
+  },
+  "input_sha256": {
+    "D:\\github_repo\\OSDB_RefQ\\supplemental\\reference_quotient_v2\\outputs_p0v3\\S4_community_stability\\louvain_stability_pairwise.csv": "240852543183948b6107c9fd00a51de48f2dbb03f813083e30e0ca43d521cc69",
+    "D:\\github_repo\\OSDB_RefQ\\supplemental\\reference_quotient_v2\\outputs_p0v3\\S4_community_stability\\louvain_stability_summary.json": "37594b91e0c25cbfc5b31b0c9036f4e0bdddc324e724e5a2ca4398cf7e307421",
+    "D:\\github_repo\\OSDB_RefQ\\supplemental\\reference_quotient_v2\\outputs_p0v3\\S6_figure_ready\\louvain_stability_plot.csv": "dce84c2c821083b914edf659ea06d71cce236fdac6f5c24a637a2986526d4760"
+  },
+  "panel_contract": "All 50 ARI values, community-count frequency, pairwise ARI distribution.",
+  "pdf_sha256": "1bb34b793879294d276372d6589539e4285665d18c8b8e30fcd6ecf9dfa38b55",
+  "png_sha256": "e3d75b853c3d972da2e7daafd06a1767669cb6b7b6ce5855d62ebb79368fac46",
+  "render_runtime": {
+    "backend": "agg",
+    "matplotlib": "3.8.2",
+    "numpy": "1.24.2",
+    "pandas": "1.5.3",
+    "platform": "Windows-10-10.0.26200-SP0",
+    "python": "3.9.13",
+    "pythonhashseed": "0"
+  },
+  "render_script_sha256": "31a0b5a1e3a1be049835fa787e8fa119bfc1db3e836ba26df4f7e23b02f0f856",
+  "renderer_contract_assertions": {},
+  "status": "PASS",
+  "svg_sha256": "9eb4e8de2828d699d45332f002bf04bf6c8ba729811c530cd7bb5808433bbf80"
+}

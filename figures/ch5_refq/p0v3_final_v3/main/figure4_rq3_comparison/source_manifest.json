@@ -1,0 +1,96 @@
+{
+  "S6_manifest_closure": "PASS",
+  "authority_roots": {
+    "corrected_p0_v3": "outputs/reference_quotient_p0_corrected_v3",
+    "corrected_supplemental_v2": "supplemental/reference_quotient_v2/outputs_p0v3"
+  },
+  "composition_display_policy_path": "docs/freeze/ch5_refq_p0v3_composition_table_display_policy_v1.md",
+  "display_only_transformations": [
+    "stable sorting for display",
+    "formatting frozen values",
+    "no scientific recomputation"
+  ],
+  "expected_key_values": [
+    "include_mixed",
+    "exclude_mixed_or_multilabel"
+  ],
+  "figure_id": "figure4_rq3_comparison",
+  "figure_plan_path": "docs/freeze/ch5_refq_p0v3_final_figure_plan_v1.md",
+  "final_manuscript_sha256": "5c54bd725becc7ff7253ec023e83258749b1868e14a70d34722adcc1f421bc60",
+  "input_columns": {
+    "D:\\github_repo\\OSDB_RefQ\\supplemental\\reference_quotient_v2\\outputs_p0v3\\S6_figure_ready\\rq3_kruskal_fdr_effect_sizes_plot.csv": [
+      "label_mode",
+      "feature",
+      "groups",
+      "n_with_replacement",
+      "categories",
+      "kruskal_h",
+      "p_value",
+      "epsilon_squared",
+      "test_status",
+      "fdr_bh_p_value",
+      "fdr_bh_reject_0_05"
+    ],
+    "D:\\github_repo\\OSDB_RefQ\\supplemental\\reference_quotient_v2\\outputs_p0v3\\S6_figure_ready\\rq3_subdomain_descriptive_comparison_plot.csv": [
+      "label_mode",
+      "feature",
+      "category",
+      "n",
+      "mean",
+      "median",
+      "std"
+    ]
+  },
+  "input_files": [
+    "D:\\github_repo\\OSDB_RefQ\\supplemental\\reference_quotient_v2\\outputs_p0v3\\S6_figure_ready\\rq3_kruskal_fdr_effect_sizes_plot.csv",
+    "D:\\github_repo\\OSDB_RefQ\\supplemental\\reference_quotient_v2\\outputs_p0v3\\S6_figure_ready\\rq3_subdomain_descriptive_comparison_plot.csv"
+  ],
+  "input_row_counts": {
+    "D:\\github_repo\\OSDB_RefQ\\supplemental\\reference_quotient_v2\\outputs_p0v3\\S6_figure_ready\\rq3_kruskal_fdr_effect_sizes_plot.csv": 22,
+    "D:\\github_repo\\OSDB_RefQ\\supplemental\\reference_quotient_v2\\outputs_p0v3\\S6_figure_ready\\rq3_subdomain_descriptive_comparison_plot.csv": 185
+  },
+  "input_sha256": {
+    "D:\\github_repo\\OSDB_RefQ\\supplemental\\reference_quotient_v2\\outputs_p0v3\\S6_figure_ready\\rq3_kruskal_fdr_effect_sizes_plot.csv": "c8031d4882ccd23590d0ba837f9c52155883b3cdc79409044bb9cf8b8800d320",
+    "D:\\github_repo\\OSDB_RefQ\\supplemental\\reference_quotient_v2\\outputs_p0v3\\S6_figure_ready\\rq3_subdomain_descriptive_comparison_plot.csv": "f9f6400a7cf4d14159d4c30b7b4fa9a7a49eee3ebe58a4fe39a27a0f1028dcef"
+  },
+  "panel_contract": "Descriptive mean/median displays and epsilon-squared with explicit BH-FDR status.",
+  "pdf_sha256": "3a63af15206d1762a483e26dc30fa6feda2424a1abf9b9b64cd44b78ddfb9dd4",
+  "png_sha256": "7eb4e5caddf61c4154a857babe83b4dc79a90d22078bcac855566dad95d735ac",
+  "render_runtime": {
+    "backend": "agg",
+    "matplotlib": "3.8.2",
+    "numpy": "1.24.2",
+    "pandas": "1.5.3",
+    "platform": "Windows-10-10.0.26200-SP0",
+    "python": "3.9.13",
+    "pythonhashseed": "0"
+  },
+  "render_script_sha256": "31a0b5a1e3a1be049835fa787e8fa119bfc1db3e836ba26df4f7e23b02f0f856",
+  "renderer_contract_assertions": {
+    "F4_AD_grayscale_safe": "PASS",
+    "F4_AD_label_mode_encoding": "include_mixed=filled; exclude_mixed_or_multilabel=open",
+    "F4_AD_marker_grammar": {
+      "exclude_mixed_or_multilabel \u00b7 mean": {
+        "filled": false,
+        "marker": "o"
+      },
+      "exclude_mixed_or_multilabel \u00b7 median": {
+        "filled": false,
+        "marker": "s"
+      },
+      "include_mixed \u00b7 mean": {
+        "filled": true,
+        "marker": "o"
+      },
+      "include_mixed \u00b7 median": {
+        "filled": true,
+        "marker": "s"
+      }
+    },
+    "F4_AD_statistic_encoding": "mean=circle; median=square",
+    "F4_E_FDR_fill_grammar": "filled=BH-FDR reject; open=not reject",
+    "F4_layout_tightened": "YES"
+  },
+  "status": "PASS",
+  "svg_sha256": "2136f0c2374f583f30850f226e9275218e05758171022c7c7c0e12661f64185e"
+}
