@@ -1,0 +1,81 @@
+{
+  "S6_manifest_closure": "PASS",
+  "authority_roots": {
+    "corrected_p0_v3": "outputs/reference_quotient_p0_corrected_v3",
+    "corrected_supplemental_v2": "supplemental/reference_quotient_v2/outputs_p0v3"
+  },
+  "composition_display_policy_path": "docs/freeze/ch5_refq_p0v3_composition_table_display_policy_v1.md",
+  "display_only_transformations": [
+    "stable sorting for display",
+    "formatting frozen values",
+    "no scientific recomputation"
+  ],
+  "expected_key_values": [
+    "0.9998339514284217",
+    "0.82",
+    "FALSE"
+  ],
+  "figure_id": "supplementary_s3_brokerage_stability",
+  "figure_plan_path": "docs/freeze/ch5_refq_p0v3_final_figure_plan_v1.md",
+  "final_manuscript_sha256": "5c54bd725becc7ff7253ec023e83258749b1868e14a70d34722adcc1f421bc60",
+  "input_columns": {
+    "D:\\github_repo\\OSDB_RefQ\\supplemental\\reference_quotient_v2\\outputs_p0v3\\S5_brokerage_stability\\brokerage_stability_summary.json": [],
+    "D:\\github_repo\\OSDB_RefQ\\supplemental\\reference_quotient_v2\\outputs_p0v3\\S5_brokerage_stability\\brokerage_topk_inclusion_frequency.csv": [
+      "k",
+      "top_k",
+      "project_id",
+      "run_count",
+      "inclusion_count",
+      "inclusion_frequency"
+    ],
+    "D:\\github_repo\\OSDB_RefQ\\supplemental\\reference_quotient_v2\\outputs_p0v3\\S6_figure_ready\\brokerage_stability_plot.csv": [
+      "k",
+      "seed",
+      "spearman_to_canonical",
+      "top10_overlap",
+      "top20_overlap",
+      "top50_overlap",
+      "canonical_score_match"
+    ]
+  },
+  "input_files": [
+    "D:\\github_repo\\OSDB_RefQ\\supplemental\\reference_quotient_v2\\outputs_p0v3\\S5_brokerage_stability\\brokerage_stability_summary.json",
+    "D:\\github_repo\\OSDB_RefQ\\supplemental\\reference_quotient_v2\\outputs_p0v3\\S5_brokerage_stability\\brokerage_topk_inclusion_frequency.csv",
+    "D:\\github_repo\\OSDB_RefQ\\supplemental\\reference_quotient_v2\\outputs_p0v3\\S6_figure_ready\\brokerage_stability_plot.csv"
+  ],
+  "input_row_counts": {
+    "D:\\github_repo\\OSDB_RefQ\\supplemental\\reference_quotient_v2\\outputs_p0v3\\S5_brokerage_stability\\brokerage_stability_summary.json": null,
+    "D:\\github_repo\\OSDB_RefQ\\supplemental\\reference_quotient_v2\\outputs_p0v3\\S5_brokerage_stability\\brokerage_topk_inclusion_frequency.csv": 357,
+    "D:\\github_repo\\OSDB_RefQ\\supplemental\\reference_quotient_v2\\outputs_p0v3\\S6_figure_ready\\brokerage_stability_plot.csv": 60
+  },
+  "input_sha256": {
+    "D:\\github_repo\\OSDB_RefQ\\supplemental\\reference_quotient_v2\\outputs_p0v3\\S5_brokerage_stability\\brokerage_stability_summary.json": "0491e41e1da51d3ed95f3a1d25a5df9c3ac295ed952e75aab66706d8603ae3a6",
+    "D:\\github_repo\\OSDB_RefQ\\supplemental\\reference_quotient_v2\\outputs_p0v3\\S5_brokerage_stability\\brokerage_topk_inclusion_frequency.csv": "d75379421ae7d9f60d3e1ce5b2d0fd4c4c5c5f72cda17c59fd37bc3af2a1e284",
+    "D:\\github_repo\\OSDB_RefQ\\supplemental\\reference_quotient_v2\\outputs_p0v3\\S6_figure_ready\\brokerage_stability_plot.csv": "9f279a1eda33f22b607e5af979e3bd0a4b61467e372aa820ac10a3db5e411d71"
+  },
+  "panel_contract": "Spearman, top-50 overlap, and canonical top-50 inclusion frequency.",
+  "pdf_sha256": "0694920c038e8321b12ee6dd67bf39b3c803b2077b51dd9ce1048116e7e68b15",
+  "png_sha256": "1fd66d8fcb7e50978ce7fb5f38e1d3c7da03321195b649d20d4cf9f4bc30f892",
+  "render_runtime": {
+    "backend": "agg",
+    "matplotlib": "3.8.2",
+    "numpy": "1.24.2",
+    "pandas": "1.5.3",
+    "platform": "Windows-10-10.0.26200-SP0",
+    "python": "3.9.13",
+    "pythonhashseed": "0"
+  },
+  "render_script_sha256": "d50b26e179146c9617fb0e876566c6b66d5a26e20e2f27117feb79238ed712d4",
+  "renderer_contract_assertions": {
+    "S3_panel_A_data_equals_frozen": "PASS",
+    "S3_panel_A_metric": "spearman_to_canonical",
+    "S3_panel_A_minimum": 0.9998339514284217,
+    "S3_panel_A_transform": "NONE",
+    "S3_panel_A_xlimit": [
+      0.9998256489998426,
+      1.0
+    ]
+  },
+  "status": "PASS",
+  "svg_sha256": "bf56b9efb690681c8950f35f615b82f737f02756b54b4c09eedf822d7a4c4505"
+}

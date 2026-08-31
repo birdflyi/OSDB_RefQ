@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="605.578774pt" height="509.51952pt" viewBox="0 0 605.578774 509.51952" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.8.2, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 509.51952 
+L 605.578774 509.51952 
+L 605.578774 0 
+L 0 0 
+z
+" style="fill: #ffffff"/>
+  </g>
+  <g id="axes_1">
+   <g id="line2d_1">
+    <path d="M 26.704958 85.025316 
+L 225.616781 85.025316 
+" clip-path="url(#p6d9a25d979)" style="fill: none; stroke: #cccccc; stroke-width: 0.6; stroke-linecap: square"/>
+   </g>
+   <g id="text_1">
+    <text style="font: 700 11px 'DejaVu Sans'; text-anchor: end" x="14.272969" y="30.678812" transform="rotate(-0 14.272969 30.678812)">A</text>
+   </g>
+   <g id="text_2">
+    <text style="font: 700 6.8px 'DejaVu Sans Mono'; text-anchor: start" x="26.704958" y="78.235031" transform="rotate(-0 26.704958 78.235031)">stage / class               count        unit                measure</text>
+   </g>
+   <g id="text_3">
+    <text style="fill: #222222; font: 6.6px 'DejaVu Sans Mono'; text-anchor: start" x="26.704958" y="103.132741" transform="rotate(-0 26.704958 103.132741)">before admission             3,748,078  RECORD             -</text>
+   </g>
+   <g id="text_4">
+    <text style="fill: #222222; font: 6.6px 'DejaVu Sans Mono'; text-anchor: start" x="26.704958" y="123.503594" transform="rotate(-0 26.704958 123.503594)">admitted                     3,747,958  RECORD             -</text>
+   </g>
+   <g id="text_5">
+    <text style="fill: #222222; font: 6.6px 'DejaVu Sans Mono'; text-anchor: start" x="26.704958" y="143.874447" transform="rotate(-0 26.704958 143.874447)">out of seed                        120  RECORD             -</text>
+   </g>
+   <g id="text_6">
+    <text style="fill: #222222; font: 6.6px 'DejaVu Sans Mono'; text-anchor: start" x="26.704958" y="164.2453" transform="rotate(-0 26.704958 164.2453)">missing repo ID                      0  RECORD             -</text>
+   </g>
+   <g id="text_7">
+    <text style="fill: #222222; font: 6.6px 'DejaVu Sans Mono'; text-anchor: start" x="26.704958" y="184.616153" transform="rotate(-0 26.704958 184.616153)">invalid repo ID                      0  RECORD             -</text>
+   </g>
+   <g id="text_8">
+    <text style="fill: #222222; font: 6.6px 'DejaVu Sans Mono'; text-anchor: start" x="26.704958" y="204.987007" transform="rotate(-0 26.704958 204.987007)">target mappable              1,586,047  RECORD             -</text>
+   </g>
+   <g id="text_9">
+    <text style="fill: #222222; font: 6.6px 'DejaVu Sans Mono'; text-anchor: start" x="26.704958" y="225.35786" transform="rotate(-0 26.704958 225.35786)">target non-project           1,686,729  RECORD             -</text>
+   </g>
+   <g id="text_10">
+    <text style="fill: #222222; font: 6.6px 'DejaVu Sans Mono'; text-anchor: start" x="26.704958" y="245.728713" transform="rotate(-0 26.704958 245.728713)">target unresolved              475,182  RECORD             -</text>
+   </g>
+   <g id="text_11">
+    <text style="fill: #222222; font: 6.6px 'DejaVu Sans Mono'; text-anchor: start" x="26.704958" y="266.099566" transform="rotate(-0 26.704958 266.099566)">target ambiguous                     0  RECORD             -</text>
+   </g>
+   <g id="text_12">
+    <text style="fill: #222222; font: 6.6px 'DejaVu Sans Mono'; text-anchor: start" x="26.704958" y="286.470419" transform="rotate(-0 26.704958 286.470419)">conflict excluded                    0  RECORD             -</text>
+   </g>
+   <g id="text_13">
+    <text style="fill: #222222; font: 6.6px 'DejaVu Sans Mono'; text-anchor: start" x="26.704958" y="306.841273" transform="rotate(-0 26.704958 306.841273)">quotient eligible            1,586,047  RECORD             -</text>
+   </g>
+   <g id="text_14">
+    <text style="fill: #222222; font: 6.6px 'DejaVu Sans Mono'; text-anchor: start" x="26.704958" y="327.212126" transform="rotate(-0 26.704958 327.212126)">self-loop evidence           1,447,073  REFERENCE_RECORD   aggregated edge weight</text>
+   </g>
+   <g id="text_15">
+    <text style="fill: #222222; font: 6.6px 'DejaVu Sans Mono'; text-anchor: start" x="26.704958" y="347.582979" transform="rotate(-0 26.704958 347.582979)">cross-project evidence         138,974  REFERENCE_RECORD   aggregated edge weight</text>
+   </g>
+   <g id="text_16">
+    <text style="fill: #222222; font: 6.6px 'DejaVu Sans Mono'; text-anchor: start" x="26.704958" y="367.953832" transform="rotate(-0 26.704958 367.953832)">self-loop edges                    289  EDGE_COUNT         self-loop edge count</text>
+   </g>
+   <g id="text_17">
+    <text style="fill: #222222; font: 6.6px 'DejaVu Sans Mono'; text-anchor: start" x="26.704958" y="388.324685" transform="rotate(-0 26.704958 388.324685)">cross-project directed edge      9,595  EDGE_COUNT         cross-project edge count</text>
+   </g>
+   <g id="text_18">
+    <text style="fill: #222222; font: 6.6px 'DejaVu Sans Mono'; text-anchor: start" x="26.704958" y="408.695538" transform="rotate(-0 26.704958 408.695538)">Cross Project Reference        138,974  REFERENCE_RECORD   edge-class weight</text>
+   </g>
+   <g id="text_19">
+    <text style="fill: #222222; font: 6.6px 'DejaVu Sans Mono'; text-anchor: start" x="26.704958" y="429.066392" transform="rotate(-0 26.704958 429.066392)">Not Quotient Eligible Refer  2,161,911  REFERENCE_RECORD   edge-class weight</text>
+   </g>
+   <g id="text_20">
+    <text style="fill: #222222; font: 6.6px 'DejaVu Sans Mono'; text-anchor: start" x="26.704958" y="449.437245" transform="rotate(-0 26.704958 449.437245)">Self Internal Project Refer  1,447,073  REFERENCE_RECORD   edge-class weight</text>
+   </g>
+   <g id="text_21">
+    <text style="fill: #666666; font: 7.4px 'DejaVu Sans'; text-anchor: start" x="22.560961" y="494.705807" transform="rotate(-0 22.560961 494.705807)">RECORD counts, REFERENCE_RECORD/aggregated RefQ weights, and EDGE_COUNT values are separate contracts; no common quantitative axis is implied.</text>
+   </g>
+   <g id="text_22">
+    <text style="font: 10px 'DejaVu Sans'; text-anchor: start" x="22.560961" y="48.073894" transform="rotate(-0 22.560961 48.073894)">Unit-aware audit of frozen counts and weights</text>
+   </g>
+  </g>
+  <g id="text_23">
+   <text style="font: 10.8px 'DejaVu Sans'; text-anchor: start" x="9.281291" y="13.966313" transform="rotate(-0 9.281291 13.966313)">Supplementary S4. Reference-record, aggregated-weight, and edge-count contract</text>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="p6d9a25d979">
+   <rect x="22.560961" y="51.073894" width="207.199816" height="452.685626"/>
+  </clipPath>
+ </defs>
+</svg>

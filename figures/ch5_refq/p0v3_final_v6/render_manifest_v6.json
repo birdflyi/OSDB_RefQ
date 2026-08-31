@@ -1,0 +1,426 @@
+{
+  "AUTOMATED_RENDER_QA": "PASS",
+  "EVENT_REJOIN": 0,
+  "GH_CORE_RUN": 0,
+  "P0_RUN": 0,
+  "P0_manifest_SHA": "be802b9df223c99bc2089a76ae9ec6e0b6047ab0c58237a5fc3050b51dcc9776",
+  "RAW_QUANTILE_CLOSURE": "PASS",
+  "RAW_VALUE_LABEL_CLOSURE": "PASS",
+  "S1_RUN": 0,
+  "S2_RUN": 0,
+  "S3_RUN": 0,
+  "S4_RUN": 0,
+  "S5_RUN": 0,
+  "S6_RUN": 0,
+  "S6_manifest_SHA": "e9c192d140659b33c870a3b03e9583ec5c39ac0702ecc26f28c78e87648f4eea",
+  "S7_RUN": 0,
+  "SCIENTIFIC_FREEZE_QA": "PASS",
+  "attempt_determinism": {
+    "pdf": "PASS",
+    "png": "PASS",
+    "svg": "PASS"
+  },
+  "changed_scientific_values": 0,
+  "composition_policy_SHA": "c37638e4a1ae795b41e0b436a3c1802305ba6eadfc4ea8f77fbf07f20bce1165",
+  "composition_policy_path": "docs/freeze/ch5_refq_p0v3_composition_table_display_policy_v1.md",
+  "connector": "thin_alpha_0.55_markers_primary",
+  "contact_sheet": {
+    "height": 2815,
+    "path": "human_qa_contact_sheet.png",
+    "sha256": "05ce61a87bd310d5485c0bc5860f2c1df9d4b86a11d36ceebd18b729743d8ec3",
+    "width": 2001
+  },
+  "figure0_modified": "NO",
+  "figure2c_axis_scale": "LINEAR",
+  "figure2c_data_transform": "NONE",
+  "figure2c_raw_value_labels": "ENABLED",
+  "figure_plan_SHA": "6d68c12dd785df653ff252ae5f79ae27cd1482d50deebafaacd96f2ccf175312",
+  "figures": {
+    "figure1_evidence_universe": {
+      "pdf": "88de1c8c6bf62d8246492662f17a98a678bd2306aabccce465b6ffeab15f3229",
+      "png": "1b30d76b37f171103b0d7f1e803cae1146b163b3e7dcdc1573cb1099c6c8ec5e",
+      "relative_dir": "main/figure1_evidence_universe",
+      "svg": "63b5a581e65ef305ea7a3fefd1e952e297a799e6f4d6fbb278df6e05b6b74d24"
+    },
+    "figure2_source_target_roles": {
+      "pdf": "762136aae28f520532318308723aa343b5878565745143d59bd6ea904bf262b0",
+      "png": "f2a86d2d8706415a7723892245eef31eb7c6b5b62a693b4142aed7f3cddf4311",
+      "relative_dir": "main/figure2_source_target_roles",
+      "svg": "36f07513c7227261706966ba568475d68269ff8a03ad44b50f78daf06a7f956b"
+    },
+    "figure3_undirected_structure": {
+      "pdf": "6ab0a57e25485a68ec343fc84b1b00c1851ebc21265bf6fe9b9e396c5ff6be7d",
+      "png": "94d7952e6f00f74f11969c83652bd1379d426b734041f5a1890f0f982a22e22f",
+      "relative_dir": "main/figure3_undirected_structure",
+      "svg": "b1bba74418b268985e90b7be0696d125fea02b1e6b9522fb8bb759eb0f57cb50"
+    },
+    "figure4_rq3_comparison": {
+      "pdf": "212d30c35bf3bfc625cbfc5be0f008d789df000cbde23442951d9792eafcf42e",
+      "png": "4d92b97743dd2671f1711a6c025b372dea7d754d55ca0286ceccda5909d14503",
+      "relative_dir": "main/figure4_rq3_comparison",
+      "svg": "2a4a486ce9aff1cb7da19c07776495db9574d73f8967f1ef27657fedbc047695"
+    },
+    "supplementary_s1_multiplicity_sensitivity": {
+      "pdf": "568612462f7226c119af095123b5d0cafcc39b1c9969d552cf5b5d75f473cc56",
+      "png": "928cdfa7d9e1d5a7cf6691a6cc9c98f7bb59cbd2d3dab8a9d9ea79a3498852aa",
+      "relative_dir": "supplementary/s1_multiplicity_sensitivity",
+      "svg": "8238af8d1303baac03ced9cecf5373ac9d92dd55610f528f52a3d3664ab5ce5e"
+    },
+    "supplementary_s2_louvain_stability": {
+      "pdf": "fbe0efe54f6b8fa2ad064997374fdb554bf40f9ff403bb7f470129b8b34b7552",
+      "png": "f3db529178117260e5b0fde4298db678a4046e1f2475d2878952991d725ce27e",
+      "relative_dir": "supplementary/s2_louvain_stability",
+      "svg": "82bb19482576b560ca40bd778cd6c04b33e2c07e20f4ccd7a4e6e0a1caaf26e0"
+    },
+    "supplementary_s3_brokerage_stability": {
+      "pdf": "0694920c038e8321b12ee6dd67bf39b3c803b2077b51dd9ce1048116e7e68b15",
+      "png": "1fd66d8fcb7e50978ce7fb5f38e1d3c7da03321195b649d20d4cf9f4bc30f892",
+      "relative_dir": "supplementary/s3_brokerage_stability",
+      "svg": "bf56b9efb690681c8950f35f615b82f737f02756b54b4c09eedf822d7a4c4505"
+    },
+    "supplementary_s4_unit_contract": {
+      "pdf": "11cdadd6dd5097f1a1ca1e40ec5dddc06194c59d37cd4c74b5af3c164624c143",
+      "png": "a7d92310c8e360ecee1f29690ecc88a3fb5289f1b1dfdbe69fd70c87a769b55a",
+      "relative_dir": "supplementary/s4_unit_contract",
+      "svg": "b458c0c2410ec01bbdd2bfabf306a34b239e3f7af90a865f3d62555783f3c0da"
+    }
+  },
+  "final_decision": "P0V3_FIGURE_RENDER_V6_PASS_READY_FOR_FINAL_HUMAN_VISUAL_QA",
+  "final_manuscript_SHA": "5c54bd725becc7ff7253ec023e83258749b1868e14a70d34722adcc1f421bc60",
+  "final_manuscript_path": "C:\\Users\\10651\\Documents\\trae_projects\\thesis\\ch5_analysis_reference_coupling_for_osdbms\\\u7b2c5\u7ae0-paper1_content_v1.4.3.1_reference_quotient_citation_precision_clean_p0v3_reconciled_finalqa_composition.md",
+  "historical_figure_immutability": "CHECKED_EXTERNALLY",
+  "human_visual_qa": "READY_FOR_FINAL_REVIEW",
+  "new_scientific_values": 0,
+  "parent_repository_HEAD": "649ff466f8dc2be434bee677158817b799dbfc25",
+  "publication_figure_counts": {
+    "pdf": 8,
+    "png": 8,
+    "svg": 8
+  },
+  "publication_png_dpi": 300,
+  "render_set_version": "ch5-refq-p0v3-final-v6",
+  "renderer_contract_assertions": {
+    "figure1_evidence_universe": {
+      "F1_admitted_target_status_branch_count": 3,
+      "F1_event_name_mapping": {
+        "CommitComment": "CommitCommentEvent",
+        "Issue": "IssuesEvent",
+        "IssueComment": "IssueCommentEvent",
+        "PullRequest": "PullRequestEvent",
+        "PullRequestReview": "PullRequestReviewEvent",
+        "PullRequestReviewComment": "PullRequestReviewCommentEvent",
+        "Push": "PushEvent",
+        "Release": "ReleaseEvent"
+      },
+      "F1_no_scanned_out_of_seed_admitted_serial_path": "PASS",
+      "F1_out_of_seed_exclusion_branch": "PASS",
+      "F1_panel_B_C_event_order_aligned": true,
+      "F1_panel_B_event_order": [
+        "IssueComment",
+        "Push",
+        "PullRequest",
+        "Issue",
+        "Release",
+        "PullRequestReview",
+        "PullRequestReviewComment",
+        "CommitComment"
+      ],
+      "F1_panel_C_event_order": [
+        "IssueCommentEvent",
+        "PushEvent",
+        "PullRequestEvent",
+        "IssuesEvent",
+        "ReleaseEvent",
+        "PullRequestReviewEvent",
+        "PullRequestReviewCommentEvent",
+        "CommitCommentEvent"
+      ],
+      "F1_source_admission_flow": "BRANCH_EXCLUSION"
+    },
+    "figure2_source_target_roles": {
+      "F2C_AXIS_SCALE": "LINEAR",
+      "F2C_CONNECTOR_STYLE": "thin_alpha_0.55_markers_primary",
+      "F2C_DATA_TRANSFORM": "NONE",
+      "F2C_FROZEN_RAW_VALUES": {
+        "in_degree": [
+          1.0,
+          1.0,
+          1.0,
+          42.0
+        ],
+        "in_strength": [
+          1.0,
+          2.0,
+          5.0,
+          3430.0
+        ],
+        "target_coverage": [
+          0.0034013605442176,
+          0.0034013605442176,
+          0.0034013605442176,
+          0.1428571428571428
+        ]
+      },
+      "F2C_INPUT_VALUES_STRICTLY_POSITIVE": "YES",
+      "F2C_IN_DEGREE_YSCALE": "LINEAR",
+      "F2C_IN_STRENGTH_YSCALE": "LINEAR",
+      "F2C_NO_LOG_TICK_FORMATTING": "PASS",
+      "F2C_PLOTTED_RAW_VALUES": {
+        "in_degree": [
+          1.0,
+          1.0,
+          1.0,
+          42.0
+        ],
+        "in_strength": [
+          1.0,
+          2.0,
+          5.0,
+          3430.0
+        ],
+        "target_coverage": [
+          0.0034013605442176,
+          0.0034013605442176,
+          0.0034013605442176,
+          0.1428571428571428
+        ]
+      },
+      "F2C_PLOTTED_VALUES_EQUAL_FROZEN_RAW_VALUES": "PASS",
+      "F2C_RAW_VALUE_LABELS": "ENABLED",
+      "F2C_RAW_VALUE_LABEL_BBOX_CLOSURE": "PASS",
+      "F2C_RAW_VALUE_LABEL_CLOSURE": "PASS",
+      "F2C_RAW_VALUE_LABEL_RECORDS": {
+        "in_degree": [
+          {
+            "label_format": "INTEGER",
+            "label_text": "1",
+            "label_unit": "RAW",
+            "quantile": "q25",
+            "raw_value": 1.0,
+            "rendered_value": 1.0
+          },
+          {
+            "label_format": "INTEGER",
+            "label_text": "1",
+            "label_unit": "RAW",
+            "quantile": "median",
+            "raw_value": 1.0,
+            "rendered_value": 1.0
+          },
+          {
+            "label_format": "INTEGER",
+            "label_text": "1",
+            "label_unit": "RAW",
+            "quantile": "q75",
+            "raw_value": 1.0,
+            "rendered_value": 1.0
+          },
+          {
+            "label_format": "INTEGER",
+            "label_text": "42",
+            "label_unit": "RAW",
+            "quantile": "max",
+            "raw_value": 42.0,
+            "rendered_value": 42.0
+          }
+        ],
+        "in_strength": [
+          {
+            "label_format": "INTEGER",
+            "label_text": "1",
+            "label_unit": "RAW",
+            "quantile": "q25",
+            "raw_value": 1.0,
+            "rendered_value": 1.0
+          },
+          {
+            "label_format": "INTEGER",
+            "label_text": "2",
+            "label_unit": "RAW",
+            "quantile": "median",
+            "raw_value": 2.0,
+            "rendered_value": 2.0
+          },
+          {
+            "label_format": "INTEGER",
+            "label_text": "5",
+            "label_unit": "RAW",
+            "quantile": "q75",
+            "raw_value": 5.0,
+            "rendered_value": 5.0
+          },
+          {
+            "label_format": "INTEGER",
+            "label_text": "3,430",
+            "label_unit": "RAW",
+            "quantile": "max",
+            "raw_value": 3430.0,
+            "rendered_value": 3430.0
+          }
+        ],
+        "target_coverage": [
+          {
+            "label_format": "TWO_DECIMAL_PERCENT",
+            "label_text": "0.34%",
+            "label_unit": "PERCENT",
+            "quantile": "q25",
+            "raw_value": 0.0034013605442176,
+            "rendered_value": 0.0034000000000000002
+          },
+          {
+            "label_format": "TWO_DECIMAL_PERCENT",
+            "label_text": "0.34%",
+            "label_unit": "PERCENT",
+            "quantile": "median",
+            "raw_value": 0.0034013605442176,
+            "rendered_value": 0.0034000000000000002
+          },
+          {
+            "label_format": "TWO_DECIMAL_PERCENT",
+            "label_text": "0.34%",
+            "label_unit": "PERCENT",
+            "quantile": "q75",
+            "raw_value": 0.0034013605442176,
+            "rendered_value": 0.0034000000000000002
+          },
+          {
+            "label_format": "TWO_DECIMAL_PERCENT",
+            "label_text": "14.29%",
+            "label_unit": "PERCENT",
+            "quantile": "max",
+            "raw_value": 0.1428571428571428,
+            "rendered_value": 0.1429
+          }
+        ]
+      },
+      "F2C_TARGET_COVERAGE_LABEL_CLOSURE": "PASS",
+      "F2C_TARGET_COVERAGE_LABEL_FORMAT": "TWO_DECIMAL_PERCENT",
+      "F2C_TARGET_COVERAGE_LABEL_UNIT": "PERCENT",
+      "F2C_TARGET_COVERAGE_MARKER_COORDINATES_UNCHANGED": "PASS",
+      "F2C_TARGET_COVERAGE_RAW_VALUES_UNCHANGED": "PASS",
+      "F2C_TARGET_COVERAGE_YSCALE": "LINEAR",
+      "F2C_TITLE": "Target-role quantile profile",
+      "F2C_X_ORDER": "Q1,Median,Q3,Max",
+      "F2_PANEL_A_SERIES": [
+        "out_degree"
+      ],
+      "F2_PANEL_B_SERIES": [
+        "out_strength"
+      ],
+      "F2_SHARED_DEGREE_STRENGTH_AXIS": "NO",
+      "F2_panel_A_renderer_labels": [
+        "out-degree"
+      ],
+      "F2_panel_B_line_count": 1,
+      "V5_V6_F2C_MARKER_COORDINATE_CLOSURE": "PASS",
+      "V5_V6_IN_DEGREE_LABEL_CLOSURE": "PASS",
+      "V5_V6_IN_STRENGTH_LABEL_CLOSURE": "PASS"
+    },
+    "figure3_undirected_structure": {
+      "F3_canonical_display_index": 0,
+      "F3_canonical_highlight_resolved_by_seed": "YES",
+      "F3_canonical_seed": 20260731
+    },
+    "figure4_rq3_comparison": {
+      "F4_AD_grayscale_safe": "PASS",
+      "F4_AD_label_mode_encoding": "include_mixed=filled; exclude_mixed_or_multilabel=open",
+      "F4_AD_marker_grammar": {
+        "exclude_mixed_or_multilabel \u00b7 mean": {
+          "filled": false,
+          "marker": "o"
+        },
+        "exclude_mixed_or_multilabel \u00b7 median": {
+          "filled": false,
+          "marker": "s"
+        },
+        "include_mixed \u00b7 mean": {
+          "filled": true,
+          "marker": "o"
+        },
+        "include_mixed \u00b7 median": {
+          "filled": true,
+          "marker": "s"
+        }
+      },
+      "F4_AD_statistic_encoding": "mean=circle; median=square",
+      "F4_E_FDR_fill_grammar": "filled=BH-FDR reject; open=not reject",
+      "F4_layout_tightened": "YES"
+    },
+    "supplementary_s1_multiplicity_sensitivity": {},
+    "supplementary_s2_louvain_stability": {},
+    "supplementary_s3_brokerage_stability": {
+      "S3_panel_A_data_equals_frozen": "PASS",
+      "S3_panel_A_metric": "spearman_to_canonical",
+      "S3_panel_A_minimum": 0.9998339514284217,
+      "S3_panel_A_transform": "NONE",
+      "S3_panel_A_xlimit": [
+        0.9998256489998426,
+        1.0
+      ]
+    },
+    "supplementary_s4_unit_contract": {}
+  },
+  "runtime": {
+    "backend": "agg",
+    "matplotlib": "3.8.2",
+    "numpy": "1.24.2",
+    "pandas": "1.5.3",
+    "platform": "Windows-10-10.0.26200-SP0",
+    "python": "3.9.13",
+    "pythonhashseed": "0"
+  },
+  "scientific_logic_change_count": 0,
+  "scientific_recomputation": 0,
+  "scientific_root_immutability": "CHECKED_EXTERNALLY",
+  "script_SHA": "d50b26e179146c9617fb0e876566c6b66d5a26e20e2f27117feb79238ed712d4",
+  "source_manifest_SHA": {
+    "figure1_evidence_universe": "540a608bf8d263032bbe15221f7bf0c0d380f7fcf6c05c312f012c94845b0be0",
+    "figure2_source_target_roles": "441d02592d8d90574802ecf8a43b78ee2b0a35bb54f9028886054c02cfa4dbca",
+    "figure3_undirected_structure": "0d429da458042135777a17c1b449ded48b52106a51effcded6f93b7844fa46a2",
+    "figure4_rq3_comparison": "c0f71e0f8c972837ecd23ea138d191ae5662dfb72b701f368c6f8817755646d4",
+    "supplementary_s1_multiplicity_sensitivity": "8909abf67c4c372c1c4116e1860e26ec86548ee6251c19002db72bc8fdb3cd45",
+    "supplementary_s2_louvain_stability": "84de9a327457220a78b6d327f09c9ea4a96c7d7e838061d7cf82cb85c51aa38c",
+    "supplementary_s3_brokerage_stability": "243d32e566b75aa02678a37f22d8d2209e2513a04fb4598463e4e77aa0b47283",
+    "supplementary_s4_unit_contract": "dc6f9f1dbdbb38205114fd964c71d9db1000f4f93757d9f16a55f6abf3f763d3"
+  },
+  "status": "READY_FOR_FINAL_REVIEW",
+  "supplemental_manifest_SHA": "78d07fbda2a045ba309a1cfcb23a68ca2baafa910008b6483c0c4e0acf9211bd",
+  "supplementary_S5_rendered": "NO",
+  "v1_render_root": "figures/ch5_refq/p0v3_final",
+  "v2_render_root": "figures/ch5_refq/p0v3_final_v2",
+  "v3_render_root": "figures/ch5_refq/p0v3_final_v3",
+  "v4_provenance": {
+    "decision": "P0V3_FIGURE_RENDER_V4_PASS_READY_FOR_FINAL_HUMAN_REVIEW",
+    "manifest": "figures/ch5_refq/p0v3_final_v4/render_manifest_v4.json",
+    "render_root": "figures/ch5_refq/p0v3_final_v4",
+    "review": "docs/freeze/ch5_refq_p0v3_figure_rendering_v4_logscale_review.md",
+    "scientific_values_changed": 0,
+    "technical_qa": "PASS"
+  },
+  "v4_render_root": "figures/ch5_refq/p0v3_final_v4",
+  "v5_provenance": {
+    "decision": "P0V3_FIGURE_RENDER_V5_PASS_READY_FOR_FINAL_HUMAN_VISUAL_QA",
+    "final_human_selection": "LINEAR",
+    "manifest": "figures/ch5_refq/p0v3_final_v5/render_manifest_v5.json",
+    "render_root": "figures/ch5_refq/p0v3_final_v5",
+    "review": "docs/freeze/ch5_refq_p0v3_figure_rendering_v5_final_selection_review.md",
+    "scientific_values_changed": 0,
+    "technical_qa": "PASS"
+  },
+  "v5_render_root": "figures/ch5_refq/p0v3_final_v5",
+  "v5_to_v6_delta": {
+    "figure1": "NO_SEMANTIC_CHANGE",
+    "figure2_panel_A": "NO_SEMANTIC_CHANGE",
+    "figure2_panel_B": "NO_SEMANTIC_CHANGE",
+    "figure2_panel_C_coverage_labels": "TWO_DECIMAL_PERCENT_AS_AUTHORIZED",
+    "figure2_panel_C_marker_coordinates": "UNCHANGED",
+    "figure2_panel_C_non_coverage_labels": "UNCHANGED",
+    "figure2_panel_C_title": "REMOVED_QA_SCALE_TEXT_AS_AUTHORIZED",
+    "figure2_panel_D": "NO_SEMANTIC_CHANGE",
+    "figure3": "NO_SEMANTIC_CHANGE",
+    "figure4": "NO_SEMANTIC_CHANGE",
+    "supplementary_S1-S4": "NO_SEMANTIC_CHANGE",
+    "supplementary_S5": "NOT_RENDERED"
+  },
+  "v6_render_root": "figures/ch5_refq/p0v3_final_v6"
+}
