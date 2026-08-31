@@ -330,12 +330,17 @@ RQ_BLOCK_SHA256_BEFORE = 8F4C9079355880F31FBD05C0CCF4A58993D47E74806813595CA99D6
 RQ_BLOCK_SHA256_AFTER  = 8F4C9079355880F31FBD05C0CCF4A58993D47E74806813595CA99D63D980AE65
 ~~~
 
-All four figure-caption lines and all 126 Markdown table rows are identical:
+All four figure-caption lines and all 126 Markdown table rows are identical.
+The caption hash is computed by concatenating the four complete caption lines
+exactly as stored (including each line's single LF terminator) and hashing the
+result as UTF-8.
 
 ~~~text
 FIGURE_CAPTION_EDIT_COUNT = 0
 FIGURE_CAPTION_CHANGED = 0
-FIGURE_CAPTION_BLOCK_SHA256 = 42A03182BADAC2D509D0140CB9B55D427B8C2DC8C160D18F9DC4164A4FA82E38
+FIGURE_CAPTION_BLOCK_SHA256 = E3FC9BBC925DFA5E9F9F253BEEC4F6657ADB10CD2E66951E96D4582108E30865
+FIGURE_CAPTION_BLOCK_UTF8_BYTES = 3778
+FIGURE_CAPTION_CANONICALIZATION = full_match_lines_joined_with_LF_with_trailing_LF
 TABLE_CONTENT_CHANGED = 0
 TABLE_ROW_COUNT = 126
 TABLE_ROW_BLOCK_SHA256 = 51E43170B2E8C5AD7F7BCF2DFFC55D13272B1E904AB1B4B1C753F7105902A546
@@ -343,8 +348,10 @@ TABLE_ROW_BLOCK_SHA256 = 51E43170B2E8C5AD7F7BCF2DFFC55D13272B1E904AB1B4B1C753F71
 
 The citation-key multiset is unchanged: 68 occurrences over 31 unique keys,
 including the Blincoe and IREL attribution.  A boundary-aware numeric-token
-scan (ASCII alphanumeric exclusion on both sides of each numeric token) found
-991 tokens before and after, with empty multiset differences.  In particular,
+scan using the regex
+(?<![A-Za-z0-9_])\d[\d,]*(?:\.\d+)?(?![A-Za-z0-9_])
+(ASCII alphanumeric exclusion on both sides of each numeric token) found 991
+tokens before and after, with empty multiset differences.  In particular,
 the table-reference tokens retained in §5.4 are not silently dropped.
 
 ~~~text
