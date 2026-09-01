@@ -17,6 +17,136 @@ explicitly pending platform/privacy/licensing review and author confirmation;
 the manuscript records that conditional state without converting it into an
 unconditional promise.
 
+## Post-Batch-F public-archive factual reconciliation
+
+This block was added after the original Batch F execution following a
+cross-authority factual check. It supplements—but does not rewrite—the
+historical execution record below.
+
+```text
+ORIGINAL_BATCH_F_EXECUTION = PASS
+POST_BATCH_F_PUBLIC_ARCHIVE_FACT_CHECK = CORRECTION_REQUIRED_AND_APPLIED
+POST_BATCH_F_PUBLIC_ARCHIVE_FACT_RECONCILIATION_DECISION = CH5_REFQ_BATCH_F_PUBLIC_ARCHIVE_FACT_RECONCILIATION_PASS
+```
+
+### Correction trigger and authorities
+
+The original Batch F wording treated public archival availability as one global
+pending state and recorded `PUBLIC_ARCHIVE_IDENTIFIER_AVAILABLE = NO`. That
+statement was too broad. The correction was triggered by factual reconciliation
+across these existing authorities:
+
+1. `README.md` identifies public data access through Zenodo at
+   `https://doi.org/10.5281/zenodo.18817348`.
+2. `docs/freeze/ch5_refq_data_provenance_filtering_stability_report_v1.md`
+   records that the current relation/data release has been uploaded to a public
+   archive and that later changes should use a new version instead of replacing
+   the historical release.
+3. A read-only Zenodo API check on 2026-09-01 confirmed record `18817348` as a
+   published, open-access `v1.0` dataset titled “GitHub OSDB Social-Technical
+   Network Reference Relationship Dataset 2023”, containing
+   `github_osdb_data-GH_CoRE-2.3.0-Pub-Alpha.tar.gz` under DOI
+   `10.5281/zenodo.18817348`.
+4. Appendix A remains the authority for the current frozen scientific and
+   supplemental reproducibility identity; it does not establish that Zenodo
+   v1.0 is already the final submission replication-package version.
+
+The error arose from incomplete cross-authority availability reconciliation,
+not from interruption recovery or manuscript corruption.
+
+```text
+INTERRUPTION_RECOVERY_INTEGRITY = PASS
+INTERRUPTION_CAUSED_PUBLIC_ARCHIVE_ERROR = NO
+```
+
+The interruption provenance remains:
+
+```text
+Batch-F original baseline:
+C729D739F00757840B8F456C18A88327946127CBEB5635DE2E08662B5D3C462C
+
+Authorized interrupted intermediate:
+98A86B6D0AC39EC13FFBEAA2C311763272C2C090E72955AA7599FB862262536C
+
+Batch-F completed manuscript:
+6AC27FF254A7C902284158CC65C399EE61C7C380D3C6CE974516D1499526D533
+
+Post-Batch-F public-archive reconciliation manuscript:
+2ADF5AC63C1EC696EC2EC411444FC04B5588D3BC539CECD5A7C8F01976C9B2E1
+```
+
+### Superseding object-specific availability state
+
+The historical global statements
+`PUBLIC_ARCHIVAL_RELEASE_STATE = PENDING_SCOPE_AND_LICENSE_CONFIRMATION` and
+`PUBLIC_ARCHIVE_IDENTIFIER_AVAILABLE = NO` remain visible below as part of the
+original Batch F record, but are superseded for current use by this
+object-specific model:
+
+```text
+INTERNAL_SUPPLEMENTAL_PACKAGE_TECHNICAL_STATE = RELEASE_READY
+
+PUBLIC_RELATION_DATA_RELEASE_STATE = AVAILABLE
+PUBLIC_RELATION_DATA_ARCHIVE_IDENTIFIER_AVAILABLE = YES
+PUBLIC_RELATION_DATA_ZENODO_DOI = 10.5281/zenodo.18817348
+
+FINAL_SUBMISSION_REPLICATION_PACKAGE_STATE = PENDING_SCOPE_AND_VERSION_CONFIRMATION
+
+RAW_LOG_PUBLIC_RELEASE_COMMITMENT = NO
+
+GH_CORE_FULL_RELEASE_SCOPE = NOT_ESTABLISHED / SUBJECT_TO_CONFIRMATION
+```
+
+| Object | Technical state | Public state | Identifier / qualification |
+| --- | --- | --- | --- |
+| Relation/data release | Existing | Public | Zenodo DOI `10.5281/zenodo.18817348`; published open-access dataset v1.0 |
+| Supplemental scientific package | `RELEASE_READY` | Not inferred from technical status alone | Appendix A authority |
+| Final submission replication package | Existing components | Final archive/version reconciliation pending | Do not invent a new ID; do not equate it automatically with Zenodo v1.0 |
+| Raw GitHub logs | Used internally | No unconditional redistribution commitment | Platform/privacy/license bounded |
+| Analysis code | Exists | Actual public scope must be verified | Do not infer full release from the data DOI |
+| GH_CoRE | Exists | Full release scope not established by this check | PyPI/code references do not prove that every submission component is archived |
+
+### Manuscript correction and scope closure
+
+Only §7 Data and Code Availability was changed. It now records the existing
+Zenodo relation/data release, distinguishes it from the final submission
+replication package, preserves raw-user-content redistribution limits, and does
+not overstate code or GH_CoRE release scope.
+
+```text
+SECTION_7_CHANGED = 1
+SECTION_6_CHANGED = 0
+SECTION_8_CHANGED = 0
+APPENDIX_CHANGED = 0
+NON_SECTION_7_PROSE_CHANGED = 0
+
+NEW_SCIENTIFIC_VALUES = 0
+CHANGED_SCIENTIFIC_VALUES = 0
+SCIENTIFIC_RECOMPUTATION = 0
+P0_RUN = 0
+S1_RUN = 0
+S2_RUN = 0
+S3_RUN = 0
+S4_RUN = 0
+S5_RUN = 0
+S6_RUN = 0
+S7_RUN = 0
+GH_CORE_RUN = 0
+EVENT_REJOIN = 0
+SECOND_ORDER_PROJECTION_RUN = 0
+FIGURE_RERENDER = 0
+RQ_TEXT_CHANGED = 0
+TABLE_CONTENT_CHANGED = 0
+FIGURE_CAPTION_CHANGED = 0
+FIGURE_ASSETS_CHANGED = 0
+SCIENTIFIC_ASSETS_CHANGED = 0
+```
+
+The DOI is an availability/provenance identifier, not a new scientific value.
+The existing public data record is factual; whether a later Zenodo version or a
+separate archive will represent the final frozen submission package remains a
+version-and-scope reconciliation question.
+
 ## 1. Starting identities
 
 | Item | Value |
