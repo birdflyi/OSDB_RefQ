@@ -2,13 +2,14 @@
 
 ## Decision
 
-`CH5_REFQ_RQ1_METRIC_TERMINOLOGY_RESIDUAL_SEMANTICS_RECONCILIATION_PASS`
+`CH5_REFQ_POST_INTERRUPTION_INTEGRITY_REPAIR_PASS`
 
-This is a bounded manuscript wording reconciliation. The external authoritative
-manuscript was edited only in three authorized Results/semantic locations during
-this pass. The R01-R03 Methods/Threats corrections were already present from
-Batch C and were reverified here, not re-edited. No scientific pipeline, output,
-manifest, receipt, figure asset, or table value was changed.
+This document preserves the earlier bounded RQ1 terminology reconciliation as
+historical execution record and adds the post-interruption integrity repair
+record. The only byte change in the repair pass was normalization of the
+external manuscript to UTF-8, LF-only, no-BOM text with its final newline
+preserved. No manuscript semantic text, scientific pipeline, output, manifest,
+receipt, figure asset, or table value was changed in the repair pass.
 
 ## 1. Starting identities and baseline drift
 
@@ -16,19 +17,58 @@ manifest, receipt, figure asset, or table value was changed.
 |---|---|
 | Repository | `D:/github_repo/OSDB_RefQ` |
 | Branch | `ch5-refq-repository-identity-correction-v1` |
-| Repository HEAD before | `909bf6faaa0b0e7a78421e28ee93d6342f47ec5e` |
-| Remote HEAD before | `909bf6faaa0b0e7a78421e28ee93d6342f47ec5e` |
+| Repository HEAD before this repair task | `5b8a6f4965215ed8a7966e49b036070399aae303` |
+| Remote HEAD before this repair task | `5b8a6f4965215ed8a7966e49b036070399aae303` |
+| Historical HEAD before the prior terminology pass | `909bf6faaa0b0e7a78421e28ee93d6342f47ec5e` |
 | Authoritative manuscript | `C:/Users/10651/Documents/trae_projects/thesis/ch5_analysis_reference_coupling_for_osdbms/第5章-paper1_content_v1.4.3.1_reference_quotient_citation_precision_clean_p0v3_reconciled_finalqa_composition.md` |
 | Task-stated expected SHA before | `BEB6E89127032EA93843AB2385573EE1306C087A06B182753A24AB9E74ED1761` |
 | Observed practical SHA before | `0E39E2FF8D80DCD72E883F5A9141F4F003D5A3C2C6F2A28E46D2B0809D23F125` |
-| SHA after authorized wording edits | `07F0C28A9F6A10679C2AFB3FC16836CE19FD65CCF9498ED35066F2A175C07255` |
+| SHA after the interrupted wording edits, before repair | `07F0C28A9F6A10679C2AFB3FC16836CE19FD65CCF9498ED35066F2A175C07255` |
+| SHA after LF-only integrity repair | `8BF9F6225FF160CFE661D30C9D2A7F9A1656A4BE34A0F244F70072957F526B18` |
 | Primary authorities | `docs/freeze/ch5_refq_submission_methods_fact_semantics_audit.md`; `docs/freeze/ch5_refq_submission_edit_batch_c_methods.md` |
 
-The task-stated `BEB6...` hash was not the byte state observed at the start of
-this pass. The audit therefore records the actual observed `0E39...` hash as the
-before baseline and does not claim that the expected baseline was reconstructed.
-The manuscript has mixed newline encoding (`CRLF=832`, `LF=29`); no global
-newline normalization was performed.
+The task-stated `BEB6...` hash is the accepted Batch-C baseline. The interrupted
+intermediate state observed during recovery was `0E39...`; the pre-repair final
+state was `07F0...`. Before repair the manuscript had mixed newline encoding
+(`CRLF=832`, `LF=29`). The recovery pass normalized only line endings, producing
+`8BF9...` with `CRLF=0`, `LF-only=861`, `CR-only=0`, `BOM=False`, and a final
+newline present. Semantic text before and after normalization is byte-decoded
+identical after newline canonicalization (`SEMANTIC_TEXT_CHANGE_COUNT = 0`).
+
+## 1A. Post-interruption full-baseline reconciliation
+
+The full manuscript comparison was anchored to the accepted Batch-C baseline,
+not merely to the interrupted working copy:
+
+```text
+BEB6E89127032EA93843AB2385573EE1306C087A06B182753A24AB9E74ED1761
+    accepted Batch-C manuscript baseline
+        -> interrupted reconciliation attempts
+        -> R01-R03 and most terminology edits written into the external manuscript
+        -> 0E39E2FF8D80DCD72E883F5A9141F4F003D5A3C2C6F2A28E46D2B0809D23F125
+           interrupted intermediate state
+        -> final recovery pass applied the remaining three wording edits
+        -> 07F0C28A9F6A10679C2AFB3FC16836CE19FD65CCF9498ED35066F2A175C07255
+           pre-repair final state
+        -> LF-only normalization
+        -> 8BF9F6225FF160CFE661D30C9D2A7F9A1656A4BE34A0F244F70072957F526B18
+           final integrity-repaired state
+```
+
+The BEB6-to-07F0 semantic comparison recorded `28 semantic diff hunks`, `28
+old changed lines`, and `30 new/inserted lines`. Changes were concentrated in
+§3.2.3, §3.3.3, §3.4.4, §4.1.2, §4.1.3, the Figure 4 caption, §4.3.1,
+§4.3.2, §5.4, and §6.2. The exact chronology is therefore:
+
+> R01-R03 were absent from the accepted Batch-C BEB6 baseline but were already
+> present in the 0E39 interrupted intermediate state when the final recovery run
+> started.
+
+One edit fell outside the original named surface but is retained as an accepted
+semantic correction: in §3.3.3, `comment reference density` became
+`Reference-row density per issue/PR-related source entity
+(comment_reference_density)`. It introduces no scientific value or semantic
+scope change and is recorded explicitly below rather than reverted.
 
 ## 2. Governing metric definitions
 
@@ -42,8 +82,10 @@ newline normalization was performed.
 
 ## 3. Residual factual closure
 
-The following Batch-C residual corrections were present before this pass and
-were reverified without modification:
+The following residual corrections were absent from the accepted Batch-C BEB6
+baseline but were already present in the 0E39 interrupted intermediate state
+when the final recovery run started. They were reverified without modification
+in that recovery run:
 
 | ID | Surface | Before | After | Closure |
 |---|---|---|---|---|
@@ -158,7 +200,12 @@ single §3.3.1 negative definition that explicitly rejects that interpretation.
 ## 8. Exact scope and execution guards
 
 ```text
-UNAUTHORIZED_MANUSCRIPT_REGION_CHANGE_COUNT = 0
+OUT_OF_ORIGINAL_SURFACE_EDIT_COUNT = 1
+OUT_OF_ORIGINAL_SURFACE_EDIT_SECTION = §3.3.3
+OUT_OF_ORIGINAL_SURFACE_EDIT_SEMANTIC_STATUS = ACCEPTED_CORRECTION
+SCIENTIFIC_IMPACT = NONE
+UNINTENDED_SEMANTIC_EDIT_COUNT = 0
+OUT_OF_ORIGINAL_SURFACE_BUT_AUTHORITY_CONSISTENT_EDIT_COUNT = 1
 ABSTRACT_CHANGED = 0
 INTRODUCTION_CHANGED = 0
 RELATED_WORK_CHANGED = 0
@@ -184,6 +231,11 @@ SECOND_ORDER_PROJECTION_RUN = 0
 FIGURE_RERENDER = 0
 ```
 
+The §3.3.3 edit is the sole out-of-original-surface change. It is retained as
+an authority-consistent terminology correction; no unintended semantic edit was
+found. The previous pass's narrower zero-valued scope guard is superseded by
+this explicit exception record.
+
 The repository worktree contained no tracked scientific or figure changes. The
 four pre-existing untracked V3/V4/V5/V6 ZIP archives were preserved and not
 staged.
@@ -205,11 +257,37 @@ No output or manifest was rewritten. The current manuscript remains external to
 the repository; this file records its hashes rather than treating it as
 Git-tracked.
 
-## 10. Final disposition
+## 10. Post-interruption repair closure
+
+```text
+PRE_REPAIR_MANUSCRIPT_SHA = 07F0C28A9F6A10679C2AFB3FC16836CE19FD65CCF9498ED35066F2A175C07255
+FINAL_MANUSCRIPT_SHA = 8BF9F6225FF160CFE661D30C9D2A7F9A1656A4BE34A0F244F70072957F526B18
+NEWLINE_CRLF_BEFORE = 832
+NEWLINE_LF_ONLY_BEFORE = 29
+NEWLINE_CRLF_AFTER = 0
+NEWLINE_LF_ONLY_AFTER = 861
+NEWLINE_CR_ONLY_AFTER = 0
+UTF8_BOM_AFTER = False
+FINAL_NEWLINE_AFTER = PRESENT
+SEMANTIC_TEXT_CHANGE_COUNT = 0
+CITATION_TOKEN_COUNT = 68
+UNIQUE_CITATION_KEY_COUNT = 31
+CITATION_KEY_SET_CHANGED = 0
+FIGURE_CAPTION_CHANGE_COUNT_IN_REPAIR = 0
+TABLE_CONTENT_CHANGE_COUNT_IN_REPAIR = 0
+BODY_PROSE_CHANGE_COUNT_IN_REPAIR = 0
+SCIENTIFIC_ASSET_CHANGE_COUNT = 0
+```
+
+The Figure 4 caption modification listed in the historical terminology matrix
+belongs to the preceding semantic reconciliation (and was already present in
+the 07F0 state); it was not repeated in this integrity repair.
+
+## 11. Final disposition
 
 All authorized residual and cross-section terminology checks close without a
 scientific change. The remaining §3.3.1 negative `discussion depth` phrase is a
 protected Methods guard and is explicitly classified as out of scope, not as an
 unresolved Results defect.
 
-`CH5_REFQ_RQ1_METRIC_TERMINOLOGY_RESIDUAL_SEMANTICS_RECONCILIATION_PASS`
+`CH5_REFQ_POST_INTERRUPTION_INTEGRITY_REPAIR_PASS`
