@@ -68,13 +68,14 @@ substitution was found.
 
 ## 3. Literature authenticity matrix
 
-All 31 unique citation keys are used, and all 31 bibliography entries are
-matched. Metadata was checked on 2026-09-17 using Crossref DOI records where
-available, publisher/ACM/JMLR/PNAS/MIT Press pages, the EDBT/OpenProceedings
-record for `10.48786/EDBT.2023.03`, and the cited GitHub/dbDB/DB-Engines
-official pages. `MATCH` means title, author set, year, and venue/type agree
-with the manuscript entry; web references were checked for canonical URL and
-resource identity.
+All 31 unique citation keys are used, and all 31 bibliography entries have an
+identified authoritative record. Metadata was checked on 2026-09-17 using
+Crossref DOI records where available, publisher/ACM/JMLR/PNAS/MIT Press
+pages, the EDBT/OpenProceedings record for `10.48786/EDBT.2023.03`, and the
+cited GitHub/dbDB/DB-Engines official pages. `MATCH` means title, author set,
+year, and venue/type agree with the manuscript entry. `PARTIAL` means the
+canonical record or dynamic official page was identified but automated
+metadata retrieval was limited; it is not a bibliographic contradiction.
 
 | Key | Existence / authority | Metadata | Manuscript use |
 |---|---|---|---|
@@ -84,12 +85,12 @@ resource identity.
 | `blincoe2015ecosystems` | DOI/Crossref/IEEE | MATCH | DIRECT_SUPPORT, CONTRAST |
 | `blincoe2019referencecoupling` | DOI/Crossref/Elsevier | MATCH | DIRECT_SUPPORT, CONTRAST |
 | `blondel2008louvain` | DOI/Crossref/JSTAT | MATCH | METHOD_PRECEDENT |
-| `bosch2009spltoecosystems` | ACM record | MATCH | BACKGROUND_SUPPORT |
-| `dbdb2026databaseofdatabases` | dbDB official site | MATCH | BACKGROUND_SUPPORT |
-| `dbengines2026ranking` | DB-Engines official site | MATCH | BACKGROUND_SUPPORT |
+| `bosch2009spltoecosystems` | ACM canonical record | PARTIAL (record fetch returned 403) | BACKGROUND_SUPPORT |
+| `dbdb2026databaseofdatabases` | dbDB official site | PARTIAL (dynamic snapshot) | BACKGROUND_SUPPORT |
+| `dbengines2026ranking` | DB-Engines official site | PARTIAL (dynamic snapshot) | BACKGROUND_SUPPORT |
 | `francobedoya2017ossecosystems` | DOI/Crossref/Elsevier | MATCH | BACKGROUND_SUPPORT |
-| `githubdocs2026autolinked` | GitHub Docs | MATCH | DEFINITION_PRECEDENT, LIMITATION |
-| `githubdocs2026linkingprissue` | GitHub Docs | MATCH | DEFINITION_PRECEDENT, LIMITATION |
+| `githubdocs2026autolinked` | GitHub Docs | PARTIAL (dynamic snapshot) | DEFINITION_PRECEDENT, LIMITATION |
+| `githubdocs2026linkingprissue` | GitHub Docs | PARTIAL (dynamic snapshot) | DEFINITION_PRECEDENT, LIMITATION |
 | `jansen2013softwareecosystemsbook` | DOI/Crossref/Edward Elgar | MATCH | BACKGROUND_SUPPORT |
 | `kessler1963bibliographiccoupling` | DOI/Crossref/Wiley | MATCH | DEFINITION_PRECEDENT, CONTRAST |
 | `kim2025dbmsextensibility` | DOI/Crossref/VLDB Endowment | MATCH | DIRECT_SUPPORT, BACKGROUND_SUPPORT |
@@ -120,7 +121,12 @@ MISSING_KEYS = 0
 ORPHAN_BIBLIOGRAPHY_ENTRIES = 0
 MALFORMED_CITATION_SYNTAX = 0
 LITERATURE_EXISTENCE_UNVERIFIED = 0
+LITERATURE_METADATA_PARTIAL = 5
 ```
+
+The five partial entries are one canonical ACM record whose automated request
+returned 403 and four dynamic official web resources. Their identity and
+relevance were still established; none is treated as a source mismatch.
 
 ## 4. Citation-use and claim-source entailment
 
