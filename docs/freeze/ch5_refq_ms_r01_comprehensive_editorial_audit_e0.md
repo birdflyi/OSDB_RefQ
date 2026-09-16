@@ -77,6 +77,11 @@ year, and venue/type agree with the manuscript entry. `PARTIAL` means the
 canonical record or dynamic official page was identified but automated
 metadata retrieval was limited; it is not a bibliographic contradiction.
 
+Verification breakdown: 24 DOI records were matched through Crossref; the
+Vassiliadis DOI was verified through DataCite and its official OpenProceedings
+PDF; Loukas was verified on the JMLR page; and the remaining five entries are
+the partial official-record/dynamic-page cases listed below.
+
 | Key | Existence / authority | Metadata | Manuscript use |
 |---|---|---|---|
 | `benats2021multidatabasemodels` | DOI/Crossref | MATCH | DIRECT_SUPPORT |
