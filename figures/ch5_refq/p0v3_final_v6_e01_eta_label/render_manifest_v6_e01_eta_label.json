@@ -1,0 +1,31 @@
+{
+  "base_output_sha256": {
+    "pdf": "212d30c35bf3bfc625cbfc5be0f008d789df000cbde23442951d9792eafcf42e",
+    "png": "4d92b97743dd2671f1711a6c025b372dea7d754d55ca0286ceccda5909d14503",
+    "svg": "2a4a486ce9aff1cb7da19c07776495db9574d73f8967f1ef27657fedbc047695"
+  },
+  "base_render_root": "figures/ch5_refq/p0v3_final_v6",
+  "corrected_output_sha256": {
+    "pdf": "daf4f9c486b19f229d0d13586cfceaba774bf7212466d7174877c57f07307c0c",
+    "png": "6a279ae45570c06e745db65d3b14503b30f2ad98daac5c64dd8611a082fc44ea",
+    "svg": "6ec08f8462bb13f46395678a5bfb1b5e753377399d5cfa612f85fd273b34e17a"
+  },
+  "figure": "figure4_rq3_comparison",
+  "figure4_data_changed": 0,
+  "figure4_geometry_changed": 0,
+  "figure4_panel_structure_changed": 0,
+  "figure4_scale_changed": 0,
+  "figure4_semantic_label_changed": 1,
+  "input_sha256": {
+    "D:\\github_repo\\OSDB_RefQ\\supplemental\\reference_quotient_v2\\outputs_p0v3\\S6_figure_ready\\rq3_kruskal_fdr_effect_sizes_plot.csv": "c8031d4882ccd23590d0ba837f9c52155883b3cdc79409044bb9cf8b8800d320",
+    "D:\\github_repo\\OSDB_RefQ\\supplemental\\reference_quotient_v2\\outputs_p0v3\\S6_figure_ready\\rq3_subdomain_descriptive_comparison_plot.csv": "f9f6400a7cf4d14159d4c30b7b4fa9a7a49eee3ebe58a4fe39a27a0f1028dcef"
+  },
+  "render_set_version": "ch5-refq-p0v3-final-v6-e01-eta-label",
+  "scientific_recomputation": 0,
+  "source_manifest_sha256": "c06767bb0c8200eef4648b03235d92c2e2dfd6d8364ed0167d9fff42e1f42059",
+  "status": "PASS",
+  "terminology_delta": {
+    "new": "rank eta-squared",
+    "old": "epsilon-squared"
+  }
+}
