@@ -14,7 +14,7 @@ scientific value, figure, table, or scientific asset was edited or recomputed.
 REPOSITORY = D:/github_repo/OSDB_RefQ
 BRANCH = ch5-refq-repository-identity-correction-v1
 HEAD_BEFORE_PROMOTION = bf74defb3dbfca885f2d4d7633b4ef07c2d10bea
-PROMOTION_COMMIT = PENDING_MS_R02_PROMOTION_COMMIT_REGISTRATION
+PROMOTION_COMMIT = 06371e41c66801cd948fea73cb066f30f421e4d4
 ```
 
 The pre-existing V3-V6 ZIP files remained untracked and untouched.
