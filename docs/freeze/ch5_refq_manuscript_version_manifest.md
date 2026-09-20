@@ -3,12 +3,12 @@
 ## 1. Current authority
 
 ```text
-MANUSCRIPT_REVISION = MS-R02
+MANUSCRIPT_REVISION = MS-R03
 SCIENTIFIC_BASELINE = P0-v3
-STAGE = EDITORIAL_COMPLETE_ACCEPTED
-DECISION = CH5_REFQ_MS_R02_PROMOTION_PASS
-ACCEPTED_MANUSCRIPT_SHA = B1494BA3133713CAA34D3A62D99DF94878028560CD065FBCC01F0E5A897479AC
-REPOSITORY_AUDIT_HEAD = 06371e41c66801cd948fea73cb066f30f421e4d4
+STAGE = SUBMISSION_CONDENSED_ACCEPTED
+DECISION = CH5_REFQ_MS_R03_PROMOTION_PASS
+ACCEPTED_MANUSCRIPT_SHA = E59F96FF05279797BD047B127B537FEA2D1FB618478DBB5455C36EA2A83777F9
+REPOSITORY_AUDIT_HEAD = PENDING_MS_R03_PROMOTION_COMMIT_REGISTRATION
 ```
 
 The scientific baseline identifies the frozen scientific authority.  The
@@ -23,7 +23,8 @@ Current paths:
 | Role | Path | Mutability |
 |---|---|---|
 | Editable working manuscript | `C:/Users/10651/Documents/trae_projects/thesis/ch5_analysis_reference_coupling_for_osdbms/第5章-paper1_CURRENT.md` | Editable only by an explicitly authorized future manuscript task |
-| Accepted MS-R02 snapshot | `C:/Users/10651/Documents/trae_projects/thesis/ch5_analysis_reference_coupling_for_osdbms/versions/MS-R02_EDITORIAL_COMPLETE_B1494BA3.md` | Immutable |
+| Accepted MS-R03 snapshot | `C:/Users/10651/Documents/trae_projects/thesis/ch5_analysis_reference_coupling_for_osdbms/versions/MS-R03_POST_SUBMISSION_CONDENSED_E59F96FF.md` | Immutable |
+| Historical accepted MS-R02 snapshot | `C:/Users/10651/Documents/trae_projects/thesis/ch5_analysis_reference_coupling_for_osdbms/versions/MS-R02_EDITORIAL_COMPLETE_B1494BA3.md` | Immutable |
 | Historical accepted MS-R01 snapshot | `C:/Users/10651/Documents/trae_projects/thesis/ch5_analysis_reference_coupling_for_osdbms/versions/MS-R01_POST_G1_CF488538.md` | Immutable |
 | Compatibility copy | `C:/Users/10651/Documents/trae_projects/thesis/ch5_analysis_reference_coupling_for_osdbms/第5章-paper1_content_v1.4.3.1_reference_quotient_citation_precision_clean_p0v3_reconciled_finalqa_composition.md` | Retained, but not a future implicit diff baseline |
 | Working identity sidecar | `C:/Users/10651/Documents/trae_projects/thesis/ch5_analysis_reference_coupling_for_osdbms/第5章-paper1_CURRENT.identity.txt` | Update only during accepted revision promotion |
@@ -37,6 +38,7 @@ Current paths:
 | HIST-I | Post-interruption integrity repair | `07F0C28A9F6A10679C2AFB3FC16836CE19FD65CCF9498ED35066F2A175C07255` | `8BF9F6225FF160CFE661D30C9D2A7F9A1656A4BE34A0F244F70072957F526B18` | `695b7c4e18351066c2917d359b115d00573c2657` | `CH5_REFQ_POST_INTERRUPTION_INTEGRITY_REPAIR_PASS` |
 | MS-R01 | G1 final bounded edit | `8BF9F6225FF160CFE661D30C9D2A7F9A1656A4BE34A0F244F70072957F526B18` | `CF4885382474A04A2A8476C3F29460AABFF049C8BD3224F5727CD67A0C134DEE` | `603a63d793c870ebc4bbd6719eff6f2af60efcea` | `CH5_REFQ_FINAL_SUBMISSION_EDIT_G1_PASS` |
 | MS-R02 | Editorial-complete promotion | `CF4885382474A04A2A8476C3F29460AABFF049C8BD3224F5727CD67A0C134DEE` | `B1494BA3133713CAA34D3A62D99DF94878028560CD065FBCC01F0E5A897479AC` | `06371e41c66801cd948fea73cb066f30f421e4d4` | `CH5_REFQ_MS_R02_PROMOTION_PASS` |
+| MS-R03 | Submission-condensed promotion | `B1494BA3133713CAA34D3A62D99DF94878028560CD065FBCC01F0E5A897479AC` | `E59F96FF05279797BD047B127B537FEA2D1FB618478DBB5455C36EA2A83777F9` | `PENDING_MS_R03_PROMOTION_COMMIT_REGISTRATION` | `CH5_REFQ_MS_R03_PROMOTION_PASS` |
 
 Known interrupted, unaccepted state:
 
@@ -158,3 +160,43 @@ FIGURE4_PNG_SHA256 = 6A279AE45570C06E745DB65D3B14503B30F2AD98DAAC5C64DD8611A082F
 
 Figure 1-3 retain the accepted V6 authority. Figure 4 uses the V6 E-01
 terminology-corrected derivative. Historical V6 assets remain unchanged.
+
+## 7. MS-R03 accepted identity closure
+
+```text
+MANUSCRIPT_REVISION = MS-R03
+SCIENTIFIC_BASELINE = P0-v3
+STAGE = SUBMISSION_CONDENSED_ACCEPTED
+SHA256 = E59F96FF05279797BD047B127B537FEA2D1FB618478DBB5455C36EA2A83777F9
+SNAPSHOT = versions/MS-R03_POST_SUBMISSION_CONDENSED_E59F96FF.md
+
+PREVIOUS_ACCEPTED_REVISION = MS-R02
+PREVIOUS_ACCEPTED_SHA = B1494BA3133713CAA34D3A62D99DF94878028560CD065FBCC01F0E5A897479AC
+PROMOTION_BASE_REPO_HEAD = 67791ef9af4e856b8af9f3b0faaaedf10d30ccdb
+
+EDITORIAL_COMPLETE = YES
+VENUE_INDEPENDENT_CONDENSATION_COMPLETE = YES
+JOURNAL_SPECIFIC_PREPARATION_PENDING = YES
+FINAL_ENGLISH_ABSTRACT_PENDING = YES
+
+FINAL_QA = docs/freeze/ch5_refq_ms_r03_submission_condensation_final_qa.md
+FINAL_QA_DECISION = CH5_REFQ_MS_R03_SUBMISSION_CONDENSATION_FINAL_QA_PASS_READY_FOR_PROMOTION
+MS_R03_PROMOTION_COMMIT = PENDING_MS_R03_PROMOTION_COMMIT_REGISTRATION
+```
+
+The accepted MS-R03 bytes are identical across CURRENT, the immutable MS-R03
+snapshot, and the retained MS-R03 working candidate. MS-R01 and MS-R02 remain
+immutable historical accepted revisions and are not deleted, renamed, or
+rewritten. MS-R03 is editorially complete for venue-independent condensation;
+journal-specific preparation and a fresh authoritative English Abstract remain
+pending.
+
+Figure authority for MS-R03 remains:
+
+```text
+FIGURE1_3_AUTHORITY = accepted V6 assets under figures/ch5_refq/p0v3_final_v6
+FIGURE4_AUTHORITY_ROOT = figures/ch5_refq/p0v3_final_v6_e01_eta_label
+FIGURE4_SVG_SHA256 = 6EC08F8462BB13F46395678A5BFB1B5E753377399D5CFA612F85FD273B34E17A
+FIGURE4_PDF_SHA256 = DAF4F9C486B19F229D0D13586CFCEABA774BF7212466D7174877C57F07307C0C
+FIGURE4_PNG_SHA256 = 6A279AE45570C06E745DB65D3B14503B30F2AD98DAAC5C64DD8611A082FC44EA
+```
