@@ -15,7 +15,7 @@ edited or recomputed during promotion.
 REPOSITORY = D:/github_repo/OSDB_RefQ
 BRANCH = ch5-refq-repository-identity-correction-v1
 HEAD_BEFORE_PROMOTION = 67791ef9af4e856b8af9f3b0faaaedf10d30ccdb
-PROMOTION_COMMIT = PENDING_MS_R03_PROMOTION_COMMIT_REGISTRATION
+PROMOTION_COMMIT = 2384b46922f44199e2e3d9d7a54cc7017c9a53b5
 ```
 
 The four pre-existing V3-V6 ZIP files remained untracked and untouched.
@@ -220,8 +220,8 @@ No other tracked repository file or external manuscript asset was changed.
 ## 11. Promotion commits and final accepted state
 
 ```text
-PROMOTION_COMMIT = PENDING_MS_R03_PROMOTION_COMMIT_REGISTRATION
-PROVENANCE_REGISTRATION_COMMIT = PENDING_SECOND_METADATA_ONLY_COMMIT
+PROMOTION_COMMIT = 2384b46922f44199e2e3d9d7a54cc7017c9a53b5
+PROVENANCE_REGISTRATION_COMMIT = METADATA_ONLY_SUCCESSOR_NOT_SELF_REFERENCED
 
 SCIENTIFIC_BASELINE = P0-v3
 ACCEPTED_MANUSCRIPT_REVISION = MS-R03
