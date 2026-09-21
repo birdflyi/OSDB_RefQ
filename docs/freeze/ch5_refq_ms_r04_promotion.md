@@ -74,9 +74,9 @@ MS_R02_HISTORY_RETAINED = YES
 MS_R03_HISTORY_RETAINED = YES
 ```
 
-The manifest retains all prior accepted lineage. Its repository audit head and
-the promotion commit are registered after the P1 commit, followed by the
-metadata-only P2 registration.
+The manifest retains all prior accepted lineage. The P1 repository audit head
+and promotion commit are recorded as `0bc8e04adace4934216208f5271f149b8ab0605f`;
+the final metadata-only P2 registration is recorded below.
 
 ## 5. Abstract and citation closure
 
@@ -191,9 +191,8 @@ FINAL_ENGLISH_ABSTRACT_PENDING = YES
 READY_FOR_JOURNAL_SPECIFIC_PREPARATION = YES
 FINAL_SUBMISSION_READY = NO
 
-P1_PROMOTION_COMMIT = PENDING_MS_R04_P1
-P2_PROVENANCE_REGISTRATION_COMMIT = PENDING_MS_R04_P2
+P1_PROMOTION_COMMIT = 0bc8e04adace4934216208f5271f149b8ab0605f
+P2_PROVENANCE_REGISTRATION_COMMIT = METADATA_ONLY_SUCCESSOR_NOT_SELF_REFERENCED
 ```
 
 The promotion is identity-only and does not start journal-specific preparation.
-
