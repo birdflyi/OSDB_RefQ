@@ -23,7 +23,8 @@ Current paths:
 | Role | Path | Mutability |
 |---|---|---|
 | Editable working manuscript | `C:/Users/10651/Documents/trae_projects/thesis/ch5_analysis_reference_coupling_for_osdbms/第5章-paper1_CURRENT.md` | Editable only by an explicitly authorized future manuscript task |
-| Accepted MS-R03 snapshot | `C:/Users/10651/Documents/trae_projects/thesis/ch5_analysis_reference_coupling_for_osdbms/versions/MS-R03_POST_SUBMISSION_CONDENSED_E59F96FF.md` | Immutable |
+| Accepted MS-R04 snapshot | `C:/Users/10651/Documents/trae_projects/thesis/ch5_analysis_reference_coupling_for_osdbms/versions/MS-R04_POST_OBSERVATION_FRAMING_F8071504.md` | Immutable |
+| Historical accepted MS-R03 snapshot | `C:/Users/10651/Documents/trae_projects/thesis/ch5_analysis_reference_coupling_for_osdbms/versions/MS-R03_POST_SUBMISSION_CONDENSED_E59F96FF.md` | Immutable |
 | Historical accepted MS-R02 snapshot | `C:/Users/10651/Documents/trae_projects/thesis/ch5_analysis_reference_coupling_for_osdbms/versions/MS-R02_EDITORIAL_COMPLETE_B1494BA3.md` | Immutable |
 | Historical accepted MS-R01 snapshot | `C:/Users/10651/Documents/trae_projects/thesis/ch5_analysis_reference_coupling_for_osdbms/versions/MS-R01_POST_G1_CF488538.md` | Immutable |
 | Compatibility copy | `C:/Users/10651/Documents/trae_projects/thesis/ch5_analysis_reference_coupling_for_osdbms/第5章-paper1_content_v1.4.3.1_reference_quotient_citation_precision_clean_p0v3_reconciled_finalqa_composition.md` | Retained, but not a future implicit diff baseline |
@@ -226,6 +227,7 @@ FINAL_SUBMISSION_READY = NO
 FINAL_QA = docs/submission_suggestion/ch5_refq_ms_r04_bounded_observation_framing_final_qa.md
 FINAL_QA_DECISION = CH5_REFQ_MS_R04_BOUNDED_OBSERVATION_FRAMING_FINAL_QA_PASS_READY_FOR_PROMOTION
 MS_R04_PROMOTION_COMMIT = 0bc8e04adace4934216208f5271f149b8ab0605f
+MS_R04_PROVENANCE_REGISTRATION_COMMIT = 6c54e4568a0341e0057bfc26c226bde0317604d4
 ```
 
 The accepted MS-R04 bytes are identical across CURRENT, the immutable MS-R04

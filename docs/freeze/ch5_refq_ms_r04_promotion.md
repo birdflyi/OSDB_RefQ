@@ -192,7 +192,9 @@ READY_FOR_JOURNAL_SPECIFIC_PREPARATION = YES
 FINAL_SUBMISSION_READY = NO
 
 P1_PROMOTION_COMMIT = 0bc8e04adace4934216208f5271f149b8ab0605f
-P2_PROVENANCE_REGISTRATION_COMMIT = METADATA_ONLY_SUCCESSOR_NOT_SELF_REFERENCED
+P2_PROVENANCE_REGISTRATION_COMMIT = 6c54e4568a0341e0057bfc26c226bde0317604d4
 ```
 
-The promotion is identity-only and does not start journal-specific preparation.
+P2 is a metadata-only successor and is intentionally not used as
+`REPOSITORY_AUDIT_HEAD`; P1 remains the acceptance-decision audit commit. The
+promotion is identity-only and does not start journal-specific preparation.
