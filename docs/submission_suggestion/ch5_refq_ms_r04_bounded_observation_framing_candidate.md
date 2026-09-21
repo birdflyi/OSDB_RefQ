@@ -219,6 +219,70 @@ MS_R04_PROMOTED = 0
 The external working candidate is intentionally not committed. Only this
 repository audit record is committed.
 
+## 10. MS-R04-E01 Chinese semantic-source normalization
+
+E01 corrected only the two English framing paragraphs introduced by the
+original MS-R04 candidate. The paragraphs are now manuscript-consistent
+Chinese with established English technical terms retained where precision
+requires them. The original A/D/BIB history above remains the pre-E01 record.
+
+```text
+PRE_E01_SHA = 8F094C7187A9258F7053B5097862AE335C4183E07F731968D95C98202DA89E98
+POST_E01_SHA = F80715045483F482D6640CF072FD61C58F7374182E1DF70D55B3EC500CF53549
+
+E01-A = APPLIED
+E01-D = APPLIED
+E01_CHANGED_HUNK_COUNT = 2
+E01_UNMAPPED_CHANGED_HUNKS = 0
+E01_UNAUTHORIZED_CHANGED_HUNKS = 0
+E01_BIBLIOGRAPHY_HUNK_COUNT = 0
+LANGUAGE_NORMALIZATION_ONLY = YES
+SCIENTIFIC_CHANGE = NO
+```
+
+The E01-A paragraph preserves the repository/network evidence bridge,
+sampling/data/network-construction constraints, validated
+dependency-oriented semantics, broader heterogeneous Reference evidence, and
+explicit endpoint/membership/observation/metric contracts. The E01-D
+paragraph preserves seed-driven target inclusion, non-independent target
+sampling, seed completeness versus target incompleteness, missing-source-is-
+not-zero semantics, the RQ2a/RQ2b/RQ2c population mapping, and the fact that
+direction-ignored structure does not restore missing observations.
+
+```text
+FRAME_A_PARAGRAPH_LEVEL_LANGUAGE = CHINESE
+FRAME_D_PARAGRAPH_LEVEL_LANGUAGE = CHINESE
+FULL_ENGLISH_PARAGRAPH_INSERTION_COUNT_FROM_MS_R04 = 0
+FRAME_A_SEMANTIC_EQUIVALENCE = PASS
+FRAME_D_SEMANTIC_EQUIVALENCE = PASS
+LITERATURE_POSITIONING = COMPLEMENTARY_CRITICAL
+ADVERSARIAL_PRIOR_WORK_CLAIM_COUNT = 0
+MISSING_SOURCE_BEHAVIOR_EQUALS_ZERO_CLAIM_COUNT = 0
+RELATED_WORK_OBSERVATION_BRIDGE = SUFFICIENT
+OBSERVATION_NETWORK_BOUNDARY_VALIDITY = SUFFICIENT
+CONCLUSION_MEASUREMENT_CONDITION_CLOSURE = SUFFICIENT
+```
+
+E01 did not alter citation keys or bibliography entries from the pre-E01
+candidate. The active candidate identity for Final QA is now
+`F80715045483F482D6640CF072FD61C58F7374182E1DF70D55B3EC500CF53549`.
+
+```text
+CURRENT_SHA = E59F96FF05279797BD047B127B537FEA2D1FB618478DBB5455C36EA2A83777F9
+MS_R03_SNAPSHOT_SHA = E59F96FF05279797BD047B127B537FEA2D1FB618478DBB5455C36EA2A83777F9
+CURRENT_REPLACED = 0
+MS_R04_PROMOTED = 0
+MANIFEST_ACCEPTED_REVISION_CHANGED = 0
+SIDECAR_REVISION_CHANGED = 0
+```
+
+The candidate remains external and is not promoted in this task.
+
+```text
+E01_DECISION = CH5_REFQ_MS_R04_E01_LANGUAGE_NORMALIZATION_PASS_READY_FOR_FINAL_QA
+NEXT_TASK = CH5_REFQ_MS_R04_BOUNDED_OBSERVATION_FRAMING_FINAL_QA
+```
+
 ## 10. Decision and next task
 
 ```text
