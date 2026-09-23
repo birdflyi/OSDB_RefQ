@@ -184,8 +184,11 @@ DATA_CHANGE = 0
 GEOMETRY_CHANGE = 0
 PANEL_STRUCTURE_CHANGE = 0
 SCALE_CHANGE = 0
-CURRENT_STATUS = MAPPED_HASH_VERIFIED; current manuscript/render terminology aligned
-KNOWN_PROVENANCE_DEBT = predecessor V6 manifest/caption audit retain epsilon-squared and predecessor hashes; historical closure pending
+CURRENT_STATUS = MAPPED_HASH_VERIFIED_PROVENANCE_CLOSED
+FIGURE4_HISTORICAL_PROVENANCE_DEBT = CLOSED_BY_SUPERSEDING_PROVENANCE_RECORD
+FIGURE4_PROVENANCE_CLOSURE_PENDING = NO
+FIGURE4_PROVENANCE_CLOSURE_DOCUMENT = docs/freeze/ch5_refq_figure4_eta_label_provenance_closure.md
+KNOWN_PROVENANCE_DEBT = predecessor V6 terminology and hashes remain preserved as historical provenance; current estimator identity is closed by the superseding record
 MAINTENANCE_TRIGGER = a change to Figure 4 identity/caption/body anchor, panel contract, asset, render authority, or source provenance
 ```
 
@@ -210,13 +213,21 @@ PNG_SHA256 = 6a279ae45570c06e745db65d3b14503b30f2ad98daac5c64dd8611a082fc44ea
 | D | Reference-composition category mean/median, fourth feature | YES | YES |
 | E | Rank eta-squared with BH-FDR status by label mode | YES | YES |
 
-Figure 4 terminology lineage is explicitly bounded: MS-R04 and current E01
-render say `rank eta-squared` / `η_H²`; the frozen result-schema field is
-`epsilon_squared`, and the manuscript formula is `(H-k+1)/(n-k)` with
-negative estimates truncated at zero. E01 changes only the displayed label;
-the field name is not a different estimator. Figure 4 current scientific
-mismatch = `NO`; historical provenance debt = `YES`; provenance closure
-pending = `YES`.
+Figure 4 terminology lineage is closed by
+`docs/freeze/ch5_refq_figure4_eta_label_provenance_closure.md`. MS-R04 and E01
+use `rank eta-squared` / `η_H²`; the frozen `epsilon_squared` result field is
+the legacy schema identifier for the same estimator, `(H-k+1)/(n-k)` with
+negative estimates truncated at zero. E01 changes only the displayed label.
+The historical V6 terminology and hashes remain preserved in their original
+records; they are not current-facing authorities.
+
+```text
+FIGURE4_HISTORICAL_PROVENANCE_DEBT = CLOSED_BY_SUPERSEDING_PROVENANCE_RECORD
+FIGURE4_PROVENANCE_CLOSURE_PENDING = NO
+FIGURE4_PROVENANCE_CLOSURE_DOCUMENT = docs/freeze/ch5_refq_figure4_eta_label_provenance_closure.md
+CURRENT_STATUS = MAPPED_HASH_VERIFIED_PROVENANCE_CLOSED
+FIGURE4_SCIENTIFIC_MISMATCH = NO
+```
 
 ## Current mapping closure
 
@@ -260,12 +271,12 @@ FIGURE4_SCIENTIFIC_BASELINE_RESOLVED = YES
 MAIN_MAPPING_CLOSED = YES
 E0_COUNT = 0
 E1_COUNT = 0
-E2_COUNT = 4
+E2_COUNT = 3
 INFO_COUNT = 2
 ```
 
-The E2 items carried forward from FIG-P00 are historical Phase 2-B design
-status, predecessor Figure 4 terminology/hashes, the older migration matrix's
-scaffold-oriented role, and analysis-stage/supplementary-figure namespace
-ambiguity. They do not indicate current manuscript-to-render scientific
-mismatch.
+The remaining E2 items carried forward from FIG-P00 are historical Phase 2-B
+design status, the older migration matrix's scaffold-oriented role, and
+analysis-stage/supplementary-figure namespace ambiguity. Figure 4's specific
+provenance debt is closed by the superseding record above. These remaining
+items do not indicate current manuscript-to-render scientific mismatch.
