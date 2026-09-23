@@ -3,12 +3,12 @@
 ## 1. Current authority
 
 ```text
-MANUSCRIPT_REVISION = MS-R04
+MANUSCRIPT_REVISION = MS-R05
 SCIENTIFIC_BASELINE = P0-v3
-STAGE = OBSERVATION_FRAMING_ACCEPTED
-DECISION = CH5_REFQ_MS_R04_PROMOTION_PASS
-ACCEPTED_MANUSCRIPT_SHA = F80715045483F482D6640CF072FD61C58F7374182E1DF70D55B3EC500CF53549
-REPOSITORY_AUDIT_HEAD = 0bc8e04adace4934216208f5271f149b8ab0605f
+STAGE = BOUNDED_SEMANTIC_EDITORIAL_CORRECTION_ACCEPTED
+DECISION = CH5_REFQ_MS_R05_BOUNDED_SEMANTIC_EDITORIAL_CORRECTION_PASS
+ACCEPTED_MANUSCRIPT_SHA = 30491279BC31CC5012042F72E3BA8159DCF182CECEEB62EFF5C865C78B059B22
+REPOSITORY_AUDIT_HEAD = TO_BE_COMMITTED
 ```
 
 The scientific baseline identifies the frozen scientific authority.  The
@@ -23,6 +23,7 @@ Current paths:
 | Role | Path | Mutability |
 |---|---|---|
 | Editable working manuscript | `C:/Users/10651/Documents/trae_projects/thesis/ch5_analysis_reference_coupling_for_osdbms/第5章-paper1_CURRENT.md` | Editable only by an explicitly authorized future manuscript task |
+| Accepted MS-R05 snapshot | `C:/Users/10651/Documents/trae_projects/thesis/ch5_analysis_reference_coupling_for_osdbms/versions/MS-R05_BOUNDED_SEMANTIC_EDITORIAL_30491279.md` | Immutable |
 | Accepted MS-R04 snapshot | `C:/Users/10651/Documents/trae_projects/thesis/ch5_analysis_reference_coupling_for_osdbms/versions/MS-R04_POST_OBSERVATION_FRAMING_F8071504.md` | Immutable |
 | Historical accepted MS-R03 snapshot | `C:/Users/10651/Documents/trae_projects/thesis/ch5_analysis_reference_coupling_for_osdbms/versions/MS-R03_POST_SUBMISSION_CONDENSED_E59F96FF.md` | Immutable |
 | Historical accepted MS-R02 snapshot | `C:/Users/10651/Documents/trae_projects/thesis/ch5_analysis_reference_coupling_for_osdbms/versions/MS-R02_EDITORIAL_COMPLETE_B1494BA3.md` | Immutable |
@@ -159,6 +160,32 @@ FIGURE4_SVG_SHA256 = 6EC08F8462BB13F46395678A5BFB1B5E753377399D5CFA612F85FD273B3
 FIGURE4_PDF_SHA256 = DAF4F9C486B19F229D0D13586CFCEABA774BF7212466D7174877C57F07307C0C
 FIGURE4_PNG_SHA256 = 6A279AE45570C06E745DB65D3B14503B30F2AD98DAAC5C64DD8611A082FC44EA
 ```
+
+## 9. MS-R05 accepted identity closure
+
+```text
+MANUSCRIPT_REVISION = MS-R05
+SCIENTIFIC_BASELINE = P0-v3
+STAGE = BOUNDED_SEMANTIC_EDITORIAL_CORRECTION_ACCEPTED
+SHA256 = 30491279BC31CC5012042F72E3BA8159DCF182CECEEB62EFF5C865C78B059B22
+SNAPSHOT = versions/MS-R05_BOUNDED_SEMANTIC_EDITORIAL_30491279.md
+
+PREVIOUS_ACCEPTED_REVISION = MS-R04
+PREVIOUS_ACCEPTED_SHA = F80715045483F482D6640CF072FD61C58F7374182E1DF70D55B3EC500CF53549
+PROMOTION_BASE_REPO_HEAD = d2b0f12c6a9d8b2e10eaa9482a7386c860de4f63
+
+TRIGGER = STYLE-A02 source-level semantic adjudication
+TRIGGER_ISSUES = R02-001, R02-043, R02-050, R02-054
+SCIENTIFIC_RECOMPUTATION = 0
+SOURCE_UNIT_PARTITION_CHANGED = NO
+SOURCE_UNIT_COUNT = 222
+MS_R05_PROMOTION_COMMIT = TO_BE_COMMITTED
+```
+
+MS-R05 is the bounded semantic-editorial successor to MS-R04. MS-R04 remains
+an immutable historical accepted source. Scientific values, tables, figures,
+and the P0-v3 baseline are unchanged; only the four STYLE-A02 source-level
+semantic corrections are promoted.
 
 Figure 1-3 retain the accepted V6 authority. Figure 4 uses the V6 E-01
 terminology-corrected derivative. Historical V6 assets remain unchanged.

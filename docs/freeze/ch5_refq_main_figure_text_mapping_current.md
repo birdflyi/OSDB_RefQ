@@ -3,8 +3,8 @@
 ## Mapping identity
 
 ```text
-MAPPING_BASE_MANUSCRIPT_REVISION = MS-R04
-MAPPING_BASE_MANUSCRIPT_SHA = F80715045483F482D6640CF072FD61C58F7374182E1DF70D55B3EC500CF53549
+MAPPING_BASE_MANUSCRIPT_REVISION = MS-R05
+MAPPING_BASE_MANUSCRIPT_SHA = 30491279BC31CC5012042F72E3BA8159DCF182CECEEB62EFF5C865C78B059B22
 MAPPING_SCIENTIFIC_BASELINE = P0-v3
 MAPPING_CREATED_FROM = existing frozen assets and existing authority records
 SCIENTIFIC_RECOMPUTATION = 0
@@ -13,10 +13,10 @@ REGISTER_SCOPE = MAIN_PAPER_FIGURES_1_TO_4_ONLY
 ```
 
 The immutable manuscript snapshot is
-`C:/Users/10651/Documents/trae_projects/thesis/ch5_analysis_reference_coupling_for_osdbms/versions/MS-R04_POST_OBSERVATION_FRAMING_F8071504.md`.
-CURRENT was verified byte-identical at the same SHA but is not the mapping
-baseline in place of the accepted snapshot. Caption text below is copied from
-that snapshot. This register maps, but does not replace, manuscript text.
+`C:/Users/10651/Documents/trae_projects/thesis/ch5_analysis_reference_coupling_for_osdbms/versions/MS-R05_BOUNDED_SEMANTIC_EDITORIAL_30491279.md`.
+CURRENT was verified byte-identical at the same SHA. Caption text below is
+copied from that snapshot. This register maps, but does not replace,
+manuscript text.
 
 The common P0-v3 scientific baseline is recorded by
 `outputs/reference_quotient_p0_corrected_v3/manifest.json`
@@ -40,7 +40,7 @@ FIGURE_ID = Figure 1
 MAIN_OR_SUPPLEMENT = MAIN
 MANUSCRIPT_SECTION = §4.1
 MANUSCRIPT_BODY_REFERENCE_ANCHORS = no separate prose cross-reference found; caption is the figure anchor (snapshot line 379)
-MS_R04_CAPTION_ANCHOR = snapshot line 379
+MS_R05_CAPTION_ANCHOR = snapshot line 379
 PANEL_COUNT = 3
 PANEL_IDENTITIES = A, B, C
 CURRENT_AUTHORITY_ROOT = figures/ch5_refq/p0v3_final_v6/
@@ -67,12 +67,12 @@ PNG_SHA256 = 1b30d76b37f171103b0d7f1e803cae1146b163b3e7dcdc1573cb1099c6c8ec5e
 
 **CURRENT_CAPTION_TEXT**
 
-> **图 1 Observable Reference evidence 与 project-mappable boundary。** (A) 294 个 analysis seed projects 的 Reference-record flow：从 3,748,078 条 scanned input records 经 source-admission，排除 120 条 out-of-seed records，保留 3,747,958 条 admitted source-observation records，并按 target membership 分为 1,586,047 条 project-mappable、1,686,729 条 non-project 和 475,182 条 unresolved records；(B) admitted-record universe 中八类 source event 的完整构成；(C) 各 event type 内 project-mappable、non-project 与 unresolved target 的比例。图中所有计数均为 Reference records；只有可唯一映射到项目的 project-mappable 子集进入 Project-level RefQN，外部或 non-project resource 不因此成为项目节点，图示也不等同于最终网络拓扑。
+> **图 1 Observable Reference evidence 与 project-mappable boundary。** (A) 294 个 analysis seed projects 的 Reference-record flow：从 3,748,078 条 scanned input records 经 source-admission，排除 120 条 out-of-seed records，保留 3,747,958 条 admitted source-observation records，并按 target membership 分为 1,586,047 条 project-mappable、1,686,729 条 non-project 和 475,182 条 unresolved records；(B) admitted-record universe 中八类征引实体类型的完整构成；(C) 各 event type 内 project-mappable、non-project 与 unresolved target 的比例。图中所有计数均为 Reference records；只有可唯一映射到项目的 project-mappable 子集进入 Project-level RefQN，外部或 non-project resource 不因此成为项目节点，图示也不等同于最终网络拓扑。
 
-| PANEL_ID | SHORT_SEMANTIC_ROLE | MS_R04_CAPTION_MATCH | RENDERED_ASSET_MATCH |
+| PANEL_ID | SHORT_SEMANTIC_ROLE | MS_R05_CAPTION_MATCH | RENDERED_ASSET_MATCH |
 |---|---|---|---|
 | A | Reference-record admission flow and target-membership partition | YES | YES |
-| B | Complete source-event composition | YES | YES |
+| B | Complete source-side referencing-entity-type composition | YES | YES |
 | C | Target-membership shares within event type | YES | YES |
 
 ### Figure 2
@@ -82,7 +82,7 @@ FIGURE_ID = Figure 2
 MAIN_OR_SUPPLEMENT = MAIN
 MANUSCRIPT_SECTION = §4.2 RQ2a/RQ2b/RQ2c
 MANUSCRIPT_BODY_REFERENCE_ANCHORS = §4.2 opening line 508; source interpretation line 514; target interpretation lines 540 and 542
-MS_R04_CAPTION_ANCHOR = snapshot line 510
+MS_R05_CAPTION_ANCHOR = snapshot line 510
 PANEL_COUNT = 4
 PANEL_IDENTITIES = A, B, C, D
 CURRENT_AUTHORITY_ROOT = figures/ch5_refq/p0v3_final_v6/
@@ -111,7 +111,7 @@ PNG_SHA256 = f2a86d2d8706415a7723892245eef31eb7c6b5b62a693b4142aed7f3cddf4311
 
 > **图 2 Project-level RefQN 的 source/target role 视图（RQ2a/RQ2b）。** (A) 294 个 source-complete seed projects 的 out-degree CCDF；(B) 同一 source 集合的 out-strength CCDF。(C) observable targets 的 in-degree、in-strength 与 target coverage quantile profile；coverage 分母为 294 个 seed sources，Q1/Median/Q3/Max 标签分别为 1/1/1/42、1/2/5/3,430 和 0.34%/0.34%/0.34%/14.29%。(D) 以 cross-project RefQ total weight 138,974 为分母的 target-weight Top-1、Top-10 与 Top-50 share（2.47%/16.00%/48.99%）。这些指标描述当前 seed-centered observed RefQN，不表示项目重要性或分布模型。
 
-| PANEL_ID | SHORT_SEMANTIC_ROLE | MS_R04_CAPTION_MATCH | RENDERED_ASSET_MATCH |
+| PANEL_ID | SHORT_SEMANTIC_ROLE | MS_R05_CAPTION_MATCH | RENDERED_ASSET_MATCH |
 |---|---|---|---|
 | A | Source-role out-degree CCDF | YES | YES |
 | B | Source-role out-strength CCDF | YES | YES |
@@ -125,7 +125,7 @@ FIGURE_ID = Figure 3
 MAIN_OR_SUPPLEMENT = MAIN
 MANUSCRIPT_SECTION = §4.2 RQ2c
 MANUSCRIPT_BODY_REFERENCE_ANCHORS = no separate prose cross-reference found; caption is the figure anchor (snapshot line 565)
-MS_R04_CAPTION_ANCHOR = snapshot line 565
+MS_R05_CAPTION_ANCHOR = snapshot line 565
 PANEL_COUNT = 3
 PANEL_IDENTITIES = A, B, C
 CURRENT_AUTHORITY_ROOT = figures/ch5_refq/p0v3_final_v6/
@@ -154,7 +154,7 @@ PNG_SHA256 = 94d7952e6f00f74f11969c83652bd1379d426b734041f5a1890f0f982a22e22f
 
 > **图 3 一阶无向 RefQ 结构与 algorithmic modular neighborhood view（RQ2c）。** (A) \(U(G_{\mathrm{RefQ}})\) 的结构摘要及 35 个 algorithmic communities 的规模分布。(B) canonical seed-centered observed view、seed-only induced view 与 multi-seed target view 的 LCC coverage、average clustering 和 modularity 比较，各指标使用独立刻度。(C) 50 次 seed runs 的 community count、modularity 与 ARI-to-canonical 敏感性；seed 20260731 为 deterministic reference realization。该图是一阶无向结构视图，community labels 不表示稳定的真实社区或 DBMS taxonomy。
 
-| PANEL_ID | SHORT_SEMANTIC_ROLE | MS_R04_CAPTION_MATCH | RENDERED_ASSET_MATCH |
+| PANEL_ID | SHORT_SEMANTIC_ROLE | MS_R05_CAPTION_MATCH | RENDERED_ASSET_MATCH |
 |---|---|---|---|
 | A | Undirected structural summary and algorithmic community-size distribution | YES | YES |
 | B | Metrics across the three declared observation-boundary views | YES | YES |
@@ -167,7 +167,7 @@ FIGURE_ID = Figure 4
 MAIN_OR_SUPPLEMENT = MAIN
 MANUSCRIPT_SECTION = §4.3 RQ3
 MANUSCRIPT_BODY_REFERENCE_ANCHORS = no separate prose cross-reference found; caption and §4.3 RQ3 results anchor (snapshot line 598)
-MS_R04_CAPTION_ANCHOR = snapshot line 598
+MS_R05_CAPTION_ANCHOR = snapshot line 598
 PANEL_COUNT = 5
 PANEL_IDENTITIES = A, B, C, D, E
 CURRENT_AUTHORITY_ROOT = figures/ch5_refq/p0v3_final_v6_e01_eta_label/
@@ -205,7 +205,7 @@ PNG_SHA256 = 6a279ae45570c06e745db65d3b14503b30f2ad98daac5c64dd8611a082fc44ea
 
 > **图 4 两种 label mode 下的 observed subdomain variation 与 FDR-bounded role/structure comparison（RQ3）。** (A–D) 展示四项 Reference composition 指标的 category-level mean/median；circle/square 区分 mean/median，filled/open 区分 include_mixed 与 exclude_mixed_or_multilabel。(E) 展示 rank eta-squared（\(\eta_H^2\)）及 BH-FDR status；圆点与三角区分两种 label mode，filled/open marker 表示 reject/not reject。正文与表 4.8 解释 mode-sensitive inferential result；category labels 不等同于算法社区或因果机制。
 
-| PANEL_ID | SHORT_SEMANTIC_ROLE | MS_R04_CAPTION_MATCH | RENDERED_ASSET_MATCH |
+| PANEL_ID | SHORT_SEMANTIC_ROLE | MS_R05_CAPTION_MATCH | RENDERED_ASSET_MATCH |
 |---|---|---|---|
 | A | Reference-composition category mean/median, first feature | YES | YES |
 | B | Reference-composition category mean/median, second feature | YES | YES |
