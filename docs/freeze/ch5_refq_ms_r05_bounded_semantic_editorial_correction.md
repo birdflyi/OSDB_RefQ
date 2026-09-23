@@ -175,6 +175,7 @@ DELTA_DOCUMENT = docs/freeze/ch5_refq_ms_r05_bounded_semantic_editorial_delta.md
 DELTA_BRIDGE = docs/freeze/ch5_refq_ms_r05_source_unit_delta_bridge.csv
 POST_MS_R05_ROUTE = docs/strategy/ch5_refq_post_ms_r05_english_correction_route.md
 MANUSCRIPT_VERSION_MANIFEST_UPDATED = YES
+PROMOTION_COMMIT = 837f617e9d05fd3c933a8fd7f56a7e5e08bc7d0d
 ```
 
 MS-R05 supersedes MS-R04 as the current Chinese semantic authority for the
