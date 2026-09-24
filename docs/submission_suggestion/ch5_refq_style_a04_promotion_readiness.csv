@@ -1,0 +1,20 @@
+CHECK,STATUS,EVIDENCE,SEVERITY,PROMOTION_GATE,NOTES
+MS-R05 identity,PASS,Expected SHA-256 30491279BC31CC5012042F72E3BA8159DCF182CECEEB62EFF5C865C78B059B22,E0,YES,Immutable Chinese semantic/scientific authority
+EN-R03 identity,PASS,Expected SHA-256 B61683132DCAD3B6BB4D5ACCA4B49AE4FCAB0CC0B9A2D57FFCC06CF359AFBFE4,E0,YES,Candidate remains unpromoted
+EN-R02 identity,PASS,Expected SHA-256 F3D42BAF2034631CD5D2909A0DC2D43428742302BA605BBF489FBD5A6C00DB77,INFO,YES,Historical English base unchanged
+222-unit coverage,PASS,STYLE-R04 coverage CSV has 222 rows; all accounted; only RQ2C-U001/U003 changed realization,INFO,YES,Sidecar hash independently matched
+RQ count/order,PASS,Five in order RQ1/RQ2a/RQ2b/RQ2c/RQ3,INFO,YES,No delta touches RQ statements
+Contribution count/order,PASS,Four contributions; EN-R02 to EN-R03 delta touches no contribution block,INFO,YES,Order unchanged
+Citation set,PASS,33 unique keys; same set in EN-R02 and EN-R03; A03 accepted base is authority for MS-R05 correspondence,INFO,YES,No citation delta
+Formula set,PASS,12 display-formula source units preserved; formula bytes unchanged per exact candidate delta and coverage register,INFO,YES,No formula block changed
+Scientific values,PASS,Zero changed reported scientific result values; only existing view-definition population/threshold made explicit,INFO,YES,No scientific recomputation
+Table values,PASS,Zero table changes; no table blocks changed,INFO,YES,No table content touched
+R02-009 closure,PASS,Two corrected blocks accurately define seed-only and multi-seed-target sensitivity views,INFO,YES,Single A03 E1 closed
+Figure 3 provenance closure,PASS,Current implementation/output/source manifest and closure agree; current mapping marks PROVENANCE_CLOSED,INFO,YES,Source-manifest SHA in external R04 manifest is a separate E2 clerical issue
+Claim-strength guards,PASS,No causal/knowledge-flow/dependency-ground-truth/project-importance/community-semantic/OSS-generalization strengthening,INFO,YES,Changed blocks preserve bounded interpretation
+Observation guards,PASS,Seeds complete; expanded targets incomplete; no missing-as-zero, population conflation, independent sample, or direction-restores-observation claim,INFO,YES,Consistent with MS-R05 and P0-v3
+First-/second-order guards,PASS,Both sensitivity views first-order; no shared-reference, QQT/QTQ, or KXPHIXT definition,INFO,YES,Direction-ignored view remains first-order derived
+Figure assets,PASS,Figure 3 SVG/PDF/PNG and source-manifest hashes match current mapping; Figure 1/2/4 mappings unchanged,INFO,YES,No rerender or asset modification
+MS-R05 promotion SHA metadata,REPAIR_REQUIRED,Recorded 837f617e9d05fd3c933a8fd7f56a7e5e08bc7d0d absent; actual 837f61791adbe96a9565a2cc4fe1a6e377fa5662 exists with expected message,E2,NO (metadata-only),Separate metadata closure task; not repaired here
+R04 manifest source-manifest SHA,REPAIR_REQUIRED,Manifest records truncated 0D429DA458042135777A17C1B44946A2; actual full SHA is 0D429DA458042135777A17C1B449DED48B52106A51EFFCDED6F93B7844FA46A2,E2,NO (metadata-only),Separate metadata closure task; actual asset authority verified
+Packaging debt,DEFERRED,Items R02-017/024/025/026/041/065 and JSS formatting anonymization declarations archive/code release final Zenodo correspondence remain out of scope,E2,NO,Not semantic blockers; separate packaging workflow
