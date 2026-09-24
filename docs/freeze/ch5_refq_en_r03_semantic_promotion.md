@@ -1,0 +1,29 @@
+# Chapter 5 RefQ — EN-R03 Semantic Promotion
+
+```text
+ENGLISH_REVISION = EN-R03
+ENGLISH_STAGE = SEMANTICALLY_ACCEPTED
+SOURCE_OF_SCIENCE = MS-R05
+SCIENTIFIC_BASELINE = P0-v3
+SOURCE_CHINESE_SHA = 30491279BC31CC5012042F72E3BA8159DCF182CECEEB62EFF5C865C78B059B22
+EN_R03_SHA = B61683132DCAD3B6BB4D5ACCA4B49AE4FCAB0CC0B9A2D57FFCC06CF359AFBFE4
+EN_R03_SNAPSHOT = versions/EN-R03_SEMANTICALLY_ACCEPTED_B6168313.md
+A04_DECISION = CH5_REFQ_STYLE_A04_PASS_WITH_METADATA_REPAIR_ONLY
+SEMANTIC_PROMOTION_READY = YES
+RQ_COUNT = 5
+CONTRIBUTION_COUNT = 4
+CITATION_KEYS = 33 / 33
+DISPLAY_FORMULAS = 12 / 12
+SCIENTIFIC_VALUE_CHANGE = 0
+SCIENTIFIC_RECOMPUTATION = 0
+FIGURE_ASSET_CHANGE = 0
+PROMOTION_COMMIT = PENDING_ACTUAL_COMMIT
+PROMOTION_METADATA_STATUS = PENDING_CLOSURE
+```
+
+EN-R03 is the accepted English semantic source derived from the immutable
+MS-R05 Chinese semantic/scientific authority. The candidate and immutable
+snapshot are byte-identical at the recorded EN-R03 SHA. EN-R03 is not a JSS
+packaged submission artifact and is not called a final submission manuscript.
+JSS formatting, declarations, anonymization, archive/code-release
+verification, and package correspondence remain downstream.
