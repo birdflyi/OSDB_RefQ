@@ -12,8 +12,8 @@ Table values,PASS,Zero table changes; no table blocks changed,INFO,YES,No table 
 R02-009 closure,PASS,Two corrected blocks accurately define seed-only and multi-seed-target sensitivity views,INFO,YES,Single A03 E1 closed
 Figure 3 provenance closure,PASS,Current implementation/output/source manifest and closure agree; current mapping marks PROVENANCE_CLOSED,INFO,YES,Source-manifest SHA in external R04 manifest is a separate E2 clerical issue
 Claim-strength guards,PASS,No causal/knowledge-flow/dependency-ground-truth/project-importance/community-semantic/OSS-generalization strengthening,INFO,YES,Changed blocks preserve bounded interpretation
-Observation guards,PASS,Seeds complete; expanded targets incomplete; no missing-as-zero, population conflation, independent sample, or direction-restores-observation claim,INFO,YES,Consistent with MS-R05 and P0-v3
-First-/second-order guards,PASS,Both sensitivity views first-order; no shared-reference, QQT/QTQ, or KXPHIXT definition,INFO,YES,Direction-ignored view remains first-order derived
+Observation guards,PASS,"Seeds complete; expanded targets incomplete; no missing-as-zero, population conflation, independent sample, or direction-restores-observation claim",INFO,YES,Consistent with MS-R05 and P0-v3
+First-/second-order guards,PASS,"Both sensitivity views first-order; no shared-reference, QQT/QTQ, or KXPHIXT definition",INFO,YES,Direction-ignored view remains first-order derived
 Figure assets,PASS,Figure 3 SVG/PDF/PNG and source-manifest hashes match current mapping; Figure 1/2/4 mappings unchanged,INFO,YES,No rerender or asset modification
 MS-R05 promotion SHA metadata,REPAIR_REQUIRED,Recorded 837f617e9d05fd3c933a8fd7f56a7e5e08bc7d0d absent; actual 837f61791adbe96a9565a2cc4fe1a6e377fa5662 exists with expected message,E2,NO (metadata-only),Separate metadata closure task; not repaired here
 R04 manifest source-manifest SHA,REPAIR_REQUIRED,Manifest records truncated 0D429DA458042135777A17C1B44946A2; actual full SHA is 0D429DA458042135777A17C1B449DED48B52106A51EFFCDED6F93B7844FA46A2,E2,NO (metadata-only),Separate metadata closure task; actual asset authority verified
