@@ -135,6 +135,8 @@ SOURCE_MANIFEST_PATH = figures/ch5_refq/p0v3_final_v6/main/figure3_undirected_st
 SOURCE_MANIFEST_SHA256 = 0d429da458042135777a17c1b449ded48b52106a51effcded6f93b7844fa46a2
 SCIENTIFIC_SEMANTIC_AUTHORITY = P0-v3; first-order direction-ignored summary, observation-boundary sensitivity, and seed sensitivity use frozen P0-v3/S3/S4/S6 inputs
 SCIENTIFIC_BASELINE_REFERENCE = outputs/reference_quotient_p0_corrected_v3/manifest.json; supplemental/reference_quotient_v2/outputs_p0v3/
+VIEW_DEFINITION_PROVENANCE = docs/freeze/ch5_refq_figure3_observation_view_definition_closure.md
+VIEW_DEFINITION_STATUS = PROVENANCE_CLOSED
 PARENT_RENDER_AUTHORITY = none recorded
 CURRENT_STATUS = MAPPED_HASH_VERIFIED
 KNOWN_PROVENANCE_DEBT = source manifest render lineage predates MS-R04; this register supplies the current text link
@@ -157,7 +159,7 @@ PNG_SHA256 = 94d7952e6f00f74f11969c83652bd1379d426b734041f5a1890f0f982a22e22f
 | PANEL_ID | SHORT_SEMANTIC_ROLE | MS_R05_CAPTION_MATCH | RENDERED_ASSET_MATCH |
 |---|---|---|---|
 | A | Undirected structural summary and algorithmic community-size distribution | YES | YES |
-| B | Metrics across the three declared observation-boundary views | YES | YES |
+| B | Observation-boundary sensitivity: canonical seed-centered observed; seed-only induced = seed-to-seed edges over all 294 seed nodes; multi-seed target = edges to targets referenced by >=2 distinct seed sources over seed ∪ multi-target nodes | YES | YES |
 | C | Fifty-seed community-count, modularity, and ARI sensitivity | YES | YES |
 
 ### Figure 4
